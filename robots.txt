@@ -1,0 +1,17 @@
+# robots.txt — The One Club
+# https://www.theoneclub.com.au
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /cdn-cgi/
+Disallow: /.well-known/
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: GPTBot
+Disallow: /
+
+Sitemap: https://www.theoneclub.com.au/sitemap.xml
