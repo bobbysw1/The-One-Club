@@ -9,78 +9,82 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#0a0a0a;color:#fff;font-family:Inter,system-ui,sans-serif;min-height:100vh;font-size:14px}
 :root{--gold:#C4A84A;--subtle:rgba(255,255,255,.08);--muted:rgba(255,255,255,.4)}
-
-/* LOGIN */
-#login{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px}
-.login-box{width:100%;max-width:360px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:44px 40px}
-.brand{font-family:Georgia,serif;font-size:18px;color:var(--gold);letter-spacing:2px;margin-bottom:28px}
-.login-box h1{font-size:20px;font-weight:700;margin-bottom:6px}
-.login-box p{color:var(--muted);font-size:13px;margin-bottom:28px}
-label{display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-input[type=password],input[type=text],input[type=number],input[type=email],select,textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;font-size:13px;padding:10px 13px;outline:none;font-family:inherit}
+input,select,textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;font-size:13px;padding:10px 13px;outline:none;font-family:inherit}
 input:focus,select:focus,textarea:focus{border-color:var(--gold)}
 select option{background:#111}
 textarea{resize:vertical}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:opacity .15s}
+label{display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.f{margin-bottom:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:opacity .15s;text-decoration:none}
 .btn:hover{opacity:.85}
-.btn-gold{background:var(--gold);color:#000}
-.btn-ghost{background:rgba(255,255,255,.07);color:#fff;border:1px solid var(--subtle)}
-.btn-danger{background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.25)}
-.btn-full{width:100%;margin-top:8px}
-.err{color:#f87171;font-size:13px;margin-top:12px;display:none}
+.gold{background:var(--gold);color:#000}
+.ghost{background:rgba(255,255,255,.07);color:#fff;border:1px solid var(--subtle)}
+.danger{background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.25)}
+.full{width:100%;margin-top:6px}
+
+/* SCREENS */
+.screen{display:none;align-items:center;justify-content:center;min-height:100vh;padding:24px}
+.screen.on{display:flex}
+.box{width:100%;max-width:400px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:44px 40px}
+.brand{font-family:Georgia,serif;font-size:18px;color:var(--gold);letter-spacing:2px;margin-bottom:28px}
+.box h1{font-size:20px;font-weight:700;margin-bottom:6px}
+.box p{color:var(--muted);font-size:13px;margin-bottom:28px;line-height:1.6}
+.err{color:#f87171;font-size:13px;margin-top:10px;display:none}
 .back{text-align:center;margin-top:18px;font-size:12px;color:var(--muted)}
 .back a{color:var(--gold);text-decoration:none}
+.info{background:rgba(196,168,74,.08);border:1px solid rgba(196,168,74,.2);border-radius:10px;padding:14px 16px;font-size:12px;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:20px}
+.info a{color:var(--gold)}
+.info code{background:rgba(255,255,255,.1);padding:1px 5px;border-radius:3px;font-size:11px}
 
 /* DASHBOARD */
-#dashboard{display:none}
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;border-bottom:1px solid var(--subtle);gap:12px}
+#dash{display:none}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;border-bottom:1px solid var(--subtle);flex-wrap:wrap;gap:10px}
 .topbar-brand{font-family:Georgia,serif;font-size:16px;color:var(--gold);letter-spacing:1.5px}
-.topbar-right{display:flex;gap:10px}
+.topbar-right{display:flex;gap:10px;align-items:center}
+.saving{font-size:12px;color:var(--muted);display:none}
 .layout{display:flex;min-height:calc(100vh - 55px)}
 .sidebar{width:200px;border-right:1px solid var(--subtle);padding:20px 12px;flex-shrink:0}
 .nav-btn{display:block;width:100%;text-align:left;padding:9px 13px;border-radius:8px;border:none;background:none;color:rgba(255,255,255,.55);font-size:13px;font-weight:500;cursor:pointer;margin-bottom:3px}
 .nav-btn:hover{background:rgba(255,255,255,.05);color:#fff}
 .nav-btn.on{background:rgba(196,168,74,.12);color:var(--gold);font-weight:600}
-.main{flex:1;padding:32px 36px;max-width:1000px}
+.main{flex:1;padding:32px 36px;max-width:1000px;overflow:auto}
 .panel{display:none}
 .panel.on{display:block}
-.panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
-.panel-header h2{font-size:19px;font-weight:700}
+.ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.ph h2{font-size:19px;font-weight:700}
 
 /* TABLE */
-table{width:100%;border-collapse:collapse;margin-top:4px}
+table{width:100%;border-collapse:collapse}
 th{text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:8px 12px;border-bottom:1px solid var(--subtle)}
 td{padding:11px 12px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top}
 tr:hover td{background:rgba(255,255,255,.02)}
 .pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600}
-.pill-green{background:rgba(74,222,128,.15);color:#4ade80}
-.pill-yellow{background:rgba(250,204,21,.15);color:#facc15}
-.pill-gold{background:rgba(196,168,74,.15);color:var(--gold)}
+.pg{background:rgba(74,222,128,.15);color:#4ade80}
+.py{background:rgba(250,204,21,.15);color:#facc15}
 .act{background:none;border:none;color:var(--muted);cursor:pointer;padding:4px 9px;border-radius:5px;font-size:12px}
 .act:hover{background:rgba(255,255,255,.07);color:#fff}
-.act-del{color:#f87171}
-.act-del:hover{background:rgba(239,68,68,.1)}
+.adel{color:#f87171}
+.adel:hover{background:rgba(239,68,68,.1)}
 .empty{text-align:center;padding:48px 24px;color:var(--muted)}
 
 /* MODAL */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:50;display:none;align-items:center;justify-content:center;padding:20px}
 .overlay.on{display:flex}
-.modal{background:#111;border:1px solid rgba(255,255,255,.1);border-radius:16px;width:100%;max-width:540px;max-height:92vh;overflow-y:auto;padding:36px}
+.modal{background:#111;border:1px solid rgba(255,255,255,.1);border-radius:16px;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;padding:36px}
 .modal h3{font-size:17px;font-weight:700;margin-bottom:22px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.full{grid-column:1/-1}
-.mf{margin-bottom:14px}
-.modal-footer{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}
-.check-row{display:flex;align-items:center;gap:10px}
-.check-row input[type=checkbox]{width:auto}
-.check-row label{text-transform:none;letter-spacing:0;font-size:13px;color:#fff}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.span2{grid-column:1/-1}
+.mfoot{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}
+.crow{display:flex;align-items:center;gap:10px}
+.crow input[type=checkbox]{width:auto}
+.crow label{text-transform:none;letter-spacing:0;font-size:13px;color:#fff;margin:0}
 
 /* KEYWORDS */
-.kw-box{display:flex;flex-wrap:wrap;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:7px 10px;cursor:text;min-height:40px;align-items:center}
-.kw-box:focus-within{border-color:var(--gold)}
-.kw-tag{background:rgba(196,168,74,.15);color:var(--gold);padding:3px 10px;border-radius:20px;font-size:12px;display:flex;align-items:center;gap:5px}
-.kw-tag button{background:none;border:none;color:inherit;cursor:pointer;font-size:13px;line-height:1}
-.kw-in{background:none;border:none;outline:none;color:#fff;font-size:13px;flex:1;min-width:80px;padding:0}
+.kwbox{display:flex;flex-wrap:wrap;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:7px 10px;cursor:text;min-height:40px;align-items:center}
+.kwbox:focus-within{border-color:var(--gold)}
+.kwtag{background:rgba(196,168,74,.15);color:var(--gold);padding:3px 10px;border-radius:20px;font-size:12px;display:flex;align-items:center;gap:5px}
+.kwtag button{background:none;border:none;color:inherit;cursor:pointer;font-size:13px;line-height:1}
+.kwin{background:none;border:none;outline:none;color:#fff;font-size:13px;flex:1;min-width:80px;padding:0}
 
 /* TOAST */
 #toasts{position:fixed;bottom:22px;right:22px;z-index:999;display:flex;flex-direction:column;gap:8px;pointer-events:none}
@@ -92,25 +96,50 @@ tr:hover td{background:rgba(255,255,255,.02)}
 </head>
 <body>
 
-<div id="login">
-  <div class="login-box">
+<!-- LOGIN -->
+<div class="screen on" id="s-login">
+  <div class="box">
     <div class="brand">THE ONE CLUB</div>
     <h1>Admin Panel</h1>
-    <p>Enter your password to manage listings and chatbot answers.</p>
-    <label>Password</label>
-    <input type="password" id="pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')login()"/>
-    <button class="btn btn-gold btn-full" onclick="login()">Sign In</button>
-    <div class="err" id="err">Incorrect password.</div>
+    <p>Enter your password to continue.</p>
+    <div class="f"><label>Password</label>
+      <input type="password" id="pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')login()"/>
+    </div>
+    <button class="btn gold full" onclick="login()">Sign In</button>
+    <div class="err" id="pw-err">Incorrect password.</div>
     <div class="back"><a href="/">&#8592; Back to site</a></div>
   </div>
 </div>
 
-<div id="dashboard">
+<!-- GITHUB TOKEN SETUP -->
+<div class="screen" id="s-token">
+  <div class="box" style="max-width:480px">
+    <div class="brand">THE ONE CLUB</div>
+    <h1>One-time setup</h1>
+    <p>To save changes to the live site, you need a GitHub access token. You only do this once.</p>
+    <div class="info">
+      1. Go to <a href="https://github.com/settings/tokens/new" target="_blank">github.com/settings/tokens/new</a><br/>
+      2. Give it a name like <code>oneclub-admin</code><br/>
+      3. Set expiration to <code>No expiration</code><br/>
+      4. Tick the <code>repo</code> checkbox<br/>
+      5. Click <strong>Generate token</strong> and paste it below
+    </div>
+    <div class="f"><label>GitHub Token</label>
+      <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"/>
+    </div>
+    <button class="btn gold full" onclick="saveToken()">Save &amp; Continue</button>
+    <div class="err" id="token-err">Could not verify token. Check it and try again.</div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dash">
   <div class="topbar">
     <div class="topbar-brand">THE ONE CLUB &mdash; Admin</div>
     <div class="topbar-right">
-      <a href="/" class="btn btn-ghost">&#8592; View Site</a>
-      <button class="btn btn-danger" onclick="logout()">Sign Out</button>
+      <span class="saving" id="saving-indicator">Saving…</span>
+      <a href="/" class="btn ghost">&#8592; View Site</a>
+      <button class="btn danger" onclick="logout()">Sign Out</button>
     </div>
   </div>
   <div class="layout">
@@ -121,21 +150,19 @@ tr:hover td{background:rgba(255,255,255,.02)}
     <div class="main">
 
       <div class="panel on" id="panel-props">
-        <div class="panel-header">
-          <h2>Properties</h2>
-          <button class="btn btn-gold" onclick="openProp()">+ Add Property</button>
+        <div class="ph"><h2>Properties</h2>
+          <button class="btn gold" onclick="openProp()">+ Add Property</button>
         </div>
         <table><thead><tr><th>Address</th><th>Price</th><th>Type</th><th>Status</th><th></th></tr></thead>
-        <tbody id="prop-list"></tbody></table>
+        <tbody id="prop-tbody"></tbody></table>
       </div>
 
       <div class="panel" id="panel-chat">
-        <div class="panel-header">
-          <h2>Chatbot Answers</h2>
-          <button class="btn btn-gold" onclick="openChat()">+ Add Entry</button>
+        <div class="ph"><h2>Chatbot Answers</h2>
+          <button class="btn gold" onclick="openChat()">+ Add Entry</button>
         </div>
         <table><thead><tr><th>Topic</th><th>Keywords</th><th>Response</th><th></th></tr></thead>
-        <tbody id="chat-list"></tbody></table>
+        <tbody id="chat-tbody"></tbody></table>
       </div>
 
     </div>
@@ -143,52 +170,51 @@ tr:hover td{background:rgba(255,255,255,.02)}
 </div>
 
 <!-- Property modal -->
-<div class="overlay" id="prop-modal">
+<div class="overlay" id="m-prop">
   <div class="modal">
     <h3 id="prop-title">Add Property</h3>
-    <div class="grid2">
-      <div class="mf full"><label>Address</label><input id="f-addr" placeholder="12 Example Street"/></div>
-      <div class="mf"><label>Suburb</label><input id="f-suburb" placeholder="Broadbeach"/></div>
-      <div class="mf"><label>Full suburb line</label><input id="f-suburbFull" placeholder="Broadbeach QLD 4218"/></div>
-      <div class="mf"><label>Price (display)</label><input id="f-price" placeholder="$1,200,000"/></div>
-      <div class="mf"><label>Price number ($000s)</label><input id="f-priceNum" type="number" placeholder="1200"/></div>
-      <div class="mf"><label>Beds</label><input id="f-beds" type="number" placeholder="3"/></div>
-      <div class="mf"><label>Baths</label><input id="f-baths" type="number" placeholder="2"/></div>
-      <div class="mf"><label>Cars</label><input id="f-cars" type="number" placeholder="2"/></div>
-      <div class="mf"><label>Size</label><input id="f-size" placeholder="450m²"/></div>
-      <div class="mf"><label>Type</label>
-        <select id="f-type"><option value="house">House</option><option value="apartment">Apartment</option><option value="townhouse">Townhouse</option><option value="acreage">Acreage</option><option value="villa">Villa</option></select>
+    <div class="g2">
+      <div class="f span2"><label>Address</label><input id="p-addr" placeholder="12 Example Street"/></div>
+      <div class="f"><label>Suburb</label><input id="p-suburb" placeholder="Broadbeach"/></div>
+      <div class="f"><label>Full suburb line</label><input id="p-suburbFull" placeholder="Broadbeach QLD 4218"/></div>
+      <div class="f"><label>Price (display)</label><input id="p-price" placeholder="$1,200,000"/></div>
+      <div class="f"><label>Price number ($000s)</label><input id="p-priceNum" type="number" placeholder="1200"/></div>
+      <div class="f"><label>Beds</label><input id="p-beds" type="number" placeholder="3"/></div>
+      <div class="f"><label>Baths</label><input id="p-baths" type="number" placeholder="2"/></div>
+      <div class="f"><label>Cars</label><input id="p-cars" type="number" placeholder="2"/></div>
+      <div class="f"><label>Size</label><input id="p-size" placeholder="450m²"/></div>
+      <div class="f"><label>Type</label>
+        <select id="p-type"><option value="house">House</option><option value="apartment">Apartment</option><option value="townhouse">Townhouse</option><option value="acreage">Acreage</option><option value="villa">Villa</option></select>
       </div>
-      <div class="mf"><label>Badge</label>
-        <select id="f-badge"><option value="">None</option><option value="new">New</option><option value="open">Open Home</option><option value="contract">Under Contract</option></select>
+      <div class="f"><label>Badge</label>
+        <select id="p-badge"><option value="">None</option><option value="new">New</option><option value="open">Open Home</option><option value="contract">Under Contract</option></select>
       </div>
-      <div class="mf"><label>Status</label>
-        <select id="f-status"><option value="active">Active</option><option value="contract">Under Contract</option><option value="sold">Sold</option></select>
+      <div class="f"><label>Status</label>
+        <select id="p-status"><option value="active">Active</option><option value="contract">Under Contract</option><option value="sold">Sold</option></select>
       </div>
-      <div class="mf full"><label>Days / note (e.g. "Listed 3 days ago")</label><input id="f-days" placeholder="Listed 3 days ago"/></div>
-      <div class="mf full"><label>Description</label><textarea id="f-desc" rows="3"></textarea></div>
-      <div class="mf full check-row"><input type="checkbox" id="f-featured"/><label for="f-featured">Feature this listing (shown first)</label></div>
+      <div class="f span2"><label>Days / note</label><input id="p-days" placeholder="Listed 3 days ago"/></div>
+      <div class="f span2"><label>Description</label><textarea id="p-desc" rows="3"></textarea></div>
+      <div class="f span2 crow"><input type="checkbox" id="p-feat"/><label for="p-feat">Feature this listing (shown first)</label></div>
     </div>
-    <div class="modal-footer">
-      <button class="btn btn-ghost" onclick="closeModal('prop-modal')">Cancel</button>
-      <button class="btn btn-gold" onclick="saveProp()">Save Property</button>
+    <div class="mfoot">
+      <button class="btn ghost" onclick="closeM('m-prop')">Cancel</button>
+      <button class="btn gold" onclick="saveProp()">Save Property</button>
     </div>
   </div>
 </div>
 
 <!-- Chatbot modal -->
-<div class="overlay" id="chat-modal">
+<div class="overlay" id="m-chat">
   <div class="modal">
     <h3 id="chat-title">Add Chatbot Entry</h3>
-    <div class="mf"><label>Topic key (one word, e.g. "commission")</label><input id="c-key" placeholder="commission"/></div>
-    <div class="mf">
-      <label>Keywords — type a word and press Enter</label>
-      <div class="kw-box" id="kw-box" onclick="document.getElementById('kw-in').focus()"></div>
+    <div class="f"><label>Topic key (e.g. "commission")</label><input id="c-key" placeholder="commission"/></div>
+    <div class="f"><label>Keywords — type a word and press Enter</label>
+      <div class="kwbox" id="kwbox" onclick="document.getElementById('kwin').focus()"></div>
     </div>
-    <div class="mf"><label>Chatbot response</label><textarea id="c-resp" rows="5" placeholder="What the bot says when someone asks about this topic…"></textarea></div>
-    <div class="modal-footer">
-      <button class="btn btn-ghost" onclick="closeModal('chat-modal')">Cancel</button>
-      <button class="btn btn-gold" onclick="saveChat()">Save Entry</button>
+    <div class="f"><label>Chatbot response</label><textarea id="c-resp" rows="5" placeholder="What the bot says when this topic comes up…"></textarea></div>
+    <div class="mfoot">
+      <button class="btn ghost" onclick="closeM('m-chat')">Cancel</button>
+      <button class="btn gold" onclick="saveChat()">Save Entry</button>
     </div>
   </div>
 </div>
@@ -196,92 +222,130 @@ tr:hover td{background:rgba(255,255,255,.02)}
 <div id="toasts"></div>
 
 <script>
-// ── DEFAULT DATA ──────────────────────────────────────────────────────────────
-var DEFAULT_PROPS = [
-  {id:'1',featured:true,price:'$3,200,000',priceNum:3200,address:'5 Lakeside Court',suburb:'Hope Island',suburbFull:'Hope Island QLD 4212',beds:5,baths:3,cars:3,type:'house',size:'842m²',extras:['Waterfront'],badge:'new',description:'Architecturally designed waterfront residence in the prestigious Sanctuary Cove precinct. Five bedrooms, three bathrooms, resort-style pool, and a private pontoon with direct Broadwater access.',days:'Listed 3 days ago',status:'active'},
-  {id:'2',featured:false,price:'$2,100,000',priceNum:2100,address:'18 Canal Drive',suburb:'Broadbeach Waters',suburbFull:'Broadbeach Waters QLD 4218',beds:4,baths:2,cars:2,type:'house',size:'610m²',extras:[],badge:'new',description:'Modern family home on a wide canal with 16m water frontage. Open plan living flows to a full-length deck and pool. North-facing rear for all-day sun.',days:'Listed 8 days ago',status:'active'},
-  {id:'3',featured:false,price:'$1,450,000',priceNum:1450,address:'21 Pacific Parade',suburb:'Burleigh Heads',suburbFull:'Burleigh Heads QLD 4220',beds:3,baths:2,cars:2,type:'house',size:'405m²',extras:[],badge:'open',description:'Three-bedroom beach house three minutes\' walk from Burleigh Head National Park. Renovated kitchen and bathrooms, ocean glimpses from the upper level.',days:'Listed 2 days ago',status:'active'},
-  {id:'4',featured:false,price:'$685,000',priceNum:685,address:'2804 / 9 Lawson Street',suburb:'Southport',suburbFull:'Southport QLD 4215',beds:2,baths:2,cars:1,type:'apartment',size:'94m²',extras:[],badge:'contract',description:'Level 28 corner apartment in Southport CBD. Unobstructed Broadwater and city views. Boutique building, only 4 units per floor.',days:'Sold in 9 days · Saved $8,100',status:'contract'},
-  {id:'5',featured:false,price:'$980,000',priceNum:980,address:'7 Coventry Crescent',suburb:'Robina',suburbFull:'Robina QLD 4226',beds:4,baths:2,cars:2,type:'house',size:'512m²',extras:[],badge:'',description:'Family home in the Robina Town Centre precinct. Robina State School catchment. Freshly painted, new carpets throughout.',days:'Listed 11 days ago',status:'active'},
-  {id:'6',featured:false,price:'$1,200,000',priceNum:1200,address:'34 Nineteenth Avenue',suburb:'Palm Beach',suburbFull:'Palm Beach QLD 4221',beds:3,baths:2,cars:2,type:'house',size:'450m²',extras:[],badge:'new',description:'Classic Palm Beach beach house, fully renovated with a Scandi-coastal feel. Three bedrooms, polished concrete floors, 600m to the beach.',days:'Listed 5 days ago',status:'active'}
-];
+// ── CONFIG ────────────────────────────────────────────────────────────────────
+var REPO  = 'bobbysw1/The-One-Club';
+var BRANCH = 'main';
+var PROPS_PATH = 'backend/data/properties.json';
+var CHAT_PATH  = 'backend/data/chatbot.json';
+var PASSWORD   = 'oneclub2026';
+var RAW_BASE   = 'https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + '/';
+var API_BASE   = 'https://api.github.com/repos/' + REPO + '/contents/';
 
-var DEFAULT_CHAT = {
-  commission:{keywords:['1%','commission','fee','charge','cost'],response:'We charge a flat 1% commission — no hidden fees, no marketing costs except your portal listing level (Standard ~$600–$900, Feature ~$1,200–$1,800, Premiere ~$2,000–$2,500+). Traditional agents charge 2–3% plus $5,000–15,000 in marketing fees. With us, photography, floor plans, 3D walkthroughs, signboard, and digital campaign are all included in the 1%.'},
-  inspection:{keywords:['inspect','visit','view','open home','book'],response:'I\'d love to arrange an inspection! Book directly at a time that suits — no phone tag needed. For Gold Coast properties, we typically have availability within 24–48 hours. Would you like the agent to call you?'},
-  listings:{keywords:['list','available','current','property','for sale'],response:'We have several properties across the Gold Coast — from Broadbeach apartments to Burleigh Heads family homes. Each listing has enhanced photography, 3D walkthroughs, and floor plans. Check our For Sale page for current listings.'},
-  valuation:{keywords:['valuation','worth','apprais'],response:'Our valuations are data-driven — built from comparable sales, suburb growth trends, seasonal demand, and property features. Free, no obligation. Fill in the form and we\'ll be back within 24 hours.'},
-  agent:{keywords:['agent','person','human','speak','call','talk'],response:'Absolutely — the agent will call or message you within the hour during business hours (8am–8pm), or first thing tomorrow if it\'s after hours. You can also call directly on 1800 663 258.'},
-  how:{keywords:['how','work','model','different','technology'],response:'One experienced, licensed agent backed by smart automation. Buyer enquiries answered instantly 24/7. Valuations are data-driven. Photography, floor plans, and 3D tours included with every listing. No office to fund, no junior agents — just great results for 1%.'}
-};
-
-// ── PASSWORD ──────────────────────────────────────────────────────────────────
-var PASS_KEY = 'oc_admin_pass';
-var SESSION_KEY = 'oc_session';
-
+// ── AUTH ──────────────────────────────────────────────────────────────────────
 function login() {
   var pw = document.getElementById('pw').value;
-  var stored = localStorage.getItem(PASS_KEY) || 'oneclub2026';
-  if (pw === stored) {
-    sessionStorage.setItem(SESSION_KEY, '1');
-    showDash();
-  } else {
-    var el = document.getElementById('err');
-    el.style.display = 'block';
-    el.textContent = 'Incorrect password.';
+  if (pw !== PASSWORD) {
+    show('pw-err'); return;
   }
+  sessionStorage.setItem('oc_auth', '1');
+  var token = localStorage.getItem('oc_gh_token');
+  if (!token) { showScreen('s-token'); }
+  else { loadDash(); }
+}
+
+function saveToken() {
+  var t = document.getElementById('gh-token').value.trim();
+  if (!t) return;
+  // Verify token works against our repo
+  fetch('https://api.github.com/repos/' + REPO, {
+    headers: { Authorization: 'token ' + t }
+  })
+  .then(function(r) {
+    if (!r.ok) throw new Error();
+    localStorage.setItem('oc_gh_token', t);
+    loadDash();
+  })
+  .catch(function() { show('token-err'); });
 }
 
 function logout() {
-  sessionStorage.removeItem(SESSION_KEY);
+  sessionStorage.removeItem('oc_auth');
   location.reload();
 }
 
-// ── STORAGE ───────────────────────────────────────────────────────────────────
-function getProps() {
-  var raw = localStorage.getItem('oc_props');
-  return raw ? JSON.parse(raw) : JSON.parse(JSON.stringify(DEFAULT_PROPS));
-}
-function setProps(p) { localStorage.setItem('oc_props', JSON.stringify(p)); }
-
-function getChat() {
-  var raw = localStorage.getItem('oc_chat');
-  return raw ? JSON.parse(raw) : JSON.parse(JSON.stringify(DEFAULT_CHAT));
-}
-function setChat(c) { localStorage.setItem('oc_chat', JSON.stringify(c)); }
-
 // ── BOOT ──────────────────────────────────────────────────────────────────────
-if (sessionStorage.getItem(SESSION_KEY)) { showDash(); }
-
-function showDash() {
-  document.getElementById('login').style.display = 'none';
-  document.getElementById('dashboard').style.display = 'block';
-  renderProps();
-  renderChat();
+if (sessionStorage.getItem('oc_auth')) {
+  var tok = localStorage.getItem('oc_gh_token');
+  if (!tok) showScreen('s-token');
+  else loadDash();
 }
 
-// ── TABS ──────────────────────────────────────────────────────────────────────
-function tab(name, btn) {
-  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('on'); });
-  document.querySelectorAll('.nav-btn').forEach(function(b){ b.classList.remove('on'); });
-  document.getElementById('panel-' + name).classList.add('on');
-  btn.classList.add('on');
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('on'); });
+  document.getElementById(id).classList.add('on');
+}
+
+var _props = [], _chat = {}, _propsSHA = '', _chatSHA = '';
+
+function loadDash() {
+  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('on'); });
+  document.getElementById('dash').style.display = 'block';
+  loadProps();
+  loadChat();
+}
+
+// ── GITHUB API ────────────────────────────────────────────────────────────────
+function ghGet(path) {
+  var token = localStorage.getItem('oc_gh_token');
+  return fetch(API_BASE + path + '?ref=' + BRANCH, {
+    headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github.v3+json' }
+  }).then(function(r) { return r.json(); });
+}
+
+function ghPut(path, content, sha, message) {
+  var token = localStorage.getItem('oc_gh_token');
+  showSaving(true);
+  return fetch(API_BASE + path, {
+    method: 'PUT',
+    headers: {
+      Authorization: 'token ' + token,
+      Accept: 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      message: message,
+      content: btoa(unescape(encodeURIComponent(content))),
+      sha: sha,
+      branch: BRANCH
+    })
+  })
+  .then(function(r) {
+    showSaving(false);
+    if (!r.ok) throw new Error();
+    return r.json();
+  })
+  .catch(function() {
+    showSaving(false);
+    toast('Save failed — check your token has repo access', 'err');
+    throw new Error();
+  });
+}
+
+function showSaving(on) {
+  document.getElementById('saving-indicator').style.display = on ? 'block' : 'none';
 }
 
 // ── PROPERTIES ────────────────────────────────────────────────────────────────
+function loadProps() {
+  ghGet(PROPS_PATH).then(function(d) {
+    _propsSHA = d.sha;
+    _props = JSON.parse(decodeURIComponent(escape(atob(d.content.replace(/\n/g,'')))));
+    renderProps();
+  }).catch(function() { toast('Could not load properties', 'err'); });
+}
+
 function renderProps() {
-  var props = getProps();
-  var tbody = document.getElementById('prop-list');
-  if (!props.length) { tbody.innerHTML = '<tr><td colspan="5" class="empty">No properties yet.</td></tr>'; return; }
-  tbody.innerHTML = props.map(function(p) {
-    var pill = p.status === 'contract' ? 'pill-yellow' : p.status === 'sold' ? 'pill-gold' : 'pill-green';
-    var label = p.status === 'contract' ? 'Contract' : p.status === 'sold' ? 'Sold' : 'Active';
+  var tb = document.getElementById('prop-tbody');
+  if (!_props.length) { tb.innerHTML = '<tr><td colspan="5" class="empty">No properties yet.</td></tr>'; return; }
+  tb.innerHTML = _props.map(function(p) {
+    var pill = p.status === 'contract' ? 'py' : 'pg';
+    var lab  = p.status === 'contract' ? 'Contract' : p.status === 'sold' ? 'Sold' : 'Active';
     return '<tr>' +
-      '<td><b>' + x(p.address) + '</b><br><span style="color:var(--muted);font-size:12px">' + x(p.suburb) + (p.featured ? ' ★ Featured' : '') + '</span></td>' +
+      '<td><b>' + x(p.address) + '</b><br><span style="color:var(--muted);font-size:12px">' + x(p.suburb) + (p.featured ? ' &#9733; Featured' : '') + '</span></td>' +
       '<td>' + x(p.price) + '</td>' +
       '<td style="text-transform:capitalize">' + x(p.type) + '</td>' +
-      '<td><span class="pill ' + pill + '">' + label + '</span></td>' +
-      '<td><button class="act" onclick="editProp(\'' + p.id + '\')">Edit</button> <button class="act act-del" onclick="delProp(\'' + p.id + '\')">Delete</button></td>' +
+      '<td><span class="pill ' + pill + '">' + lab + '</span></td>' +
+      '<td><button class="act" onclick="editProp(\'' + p.id + '\')">Edit</button> <button class="act adel" onclick="delProp(\'' + p.id + '\')">Delete</button></td>' +
       '</tr>';
   }).join('');
 }
@@ -289,165 +353,187 @@ function renderProps() {
 var _editId = null;
 
 function openProp(id) {
-  var p = id ? getProps().find(function(r){ return r.id === id; }) : null;
+  var p = id ? _props.find(function(r){ return r.id===id; }) : null;
   _editId = id || null;
   document.getElementById('prop-title').textContent = p ? 'Edit Property' : 'Add Property';
-  document.getElementById('f-addr').value = p ? p.address : '';
-  document.getElementById('f-suburb').value = p ? p.suburb : '';
-  document.getElementById('f-suburbFull').value = p ? p.suburbFull : '';
-  document.getElementById('f-price').value = p ? p.price : '';
-  document.getElementById('f-priceNum').value = p ? p.priceNum : '';
-  document.getElementById('f-beds').value = p ? p.beds : '';
-  document.getElementById('f-baths').value = p ? p.baths : '';
-  document.getElementById('f-cars').value = p ? p.cars : '';
-  document.getElementById('f-size').value = p ? p.size : '';
-  document.getElementById('f-type').value = p ? p.type : 'house';
-  document.getElementById('f-badge').value = p ? p.badge : '';
-  document.getElementById('f-status').value = p ? p.status : 'active';
-  document.getElementById('f-days').value = p ? p.days : '';
-  document.getElementById('f-desc').value = p ? p.description : '';
-  document.getElementById('f-featured').checked = p ? !!p.featured : false;
-  showModal('prop-modal');
+  setVal('p-addr', p ? p.address : '');
+  setVal('p-suburb', p ? p.suburb : '');
+  setVal('p-suburbFull', p ? p.suburbFull : '');
+  setVal('p-price', p ? p.price : '');
+  setVal('p-priceNum', p ? p.priceNum : '');
+  setVal('p-beds', p ? p.beds : '');
+  setVal('p-baths', p ? p.baths : '');
+  setVal('p-cars', p ? p.cars : '');
+  setVal('p-size', p ? p.size : '');
+  setVal('p-type', p ? p.type : 'house');
+  setVal('p-badge', p ? p.badge : '');
+  setVal('p-status', p ? p.status : 'active');
+  setVal('p-days', p ? p.days : '');
+  setVal('p-desc', p ? p.description : '');
+  document.getElementById('p-feat').checked = p ? !!p.featured : false;
+  openM('m-prop');
 }
 function editProp(id) { openProp(id); }
 
 function delProp(id) {
   if (!confirm('Delete this property?')) return;
-  var props = getProps().filter(function(p){ return p.id !== id; });
-  setProps(props);
-  renderProps();
-  toast('Property deleted');
+  _props = _props.filter(function(p){ return p.id!==id; });
+  commitProps('Delete property');
 }
 
 function saveProp() {
-  var addr = document.getElementById('f-addr').value.trim();
-  if (!addr) { toast('Address is required', 'err'); return; }
-  var props = getProps();
+  var addr = getVal('p-addr');
+  if (!addr) { toast('Address is required','err'); return; }
   var data = {
     id: _editId || String(Date.now()),
-    featured: document.getElementById('f-featured').checked,
+    featured: document.getElementById('p-feat').checked,
     address: addr,
-    suburb: document.getElementById('f-suburb').value.trim(),
-    suburbFull: document.getElementById('f-suburbFull').value.trim(),
-    price: document.getElementById('f-price').value.trim(),
-    priceNum: parseFloat(document.getElementById('f-priceNum').value) || 0,
-    beds: parseInt(document.getElementById('f-beds').value) || 0,
-    baths: parseFloat(document.getElementById('f-baths').value) || 0,
-    cars: parseInt(document.getElementById('f-cars').value) || 0,
-    size: document.getElementById('f-size').value.trim(),
-    type: document.getElementById('f-type').value,
-    badge: document.getElementById('f-badge').value,
-    status: document.getElementById('f-status').value,
-    days: document.getElementById('f-days').value.trim(),
-    description: document.getElementById('f-desc').value.trim(),
+    suburb: getVal('p-suburb'),
+    suburbFull: getVal('p-suburbFull'),
+    price: getVal('p-price'),
+    priceNum: parseFloat(getVal('p-priceNum'))||0,
+    beds: parseInt(getVal('p-beds'))||0,
+    baths: parseFloat(getVal('p-baths'))||0,
+    cars: parseInt(getVal('p-cars'))||0,
+    size: getVal('p-size'),
+    type: getVal('p-type'),
+    badge: getVal('p-badge'),
+    status: getVal('p-status'),
+    days: getVal('p-days'),
+    description: getVal('p-desc'),
     extras: []
   };
   if (_editId) {
-    var i = props.findIndex(function(p){ return p.id === _editId; });
-    props[i] = data;
+    var i = _props.findIndex(function(p){ return p.id===_editId; });
+    _props[i] = data;
   } else {
-    props.push(data);
+    _props.push(data);
   }
-  setProps(props);
-  closeModal('prop-modal');
-  renderProps();
-  toast(_editId ? 'Property updated' : 'Property added');
+  closeM('m-prop');
+  commitProps(_editId ? 'Update property: '+addr : 'Add property: '+addr);
+}
+
+function commitProps(msg) {
+  var json = JSON.stringify(_props, null, 2);
+  ghPut(PROPS_PATH, json, _propsSHA, msg).then(function(r) {
+    _propsSHA = r.content.sha;
+    renderProps();
+    toast('Saved! Live site updates in ~30 seconds.');
+  });
 }
 
 // ── CHATBOT ───────────────────────────────────────────────────────────────────
+function loadChat() {
+  ghGet(CHAT_PATH).then(function(d) {
+    _chatSHA = d.sha;
+    _chat = JSON.parse(decodeURIComponent(escape(atob(d.content.replace(/\n/g,'')))));
+    renderChat();
+  }).catch(function() { toast('Could not load chatbot', 'err'); });
+}
+
 function renderChat() {
-  var chat = getChat();
-  var keys = Object.keys(chat);
-  var tbody = document.getElementById('chat-list');
-  if (!keys.length) { tbody.innerHTML = '<tr><td colspan="4" class="empty">No entries yet.</td></tr>'; return; }
-  tbody.innerHTML = keys.map(function(k) {
-    var e = chat[k];
-    var kws = (e.keywords||[]).map(function(w){ return '<span style="background:rgba(196,168,74,.12);color:var(--gold);padding:2px 8px;border-radius:10px;font-size:11px">' + x(w) + '</span>'; }).join(' ');
+  var tb = document.getElementById('chat-tbody');
+  var keys = Object.keys(_chat);
+  if (!keys.length) { tb.innerHTML = '<tr><td colspan="4" class="empty">No entries yet.</td></tr>'; return; }
+  tb.innerHTML = keys.map(function(k) {
+    var e = _chat[k];
+    var kws = (e.keywords||[]).map(function(w){ return '<span style="background:rgba(196,168,74,.12);color:var(--gold);padding:2px 7px;border-radius:10px;font-size:11px">'+x(w)+'</span>'; }).join(' ');
     return '<tr>' +
-      '<td><b>' + x(k) + '</b></td>' +
-      '<td>' + (kws || '<span style="color:var(--muted)">—</span>') + '</td>' +
-      '<td style="color:var(--muted);max-width:260px">' + x(e.response).slice(0,80) + (e.response.length > 80 ? '…' : '') + '</td>' +
-      '<td><button class="act" onclick="editChat(\'' + k + '\')">Edit</button> <button class="act act-del" onclick="delChat(\'' + k + '\')">Delete</button></td>' +
+      '<td><b>'+x(k)+'</b></td>' +
+      '<td>'+(kws||'<span style="color:var(--muted)">—</span>')+'</td>' +
+      '<td style="color:var(--muted);max-width:260px">'+x(e.response).slice(0,80)+(e.response.length>80?'…':'')+'</td>' +
+      '<td><button class="act" onclick="editChat(\''+k+'\')">Edit</button> <button class="act adel" onclick="delChat(\''+k+'\')">Delete</button></td>' +
       '</tr>';
   }).join('');
 }
 
-var _editKey = null, _kws = [];
+var _editKey=null, _kws=[];
 
 function openChat(key) {
-  var chat = getChat();
-  var e = key ? chat[key] : null;
-  _editKey = key || null;
+  var e = key ? _chat[key] : null;
+  _editKey = key||null;
   _kws = e ? (e.keywords||[]).slice() : [];
   document.getElementById('chat-title').textContent = key ? 'Edit Entry' : 'Add Chatbot Entry';
-  document.getElementById('c-key').value = key || '';
+  setVal('c-key', key||'');
   document.getElementById('c-key').disabled = !!key;
-  document.getElementById('c-resp').value = e ? e.response : '';
+  setVal('c-resp', e ? e.response : '');
   renderKw();
-  showModal('chat-modal');
+  openM('m-chat');
 }
-function editChat(k) { openChat(k); }
+function editChat(k){ openChat(k); }
 
 function delChat(k) {
-  if (!confirm('Delete "' + k + '"?')) return;
-  var chat = getChat();
-  delete chat[k];
-  setChat(chat);
-  renderChat();
-  toast('Entry deleted');
+  if(!confirm('Delete "'+k+'"?')) return;
+  delete _chat[k];
+  commitChat('Delete chatbot entry: '+k);
 }
 
 function saveChat() {
-  var key = document.getElementById('c-key').value.trim().toLowerCase().replace(/\s+/g,'-');
-  var resp = document.getElementById('c-resp').value.trim();
-  if (!key || !resp) { toast('Key and response required', 'err'); return; }
-  var chat = getChat();
-  chat[key] = {keywords: _kws, response: resp};
-  setChat(chat);
-  closeModal('chat-modal');
-  renderChat();
-  toast('Entry saved');
+  var key = getVal('c-key').trim().toLowerCase().replace(/\s+/g,'-');
+  var resp = getVal('c-resp').trim();
+  if(!key||!resp){ toast('Key and response required','err'); return; }
+  _chat[key] = {keywords:_kws, response:resp};
+  closeM('m-chat');
+  commitChat(_editKey ? 'Update chatbot: '+key : 'Add chatbot: '+key);
 }
 
-// keywords
+function commitChat(msg) {
+  var json = JSON.stringify(_chat, null, 2);
+  ghPut(CHAT_PATH, json, _chatSHA, msg).then(function(r) {
+    _chatSHA = r.content.sha;
+    renderChat();
+    toast('Saved! Live site updates in ~30 seconds.');
+  });
+}
+
+// ── KEYWORDS ─────────────────────────────────────────────────────────────────
 function renderKw() {
-  var box = document.getElementById('kw-box');
+  var box = document.getElementById('kwbox');
   box.innerHTML = '';
-  _kws.forEach(function(w, i) {
+  _kws.forEach(function(w,i){
     var t = document.createElement('span');
-    t.className = 'kw-tag';
-    t.innerHTML = x(w) + ' <button type="button" onclick="removeKw(' + i + ')">&#x2715;</button>';
+    t.className = 'kwtag';
+    t.innerHTML = x(w)+' <button type="button" onclick="rmKw('+i+')">&#x2715;</button>';
     box.appendChild(t);
   });
   var inp = document.createElement('input');
-  inp.className = 'kw-in';
-  inp.id = 'kw-in';
-  inp.placeholder = _kws.length ? '' : 'commission, fee, cost…';
-  inp.onkeydown = function(e) {
-    if (e.key === 'Enter' || e.key === ',') { e.preventDefault(); addKw(inp.value); }
-    else if (e.key === 'Backspace' && !inp.value && _kws.length) { _kws.pop(); renderKw(); }
+  inp.className = 'kwin'; inp.id = 'kwin';
+  inp.placeholder = _kws.length?'':'commission, fee…';
+  inp.onkeydown = function(e){
+    if(e.key==='Enter'||e.key===','){e.preventDefault();addKw(inp.value);}
+    else if(e.key==='Backspace'&&!inp.value&&_kws.length){_kws.pop();renderKw();}
   };
-  inp.oninput = function() { if (inp.value.endsWith(',')) addKw(inp.value.slice(0,-1)); };
-  box.appendChild(inp);
-  inp.focus();
+  inp.oninput = function(){ if(inp.value.endsWith(',')) addKw(inp.value.slice(0,-1)); };
+  box.appendChild(inp); inp.focus();
 }
-function addKw(v) { v = v.trim().toLowerCase(); if (v && !_kws.includes(v)) { _kws.push(v); renderKw(); } }
-function removeKw(i) { _kws.splice(i,1); renderKw(); }
+function addKw(v){ v=v.trim().toLowerCase(); if(v&&!_kws.includes(v)){_kws.push(v);renderKw();} }
+function rmKw(i){ _kws.splice(i,1); renderKw(); }
 
-// ── MODALS ────────────────────────────────────────────────────────────────────
-function showModal(id) { document.getElementById(id).classList.add('on'); }
-function closeModal(id) { document.getElementById(id).classList.remove('on'); }
-document.addEventListener('keydown', function(e){ if(e.key==='Escape') document.querySelectorAll('.overlay.on').forEach(function(o){ o.classList.remove('on'); }); });
-document.querySelectorAll('.overlay').forEach(function(o){ o.addEventListener('click', function(e){ if(e.target===o) o.classList.remove('on'); }); });
-
-// ── UTILS ─────────────────────────────────────────────────────────────────────
-function x(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-function toast(msg, type) {
-  var el = document.createElement('div');
-  el.className = 'toast ' + (type === 'err' ? 'terr' : 'tok');
-  el.textContent = msg;
+// ── TABS / MODALS / UTILS ─────────────────────────────────────────────────────
+function tab(name,btn){
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on');});
+  document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('on');});
+  document.getElementById('panel-'+name).classList.add('on');
+  btn.classList.add('on');
+}
+function openM(id){ document.getElementById(id).classList.add('on'); }
+function closeM(id){ document.getElementById(id).classList.remove('on'); }
+document.querySelectorAll('.overlay').forEach(function(o){
+  o.addEventListener('click',function(e){ if(e.target===o) o.classList.remove('on'); });
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape') document.querySelectorAll('.overlay.on').forEach(function(o){o.classList.remove('on');});
+});
+function getVal(id){ return document.getElementById(id).value; }
+function setVal(id,v){ document.getElementById(id).value = v||''; }
+function show(id){ document.getElementById(id).style.display='block'; }
+function x(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function toast(msg,type){
+  var el=document.createElement('div');
+  el.className='toast '+(type==='err'?'terr':'tok');
+  el.textContent=msg;
   document.getElementById('toasts').appendChild(el);
-  setTimeout(function(){ el.remove(); }, 3000);
+  setTimeout(function(){el.remove();},4000);
 }
 </script>
 </body>
