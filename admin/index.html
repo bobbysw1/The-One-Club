@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Admin — The One Club</title>
+<meta name="robots" content="noindex,nofollow"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0a0a0a;color:#fff;font-family:'Inter',sans-serif;min-height:100vh}
+:root{--gold:#C4A84A;--subtle:rgba(255,255,255,.08);--muted:rgba(255,255,255,.4)}
+
+/* ── LOGIN ── */
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px}
+.login-box{width:100%;max-width:380px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:44px 40px}
+.login-logo{font-family:serif;font-size:22px;color:var(--gold);margin-bottom:32px;letter-spacing:1px}
+.login-title{font-size:20px;font-weight:700;margin-bottom:8px}
+.login-sub{font-size:13px;color:var(--muted);margin-bottom:32px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.field input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;font-size:14px;padding:10px 14px;outline:none}
+.field input:focus{border-color:var(--gold)}
+.btn-login{width:100%;background:var(--gold);color:#000;border:none;border-radius:8px;font-size:14px;font-weight:700;padding:12px;cursor:pointer;margin-top:8px}
+.btn-login:hover{opacity:.9}
+.login-err{font-size:13px;color:#f87171;margin-top:12px;display:none}
+.back-link{text-align:center;margin-top:20px;font-size:12px;color:var(--muted)}
+.back-link a{color:var(--gold);text-decoration:none}
+
+/* ── DASHBOARD ── */
+#dashboard{display:none}
+.topbar{background:rgba(255,255,255,.03);border-bottom:1px solid var(--subtle);padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+.topbar-logo{font-family:serif;font-size:18px;color:var(--gold);letter-spacing:1px}
+.topbar-right{display:flex;align-items:center;gap:16px}
+.btn-sm{background:rgba(255,255,255,.06);border:1px solid var(--subtle);color:#fff;border-radius:6px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;text-decoration:none}
+.btn-sm:hover{background:rgba(255,255,255,.1)}
+.btn-danger{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.3);color:#f87171}
+.btn-danger:hover{background:rgba(239,68,68,.2)}
+.layout{display:flex;min-height:calc(100vh - 57px)}
+.sidebar{width:220px;background:rgba(255,255,255,.02);border-right:1px solid var(--subtle);padding:24px 16px;flex-shrink:0}
+.sidebar-item{display:block;padding:10px 14px;border-radius:8px;color:rgba(255,255,255,.6);font-size:13px;font-weight:500;cursor:pointer;margin-bottom:4px;border:none;background:none;width:100%;text-align:left}
+.sidebar-item:hover{background:rgba(255,255,255,.05);color:#fff}
+.sidebar-item.active{background:rgba(196,168,74,.12);color:var(--gold)}
+.main{flex:1;padding:32px 36px;overflow:auto}
+.section-title{font-size:20px;font-weight:700;margin-bottom:8px}
+.section-sub{font-size:13px;color:var(--muted);margin-bottom:28px}
+.btn-primary{background:var(--gold);color:#000;border:none;border-radius:8px;padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer}
+.btn-primary:hover{opacity:.9}
+.panel{display:none}
+.panel.active{display:block}
+
+/* ── TABLE ── */
+.data-table{width:100%;border-collapse:collapse;margin-top:16px}
+.data-table th{text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:10px 14px;border-bottom:1px solid var(--subtle)}
+.data-table td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;vertical-align:top}
+.data-table tr:hover td{background:rgba(255,255,255,.02)}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.badge-active{background:rgba(74,222,128,.15);color:#4ade80}
+.badge-contract{background:rgba(250,204,21,.15);color:#facc15}
+.badge-new{background:rgba(196,168,74,.15);color:var(--gold)}
+.act-btn{background:none;border:none;color:var(--muted);cursor:pointer;padding:4px 8px;font-size:12px;border-radius:4px}
+.act-btn:hover{background:rgba(255,255,255,.06);color:#fff}
+.act-del{color:#f87171}
+.act-del:hover{background:rgba(239,68,68,.1)}
+
+/* ── MODAL ── */
+.modal-wrap{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:100;display:none;align-items:center;justify-content:center;padding:24px}
+.modal-wrap.open{display:flex}
+.modal{background:#111;border:1px solid rgba(255,255,255,.1);border-radius:16px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;padding:36px}
+.modal-title{font-size:18px;font-weight:700;margin-bottom:24px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-grid .full{grid-column:1/-1}
+.mfield{margin-bottom:16px}
+.mfield label{display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.mfield input,.mfield select,.mfield textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;font-size:13px;padding:9px 12px;outline:none;resize:vertical}
+.mfield input:focus,.mfield select:focus,.mfield textarea:focus{border-color:var(--gold)}
+.mfield select option{background:#111}
+.modal-actions{display:flex;gap:12px;justify-content:flex-end;margin-top:24px}
+.btn-cancel{background:rgba(255,255,255,.06);border:1px solid var(--subtle);color:#fff;border-radius:8px;padding:9px 20px;font-size:13px;cursor:pointer}
+.btn-cancel:hover{background:rgba(255,255,255,.1)}
+
+/* ── KEYWORDS ── */
+.kw-wrap{display:flex;flex-wrap:wrap;gap:6px;min-height:36px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:6px 10px;cursor:text}
+.kw-wrap:focus-within{border-color:var(--gold)}
+.kw-tag{background:rgba(196,168,74,.15);color:var(--gold);padding:3px 10px;border-radius:20px;font-size:12px;display:flex;align-items:center;gap:6px}
+.kw-tag button{background:none;border:none;color:inherit;cursor:pointer;font-size:14px;line-height:1;padding:0}
+.kw-input{background:none;border:none;outline:none;color:#fff;font-size:13px;min-width:80px;flex:1}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:24px;right:24px;z-index:999;display:flex;flex-direction:column;gap:8px}
+.toast-item{background:#1a1a1a;border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:12px 18px;font-size:13px;animation:fadeInUp .25s ease}
+.toast-ok{border-left:3px solid #4ade80}
+.toast-err{border-left:3px solid #f87171}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- ── LOGIN ── -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">THE ONE CLUB</div>
+    <div class="login-title">Admin Panel</div>
+    <div class="login-sub">Enter your password to continue.</div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="pw-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"/>
+    </div>
+    <button class="btn-login" onclick="doLogin()">Sign In</button>
+    <div class="login-err" id="login-err">Incorrect password. Try again.</div>
+    <div class="back-link"><a href="/">&#8592; Back to site</a></div>
+  </div>
+</div>
+
+<!-- ── DASHBOARD ── -->
+<div id="dashboard">
+  <div class="topbar">
+    <div class="topbar-logo">THE ONE CLUB &mdash; Admin</div>
+    <div class="topbar-right">
+      <a href="/" class="btn-sm">&#8592; View Site</a>
+      <button class="btn-sm btn-danger" onclick="doLogout()">Sign Out</button>
+    </div>
+  </div>
+  <div class="layout">
+    <div class="sidebar">
+      <button class="sidebar-item active" onclick="showPanel('properties',this)">&#x1F3E0; Properties</button>
+      <button class="sidebar-item" onclick="showPanel('chatbot',this)">&#x1F4AC; Chatbot</button>
+    </div>
+    <div class="main">
+
+      <!-- PROPERTIES -->
+      <div class="panel active" id="panel-properties">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:4px">
+          <div>
+            <div class="section-title">Properties</div>
+            <div class="section-sub">Manage your current listings.</div>
+          </div>
+          <button class="btn-primary" onclick="openPropModal()">+ Add Property</button>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Address</th><th>Price</th><th>Type</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="prop-tbody"><tr><td colspan="5" style="color:var(--muted);text-align:center;padding:40px">Loading…</td></tr></tbody>
+        </table>
+      </div>
+
+      <!-- CHATBOT -->
+      <div class="panel" id="panel-chatbot">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:4px">
+          <div>
+            <div class="section-title">Chatbot Answers</div>
+            <div class="section-sub">Keywords the bot listens for and the response it gives.</div>
+          </div>
+          <button class="btn-primary" onclick="openChatModal()">+ Add Entry</button>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Topic</th><th>Keywords</th><th>Response</th><th>Actions</th></tr></thead>
+          <tbody id="chat-tbody"><tr><td colspan="4" style="color:var(--muted);text-align:center;padding:40px">Loading…</td></tr></tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── PROPERTY MODAL ── -->
+<div class="modal-wrap" id="prop-modal">
+  <div class="modal">
+    <div class="modal-title" id="prop-modal-title">Add Property</div>
+    <div class="form-grid">
+      <div class="mfield full"><label>Address</label><input id="p-address" placeholder="12 Example Street"/></div>
+      <div class="mfield"><label>Suburb</label><input id="p-suburb" placeholder="Broadbeach"/></div>
+      <div class="mfield"><label>Suburb Full</label><input id="p-suburbFull" placeholder="Broadbeach QLD 4218"/></div>
+      <div class="mfield"><label>Price (display)</label><input id="p-price" placeholder="$1,200,000"/></div>
+      <div class="mfield"><label>Price (number, $000s)</label><input id="p-priceNum" type="number" placeholder="1200"/></div>
+      <div class="mfield"><label>Beds</label><input id="p-beds" type="number" placeholder="3"/></div>
+      <div class="mfield"><label>Baths</label><input id="p-baths" type="number" placeholder="2"/></div>
+      <div class="mfield"><label>Cars</label><input id="p-cars" type="number" placeholder="2"/></div>
+      <div class="mfield"><label>Size</label><input id="p-size" placeholder="450m²"/></div>
+      <div class="mfield"><label>Type</label>
+        <select id="p-type">
+          <option value="house">House</option>
+          <option value="apartment">Apartment</option>
+          <option value="townhouse">Townhouse</option>
+          <option value="acreage">Acreage</option>
+          <option value="villa">Villa</option>
+        </select>
+      </div>
+      <div class="mfield"><label>Badge</label>
+        <select id="p-badge">
+          <option value="">None</option>
+          <option value="new">New</option>
+          <option value="open">Open Home</option>
+          <option value="contract">Under Contract</option>
+        </select>
+      </div>
+      <div class="mfield"><label>Status</label>
+        <select id="p-status">
+          <option value="active">Active</option>
+          <option value="contract">Under Contract</option>
+          <option value="sold">Sold</option>
+        </select>
+      </div>
+      <div class="mfield full"><label>Days Listed / Note</label><input id="p-days" placeholder="Listed 3 days ago"/></div>
+      <div class="mfield full"><label>Description</label><textarea id="p-description" rows="3" placeholder="Short property description…"></textarea></div>
+      <div class="mfield full" style="display:flex;align-items:center;gap:12px">
+        <input type="checkbox" id="p-featured" style="width:auto"/>
+        <label for="p-featured" style="text-transform:none;letter-spacing:0;font-size:13px;color:#fff">Feature this listing (shown first)</label>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closePropModal()">Cancel</button>
+      <button class="btn-primary" onclick="saveProp()">Save Property</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── CHATBOT MODAL ── -->
+<div class="modal-wrap" id="chat-modal">
+  <div class="modal">
+    <div class="modal-title" id="chat-modal-title">Add Chatbot Entry</div>
+    <div class="mfield">
+      <label>Topic Key (slug, e.g. "commission")</label>
+      <input id="c-key" placeholder="commission"/>
+    </div>
+    <div class="mfield">
+      <label>Keywords — type and press Enter or comma</label>
+      <div class="kw-wrap" id="kw-wrap" onclick="document.getElementById('kw-input').focus()">
+        <input class="kw-input" id="kw-input" placeholder="Type keyword…" onkeydown="kwKeydown(event)" oninput="kwInput(event)"/>
+      </div>
+    </div>
+    <div class="mfield">
+      <label>Response</label>
+      <textarea id="c-response" rows="5" placeholder="The bot's reply when a keyword is matched…"></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeChatModal()">Cancel</button>
+      <button class="btn-primary" onclick="saveChat()">Save Entry</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+var API = 'http://localhost:3001/api';
+var _props = [];
+var _chat = {};
+var _editPropId = null;
+var _editChatKey = null;
+var _keywords = [];
+
+// ── AUTH ──────────────────────────────────────────────
+function doLogin() {
+  var pw = document.getElementById('pw-input').value;
+  fetch(API + '/login', {
+    method: 'POST',
+    credentials: 'include',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({password: pw})
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(d) {
+    if (d.ok) {
+      showDashboard();
+    } else {
+      showErr('Incorrect password. Try again.');
+    }
+  })
+  .catch(function() { showErr('Cannot reach server. Is the backend running?'); });
+}
+
+function doLogout() {
+  fetch(API + '/logout', {method:'POST', credentials:'include'})
+    .finally(function() { window.location.reload(); });
+}
+
+function showErr(msg) {
+  var el = document.getElementById('login-err');
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function showDashboard() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+  loadProps();
+  loadChat();
+}
+
+// Check if already logged in
+fetch(API + '/auth/check', {credentials:'include'})
+  .then(function(r) { return r.json(); })
+  .then(function(d) { if (d.authenticated) showDashboard(); })
+  .catch(function() {});
+
+// ── PANELS ───────────────────────────────────────────
+function showPanel(name, btn) {
+  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.sidebar-item').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById('panel-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── PROPERTIES ───────────────────────────────────────
+function loadProps() {
+  fetch(API + '/properties', {credentials:'include'})
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      _props = data;
+      renderProps();
+    })
+    .catch(function(){ toast('Failed to load properties', 'err'); });
+}
+
+function renderProps() {
+  var tbody = document.getElementById('prop-tbody');
+  if (!_props.length) {
+    tbody.innerHTML = '<tr><td colspan="5" style="color:var(--muted);text-align:center;padding:40px">No properties yet. Add one above.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = _props.map(function(p) {
+    var badgeCls = p.status === 'contract' ? 'badge-contract' : p.badge === 'new' ? 'badge-new' : 'badge-active';
+    var badgeLabel = p.status === 'contract' ? 'Contract' : p.status === 'sold' ? 'Sold' : 'Active';
+    return '<tr>' +
+      '<td><strong>' + esc(p.address) + '</strong><br/><span style="color:var(--muted);font-size:12px">' + esc(p.suburb) + (p.featured ? ' &nbsp;&#11088; Featured' : '') + '</span></td>' +
+      '<td>' + esc(p.price) + '</td>' +
+      '<td style="text-transform:capitalize">' + esc(p.type) + '</td>' +
+      '<td><span class="badge ' + badgeCls + '">' + badgeLabel + '</span></td>' +
+      '<td><button class="act-btn" onclick="editProp(\'' + p.id + '\')">Edit</button> <button class="act-btn act-del" onclick="delProp(\'' + p.id + '\')">Delete</button></td>' +
+      '</tr>';
+  }).join('');
+}
+
+function openPropModal(p) {
+  _editPropId = p ? p.id : null;
+  document.getElementById('prop-modal-title').textContent = p ? 'Edit Property' : 'Add Property';
+  document.getElementById('p-address').value    = p ? p.address : '';
+  document.getElementById('p-suburb').value     = p ? p.suburb : '';
+  document.getElementById('p-suburbFull').value = p ? p.suburbFull : '';
+  document.getElementById('p-price').value      = p ? p.price : '';
+  document.getElementById('p-priceNum').value   = p ? p.priceNum : '';
+  document.getElementById('p-beds').value       = p ? p.beds : '';
+  document.getElementById('p-baths').value      = p ? p.baths : '';
+  document.getElementById('p-cars').value       = p ? p.cars : '';
+  document.getElementById('p-size').value       = p ? p.size : '';
+  document.getElementById('p-type').value       = p ? p.type : 'house';
+  document.getElementById('p-badge').value      = p ? p.badge : '';
+  document.getElementById('p-status').value     = p ? p.status : 'active';
+  document.getElementById('p-days').value       = p ? p.days : '';
+  document.getElementById('p-description').value= p ? p.description : '';
+  document.getElementById('p-featured').checked = p ? !!p.featured : false;
+  document.getElementById('prop-modal').classList.add('open');
+}
+function closePropModal(){ document.getElementById('prop-modal').classList.remove('open'); }
+function editProp(id){ openPropModal(_props.find(function(p){ return p.id === id; })); }
+
+function delProp(id) {
+  if (!confirm('Delete this property?')) return;
+  fetch(API + '/properties/' + id, {method:'DELETE', credentials:'include'})
+    .then(function(){ toast('Property deleted'); loadProps(); })
+    .catch(function(){ toast('Delete failed','err'); });
+}
+
+function saveProp() {
+  var data = {
+    address:     document.getElementById('p-address').value.trim(),
+    suburb:      document.getElementById('p-suburb').value.trim(),
+    suburbFull:  document.getElementById('p-suburbFull').value.trim(),
+    price:       document.getElementById('p-price').value.trim(),
+    priceNum:    parseFloat(document.getElementById('p-priceNum').value) || 0,
+    beds:        parseInt(document.getElementById('p-beds').value) || 0,
+    baths:       parseFloat(document.getElementById('p-baths').value) || 0,
+    cars:        parseInt(document.getElementById('p-cars').value) || 0,
+    size:        document.getElementById('p-size').value.trim(),
+    type:        document.getElementById('p-type').value,
+    badge:       document.getElementById('p-badge').value,
+    status:      document.getElementById('p-status').value,
+    days:        document.getElementById('p-days').value.trim(),
+    description: document.getElementById('p-description').value.trim(),
+    featured:    document.getElementById('p-featured').checked,
+    extras:      []
+  };
+  if (!data.address) { toast('Address is required','err'); return; }
+  var url    = _editPropId ? API + '/properties/' + _editPropId : API + '/properties';
+  var method = _editPropId ? 'PUT' : 'POST';
+  fetch(url, {method:method, credentials:'include', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)})
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (d.error) { toast(d.error,'err'); return; }
+      closePropModal();
+      toast(_editPropId ? 'Property updated' : 'Property added');
+      loadProps();
+    })
+    .catch(function(){ toast('Save failed','err'); });
+}
+
+// ── CHATBOT ──────────────────────────────────────────
+function loadChat() {
+  fetch(API + '/chatbot', {credentials:'include'})
+    .then(function(r){ return r.json(); })
+    .then(function(data){ _chat = data; renderChat(); })
+    .catch(function(){ toast('Failed to load chatbot','err'); });
+}
+
+function renderChat() {
+  var tbody = document.getElementById('chat-tbody');
+  var keys = Object.keys(_chat);
+  if (!keys.length) {
+    tbody.innerHTML = '<tr><td colspan="4" style="color:var(--muted);text-align:center;padding:40px">No entries yet.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = keys.map(function(k) {
+    var entry = _chat[k];
+    var kws = (entry.keywords || []).map(function(kw){ return '<span style="background:rgba(196,168,74,.12);color:var(--gold);padding:2px 7px;border-radius:10px;font-size:11px">' + esc(kw) + '</span>'; }).join(' ');
+    return '<tr>' +
+      '<td><strong>' + esc(k) + '</strong></td>' +
+      '<td>' + (kws || '<span style="color:var(--muted)">—</span>') + '</td>' +
+      '<td style="color:var(--muted);max-width:280px">' + esc(entry.response).substring(0,80) + (entry.response.length > 80 ? '…' : '') + '</td>' +
+      '<td><button class="act-btn" onclick="editChat(\'' + k + '\')">Edit</button> <button class="act-btn act-del" onclick="delChat(\'' + k + '\')">Delete</button></td>' +
+      '</tr>';
+  }).join('');
+}
+
+function openChatModal(key) {
+  _editChatKey = key || null;
+  _keywords = key ? (_chat[key].keywords || []).slice() : [];
+  document.getElementById('chat-modal-title').textContent = key ? 'Edit Entry' : 'Add Chatbot Entry';
+  document.getElementById('c-key').value = key || '';
+  document.getElementById('c-key').disabled = !!key;
+  document.getElementById('c-response').value = key ? _chat[key].response : '';
+  renderKw();
+  document.getElementById('chat-modal').classList.add('open');
+}
+function closeChatModal(){ document.getElementById('chat-modal').classList.remove('open'); }
+function editChat(k){ openChatModal(k); }
+
+function delChat(k) {
+  if (!confirm('Delete "' + k + '"?')) return;
+  fetch(API + '/chatbot/entry/' + k, {method:'DELETE', credentials:'include'})
+    .then(function(){ toast('Entry deleted'); loadChat(); })
+    .catch(function(){ toast('Delete failed','err'); });
+}
+
+function saveChat() {
+  var key = document.getElementById('c-key').value.trim().toLowerCase().replace(/\s+/g,'-');
+  var response = document.getElementById('c-response').value.trim();
+  if (!key || !response) { toast('Key and response are required','err'); return; }
+  fetch(API + '/chatbot/entry', {method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body:JSON.stringify({key:key, keywords:_keywords, response:response})})
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (d.error) { toast(d.error,'err'); return; }
+      closeChatModal();
+      toast('Entry saved');
+      loadChat();
+    })
+    .catch(function(){ toast('Save failed','err'); });
+}
+
+// ── KEYWORDS ─────────────────────────────────────────
+function renderKw() {
+  var wrap = document.getElementById('kw-wrap');
+  var input = document.getElementById('kw-input');
+  wrap.innerHTML = '';
+  _keywords.forEach(function(kw, i) {
+    var tag = document.createElement('span');
+    tag.className = 'kw-tag';
+    tag.innerHTML = esc(kw) + ' <button type="button" onclick="removeKw(' + i + ')">&#x2715;</button>';
+    wrap.appendChild(tag);
+  });
+  wrap.appendChild(input);
+  input.value = '';
+  input.focus();
+}
+
+function kwKeydown(e) {
+  if (e.key === 'Enter' || e.key === ',') {
+    e.preventDefault();
+    addKw(e.target.value);
+  } else if (e.key === 'Backspace' && !e.target.value && _keywords.length) {
+    _keywords.pop();
+    renderKw();
+  }
+}
+function kwInput(e) {
+  if (e.target.value.endsWith(',')) addKw(e.target.value.slice(0,-1));
+}
+function addKw(val) {
+  val = val.trim().toLowerCase();
+  if (val && _keywords.indexOf(val) === -1) { _keywords.push(val); renderKw(); }
+}
+function removeKw(i) { _keywords.splice(i,1); renderKw(); }
+
+// ── UTILS ─────────────────────────────────────────────
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function toast(msg, type) {
+  var el = document.createElement('div');
+  el.className = 'toast-item toast-' + (type || 'ok');
+  el.textContent = msg;
+  document.getElementById('toast').appendChild(el);
+  setTimeout(function(){ el.remove(); }, 3200);
+}
+
+// Close modals on backdrop click
+document.querySelectorAll('.modal-wrap').forEach(function(wrap) {
+  wrap.addEventListener('click', function(e) {
+    if (e.target === wrap) wrap.classList.remove('open');
+  });
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') document.querySelectorAll('.modal-wrap.open').forEach(function(w){ w.classList.remove('open'); });
+});
+</script>
+</body>
+</html>
