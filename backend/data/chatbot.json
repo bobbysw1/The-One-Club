@@ -1,0 +1,26 @@
+{
+  "commission": {
+    "keywords": ["1%", "commission", "fee", "charge", "cost"],
+    "response": "We charge a flat 1% commission — no hidden fees, no marketing costs except your portal listing level (Standard ~$600–$900, Feature ~$1,200–$1,800, Premiere ~$2,000–$2,500+). Traditional agents charge 2–3% plus $5,000–15,000 in marketing fees. With us, photography, floor plans, 3D walkthroughs, signboard, and digital campaign are all included in the 1%."
+  },
+  "inspection": {
+    "keywords": ["inspect", "visit", "view", "open home", "book"],
+    "response": "I'd love to arrange an inspection! Book directly at a time that suits — no phone tag needed. For Gold Coast properties, we typically have availability within 24–48 hours. Would you like the agent to call you?"
+  },
+  "listings": {
+    "keywords": ["list", "available", "current", "property", "for sale"],
+    "response": "We have several properties across the Gold Coast — from Broadbeach apartments to Burleigh Heads family homes. Each listing has enhanced photography, 3D walkthroughs, and floor plans. Check our For Sale page for current listings."
+  },
+  "valuation": {
+    "keywords": ["valuation", "worth", "apprais"],
+    "response": "Our valuations are data-driven — built from comparable sales, suburb growth trends, seasonal demand, and property features. Free, no obligation. Fill in the form and we'll be back within 24 hours."
+  },
+  "agent": {
+    "keywords": ["agent", "person", "human", "speak", "call", "talk"],
+    "response": "Absolutely — the agent will call or message you within the hour during business hours (8am–8pm), or first thing tomorrow if it's after hours. You can also call directly on 1800 663 258."
+  },
+  "how": {
+    "keywords": ["how", "work", "model", "different", "technology"],
+    "response": "One experienced, licensed agent backed by smart automation. Buyer enquiries answered instantly 24/7. Valuations are data-driven. Photography, floor plans, and 3D tours included with every listing. No office to fund, no junior agents — just great results for 1%."
+  }
+}

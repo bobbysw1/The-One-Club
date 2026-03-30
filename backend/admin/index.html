@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The One Club — Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#C4A84A;--gold-dim:rgba(196,168,74,.12);--muted:rgba(255,255,255,.42);--subtle:rgba(255,255,255,.07);--red:rgba(255,80,80,.85);--green:#4ade80;--ease:cubic-bezier(.22,1,.36,1)}
+body{background:#080808;color:#fff;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;font-family:inherit}
+
+/* ── LOGIN ── */
+#login-screen{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;z-index:999}
+.login-box{width:360px;padding:48px 40px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.08);border-radius:20px}
+.login-logo{font-family:'Cormorant Garamond',serif;font-size:28px;margin-bottom:8px}
+.login-logo span{color:var(--gold);font-style:italic}
+.login-sub{font-size:13px;color:var(--muted);margin-bottom:36px}
+.login-field{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.login-field label{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.login-field input{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:13px 14px;color:#fff;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s}
+.login-field input:focus{border-color:rgba(196,168,74,.5)}
+.login-btn{width:100%;padding:14px;background:var(--gold);color:#000;border:none;border-radius:9px;font-size:14px;font-weight:700;margin-top:8px;transition:all .2s}
+.login-btn:hover{background:#d4b857;transform:translateY(-1px)}
+.login-error{font-size:13px;color:var(--red);margin-top:12px;text-align:center;min-height:20px}
+
+/* ── LAYOUT ── */
+#app{display:none;min-height:100vh;flex-direction:row}
+#app.visible{display:flex}
+.sidebar{width:220px;background:#000;border-right:1px solid var(--subtle);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:100}
+.sidebar-logo{padding:24px 20px 20px;border-bottom:1px solid var(--subtle)}
+.sidebar-logo-mark{width:32px;height:32px;border-radius:8px;background:var(--gold);color:#000;display:grid;place-items:center;font-size:11px;font-weight:700;letter-spacing:-.3px;margin-bottom:10px}
+.sidebar-logo-name{font-size:13px;font-weight:600;letter-spacing:-.2px}
+.sidebar-logo-sub{font-size:11px;color:var(--muted);margin-top:2px}
+.sidebar-nav{flex:1;padding:16px 10px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:9px;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;transition:all .2s;margin-bottom:2px;border:none;background:transparent;width:100%;text-align:left}
+.nav-item:hover{background:rgba(255,255,255,.05);color:#fff}
+.nav-item.active{background:rgba(196,168,74,.1);color:var(--gold);border:1px solid rgba(196,168,74,.2)}
+.nav-item .icon{font-size:16px;width:20px;text-align:center}
+.nav-count{margin-left:auto;font-size:10px;font-weight:700;background:rgba(196,168,74,.15);color:var(--gold);padding:2px 7px;border-radius:10px}
+.sidebar-footer{padding:16px 10px;border-top:1px solid var(--subtle)}
+.logout-btn{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:9px;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;transition:all .2s;border:none;background:transparent;width:100%}
+.logout-btn:hover{color:var(--red);background:rgba(255,80,80,.06)}
+
+/* ── MAIN ── */
+.main{flex:1;margin-left:220px;padding:40px;min-height:100vh;background:#080808}
+.page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px}
+.page-title{font-size:22px;font-weight:600;letter-spacing:-.3px}
+.page-sub{font-size:13px;color:var(--muted);margin-top:4px}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;border:none;transition:all .2s;cursor:pointer;font-family:inherit}
+.btn-gold{background:var(--gold);color:#000}
+.btn-gold:hover{background:#d4b857;transform:translateY(-1px)}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,.14);color:var(--muted)}
+.btn-outline:hover{border-color:rgba(255,255,255,.3);color:#fff}
+.btn-danger{background:rgba(255,80,80,.1);border:1px solid rgba(255,80,80,.25);color:var(--red)}
+.btn-danger:hover{background:rgba(255,80,80,.18)}
+.btn-sm{padding:6px 12px;font-size:12px}
+.btn-icon{width:32px;height:32px;padding:0;justify-content:center;font-size:15px}
+
+/* ── CARDS ── */
+.card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:14px;overflow:hidden}
+.card-empty{text-align:center;padding:60px 24px;color:var(--muted)}
+.card-empty .empty-icon{font-size:40px;margin-bottom:12px;opacity:.3}
+.card-empty p{font-size:13px}
+
+/* ── PROPERTY LIST ── */
+.prop-list{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,.06)}
+.prop-row{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:18px 20px;background:#0a0a0a;transition:background .2s}
+.prop-row:hover{background:#111}
+.prop-name{font-size:14px;font-weight:600;margin-bottom:3px}
+.prop-meta{font-size:12px;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap}
+.prop-actions{display:flex;gap:8px;flex-shrink:0}
+.prop-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:4px;margin-left:8px}
+.badge-new{background:rgba(196,168,74,.15);color:var(--gold);border:1px solid rgba(196,168,74,.3)}
+.badge-contract{background:rgba(74,222,128,.1);color:var(--green);border:1px solid rgba(74,222,128,.25)}
+.badge-open{background:rgba(99,179,237,.1);color:#63b3ed;border:1px solid rgba(99,179,237,.25)}
+.badge-featured{background:rgba(196,168,74,.08);color:var(--gold);border:1px solid rgba(196,168,74,.2)}
+
+/* ── CHATBOT LIST ── */
+.chat-list{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,.06)}
+.chat-row{padding:20px;background:#0a0a0a;transition:background .2s}
+.chat-row:hover{background:#111}
+.chat-key{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;display:flex;align-items:center;justify-content:space-between}
+.chat-keywords{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.chat-keyword-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.4)}
+.chat-response{font-size:13px;color:rgba(255,255,255,.65);line-height:1.65;border-left:2px solid rgba(196,168,74,.25);padding-left:12px}
+
+/* ── MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:500;display:flex;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(4px)}
+.modal{background:#0e0e0e;border:1px solid rgba(255,255,255,.1);border-radius:18px;width:100%;max-width:620px;max-height:90vh;overflow-y:auto;padding:32px}
+.modal-title{font-size:18px;font-weight:600;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between}
+.modal-close{background:transparent;border:none;color:var(--muted);font-size:22px;cursor:pointer;padding:4px;transition:color .2s}
+.modal-close:hover{color:#fff}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field.full{grid-column:1/-1}
+.field label{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.field input,.field select,.field textarea{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:11px 14px;color:#fff;font-size:13px;font-family:inherit;outline:none;transition:border-color .2s;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:rgba(196,168,74,.5)}
+.field select option{background:#111}
+.field textarea{min-height:80px}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:24px;padding-top:20px;border-top:1px solid var(--subtle)}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:32px;right:32px;z-index:999;display:flex;flex-direction:column;gap:10px;pointer-events:none}
+.toast-item{padding:12px 18px;border-radius:10px;font-size:13px;font-weight:500;box-shadow:0 8px 32px rgba(0,0,0,.5);animation:toastIn .3s var(--ease) forwards;pointer-events:none}
+.toast-success{background:#0f2a1a;border:1px solid rgba(74,222,128,.3);color:var(--green)}
+.toast-error{background:#2a0f0f;border:1px solid rgba(255,80,80,.3);color:var(--red)}
+@keyframes toastIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* ── TABS ── */
+.tab-bar{display:flex;gap:4px;margin-bottom:24px;background:rgba(255,255,255,.04);border-radius:10px;padding:4px;border:1px solid rgba(255,255,255,.06);width:fit-content}
+.tab{padding:8px 16px;border-radius:7px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;border:none;background:transparent;transition:all .2s;font-family:inherit}
+.tab.active{background:rgba(196,168,74,.12);color:var(--gold);border:1px solid rgba(196,168,74,.2)}
+
+/* ── STATS ── */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
+.stat-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:20px 24px}
+.stat-val{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:400;color:var(--gold);line-height:1;margin-bottom:6px}
+.stat-label{font-size:12px;color:var(--muted);font-weight:500}
+
+/* ── CHECKBOX ── */
+.checkbox-row{display:flex;align-items:center;gap:10px;padding:8px 0}
+.checkbox-row input[type=checkbox]{width:16px;height:16px;accent-color:var(--gold)}
+.checkbox-row label{font-size:13px;color:rgba(255,255,255,.7)}
+
+/* ── KEYWORDS INPUT ── */
+.keywords-wrap{display:flex;flex-wrap:wrap;gap:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:8px 10px;min-height:42px;cursor:text}
+.keywords-wrap:focus-within{border-color:rgba(196,168,74,.5)}
+.kw-tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:3px 8px;border-radius:5px;background:rgba(196,168,74,.12);border:1px solid rgba(196,168,74,.25);color:var(--gold)}
+.kw-tag-remove{background:none;border:none;color:rgba(196,168,74,.6);font-size:14px;line-height:1;cursor:pointer;padding:0}
+.kw-input{background:transparent;border:none;outline:none;color:#fff;font-size:12px;font-family:inherit;flex:1;min-width:80px;padding:2px 4px}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">The <span>One</span> Club</div>
+    <div class="login-sub">Admin Panel — enter your password to continue</div>
+    <div class="login-field">
+      <label>Password</label>
+      <input type="password" id="login-pw" placeholder="••••••••••" onkeydown="if(event.key==='Enter')login()"/>
+    </div>
+    <button class="login-btn" onclick="login()">Sign In</button>
+    <div class="login-error" id="login-err"></div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-mark">1%</div>
+      <div class="sidebar-logo-name">The One Club</div>
+      <div class="sidebar-logo-sub">Admin Panel</div>
+    </div>
+    <nav class="sidebar-nav">
+      <button class="nav-item active" onclick="showSection('properties')" id="nav-properties">
+        <span class="icon">🏠</span> Properties
+        <span class="nav-count" id="prop-count">—</span>
+      </button>
+      <button class="nav-item" onclick="showSection('chatbot')" id="nav-chatbot">
+        <span class="icon">💬</span> Chatbot
+        <span class="nav-count" id="chat-count">—</span>
+      </button>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="logout-btn" onclick="logout()">
+        <span class="icon">→</span> Log Out
+      </button>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+
+    <!-- ══ PROPERTIES SECTION ══ -->
+    <div id="section-properties">
+      <div class="page-header">
+        <div>
+          <div class="page-title">Properties</div>
+          <div class="page-sub">Manage your Gold Coast listings</div>
+        </div>
+        <button class="btn btn-gold" onclick="openPropertyModal()">+ Add Property</button>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-val" id="stat-active">—</div>
+          <div class="stat-label">Active Listings</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" id="stat-contract">—</div>
+          <div class="stat-label">Under Contract</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" id="stat-total">—</div>
+          <div class="stat-label">Total Listings</div>
+        </div>
+      </div>
+
+      <div class="tab-bar">
+        <button class="tab active" onclick="filterProps('all',this)">All</button>
+        <button class="tab" onclick="filterProps('active',this)">Active</button>
+        <button class="tab" onclick="filterProps('contract',this)">Under Contract</button>
+        <button class="tab" onclick="filterProps('sold',this)">Sold</button>
+      </div>
+
+      <div class="card">
+        <div class="prop-list" id="prop-list">
+          <div class="card-empty"><div class="empty-icon">🏠</div><p>Loading properties…</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CHATBOT SECTION ══ -->
+    <div id="section-chatbot" style="display:none">
+      <div class="page-header">
+        <div>
+          <div class="page-title">Chatbot Knowledge Base</div>
+          <div class="page-sub">Manage the answers your chatbot gives to visitors</div>
+        </div>
+        <button class="btn btn-gold" onclick="openChatModal()">+ Add Response</button>
+      </div>
+
+      <div class="card">
+        <div class="chat-list" id="chat-list">
+          <div class="card-empty"><div class="empty-icon">💬</div><p>Loading responses…</p></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<!-- ══ PROPERTY MODAL ══ -->
+<div class="modal-overlay" id="prop-modal" style="display:none" onclick="if(event.target===this)closePropModal()">
+  <div class="modal">
+    <div class="modal-title">
+      <span id="prop-modal-title">Add Property</span>
+      <button class="modal-close" onclick="closePropModal()">×</button>
+    </div>
+    <div class="form-grid">
+      <div class="field"><label>Price (display)</label><input id="f-price" placeholder="e.g. $1,250,000"/></div>
+      <div class="field"><label>Price (number, in $000s)</label><input id="f-priceNum" type="number" placeholder="e.g. 1250"/></div>
+      <div class="field"><label>Street Address</label><input id="f-address" placeholder="e.g. 14 Beachside Drive"/></div>
+      <div class="field"><label>Suburb</label><input id="f-suburb" placeholder="e.g. Burleigh Heads"/></div>
+      <div class="field full"><label>Suburb (full, for display)</label><input id="f-suburbFull" placeholder="e.g. Burleigh Heads QLD 4220"/></div>
+    </div>
+    <div class="form-grid-3">
+      <div class="field"><label>Beds</label><input id="f-beds" type="number" min="0"/></div>
+      <div class="field"><label>Baths</label><input id="f-baths" type="number" min="0"/></div>
+      <div class="field"><label>Cars</label><input id="f-cars" type="number" min="0"/></div>
+    </div>
+    <div class="form-grid">
+      <div class="field"><label>Type</label>
+        <select id="f-type">
+          <option value="house">House</option>
+          <option value="apartment">Apartment</option>
+          <option value="townhouse">Townhouse</option>
+          <option value="acreage">Acreage</option>
+          <option value="villa">Villa</option>
+        </select>
+      </div>
+      <div class="field"><label>Land / Internal Size</label><input id="f-size" placeholder="e.g. 512m²"/></div>
+      <div class="field"><label>Badge</label>
+        <select id="f-badge">
+          <option value="">None</option>
+          <option value="new">New</option>
+          <option value="open">Open Home</option>
+          <option value="contract">Under Contract</option>
+        </select>
+      </div>
+      <div class="field"><label>Status</label>
+        <select id="f-status">
+          <option value="active">Active</option>
+          <option value="contract">Under Contract</option>
+          <option value="sold">Sold</option>
+        </select>
+      </div>
+    </div>
+    <div class="field"><label>Description</label><textarea id="f-description" placeholder="Property description for the listing…"></textarea></div>
+    <div class="field"><label>Days / Status Label</label><input id="f-days" placeholder="e.g. Listed 3 days ago  or  Sold in 9 days · Saved $8,100"/></div>
+    <div class="field"><label>Extra Tags (comma separated)</label><input id="f-extras" placeholder="e.g. Waterfront, Pool, Views"/></div>
+    <div class="checkbox-row">
+      <input type="checkbox" id="f-featured"/>
+      <label for="f-featured">Featured listing (spans 2 columns, shown first)</label>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closePropModal()">Cancel</button>
+      <button class="btn btn-gold" id="prop-save-btn" onclick="saveProp()">Save Property</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CHATBOT MODAL ══ -->
+<div class="modal-overlay" id="chat-modal" style="display:none" onclick="if(event.target===this)closeChatModal()">
+  <div class="modal">
+    <div class="modal-title">
+      <span id="chat-modal-title">Add Chatbot Response</span>
+      <button class="modal-close" onclick="closeChatModal()">×</button>
+    </div>
+    <div class="field">
+      <label>Topic Key (unique slug, e.g. "commission")</label>
+      <input id="c-key" placeholder="e.g. parking, settlement, process" id="c-key"/>
+    </div>
+    <div class="field">
+      <label>Trigger Keywords — press Enter or comma to add</label>
+      <div class="keywords-wrap" id="kw-wrap" onclick="document.getElementById('kw-input').focus()">
+        <input class="kw-input" id="kw-input" placeholder="Type keyword, press Enter…" onkeydown="kwKeydown(event)" oninput="kwInput(event)"/>
+      </div>
+    </div>
+    <div class="field">
+      <label>Chatbot Response</label>
+      <textarea id="c-response" style="min-height:120px" placeholder="What the chatbot replies when a visitor triggers these keywords…"></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeChatModal()">Cancel</button>
+      <button class="btn btn-gold" id="chat-save-btn" onclick="saveChat()">Save Response</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script>
+const API = 'http://localhost:3001/api';
+
+// ══ STATE ════════════════════════════════════════════════
+var properties = [];
+var chatbot = {};
+var editingPropId = null;
+var editingChatKey = null;
+var keywords = [];
+var propFilter = 'all';
+
+// ══ INIT ════════════════════════════════════════════════
+window.addEventListener('DOMContentLoaded', async function() {
+  try {
+    const r = await fetch(API + '/auth/check', { credentials: 'include' });
+    const d = await r.json();
+    if (d.authenticated) showApp();
+  } catch(e) {}
+});
+
+// ══ AUTH ════════════════════════════════════════════════
+async function login() {
+  const pw = document.getElementById('login-pw').value;
+  const err = document.getElementById('login-err');
+  err.textContent = '';
+  try {
+    const r = await fetch(API + '/login', {
+      method: 'POST', credentials: 'include',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ password: pw })
+    });
+    if (r.ok) { showApp(); }
+    else { err.textContent = 'Incorrect password. Try again.'; }
+  } catch(e) { err.textContent = 'Cannot connect to backend. Is the server running?'; }
+}
+
+async function logout() {
+  await fetch(API + '/logout', { method: 'POST', credentials: 'include' });
+  location.reload();
+}
+
+function showApp() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('app').classList.add('visible');
+  loadProperties();
+  loadChatbot();
+}
+
+// ══ NAVIGATION ══════════════════════════════════════════
+function showSection(name) {
+  document.querySelectorAll('.main > div').forEach(d => d.style.display = 'none');
+  document.getElementById('section-' + name).style.display = 'block';
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('nav-' + name).classList.add('active');
+}
+
+// ══ PROPERTIES ══════════════════════════════════════════
+async function loadProperties() {
+  try {
+    const r = await fetch(API + '/properties', { credentials: 'include' });
+    properties = await r.json();
+    renderProperties();
+    updateStats();
+    document.getElementById('prop-count').textContent = properties.length;
+  } catch(e) { toast('Cannot load properties — is the server running?', 'error'); }
+}
+
+function updateStats() {
+  document.getElementById('stat-total').textContent = properties.length;
+  document.getElementById('stat-active').textContent = properties.filter(p => p.status === 'active').length;
+  document.getElementById('stat-contract').textContent = properties.filter(p => p.status === 'contract').length;
+}
+
+function filterProps(filter, btn) {
+  propFilter = filter;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderProperties();
+}
+
+function renderProperties() {
+  var list = document.getElementById('prop-list');
+  var filtered = propFilter === 'all' ? properties : properties.filter(p => p.status === propFilter);
+  if (!filtered.length) {
+    list.innerHTML = '<div class="card-empty"><div class="empty-icon">🏠</div><p>No properties in this category.</p></div>';
+    return;
+  }
+  list.innerHTML = filtered.map(p => `
+    <div class="prop-row">
+      <div>
+        <div class="prop-name">
+          ${p.address}, ${p.suburb}
+          ${p.featured ? '<span class="prop-badge badge-featured">Featured</span>' : ''}
+          ${p.badge === 'new' ? '<span class="prop-badge badge-new">New</span>' : ''}
+          ${p.badge === 'contract' ? '<span class="prop-badge badge-contract">Contract</span>' : ''}
+          ${p.badge === 'open' ? '<span class="prop-badge badge-open">Open</span>' : ''}
+        </div>
+        <div class="prop-meta">
+          <span>${p.price}</span>
+          <span>${p.beds} bed · ${p.baths} bath · ${p.cars} car</span>
+          <span>${capitalise(p.type)}</span>
+          <span>${p.size}</span>
+          <span style="color:${p.status==='active'?'var(--green)':p.status==='contract'?'var(--gold)':'var(--muted)'}">
+            ${capitalise(p.status)}
+          </span>
+        </div>
+      </div>
+      <div class="prop-actions">
+        <button class="btn btn-outline btn-sm" onclick="editProp('${p.id}')">Edit</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteProp('${p.id}','${p.address}')">Delete</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openPropertyModal(id) {
+  editingPropId = null;
+  clearPropForm();
+  document.getElementById('prop-modal-title').textContent = 'Add Property';
+  document.getElementById('prop-save-btn').textContent = 'Save Property';
+  document.getElementById('prop-modal').style.display = 'flex';
+}
+
+function editProp(id) {
+  const p = properties.find(x => x.id === id);
+  if (!p) return;
+  editingPropId = id;
+  document.getElementById('prop-modal-title').textContent = 'Edit Property';
+  document.getElementById('prop-save-btn').textContent = 'Update Property';
+  document.getElementById('f-price').value = p.price || '';
+  document.getElementById('f-priceNum').value = p.priceNum || '';
+  document.getElementById('f-address').value = p.address || '';
+  document.getElementById('f-suburb').value = p.suburb || '';
+  document.getElementById('f-suburbFull').value = p.suburbFull || '';
+  document.getElementById('f-beds').value = p.beds || '';
+  document.getElementById('f-baths').value = p.baths || '';
+  document.getElementById('f-cars').value = p.cars || '';
+  document.getElementById('f-type').value = p.type || 'house';
+  document.getElementById('f-size').value = p.size || '';
+  document.getElementById('f-badge').value = p.badge || '';
+  document.getElementById('f-status').value = p.status || 'active';
+  document.getElementById('f-description').value = p.description || '';
+  document.getElementById('f-days').value = p.days || '';
+  document.getElementById('f-extras').value = (p.extras || []).join(', ');
+  document.getElementById('f-featured').checked = !!p.featured;
+  document.getElementById('prop-modal').style.display = 'flex';
+}
+
+function closePropModal() { document.getElementById('prop-modal').style.display = 'none'; }
+
+function clearPropForm() {
+  ['f-price','f-priceNum','f-address','f-suburb','f-suburbFull','f-beds','f-baths','f-cars','f-size','f-description','f-days','f-extras'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('f-type').value = 'house';
+  document.getElementById('f-badge').value = '';
+  document.getElementById('f-status').value = 'active';
+  document.getElementById('f-featured').checked = false;
+}
+
+async function saveProp() {
+  const data = {
+    price: document.getElementById('f-price').value.trim(),
+    priceNum: parseInt(document.getElementById('f-priceNum').value) || 0,
+    address: document.getElementById('f-address').value.trim(),
+    suburb: document.getElementById('f-suburb').value.trim(),
+    suburbFull: document.getElementById('f-suburbFull').value.trim(),
+    beds: parseInt(document.getElementById('f-beds').value) || 0,
+    baths: parseInt(document.getElementById('f-baths').value) || 0,
+    cars: parseInt(document.getElementById('f-cars').value) || 0,
+    type: document.getElementById('f-type').value,
+    size: document.getElementById('f-size').value.trim(),
+    badge: document.getElementById('f-badge').value,
+    status: document.getElementById('f-status').value,
+    description: document.getElementById('f-description').value.trim(),
+    days: document.getElementById('f-days').value.trim(),
+    extras: document.getElementById('f-extras').value.split(',').map(s=>s.trim()).filter(Boolean),
+    featured: document.getElementById('f-featured').checked
+  };
+  if (!data.address || !data.price) { toast('Address and price are required.', 'error'); return; }
+  try {
+    const url = editingPropId ? `${API}/properties/${editingPropId}` : `${API}/properties`;
+    const method = editingPropId ? 'PUT' : 'POST';
+    const r = await fetch(url, {
+      method, credentials: 'include',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    });
+    if (r.ok) {
+      toast(editingPropId ? 'Property updated.' : 'Property added.', 'success');
+      closePropModal();
+      loadProperties();
+    } else { toast('Save failed. Please try again.', 'error'); }
+  } catch(e) { toast('Cannot reach server.', 'error'); }
+}
+
+async function deleteProp(id, address) {
+  if (!confirm(`Delete "${address}"? This cannot be undone.`)) return;
+  try {
+    const r = await fetch(`${API}/properties/${id}`, { method: 'DELETE', credentials: 'include' });
+    if (r.ok) { toast('Property deleted.', 'success'); loadProperties(); }
+    else { toast('Delete failed.', 'error'); }
+  } catch(e) { toast('Cannot reach server.', 'error'); }
+}
+
+// ══ CHATBOT ══════════════════════════════════════════════
+async function loadChatbot() {
+  try {
+    const r = await fetch(API + '/chatbot', { credentials: 'include' });
+    chatbot = await r.json();
+    renderChatbot();
+    document.getElementById('chat-count').textContent = Object.keys(chatbot).length;
+  } catch(e) { toast('Cannot load chatbot — is the server running?', 'error'); }
+}
+
+function renderChatbot() {
+  var list = document.getElementById('chat-list');
+  var entries = Object.entries(chatbot);
+  if (!entries.length) {
+    list.innerHTML = '<div class="card-empty"><div class="empty-icon">💬</div><p>No chatbot responses yet.</p></div>';
+    return;
+  }
+  list.innerHTML = entries.map(([key, val]) => `
+    <div class="chat-row">
+      <div class="chat-key">
+        <span>${key.toUpperCase()}</span>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-outline btn-sm" onclick="editChat('${key}')">Edit</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteChat('${key}')">Delete</button>
+        </div>
+      </div>
+      <div class="chat-keywords">
+        ${(val.keywords||[]).map(k=>`<span class="chat-keyword-tag">${k}</span>`).join('')}
+        ${!(val.keywords||[]).length ? '<span style="font-size:11px;color:var(--muted)">No keywords set</span>' : ''}
+      </div>
+      <div class="chat-response">${val.response}</div>
+    </div>
+  `).join('');
+}
+
+function openChatModal() {
+  editingChatKey = null;
+  keywords = [];
+  document.getElementById('c-key').value = '';
+  document.getElementById('c-response').value = '';
+  document.getElementById('c-key').disabled = false;
+  renderKeywords();
+  document.getElementById('chat-modal-title').textContent = 'Add Chatbot Response';
+  document.getElementById('chat-save-btn').textContent = 'Save Response';
+  document.getElementById('chat-modal').style.display = 'flex';
+}
+
+function editChat(key) {
+  const entry = chatbot[key];
+  if (!entry) return;
+  editingChatKey = key;
+  keywords = [...(entry.keywords || [])];
+  document.getElementById('c-key').value = key;
+  document.getElementById('c-key').disabled = true;
+  document.getElementById('c-response').value = entry.response || '';
+  renderKeywords();
+  document.getElementById('chat-modal-title').textContent = 'Edit Response — ' + key;
+  document.getElementById('chat-save-btn').textContent = 'Update Response';
+  document.getElementById('chat-modal').style.display = 'flex';
+}
+
+function closeChatModal() { document.getElementById('chat-modal').style.display = 'none'; }
+
+async function saveChat() {
+  const key = editingChatKey || document.getElementById('c-key').value.trim().toLowerCase().replace(/\s+/g,'-');
+  const response = document.getElementById('c-response').value.trim();
+  if (!key || !response) { toast('Topic key and response are required.', 'error'); return; }
+  try {
+    const r = await fetch(`${API}/chatbot/entry`, {
+      method: 'POST', credentials: 'include',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ key, keywords, response })
+    });
+    if (r.ok) {
+      toast(editingChatKey ? 'Response updated.' : 'Response added.', 'success');
+      closeChatModal();
+      loadChatbot();
+    } else { toast('Save failed.', 'error'); }
+  } catch(e) { toast('Cannot reach server.', 'error'); }
+}
+
+async function deleteChat(key) {
+  if (!confirm(`Delete the "${key}" response? This cannot be undone.`)) return;
+  try {
+    const r = await fetch(`${API}/chatbot/entry/${key}`, { method: 'DELETE', credentials: 'include' });
+    if (r.ok) { toast('Response deleted.', 'success'); loadChatbot(); }
+    else { toast('Delete failed.', 'error'); }
+  } catch(e) { toast('Cannot reach server.', 'error'); }
+}
+
+// ── Keywords tag input ──
+function renderKeywords() {
+  var wrap = document.getElementById('kw-wrap');
+  var input = document.getElementById('kw-input');
+  var tags = keywords.map(k => `
+    <span class="kw-tag">${k}<button class="kw-tag-remove" onclick="removeKw('${k}')">×</button></span>
+  `).join('');
+  wrap.innerHTML = tags + '<input class="kw-input" id="kw-input" placeholder="Type keyword, press Enter…" onkeydown="kwKeydown(event)" oninput="kwInput(event)"/>';
+  document.getElementById('kw-input').focus();
+}
+function kwKeydown(e) {
+  if (e.key === 'Enter' || e.key === ',') { e.preventDefault(); addKw(e.target.value); }
+  if (e.key === 'Backspace' && !e.target.value && keywords.length) { keywords.pop(); renderKeywords(); }
+}
+function kwInput(e) { if (e.target.value.endsWith(',')) addKw(e.target.value.slice(0,-1)); }
+function addKw(val) {
+  val = val.trim().toLowerCase();
+  if (val && !keywords.includes(val)) keywords.push(val);
+  renderKeywords();
+}
+function removeKw(kw) { keywords = keywords.filter(k => k !== kw); renderKeywords(); }
+
+// ── Utils ──
+function capitalise(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
+
+function toast(msg, type) {
+  var container = document.getElementById('toast');
+  var el = document.createElement('div');
+  el.className = 'toast-item toast-' + (type || 'success');
+  el.textContent = msg;
+  container.appendChild(el);
+  setTimeout(() => el.remove(), 3500);
+}
+</script>
+</body>
+</html>
