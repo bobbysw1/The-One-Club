@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Admin — The One Club</title>
+<meta name="robots" content="noindex,nofollow"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0a0a0a;color:#fff;font-family:Inter,system-ui,sans-serif;min-height:100vh;font-size:14px}
+:root{--gold:#C4A84A;--subtle:rgba(255,255,255,.08);--muted:rgba(255,255,255,.4)}
+
+/* LOGIN */
+#login{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px}
+.login-box{width:100%;max-width:360px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:44px 40px}
+.brand{font-family:Georgia,serif;font-size:18px;color:var(--gold);letter-spacing:2px;margin-bottom:28px}
+.login-box h1{font-size:20px;font-weight:700;margin-bottom:6px}
+.login-box p{color:var(--muted);font-size:13px;margin-bottom:28px}
+label{display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+input[type=password],input[type=text],input[type=number],input[type=email],select,textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;font-size:13px;padding:10px 13px;outline:none;font-family:inherit}
+input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+select option{background:#111}
+textarea{resize:vertical}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:opacity .15s}
+.btn:hover{opacity:.85}
+.btn-gold{background:var(--gold);color:#000}
+.btn-ghost{background:rgba(255,255,255,.07);color:#fff;border:1px solid var(--subtle)}
+.btn-danger{background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.25)}
+.btn-full{width:100%;margin-top:8px}
+.err{color:#f87171;font-size:13px;margin-top:12px;display:none}
+.back{text-align:center;margin-top:18px;font-size:12px;color:var(--muted)}
+.back a{color:var(--gold);text-decoration:none}
+
+/* DASHBOARD */
+#dashboard{display:none}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;border-bottom:1px solid var(--subtle);gap:12px}
+.topbar-brand{font-family:Georgia,serif;font-size:16px;color:var(--gold);letter-spacing:1.5px}
+.topbar-right{display:flex;gap:10px}
+.layout{display:flex;min-height:calc(100vh - 55px)}
+.sidebar{width:200px;border-right:1px solid var(--subtle);padding:20px 12px;flex-shrink:0}
+.nav-btn{display:block;width:100%;text-align:left;padding:9px 13px;border-radius:8px;border:none;background:none;color:rgba(255,255,255,.55);font-size:13px;font-weight:500;cursor:pointer;margin-bottom:3px}
+.nav-btn:hover{background:rgba(255,255,255,.05);color:#fff}
+.nav-btn.on{background:rgba(196,168,74,.12);color:var(--gold);font-weight:600}
+.main{flex:1;padding:32px 36px;max-width:1000px}
+.panel{display:none}
+.panel.on{display:block}
+.panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.panel-header h2{font-size:19px;font-weight:700}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse;margin-top:4px}
+th{text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:8px 12px;border-bottom:1px solid var(--subtle)}
+td{padding:11px 12px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top}
+tr:hover td{background:rgba(255,255,255,.02)}
+.pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600}
+.pill-green{background:rgba(74,222,128,.15);color:#4ade80}
+.pill-yellow{background:rgba(250,204,21,.15);color:#facc15}
+.pill-gold{background:rgba(196,168,74,.15);color:var(--gold)}
+.act{background:none;border:none;color:var(--muted);cursor:pointer;padding:4px 9px;border-radius:5px;font-size:12px}
+.act:hover{background:rgba(255,255,255,.07);color:#fff}
+.act-del{color:#f87171}
+.act-del:hover{background:rgba(239,68,68,.1)}
+.empty{text-align:center;padding:48px 24px;color:var(--muted)}
+
+/* MODAL */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:50;display:none;align-items:center;justify-content:center;padding:20px}
+.overlay.on{display:flex}
+.modal{background:#111;border:1px solid rgba(255,255,255,.1);border-radius:16px;width:100%;max-width:540px;max-height:92vh;overflow-y:auto;padding:36px}
+.modal h3{font-size:17px;font-weight:700;margin-bottom:22px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.full{grid-column:1/-1}
+.mf{margin-bottom:14px}
+.modal-footer{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}
+.check-row{display:flex;align-items:center;gap:10px}
+.check-row input[type=checkbox]{width:auto}
+.check-row label{text-transform:none;letter-spacing:0;font-size:13px;color:#fff}
+
+/* KEYWORDS */
+.kw-box{display:flex;flex-wrap:wrap;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:7px 10px;cursor:text;min-height:40px;align-items:center}
+.kw-box:focus-within{border-color:var(--gold)}
+.kw-tag{background:rgba(196,168,74,.15);color:var(--gold);padding:3px 10px;border-radius:20px;font-size:12px;display:flex;align-items:center;gap:5px}
+.kw-tag button{background:none;border:none;color:inherit;cursor:pointer;font-size:13px;line-height:1}
+.kw-in{background:none;border:none;outline:none;color:#fff;font-size:13px;flex:1;min-width:80px;padding:0}
+
+/* TOAST */
+#toasts{position:fixed;bottom:22px;right:22px;z-index:999;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{background:#1c1c1c;border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:11px 18px;font-size:13px;animation:up .2s ease}
+.tok{border-left:3px solid #4ade80}
+.terr{border-left:3px solid #f87171}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div id="login">
+  <div class="login-box">
+    <div class="brand">THE ONE CLUB</div>
+    <h1>Admin Panel</h1>
+    <p>Enter your password to manage listings and chatbot answers.</p>
+    <label>Password</label>
+    <input type="password" id="pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')login()"/>
+    <button class="btn btn-gold btn-full" onclick="login()">Sign In</button>
+    <div class="err" id="err">Incorrect password.</div>
+    <div class="back"><a href="/">&#8592; Back to site</a></div>
+  </div>
+</div>
+
+<div id="dashboard">
+  <div class="topbar">
+    <div class="topbar-brand">THE ONE CLUB &mdash; Admin</div>
+    <div class="topbar-right">
+      <a href="/" class="btn btn-ghost">&#8592; View Site</a>
+      <button class="btn btn-danger" onclick="logout()">Sign Out</button>
+    </div>
+  </div>
+  <div class="layout">
+    <div class="sidebar">
+      <button class="nav-btn on" onclick="tab('props',this)">&#x1F3E0;&nbsp; Properties</button>
+      <button class="nav-btn" onclick="tab('chat',this)">&#x1F4AC;&nbsp; Chatbot</button>
+    </div>
+    <div class="main">
+
+      <div class="panel on" id="panel-props">
+        <div class="panel-header">
+          <h2>Properties</h2>
+          <button class="btn btn-gold" onclick="openProp()">+ Add Property</button>
+        </div>
+        <table><thead><tr><th>Address</th><th>Price</th><th>Type</th><th>Status</th><th></th></tr></thead>
+        <tbody id="prop-list"></tbody></table>
+      </div>
+
+      <div class="panel" id="panel-chat">
+        <div class="panel-header">
+          <h2>Chatbot Answers</h2>
+          <button class="btn btn-gold" onclick="openChat()">+ Add Entry</button>
+        </div>
+        <table><thead><tr><th>Topic</th><th>Keywords</th><th>Response</th><th></th></tr></thead>
+        <tbody id="chat-list"></tbody></table>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Property modal -->
+<div class="overlay" id="prop-modal">
+  <div class="modal">
+    <h3 id="prop-title">Add Property</h3>
+    <div class="grid2">
+      <div class="mf full"><label>Address</label><input id="f-addr" placeholder="12 Example Street"/></div>
+      <div class="mf"><label>Suburb</label><input id="f-suburb" placeholder="Broadbeach"/></div>
+      <div class="mf"><label>Full suburb line</label><input id="f-suburbFull" placeholder="Broadbeach QLD 4218"/></div>
+      <div class="mf"><label>Price (display)</label><input id="f-price" placeholder="$1,200,000"/></div>
+      <div class="mf"><label>Price number ($000s)</label><input id="f-priceNum" type="number" placeholder="1200"/></div>
+      <div class="mf"><label>Beds</label><input id="f-beds" type="number" placeholder="3"/></div>
+      <div class="mf"><label>Baths</label><input id="f-baths" type="number" placeholder="2"/></div>
+      <div class="mf"><label>Cars</label><input id="f-cars" type="number" placeholder="2"/></div>
+      <div class="mf"><label>Size</label><input id="f-size" placeholder="450m²"/></div>
+      <div class="mf"><label>Type</label>
+        <select id="f-type"><option value="house">House</option><option value="apartment">Apartment</option><option value="townhouse">Townhouse</option><option value="acreage">Acreage</option><option value="villa">Villa</option></select>
+      </div>
+      <div class="mf"><label>Badge</label>
+        <select id="f-badge"><option value="">None</option><option value="new">New</option><option value="open">Open Home</option><option value="contract">Under Contract</option></select>
+      </div>
+      <div class="mf"><label>Status</label>
+        <select id="f-status"><option value="active">Active</option><option value="contract">Under Contract</option><option value="sold">Sold</option></select>
+      </div>
+      <div class="mf full"><label>Days / note (e.g. "Listed 3 days ago")</label><input id="f-days" placeholder="Listed 3 days ago"/></div>
+      <div class="mf full"><label>Description</label><textarea id="f-desc" rows="3"></textarea></div>
+      <div class="mf full check-row"><input type="checkbox" id="f-featured"/><label for="f-featured">Feature this listing (shown first)</label></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('prop-modal')">Cancel</button>
+      <button class="btn btn-gold" onclick="saveProp()">Save Property</button>
+    </div>
+  </div>
+</div>
+
+<!-- Chatbot modal -->
+<div class="overlay" id="chat-modal">
+  <div class="modal">
+    <h3 id="chat-title">Add Chatbot Entry</h3>
+    <div class="mf"><label>Topic key (one word, e.g. "commission")</label><input id="c-key" placeholder="commission"/></div>
+    <div class="mf">
+      <label>Keywords — type a word and press Enter</label>
+      <div class="kw-box" id="kw-box" onclick="document.getElementById('kw-in').focus()"></div>
+    </div>
+    <div class="mf"><label>Chatbot response</label><textarea id="c-resp" rows="5" placeholder="What the bot says when someone asks about this topic…"></textarea></div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('chat-modal')">Cancel</button>
+      <button class="btn btn-gold" onclick="saveChat()">Save Entry</button>
+    </div>
+  </div>
+</div>
+
+<div id="toasts"></div>
+
+<script>
+// ── DEFAULT DATA ──────────────────────────────────────────────────────────────
+var DEFAULT_PROPS = [
+  {id:'1',featured:true,price:'$3,200,000',priceNum:3200,address:'5 Lakeside Court',suburb:'Hope Island',suburbFull:'Hope Island QLD 4212',beds:5,baths:3,cars:3,type:'house',size:'842m²',extras:['Waterfront'],badge:'new',description:'Architecturally designed waterfront residence in the prestigious Sanctuary Cove precinct. Five bedrooms, three bathrooms, resort-style pool, and a private pontoon with direct Broadwater access.',days:'Listed 3 days ago',status:'active'},
+  {id:'2',featured:false,price:'$2,100,000',priceNum:2100,address:'18 Canal Drive',suburb:'Broadbeach Waters',suburbFull:'Broadbeach Waters QLD 4218',beds:4,baths:2,cars:2,type:'house',size:'610m²',extras:[],badge:'new',description:'Modern family home on a wide canal with 16m water frontage. Open plan living flows to a full-length deck and pool. North-facing rear for all-day sun.',days:'Listed 8 days ago',status:'active'},
+  {id:'3',featured:false,price:'$1,450,000',priceNum:1450,address:'21 Pacific Parade',suburb:'Burleigh Heads',suburbFull:'Burleigh Heads QLD 4220',beds:3,baths:2,cars:2,type:'house',size:'405m²',extras:[],badge:'open',description:'Three-bedroom beach house three minutes\' walk from Burleigh Head National Park. Renovated kitchen and bathrooms, ocean glimpses from the upper level.',days:'Listed 2 days ago',status:'active'},
+  {id:'4',featured:false,price:'$685,000',priceNum:685,address:'2804 / 9 Lawson Street',suburb:'Southport',suburbFull:'Southport QLD 4215',beds:2,baths:2,cars:1,type:'apartment',size:'94m²',extras:[],badge:'contract',description:'Level 28 corner apartment in Southport CBD. Unobstructed Broadwater and city views. Boutique building, only 4 units per floor.',days:'Sold in 9 days · Saved $8,100',status:'contract'},
+  {id:'5',featured:false,price:'$980,000',priceNum:980,address:'7 Coventry Crescent',suburb:'Robina',suburbFull:'Robina QLD 4226',beds:4,baths:2,cars:2,type:'house',size:'512m²',extras:[],badge:'',description:'Family home in the Robina Town Centre precinct. Robina State School catchment. Freshly painted, new carpets throughout.',days:'Listed 11 days ago',status:'active'},
+  {id:'6',featured:false,price:'$1,200,000',priceNum:1200,address:'34 Nineteenth Avenue',suburb:'Palm Beach',suburbFull:'Palm Beach QLD 4221',beds:3,baths:2,cars:2,type:'house',size:'450m²',extras:[],badge:'new',description:'Classic Palm Beach beach house, fully renovated with a Scandi-coastal feel. Three bedrooms, polished concrete floors, 600m to the beach.',days:'Listed 5 days ago',status:'active'}
+];
+
+var DEFAULT_CHAT = {
+  commission:{keywords:['1%','commission','fee','charge','cost'],response:'We charge a flat 1% commission — no hidden fees, no marketing costs except your portal listing level (Standard ~$600–$900, Feature ~$1,200–$1,800, Premiere ~$2,000–$2,500+). Traditional agents charge 2–3% plus $5,000–15,000 in marketing fees. With us, photography, floor plans, 3D walkthroughs, signboard, and digital campaign are all included in the 1%.'},
+  inspection:{keywords:['inspect','visit','view','open home','book'],response:'I\'d love to arrange an inspection! Book directly at a time that suits — no phone tag needed. For Gold Coast properties, we typically have availability within 24–48 hours. Would you like the agent to call you?'},
+  listings:{keywords:['list','available','current','property','for sale'],response:'We have several properties across the Gold Coast — from Broadbeach apartments to Burleigh Heads family homes. Each listing has enhanced photography, 3D walkthroughs, and floor plans. Check our For Sale page for current listings.'},
+  valuation:{keywords:['valuation','worth','apprais'],response:'Our valuations are data-driven — built from comparable sales, suburb growth trends, seasonal demand, and property features. Free, no obligation. Fill in the form and we\'ll be back within 24 hours.'},
+  agent:{keywords:['agent','person','human','speak','call','talk'],response:'Absolutely — the agent will call or message you within the hour during business hours (8am–8pm), or first thing tomorrow if it\'s after hours. You can also call directly on 1800 663 258.'},
+  how:{keywords:['how','work','model','different','technology'],response:'One experienced, licensed agent backed by smart automation. Buyer enquiries answered instantly 24/7. Valuations are data-driven. Photography, floor plans, and 3D tours included with every listing. No office to fund, no junior agents — just great results for 1%.'}
+};
+
+// ── PASSWORD ──────────────────────────────────────────────────────────────────
+var PASS_KEY = 'oc_admin_pass';
+var SESSION_KEY = 'oc_session';
+
+function login() {
+  var pw = document.getElementById('pw').value;
+  var stored = localStorage.getItem(PASS_KEY) || 'oneclub2026';
+  if (pw === stored) {
+    sessionStorage.setItem(SESSION_KEY, '1');
+    showDash();
+  } else {
+    var el = document.getElementById('err');
+    el.style.display = 'block';
+    el.textContent = 'Incorrect password.';
+  }
+}
+
+function logout() {
+  sessionStorage.removeItem(SESSION_KEY);
+  location.reload();
+}
+
+// ── STORAGE ───────────────────────────────────────────────────────────────────
+function getProps() {
+  var raw = localStorage.getItem('oc_props');
+  return raw ? JSON.parse(raw) : JSON.parse(JSON.stringify(DEFAULT_PROPS));
+}
+function setProps(p) { localStorage.setItem('oc_props', JSON.stringify(p)); }
+
+function getChat() {
+  var raw = localStorage.getItem('oc_chat');
+  return raw ? JSON.parse(raw) : JSON.parse(JSON.stringify(DEFAULT_CHAT));
+}
+function setChat(c) { localStorage.setItem('oc_chat', JSON.stringify(c)); }
+
+// ── BOOT ──────────────────────────────────────────────────────────────────────
+if (sessionStorage.getItem(SESSION_KEY)) { showDash(); }
+
+function showDash() {
+  document.getElementById('login').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+  renderProps();
+  renderChat();
+}
+
+// ── TABS ──────────────────────────────────────────────────────────────────────
+function tab(name, btn) {
+  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('on'); });
+  document.querySelectorAll('.nav-btn').forEach(function(b){ b.classList.remove('on'); });
+  document.getElementById('panel-' + name).classList.add('on');
+  btn.classList.add('on');
+}
+
+// ── PROPERTIES ────────────────────────────────────────────────────────────────
+function renderProps() {
+  var props = getProps();
+  var tbody = document.getElementById('prop-list');
+  if (!props.length) { tbody.innerHTML = '<tr><td colspan="5" class="empty">No properties yet.</td></tr>'; return; }
+  tbody.innerHTML = props.map(function(p) {
+    var pill = p.status === 'contract' ? 'pill-yellow' : p.status === 'sold' ? 'pill-gold' : 'pill-green';
+    var label = p.status === 'contract' ? 'Contract' : p.status === 'sold' ? 'Sold' : 'Active';
+    return '<tr>' +
+      '<td><b>' + x(p.address) + '</b><br><span style="color:var(--muted);font-size:12px">' + x(p.suburb) + (p.featured ? ' ★ Featured' : '') + '</span></td>' +
+      '<td>' + x(p.price) + '</td>' +
+      '<td style="text-transform:capitalize">' + x(p.type) + '</td>' +
+      '<td><span class="pill ' + pill + '">' + label + '</span></td>' +
+      '<td><button class="act" onclick="editProp(\'' + p.id + '\')">Edit</button> <button class="act act-del" onclick="delProp(\'' + p.id + '\')">Delete</button></td>' +
+      '</tr>';
+  }).join('');
+}
+
+var _editId = null;
+
+function openProp(id) {
+  var p = id ? getProps().find(function(r){ return r.id === id; }) : null;
+  _editId = id || null;
+  document.getElementById('prop-title').textContent = p ? 'Edit Property' : 'Add Property';
+  document.getElementById('f-addr').value = p ? p.address : '';
+  document.getElementById('f-suburb').value = p ? p.suburb : '';
+  document.getElementById('f-suburbFull').value = p ? p.suburbFull : '';
+  document.getElementById('f-price').value = p ? p.price : '';
+  document.getElementById('f-priceNum').value = p ? p.priceNum : '';
+  document.getElementById('f-beds').value = p ? p.beds : '';
+  document.getElementById('f-baths').value = p ? p.baths : '';
+  document.getElementById('f-cars').value = p ? p.cars : '';
+  document.getElementById('f-size').value = p ? p.size : '';
+  document.getElementById('f-type').value = p ? p.type : 'house';
+  document.getElementById('f-badge').value = p ? p.badge : '';
+  document.getElementById('f-status').value = p ? p.status : 'active';
+  document.getElementById('f-days').value = p ? p.days : '';
+  document.getElementById('f-desc').value = p ? p.description : '';
+  document.getElementById('f-featured').checked = p ? !!p.featured : false;
+  showModal('prop-modal');
+}
+function editProp(id) { openProp(id); }
+
+function delProp(id) {
+  if (!confirm('Delete this property?')) return;
+  var props = getProps().filter(function(p){ return p.id !== id; });
+  setProps(props);
+  renderProps();
+  toast('Property deleted');
+}
+
+function saveProp() {
+  var addr = document.getElementById('f-addr').value.trim();
+  if (!addr) { toast('Address is required', 'err'); return; }
+  var props = getProps();
+  var data = {
+    id: _editId || String(Date.now()),
+    featured: document.getElementById('f-featured').checked,
+    address: addr,
+    suburb: document.getElementById('f-suburb').value.trim(),
+    suburbFull: document.getElementById('f-suburbFull').value.trim(),
+    price: document.getElementById('f-price').value.trim(),
+    priceNum: parseFloat(document.getElementById('f-priceNum').value) || 0,
+    beds: parseInt(document.getElementById('f-beds').value) || 0,
+    baths: parseFloat(document.getElementById('f-baths').value) || 0,
+    cars: parseInt(document.getElementById('f-cars').value) || 0,
+    size: document.getElementById('f-size').value.trim(),
+    type: document.getElementById('f-type').value,
+    badge: document.getElementById('f-badge').value,
+    status: document.getElementById('f-status').value,
+    days: document.getElementById('f-days').value.trim(),
+    description: document.getElementById('f-desc').value.trim(),
+    extras: []
+  };
+  if (_editId) {
+    var i = props.findIndex(function(p){ return p.id === _editId; });
+    props[i] = data;
+  } else {
+    props.push(data);
+  }
+  setProps(props);
+  closeModal('prop-modal');
+  renderProps();
+  toast(_editId ? 'Property updated' : 'Property added');
+}
+
+// ── CHATBOT ───────────────────────────────────────────────────────────────────
+function renderChat() {
+  var chat = getChat();
+  var keys = Object.keys(chat);
+  var tbody = document.getElementById('chat-list');
+  if (!keys.length) { tbody.innerHTML = '<tr><td colspan="4" class="empty">No entries yet.</td></tr>'; return; }
+  tbody.innerHTML = keys.map(function(k) {
+    var e = chat[k];
+    var kws = (e.keywords||[]).map(function(w){ return '<span style="background:rgba(196,168,74,.12);color:var(--gold);padding:2px 8px;border-radius:10px;font-size:11px">' + x(w) + '</span>'; }).join(' ');
+    return '<tr>' +
+      '<td><b>' + x(k) + '</b></td>' +
+      '<td>' + (kws || '<span style="color:var(--muted)">—</span>') + '</td>' +
+      '<td style="color:var(--muted);max-width:260px">' + x(e.response).slice(0,80) + (e.response.length > 80 ? '…' : '') + '</td>' +
+      '<td><button class="act" onclick="editChat(\'' + k + '\')">Edit</button> <button class="act act-del" onclick="delChat(\'' + k + '\')">Delete</button></td>' +
+      '</tr>';
+  }).join('');
+}
+
+var _editKey = null, _kws = [];
+
+function openChat(key) {
+  var chat = getChat();
+  var e = key ? chat[key] : null;
+  _editKey = key || null;
+  _kws = e ? (e.keywords||[]).slice() : [];
+  document.getElementById('chat-title').textContent = key ? 'Edit Entry' : 'Add Chatbot Entry';
+  document.getElementById('c-key').value = key || '';
+  document.getElementById('c-key').disabled = !!key;
+  document.getElementById('c-resp').value = e ? e.response : '';
+  renderKw();
+  showModal('chat-modal');
+}
+function editChat(k) { openChat(k); }
+
+function delChat(k) {
+  if (!confirm('Delete "' + k + '"?')) return;
+  var chat = getChat();
+  delete chat[k];
+  setChat(chat);
+  renderChat();
+  toast('Entry deleted');
+}
+
+function saveChat() {
+  var key = document.getElementById('c-key').value.trim().toLowerCase().replace(/\s+/g,'-');
+  var resp = document.getElementById('c-resp').value.trim();
+  if (!key || !resp) { toast('Key and response required', 'err'); return; }
+  var chat = getChat();
+  chat[key] = {keywords: _kws, response: resp};
+  setChat(chat);
+  closeModal('chat-modal');
+  renderChat();
+  toast('Entry saved');
+}
+
+// keywords
+function renderKw() {
+  var box = document.getElementById('kw-box');
+  box.innerHTML = '';
+  _kws.forEach(function(w, i) {
+    var t = document.createElement('span');
+    t.className = 'kw-tag';
+    t.innerHTML = x(w) + ' <button type="button" onclick="removeKw(' + i + ')">&#x2715;</button>';
+    box.appendChild(t);
+  });
+  var inp = document.createElement('input');
+  inp.className = 'kw-in';
+  inp.id = 'kw-in';
+  inp.placeholder = _kws.length ? '' : 'commission, fee, cost…';
+  inp.onkeydown = function(e) {
+    if (e.key === 'Enter' || e.key === ',') { e.preventDefault(); addKw(inp.value); }
+    else if (e.key === 'Backspace' && !inp.value && _kws.length) { _kws.pop(); renderKw(); }
+  };
+  inp.oninput = function() { if (inp.value.endsWith(',')) addKw(inp.value.slice(0,-1)); };
+  box.appendChild(inp);
+  inp.focus();
+}
+function addKw(v) { v = v.trim().toLowerCase(); if (v && !_kws.includes(v)) { _kws.push(v); renderKw(); } }
+function removeKw(i) { _kws.splice(i,1); renderKw(); }
+
+// ── MODALS ────────────────────────────────────────────────────────────────────
+function showModal(id) { document.getElementById(id).classList.add('on'); }
+function closeModal(id) { document.getElementById(id).classList.remove('on'); }
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') document.querySelectorAll('.overlay.on').forEach(function(o){ o.classList.remove('on'); }); });
+document.querySelectorAll('.overlay').forEach(function(o){ o.addEventListener('click', function(e){ if(e.target===o) o.classList.remove('on'); }); });
+
+// ── UTILS ─────────────────────────────────────────────────────────────────────
+function x(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function toast(msg, type) {
+  var el = document.createElement('div');
+  el.className = 'toast ' + (type === 'err' ? 'terr' : 'tok');
+  el.textContent = msg;
+  document.getElementById('toasts').appendChild(el);
+  setTimeout(function(){ el.remove(); }, 3000);
+}
+</script>
+</body>
+</html>
