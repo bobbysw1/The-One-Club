@@ -5,7 +5,7 @@
   },
   "included": {
     "keywords": ["included", "what do I get", "what's included", "cover", "come with", "included in 1%"],
-    "response": "Everything except the portal listing is covered in the 1%. Here's exactly what that means:\n\n• AI-enhanced photography — worth ~$300–$600\n• Auto-generated floor plan — worth ~$150–$300\n• Matterport 3D interactive walkthrough — worth ~$500–$1,200\n• Property signboard — worth ~$250–$1,000\n• Targeted social and Google ad campaign — worth ~$800–$2,500\n• 24/7 AI-powered buyer enquiry responses\n• Expert negotiation on every offer\n• Full settlement coordination from contract to handover\n\nThe only thing you choose separately is your listing level on realestate.com.au and domain.com.au — Standard, Feature, or Premiere. You pick the exposure. We cover everything else."
+    "response": "Everything except the portal listing and an optional Matterport walkthrough is covered in the 1%. Here's exactly what that means:\n\n• AI-enhanced photography — worth ~$300–$600\n• Auto-generated floor plan — worth ~$150–$300\n• Property signboard — worth ~$250–$1,000\n• Targeted social and Google ad campaign — worth ~$800–$2,500\n• 24/7 AI-powered buyer enquiry responses\n• Expert negotiation on every offer\n• Full settlement coordination from contract to handover\n\nThe two extras you choose separately are:\n1. Your portal listing level on REA and Domain — Standard (~$600–$900), Feature (~$1,200–$1,800), or Premiere (~$2,000–$2,500+)\n2. An optional Matterport 3D walkthrough (~$300–$500) — not expensive and worth it for most properties."
   },
   "photography": {
     "keywords": ["photo", "image", "picture", "staging", "virtual staging", "hdr", "sky", "enhance", "before after"],
@@ -13,7 +13,7 @@
   },
   "walkthrough": {
     "keywords": ["3d", "walkthrough", "matterport", "virtual tour", "tour", "vr", "interactive"],
-    "response": "Every listing we manage includes a full interactive Matterport 3D tour — not a video, not a slideshow. Buyers can click through every room, navigate freely, switch to floor plan view to check room dimensions, use the built-in measurement tool, and even view it in VR.\n\nThis matters for several reasons: buyers from interstate or overseas can do a thorough inspection from their couch. Qualified buyers arrive at open homes already knowing the property suits them. And listings with 3D walkthroughs typically attract significantly more enquiries and sell faster than those without. It's included with every listing at no extra charge."
+    "response": "A Matterport 3D tour is an optional add-on we offer alongside every listing — not a video, not a slideshow. Buyers can click through every room, navigate freely, switch to floor plan view to check room dimensions, and use the built-in measurement tool.\n\nIt's not included as standard, but it's affordable (~$300–$500) and the impact is real: interstate buyers can do a thorough inspection from their couch. Qualified buyers arrive already knowing the property suits them. Listings with 3D tours typically attract more enquiries and stronger offers. If your property has a great layout or you expect interstate interest, it's worth adding."
   },
   "floorplan": {
     "keywords": ["floor plan", "floorplan", "layout", "plan", "room dimension", "dimension"],
