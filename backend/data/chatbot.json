@@ -1,26 +1,86 @@
 {
   "commission": {
-    "keywords": ["1%", "commission", "fee", "charge", "cost"],
-    "response": "We charge a flat 1% commission — no hidden fees, no marketing costs except your portal listing level (Standard ~$600–$900, Feature ~$1,200–$1,800, Premiere ~$2,000–$2,500+). Traditional agents charge 2–3% plus $5,000–15,000 in marketing fees. With us, photography, floor plans, 3D walkthroughs, signboard, and digital campaign are all included in the 1%."
+    "keywords": ["1%", "commission", "fee", "charge", "how much", "cost", "price agent", "agent price"],
+    "response": "Our fee is 1% of the sale price, plus the cost of your chosen portal listing on realestate.com.au and domain.com.au. That's the only extra. Standard portal listings run around $600–$900. Feature listings $1,200–$1,800. Premiere placement $2,000–$2,500+. You choose your level of exposure upfront — no surprises at the end.\n\nFor context, traditional agents typically charge 2–3% commission plus $5,000–$15,000 in separate marketing fees. On a $1.25M Gold Coast home, choosing The One Club saves around $18,750 in commission alone — before marketing. On a $2M property, that saving is over $30,000."
+  },
+  "included": {
+    "keywords": ["included", "what do I get", "what's included", "cover", "come with", "included in 1%"],
+    "response": "Everything except the portal listing is covered in the 1%. Here's exactly what that means:\n\n• AI-enhanced photography — worth ~$300–$600\n• Auto-generated floor plan — worth ~$150–$300\n• Matterport 3D interactive walkthrough — worth ~$500–$1,200\n• Property signboard — worth ~$250–$1,000\n• Targeted social and Google ad campaign — worth ~$800–$2,500\n• 24/7 AI-powered buyer enquiry responses\n• Expert negotiation on every offer\n• Full settlement coordination from contract to handover\n\nThe only thing you choose separately is your listing level on realestate.com.au and domain.com.au — Standard, Feature, or Premiere. You pick the exposure. We cover everything else."
+  },
+  "photography": {
+    "keywords": ["photo", "image", "picture", "staging", "virtual staging", "hdr", "sky", "enhance", "before after"],
+    "response": "Every listing gets a full AI enhancement package — not just standard real estate photography. We start with a professional shoot, then run every image through our AI processing pipeline: HDR correction, colour grading, virtual staging (digitally furnishing empty or under-furnished rooms), sky replacement on exterior shots, and lawn enhancement.\n\nThe before-and-after difference is significant. You can see a live comparison on the homepage — drag the slider handle to see what we do to a real property. It's the same house. That presentation quality is what gets buyers through the door."
+  },
+  "walkthrough": {
+    "keywords": ["3d", "walkthrough", "matterport", "virtual tour", "tour", "vr", "interactive"],
+    "response": "Every listing we manage includes a full interactive Matterport 3D tour — not a video, not a slideshow. Buyers can click through every room, navigate freely, switch to floor plan view to check room dimensions, use the built-in measurement tool, and even view it in VR.\n\nThis matters for several reasons: buyers from interstate or overseas can do a thorough inspection from their couch. Qualified buyers arrive at open homes already knowing the property suits them. And listings with 3D walkthroughs typically attract significantly more enquiries and sell faster than those without. It's included with every listing at no extra charge."
+  },
+  "floorplan": {
+    "keywords": ["floor plan", "floorplan", "layout", "plan", "room dimension", "dimension"],
+    "response": "We auto-generate accurate floor plans for every listing — no extra charge, no waiting, no chasing a drafter. Every room is labelled with its dimensions. Two-storey properties get separate Ground Floor and Level 1 plans.\n\nThey're formatted for portal listings (the correct pixel ratios for REA and Domain), PDF brochures, and print material. Buyers want to understand a property's layout before they visit — a good floor plan filters out time-wasters and brings in buyers who already know the space works for them."
   },
   "inspection": {
-    "keywords": ["inspect", "visit", "view", "open home", "book"],
-    "response": "I'd love to arrange an inspection! Book directly at a time that suits — no phone tag needed. For Gold Coast properties, we typically have availability within 24–48 hours. Would you like the agent to call you?"
+    "keywords": ["inspect", "open home", "visit", "view property", "come see", "book time", "arrange", "book"],
+    "response": "Inspections are booked online — no phone tag, no waiting for a callback. Buyers pick a time that suits them from available slots and get instant confirmation. As a seller, you get real-time updates on who's booked in, how many groups are attending each session, and any questions buyers have asked through the portal.\n\nFor Gold Coast properties, we typically have inspection availability within 24–48 hours of listing. Would you like the agent to reach out to arrange a time?"
   },
   "listings": {
-    "keywords": ["list", "available", "current", "property", "for sale"],
-    "response": "We have several properties across the Gold Coast — from Broadbeach apartments to Burleigh Heads family homes. Each listing has enhanced photography, 3D walkthroughs, and floor plans. Check our For Sale page for current listings."
+    "keywords": ["listings", "available", "current", "for sale", "on market", "what properties", "properties for sale"],
+    "response": "We have properties across the Gold Coast — Hope Island, Broadbeach Waters, Burleigh Heads, Robina, Southport, and Palm Beach. Every listing includes enhanced photography, an interactive 3D walkthrough, and a detailed floor plan.\n\nHead to our For Sale page to see current listings, filter by price, bedrooms, and suburb, and walk through any property with the interactive tour before you visit."
   },
   "valuation": {
-    "keywords": ["valuation", "worth", "apprais"],
-    "response": "Our valuations are data-driven — built from comparable sales, suburb growth trends, seasonal demand, and property features. Free, no obligation. Fill in the form and we'll be back within 24 hours."
+    "keywords": ["valuation", "appraisal", "worth", "value property", "price property", "what will I get", "estimate"],
+    "response": "Our valuations are built from real data — not an agent's gut feel. We analyse hundreds of comparable sales in your suburb, current active competition, days-on-market trends, seasonal demand patterns, and features specific to your property.\n\nIt's completely free and there's no obligation — we won't follow up with sales pressure. Fill in the form at the bottom of this page and we'll come back to you within 24 hours with a detailed breakdown of what your property is worth and why."
+  },
+  "savings": {
+    "keywords": ["save", "saving", "savings", "keep", "versus", "vs", "traditional", "other agent", "comparison", "different"],
+    "response": "The numbers are straightforward. The average Gold Coast home currently sells for around $1.25M. A traditional agent at 2.5% takes $31,250 in commission — then adds $5,000–$10,000 in marketing fees on top. With The One Club, you pay 1% ($12,500) plus your portal listing choice (typically $600–$2,500). Total cost: around $13,100–$15,000 depending on the portal level you choose.\n\nThe saving on a typical Gold Coast property is $18,750 or more. On a $2M property, you keep over $30,000 extra. Use the savings calculator on this page — move the slider to your sale price and see the exact figure."
   },
   "agent": {
-    "keywords": ["agent", "person", "human", "speak", "call", "talk"],
-    "response": "Absolutely — the agent will call or message you within the hour during business hours (8am–8pm), or first thing tomorrow if it's after hours. You can also call directly on 1800 663 258."
+    "keywords": ["agent", "person", "human", "speak", "call", "talk", "contact", "reach", "meet"],
+    "response": "The agent is available directly — call, text, or message any time. During business hours (8am–8pm Gold Coast time), you'll hear back within the hour. After hours, first thing the following morning.\n\nWould you like to leave your name and number here and have the agent call you? Or you can reach out directly on the contact details in our footer."
   },
   "how": {
-    "keywords": ["how", "work", "model", "different", "technology"],
-    "response": "One experienced, licensed agent backed by smart automation. Buyer enquiries answered instantly 24/7. Valuations are data-driven. Photography, floor plans, and 3D tours included with every listing. No office to fund, no junior agents — just great results for 1%."
+    "keywords": ["how does it work", "process", "steps", "end to end", "start to finish", "what happens"],
+    "response": "Here's the full process:\n\n1. Free data-driven valuation — comparable sales, suburb trends, seasonal demand. Delivered within 24 hours.\n2. Professional photography session — AI enhancement, virtual staging, sky replacement, plus auto-generated floor plan and Matterport 3D walkthrough.\n3. Your portal listing goes live on REA and Domain at the level you choose. Targeted digital campaign launches simultaneously across Meta and Google.\n4. Buyer enquiries answered 24/7 by AI — school zones, body corporate, inspection availability — all handled instantly. Anything complex is escalated to the agent.\n5. Online inspection booking — buyers self-serve, you see attendance in real time.\n6. Offers received, negotiated, and presented clearly with our recommendation.\n7. Settlement coordinated end to end — building and pest, finance conditions, settlement adjustments, solicitor liaison, final handover.\n\nOne agent. One fee. No handoffs."
+  },
+  "settlement": {
+    "keywords": ["settlement", "after contract", "once signed", "handover", "completion", "final"],
+    "response": "Once an offer is accepted and both parties have signed, the condition period begins. Most Gold Coast contracts include a 14-day finance condition and a building and pest condition (typically 7–14 days). We monitor every deadline closely.\n\nDuring this period we coordinate with the buyer's broker, their solicitor, and your solicitor — flagging any issues immediately and keeping you updated throughout. Once the contract goes unconditional, settlement is typically 30–45 days. We handle the settlement adjustments and coordinate the final handover so you don't have to chase anyone."
+  },
+  "offer": {
+    "keywords": ["offer", "bid", "negotiate", "counter", "best and final", "multiple offers"],
+    "response": "When offers come in, we present each one clearly — the offered price, any conditions (finance, building and pest, settlement period, inclusions), and our honest recommendation on how to respond.\n\nWe negotiate on your behalf with your best outcome as the only objective. If there are multiple offers, we manage the process transparently. Where appropriate, we can go to a best-and-final-offer round to maximise the result. You're kept informed of every move."
+  },
+  "marketing": {
+    "keywords": ["marketing", "advertise", "campaign", "facebook", "instagram", "google", "social", "digital"],
+    "response": "Your digital campaign runs across Meta (Facebook and Instagram) and Google Ads, targeting buyers who are actively searching in your price range, suburb, and property type. It's not a blanket broadcast — the targeting is specific.\n\nThe campaign budget is optimised daily based on enquiry data — we push harder when engagement is high and adjust targeting based on what's actually converting to inspections. This is all included in the 1%, not an extra line item."
+  },
+  "school": {
+    "keywords": ["school", "catchment", "zone", "education", "primary", "high school"],
+    "response": "School catchment zones are a common and completely reasonable question for buyers — we get it. For any property we list, we can tell you exactly which state school zone it falls within, what private schools are in the area, and typical driving or walking times.\n\nIf you let me know the suburb or address you're interested in, I'll get you that information straight away. If it's outside business hours, it'll be waiting in your inbox first thing tomorrow."
+  },
+  "bodycorp": {
+    "keywords": ["body corporate", "body corp", "strata", "levy", "levies", "sinking fund", "owners corporation"],
+    "response": "Body corporate fees vary a lot — it depends on the building's age, the facilities (pool, lifts, gym, concierge), the lot entitlement, and the state of the sinking fund.\n\nFor every apartment and townhouse we list, we provide full body corporate disclosure upfront: the current levy, sinking fund balance, and any known upcoming special levies. We think buyers should have this before they inspect, not after they've fallen in love with the property and made an offer. If you have a specific property in mind, I can get you those figures."
+  },
+  "suburb": {
+    "keywords": ["suburb", "area", "location", "where", "cover", "Gold Coast", "region"],
+    "response": "We cover the entire Gold Coast — from Coolangatta in the south through to Coomera and beyond in the north. Our current listings include Hope Island, Broadbeach Waters, Burleigh Heads, Robina, Southport, and Palm Beach, but we work in every Gold Coast suburb.\n\nIf you're looking for something specific in a particular suburb — a particular style, size, or price range — let me know and I'll tell you what we have or what's coming."
+  },
+  "rent": {
+    "keywords": ["rent", "rental", "manage", "landlord", "tenant", "property management", "leasing"],
+    "response": "Our rental management service is launching soon — and it'll follow the same philosophy as our sales model: transparent pricing, no inflated fees, and technology-first management.\n\nWe're planning an 8% management fee (versus the industry standard 8–12%), and a 1-week letting fee (versus the typical 2–4 weeks charged elsewhere). Head to our To Rent page and register your interest — we'll notify you when we launch and give early registrations priority."
+  },
+  "buyer": {
+    "keywords": ["buyer", "buying", "purchase", "looking to buy", "want to buy"],
+    "response": "As a buyer, you get the full picture before you visit — not after. Every listing comes with an interactive 3D walkthrough, a detailed floor plan with dimensions, council rates, body corporate fees where applicable, and school zone information.\n\nNo manufactured urgency, no fabricated competing interest. If there are multiple genuine offers on a property, we'll tell you clearly and manage the process fairly. Inspections are bookable online at any time. Questions are answered within the hour — and if it's something complex, straight to the agent."
+  },
+  "why": {
+    "keywords": ["why", "reason", "benefit", "advantage", "better", "trust", "credibility"],
+    "response": "A few reasons people choose us:\n\nCost — 1% versus 2–3% plus marketing fees saves most Gold Coast vendors $15,000–$30,000. That's real money that stays in your pocket after settlement.\n\nQuality — our AI-enhanced photography, 3D walkthroughs, data-driven pricing, and 24/7 buyer response consistently outperform what traditional agencies deliver. Better presentation + more responsive service = more qualified buyers + stronger offers.\n\nTransparency — you deal with one experienced, licensed agent from valuation to handover. No being handed off to a junior. No hidden fees appearing on the final statement. No commission-driven pressure to accept a quick sale at a lower price."
+  },
+  "contract": {
+    "keywords": ["contract", "condition", "cooling off", "finance condition", "unconditional"],
+    "response": "Once a contract is signed by both parties, the cooling-off period applies (typically 5 business days in QLD for a residential property — buyers can exit but forfeit a penalty). After that, the condition period runs — usually finance (14 days) and building and pest (7–14 days).\n\nWe monitor every condition deadline and coordinate with all parties. When all conditions are satisfied, the contract becomes unconditional. Settlement follows — typically 30–45 days later. We handle the paperwork, adjustments, and final handover coordination."
   }
 }
