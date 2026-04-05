@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8"/>
+<title>The One Club — 1% Commission Gold Coast Real Estate</title>
+<script>
+// GitHub Pages SPA routing: redirect /for-sale/ etc back to index.html
+// preserving the path so the SPA router can show the right page.
+var seg = 1;
+var l = window.location;
+var path = l.pathname.slice(1).split('/').slice(seg).join('/');
+l.replace(
+  l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+  l.pathname.split('/').slice(0, 1 + seg).join('/') + '/?p=/' +
+  (path ? path + '/' : '') + (l.search ? l.search.slice(1) + '&' : '') +
+  (l.hash ? l.hash.slice(1) : '')
+);
+</script>
+</head>
+<body></body>
+</html>
