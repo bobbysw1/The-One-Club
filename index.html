@@ -310,11 +310,14 @@
 <main id="main-content">
 <div id="page-home" class="page active">
 
-<!-- HERO — editorial -->
+<!-- HERO — editorial, with video background -->
 <section class="ed-hero">
-  <div class="hero-glow"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-particles" id="hero-particles"></div>
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/video/hero-gc-poster.jpg" aria-hidden="true">
+    <source media="(max-width:720px)" src="/video/hero-gc-mobile.mp4" type="video/mp4"/>
+    <source src="/video/hero-gc.hevc.mp4" type='video/mp4; codecs="hvc1"'/>
+    <source src="/video/hero-gc.mp4" type="video/mp4"/>
+  </video>
+  <div class="hero-video-tint"></div>
   <div class="page-label" data-reveal>Gold Coast property</div>
   <h1 data-reveal>Your next chapter,<br/><em>lived on the coast.</em></h1>
   <p class="ed-hero-sub" data-reveal>Finding — and selling — homes across the Gold Coast, with the photography, local insight and quiet confidence the best addresses deserve.</p>
@@ -323,7 +326,7 @@
     <a class="btn btn-outline btn-lg" href="/#valuation">Free Valuation</a>
   </div>
   <div style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px">
-    <div class="scroll-line"></div>
+    <div class="scroll-line" style="background:linear-gradient(#fff,rgba(255,255,255,.2),transparent) !important"></div>
   </div>
 </section>
 

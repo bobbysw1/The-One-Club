@@ -572,3 +572,16 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 .mp-embed:hover .mp-play{transform:translate(-50%,-50%) scale(1.06);box-shadow:0 14px 44px rgba(0,0,0,.7),0 0 0 14px rgba(196,168,74,.18)}
 .mp-embed iframe{width:100%;height:100%;border:0;display:block}
 .mp-caption{margin-top:14px;font-size:12px;color:var(--muted);text-align:center;letter-spacing:.3px}
+
+/* ── Editorial hero video ── */
+.ed-hero{isolation:isolate}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;pointer-events:none;background:#000}
+.hero-video-tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.35) 55%,rgba(0,0,0,.78) 100%);z-index:-1;pointer-events:none}
+.ed-hero .page-label{color:rgba(255,255,255,.8)}
+.ed-hero h1{color:#fff}
+.ed-hero h1 em{color:var(--gold)}
+.ed-hero .ed-hero-sub{color:rgba(255,255,255,.85)}
+@media (prefers-reduced-motion: reduce){
+  .hero-video{display:none}
+  .ed-hero{background:#0a0e14}
+}
