@@ -81,6 +81,57 @@ SUBURBS = [
         'blurb':      "Mudgeeraba offers hinterland acreage, respected schools and quick motorway access to the coast strip — a lifestyle pitch that families out-of-state increasingly want. Listings benefit from space-and-privacy-focused presentation.",
         'why':        "Acreage properties need wide-angle shots, drone coverage and floor plans that show the land. We include all of that in the 1% commission — no add-on invoices, no renegotiating halfway through the campaign.",
     },
+
+    # ── Southern Gold Coast ───────────────────────────────────────────────
+    {
+        'slug':       'coolangatta',
+        'name':       'Coolangatta',
+        'median':     1_400_000,
+        'blurb':      "Coolangatta sits at the southern tip of the Gold Coast right on the QLD-NSW border. Beachfront apartments, direct airport access and proximity to Rainbow Bay and Kirra keep it a year-round market of owner-occupiers, sea-changers and holiday-home buyers.",
+        'why':        "Coolangatta buyers often live interstate and buy sight-unseen after a remote inspection. Our 3D walkthroughs, floor plans and honest virtual staging let them transact with confidence — and let you sell without endless open-home weekends.",
+    },
+    {
+        'slug':       'kirra',
+        'name':       'Kirra',
+        'median':     1_900_000,
+        'blurb':      "Kirra is one of the most recognised surf breaks in the world and a tight beachfront pocket where apartment stock rarely sits. The strip between Coolangatta and Bilinga consistently attracts cashed-up interstate buyers chasing a lock-and-leave lifestyle.",
+        'why':        "Kirra units compete on view, light and how the photography captures the ocean aspect. We shoot at the right time of day with the right equipment — and sell on the first open home more often than not.",
+    },
+    {
+        'slug':       'tugun',
+        'name':       'Tugun',
+        'median':     1_300_000,
+        'blurb':      "Tugun is a quieter coastal pocket just north of Gold Coast Airport — beach walks, the Tugun bypass and a steady stock of 3-and-4 bedroom family homes. A strong pick for buyers who want the southern lifestyle without Coolangatta's tourist traffic.",
+        'why':        "Tugun is a family-home market first. We price with real data — recent comparable sales, not a round-number guess — so your listing lands realistically and invites competitive offers rather than sitting.",
+    },
+    {
+        'slug':       'currumbin',
+        'name':       'Currumbin',
+        'median':     1_800_000,
+        'blurb':      "Currumbin blends a surfable beach, the Currumbin Creek estuary and the Wildlife Sanctuary precinct. Demand comes from long-term families, inter-state sea-changers, and increasingly from younger buyers pushed south of the Burleigh premium.",
+        'why':        "Currumbin homes sell on lifestyle — creek, beach, walkability. Our campaigns lead with that context (drone where the block warrants it, location-aware copy, lifestyle-cut photography), not the usual cookie-cutter listing shots.",
+    },
+    {
+        'slug':       'mermaid-beach',
+        'name':       'Mermaid Beach',
+        'median':     2_400_000,
+        'blurb':      "Mermaid Beach anchors the luxury stretch of the Gold Coast — Hedges Avenue (Millionaire's Row) and the beachfront townhouse strip pull cash buyers from interstate and overseas. At the top end, presentation is everything.",
+        'why':        "Premium Mermaid listings deserve more than a standard agency campaign. We produce at the quality a $3m-plus home requires — without the 2.5% commission that's customary at that price bracket. The saved commission is usually more than the marketing cost.",
+    },
+    {
+        'slug':       'miami',
+        'name':       'Miami',
+        'median':     1_600_000,
+        'blurb':      "Miami has become one of the most desirable lifestyle pockets on the coast — the Miami Marketta strip, walkable beach access and quality schools attract young families from Brisbane and Sydney. Well-presented 3- and 4-bedroom homes consistently outperform.",
+        'why':        "Miami's buyer pool is national. A strong listing needs to translate to the phone screen of a Brisbane buyer scrolling realestate.com.au on Wednesday night. Our photography, floor plan and Matterport option are designed exactly for that.",
+    },
+    {
+        'slug':       'bilinga',
+        'name':       'Bilinga',
+        'median':     1_500_000,
+        'blurb':      "Bilinga sits between Tugun and Kirra, quiet, beachfront, and one of the last genuinely affordable southern pockets for a walk-to-sand lifestyle. Stock is tightly held, so when something comes up presentation really does decide the sale.",
+        'why':        "In a low-turnover market, your listing is the benchmark buyers compare against. We produce it as the benchmark it should be — premium photography, proper floor plans, clean copy — all included in the 1%.",
+    },
 ]
 
 # --------------------------------------------------------------------------
