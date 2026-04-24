@@ -237,6 +237,9 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:10000}
+.skip-link:focus{position:fixed;left:16px;top:16px;width:auto;height:auto;padding:12px 18px;background:var(--gold);color:#000;font-weight:600;font-size:14px;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.4);outline:2px solid var(--gold);outline-offset:2px}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 html{color-scheme:light dark}:root{--bg:#000;--fg:#fff;--bg-rgb:0,0,0;--fg-rgb:255,255,255;--gold:#C4A84A;--gold-dim:rgba(196,168,74,.12);--muted:rgba(var(--fg-rgb),.42);--subtle:rgba(var(--fg-rgb),.07);--ease:cubic-bezier(.22,1,.36,1)}@media (prefers-color-scheme: light){:root{--bg:#fbfbfd;--fg:#1d1d1f;--bg-rgb:251,251,253;--fg-rgb:29,29,31;--muted:rgba(var(--fg-rgb),.58);--subtle:rgba(var(--fg-rgb),.08)}}
@@ -307,10 +310,10 @@ nav{position:fixed;inset:0 0 auto;z-index:500;padding:0 48px;background:rgba(var
 .cap-num{font-size:11px;font-weight:600;color:var(--gold);letter-spacing:1px;padding-top:3px;min-width:24px}
 .cap-title{font-size:15px;font-weight:600;margin-bottom:5px}
 .cap-body{font-size:14px;color:var(--muted);line-height:1.65}
-.versus{background:rgba(var(--fg-rgb),.025);border:1px solid rgba(var(--fg-rgb),.07);border-radius:18px;overflow:hidden}
-.versus-head{display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 20px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid rgba(var(--fg-rgb),.06);background:rgba(var(--fg-rgb),.015)}
-.versus-row{display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 20px;font-size:13px;align-items:center;border-bottom:1px solid rgba(var(--fg-rgb),.04)}
-.versus-row:last-child{border:none}
+.versus{width:100%;background:rgba(var(--fg-rgb),.025);border:1px solid rgba(var(--fg-rgb),.07);border-radius:18px;overflow:hidden;border-collapse:collapse;table-layout:fixed}
+.versus-head th{padding:16px 20px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);background:rgba(var(--fg-rgb),.015);text-align:left;border-bottom:1px solid rgba(var(--fg-rgb),.06);width:33.333%}
+.versus-row > *{padding:16px 20px;font-size:13px;vertical-align:middle;border-bottom:1px solid rgba(var(--fg-rgb),.04);text-align:left;font-weight:normal}
+.versus tbody tr:last-child > *{border-bottom:none}
 .versus-row .label{color:var(--muted)}
 .versus-row .old{color:rgba(255,80,80,.7);font-size:12px}
 .versus-row .new{color:#4ade80;font-size:12px;font-weight:600}
@@ -692,6 +695,7 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 </style>
 </head>
 <body class="preloading">
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <!-- ════ PRELOADER ════ -->
 <div id="preloader">
@@ -755,6 +759,7 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
   <a href="/#valuation" onclick="goTo('home','valuation');toggleMenu();return false;" style="color:var(--gold);border-color:rgba(196,168,74,.2)">Get Free Valuation →</a>
 </div>
 
+<main id="main-content">
 <!-- ════════════════════════════════════════
      PAGE: HOME
 ════════════════════════════════════════ -->
@@ -827,16 +832,21 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
     <div style="margin-top:32px"><a onclick="goTo('how-it-works')" style="font-size:14px;font-weight:600;color:var(--gold);border-bottom:1px solid rgba(196,168,74,.3);padding-bottom:2px;cursor:pointer">See exactly how we do it →</a></div>
   </div>
   <div data-reveal="right">
-    <div class="versus">
-      <div class="versus-head"><span>Capability</span><span>Traditional</span><span>The One Club</span></div>
-      <div class="versus-row"><span class="label">Response to enquiry</span><span class="old">Varies by agent</span><span class="new">Fast, systemised follow-up</span></div>
-      <div class="versus-row"><span class="label">Availability</span><span class="old">Business hours focused</span><span class="new">Extended support</span></div>
-      <div class="versus-row"><span class="label">Valuation approach</span><span class="old">Agent's estimate</span><span class="new">Data-informed strategy</span></div>
-      <div class="versus-row"><span class="label">Photography</span><span class="old">Standard photos</span><span class="new">Enhanced, staged</span></div>
-      <div class="versus-row"><span class="label">Floor plan</span><span class="old">Often extra cost</span><span class="new">Included</span></div>
-      <div class="versus-row"><span class="label"><a href="https://matterport.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Matterport</a> 3D tour</span><span class="old">Often premium add-on</span><span class="new">Affordable add-on</span></div>
-      <div class="versus-row"><span class="label">Commission</span><span class="old">2–3% + marketing costs</span><span class="new" style="font-size:14px;color:#C4A84A;">1% + marketing</span></div>
-    </div>
+    <table class="versus">
+      <caption class="sr-only">Capability comparison: traditional agency vs The One Club</caption>
+      <thead>
+        <tr class="versus-head"><th scope="col">Capability</th><th scope="col">Traditional</th><th scope="col">The One Club</th></tr>
+      </thead>
+      <tbody>
+        <tr class="versus-row"><th scope="row" class="label">Response to enquiry</th><td class="old">Varies by agent</td><td class="new">Fast, systemised follow-up</td></tr>
+        <tr class="versus-row"><th scope="row" class="label">Availability</th><td class="old">Business hours focused</td><td class="new">Extended support</td></tr>
+        <tr class="versus-row"><th scope="row" class="label">Valuation approach</th><td class="old">Agent's estimate</td><td class="new">Data-informed strategy</td></tr>
+        <tr class="versus-row"><th scope="row" class="label">Photography</th><td class="old">Standard photos</td><td class="new">Enhanced, staged</td></tr>
+        <tr class="versus-row"><th scope="row" class="label">Floor plan</th><td class="old">Often extra cost</td><td class="new">Included</td></tr>
+        <tr class="versus-row"><th scope="row" class="label"><a href="https://matterport.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Matterport</a> 3D tour</th><td class="old">Often premium add-on</td><td class="new">Affordable add-on</td></tr>
+        <tr class="versus-row"><th scope="row" class="label">Commission</th><td class="old">2–3% + marketing costs</td><td class="new" style="font-size:14px;color:#C4A84A;">1% + marketing</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
@@ -848,7 +858,7 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
   <div class="calc" data-reveal>
     <div class="calc-price-label">Property sale price</div>
     <div class="calc-price-val" id="priceVal">$1,500,000</div>
-    <div class="range-wrap"><input type="range" id="priceRange" min="300000" max="5000000" step="25000" value="1500000" style="--pct:29.3%" oninput="calcUpdate(this)"/></div>
+    <div class="range-wrap"><label for="priceRange" class="sr-only">Property price estimate</label><input type="range" id="priceRange" aria-label="Property price estimate" min="300000" max="5000000" step="25000" value="1500000" style="--pct:29.3%" oninput="calcUpdate(this)"/></div>
     <div class="range-labels" style="width:100%;max-width:600px"><span>$300K</span><span>$5M</span></div>
     <div class="calc-split">
       <div class="calc-col"><div class="calc-col-label">Traditional (2.5%)</div><div class="calc-col-val struck" id="tradVal">$37,500</div></div>
@@ -1006,15 +1016,15 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
   <p class="body" data-reveal style="text-align:center;margin:0 auto 48px">Request a free appraisal and we'll come back with a realistic price range, a recommended selling approach, and a clear breakdown of our 1% fee plus marketing.</p>
   <div class="form-card" data-reveal>
     <div class="frow">
-      <div class="field"><label>First Name</label><input type="text" placeholder="Sarah"/></div>
-      <div class="field"><label>Last Name</label><input type="text" placeholder="Mitchell"/></div>
+      <div class="field"><label for="val-first">First Name</label><input id="val-first" name="firstName" type="text" autocomplete="given-name" placeholder="Sarah"/></div>
+      <div class="field"><label for="val-last">Last Name</label><input id="val-last" name="lastName" type="text" autocomplete="family-name" placeholder="Mitchell"/></div>
     </div>
-    <div class="field"><label>Property Address</label><input type="text" placeholder="12 Beachfront Drive, Burleigh Heads QLD 4220"/></div>
+    <div class="field"><label for="val-address">Property Address</label><input id="val-address" name="address" type="text" autocomplete="street-address" placeholder="12 Beachfront Drive, Burleigh Heads QLD 4220"/></div>
     <div class="frow">
-      <div class="field"><label>Phone</label><input type="tel" placeholder="04xx xxx xxx"/></div>
-      <div class="field"><label>Email</label><input type="email" placeholder="you@email.com"/></div>
+      <div class="field"><label for="val-phone">Phone</label><input id="val-phone" name="phone" type="tel" autocomplete="tel" placeholder="04xx xxx xxx"/></div>
+      <div class="field"><label for="val-email">Email</label><input id="val-email" name="email" type="email" autocomplete="email" placeholder="you@email.com"/></div>
     </div>
-    <div class="field"><label>Selling timeline</label><select><option>As soon as possible</option><option>Within 3 months</option><option>3–6 months</option><option>Just exploring</option></select></div>
+    <div class="field"><label for="val-timeline">Selling timeline</label><select id="val-timeline" name="timeline"><option>As soon as possible</option><option>Within 3 months</option><option>3–6 months</option><option>Just exploring</option></select></div>
     <button class="fsub" id="formBtn">Request Free Valuation</button>
     <p class="form-note">No obligation. No pressure. Just clear advice.</p>
   </div>
@@ -1025,7 +1035,7 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
   <div class="footer-inner">
     <div class="footer-brand"><div class="logo" style="margin-bottom:16px" onclick="goTo('home')"><img src="logo.png" alt="The One Club — Gold Coast Real Estate" width="271" height="72" loading="lazy" decoding="async" style="height:72px;width:auto;display:block"/></div><p>A smarter way to sell on the Gold Coast — professional marketing, experienced guidance, and 1% commission plus marketing.</p><address itemscope itemtype="https://schema.org/RealEstateAgent" style="font-style:normal;margin-bottom:12px"><span itemprop="name" style="display:none">The One Club</span><span itemprop="addressLocality" style="font-size:12px;color:var(--muted)">Gold Coast, QLD, Australia</span><br/><a itemprop="telephone" href="tel:1800663258" style="font-size:12px;color:var(--muted)">1800 663 258</a></address><div style="display:flex;gap:14px;margin-bottom:16px"><a href="https://www.instagram.com/theoneclub" aria-label="Instagram" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Instagram</a><a href="https://www.facebook.com/theoneclub" aria-label="Facebook" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Facebook</a><a href="https://www.linkedin.com/company/theoneclub" aria-label="LinkedIn" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a></div><div class="lic">Licensed Real Estate Agent — QLD</div></div>
     <div><div class="fh">Properties</div><ul class="flinks"><li><a href="/for-sale/" onclick="goTo('for-sale');return false;">For Sale</a></li><li><a href="/#valuation" onclick="goTo('home','valuation');return false;">Free Valuation</a></li><li><a href="/#savings" onclick="goTo('home','savings');return false;">Savings Calculator</a></li><li><a href="/rentals/" onclick="goTo('to-rent');return false;" style="opacity:.4">Rentals (Coming Soon)</a></li></ul></div>
-    <div><div class="fh">Company</div><ul class="flinks"><li><a href="/about/" onclick="goTo('about');return false;">About Us</a></li><li><a href="/how-it-works/" onclick="goTo('how-it-works');return false;">How It Works</a></li><li><a href="/about/" onclick="goTo('about','sellers');return false;">For Sellers</a></li><li><a href="/admin/" style="opacity:.4;font-size:11px">Admin</a></li></ul></div>
+    <div><div class="fh">Company</div><ul class="flinks"><li><a href="/about/" onclick="goTo('about');return false;">About Us</a></li><li><a href="/how-it-works/" onclick="goTo('how-it-works');return false;">How It Works</a></li><li><a href="/about/#sellers" onclick="goTo('about','sellers');return false;">For Sellers</a></li><li><a href="/admin/" style="opacity:.4;font-size:11px">Admin</a></li></ul></div>
     <div><div class="fh">Locations</div><ul class="flinks"><li><a>Gold Coast</a></li><li><a style="opacity:.5">Brisbane — Soon</a></li><li><a style="opacity:.5">Sydney — Soon</a></li><li><a style="opacity:.5">Melbourne — Soon</a></li></ul></div>
   </div>
   <div class="footer-bottom"><span>© 2026 The One Club Pty Ltd · <a href="https://www.theoneclub.com.au" style="color:inherit">theoneclub.com.au</a> · Gold Coast, QLD, Australia</span><span><a href="/privacy/" style="color:inherit">Privacy</a> · <a href="/terms/" style="color:inherit">Terms</a> · <a href="/complaints/" style="color:inherit">Complaints</a></span></div>
@@ -1051,10 +1061,14 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
     </div>
   </div>
   <div class="filter-bar" data-reveal>
-    <select class="filter-select" id="filterType" onchange="applyFilter()"><option value="">All types</option><option value="house">House</option><option value="apartment">Apartment</option><option value="townhouse">Townhouse</option><option value="acreage">Acreage</option></select>
-    <select class="filter-select" id="filterBeds" onchange="applyFilter()"><option value="">Any beds</option><option value="2">2+ beds</option><option value="3">3+ beds</option><option value="4">4+ beds</option><option value="5">5+ beds</option></select>
-    <select class="filter-select" id="filterPrice" onchange="applyFilter()"><option value="">Any price</option><option value="750">Under $750K</option><option value="1000">Under $1M</option><option value="1500">Under $1.5M</option><option value="2500">Under $2.5M</option></select>
-    <select class="filter-select" id="filterSuburb" onchange="applyFilter()"><option value="">All suburbs</option><option value="Broadbeach Waters">Broadbeach Waters</option><option value="Burleigh Heads">Burleigh Heads</option><option value="Hope Island">Hope Island</option><option value="Palm Beach">Palm Beach</option><option value="Robina">Robina</option><option value="Southport">Southport</option></select>
+    <label for="filterType" class="sr-only">Filter by property type</label>
+    <select class="filter-select" id="filterType" aria-label="Filter by property type" onchange="applyFilter()"><option value="">All types</option><option value="house">House</option><option value="apartment">Apartment</option><option value="townhouse">Townhouse</option><option value="acreage">Acreage</option></select>
+    <label for="filterBeds" class="sr-only">Filter by bedrooms</label>
+    <select class="filter-select" id="filterBeds" aria-label="Filter by bedrooms" onchange="applyFilter()"><option value="">Any beds</option><option value="2">2+ beds</option><option value="3">3+ beds</option><option value="4">4+ beds</option><option value="5">5+ beds</option></select>
+    <label for="filterPrice" class="sr-only">Filter by price</label>
+    <select class="filter-select" id="filterPrice" aria-label="Filter by price" onchange="applyFilter()"><option value="">Any price</option><option value="750">Under $750K</option><option value="1000">Under $1M</option><option value="1500">Under $1.5M</option><option value="2500">Under $2.5M</option></select>
+    <label for="filterSuburb" class="sr-only">Filter by suburb</label>
+    <select class="filter-select" id="filterSuburb" aria-label="Filter by suburb" onchange="applyFilter()"><option value="">All suburbs</option><option value="Broadbeach Waters">Broadbeach Waters</option><option value="Burleigh Heads">Burleigh Heads</option><option value="Hope Island">Hope Island</option><option value="Palm Beach">Palm Beach</option><option value="Robina">Robina</option><option value="Southport">Southport</option></select>
     <div class="filter-count" id="filterCount">Showing 6 properties</div>
   </div>
 </div>
@@ -1159,15 +1173,15 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
       <!-- Landlord form -->
       <div id="form-landlord">
         <div class="frow">
-          <div class="field"><label>First Name</label><input type="text" placeholder="Michael"/></div>
-          <div class="field"><label>Last Name</label><input type="text" placeholder="Chen"/></div>
+          <div class="field"><label for="ll-first">First Name</label><input id="ll-first" name="firstName" type="text" autocomplete="given-name" placeholder="Michael"/></div>
+          <div class="field"><label for="ll-last">Last Name</label><input id="ll-last" name="lastName" type="text" autocomplete="family-name" placeholder="Chen"/></div>
         </div>
-        <div class="field"><label>Email</label><input type="email" placeholder="you@email.com"/></div>
-        <div class="field"><label>Phone</label><input type="tel" placeholder="04xx xxx xxx"/></div>
-        <div class="field"><label>Property Address</label><input type="text" placeholder="12 Beachfront Drive, Burleigh Heads"/></div>
+        <div class="field"><label for="ll-email">Email</label><input id="ll-email" name="email" type="email" autocomplete="email" placeholder="you@email.com"/></div>
+        <div class="field"><label for="ll-phone">Phone</label><input id="ll-phone" name="phone" type="tel" autocomplete="tel" placeholder="04xx xxx xxx"/></div>
+        <div class="field"><label for="ll-address">Property Address</label><input id="ll-address" name="address" type="text" autocomplete="street-address" placeholder="12 Beachfront Drive, Burleigh Heads"/></div>
         <div class="frow">
-          <div class="field"><label>Property Type</label><select><option>House</option><option>Apartment</option><option>Townhouse</option><option>Unit</option></select></div>
-          <div class="field"><label>Currently Rented?</label><select><option>Yes, tenanted</option><option>Vacant</option><option>Owner occupied</option></select></div>
+          <div class="field"><label for="ll-type">Property Type</label><select id="ll-type" name="propertyType"><option>House</option><option>Apartment</option><option>Townhouse</option><option>Unit</option></select></div>
+          <div class="field"><label for="ll-rented">Currently Rented?</label><select id="ll-rented" name="rentedStatus"><option>Yes, tenanted</option><option>Vacant</option><option>Owner occupied</option></select></div>
         </div>
         <button class="fsub" id="landlordBtn" onclick="submitForm('landlord')">Register as Landlord</button>
         <p style="text-align:center;margin-top:12px;font-size:11px;color:rgba(var(--fg-rgb),.2)">We'll be in touch when rentals launch. No spam.</p>
@@ -1175,18 +1189,18 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
       <!-- Tenant form -->
       <div id="form-tenant" style="display:none">
         <div class="frow">
-          <div class="field"><label>First Name</label><input type="text" placeholder="Emily"/></div>
-          <div class="field"><label>Last Name</label><input type="text" placeholder="Walsh"/></div>
+          <div class="field"><label for="tn-first">First Name</label><input id="tn-first" name="firstName" type="text" autocomplete="given-name" placeholder="Emily"/></div>
+          <div class="field"><label for="tn-last">Last Name</label><input id="tn-last" name="lastName" type="text" autocomplete="family-name" placeholder="Walsh"/></div>
         </div>
-        <div class="field"><label>Email</label><input type="email" placeholder="you@email.com"/></div>
-        <div class="field"><label>Phone</label><input type="tel" placeholder="04xx xxx xxx"/></div>
+        <div class="field"><label for="tn-email">Email</label><input id="tn-email" name="email" type="email" autocomplete="email" placeholder="you@email.com"/></div>
+        <div class="field"><label for="tn-phone">Phone</label><input id="tn-phone" name="phone" type="tel" autocomplete="tel" placeholder="04xx xxx xxx"/></div>
         <div class="frow">
-          <div class="field"><label>Looking For</label><select><option>House</option><option>Apartment</option><option>Any</option></select></div>
-          <div class="field"><label>Budget / week</label><select><option>Under $500</option><option>$500–$750</option><option>$750–$1,000</option><option>$1,000+</option></select></div>
+          <div class="field"><label for="tn-type">Looking For</label><select id="tn-type" name="propertyType"><option>House</option><option>Apartment</option><option>Any</option></select></div>
+          <div class="field"><label for="tn-budget">Budget / week</label><select id="tn-budget" name="budget"><option>Under $500</option><option>$500–$750</option><option>$750–$1,000</option><option>$1,000+</option></select></div>
         </div>
         <div class="frow">
-          <div class="field"><label>Bedrooms</label><select><option>1 bed</option><option>2 beds</option><option>3 beds</option><option>4+ beds</option></select></div>
-          <div class="field"><label>Move-in</label><select><option>ASAP</option><option>1–4 weeks</option><option>1–3 months</option></select></div>
+          <div class="field"><label for="tn-beds">Bedrooms</label><select id="tn-beds" name="bedrooms"><option>1 bed</option><option>2 beds</option><option>3 beds</option><option>4+ beds</option></select></div>
+          <div class="field"><label for="tn-movein">Move-in</label><select id="tn-movein" name="moveIn"><option>ASAP</option><option>1–4 weeks</option><option>1–3 months</option></select></div>
         </div>
         <button class="fsub" id="tenantBtn" onclick="submitForm('tenant')">Register as Tenant</button>
         <p style="text-align:center;margin-top:12px;font-size:11px;color:rgba(var(--fg-rgb),.2)">We'll contact you as soon as matching rentals are listed. No spam.</p>
@@ -1237,7 +1251,7 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
   <div class="footer-inner">
     <div class="footer-brand"><div class="logo" style="margin-bottom:16px" onclick="goTo('home')"><img src="logo.png" alt="The One Club — Gold Coast Real Estate" width="271" height="72" loading="lazy" decoding="async" style="height:72px;width:auto;display:block"/></div><p>A smarter way to sell on the Gold Coast — professional marketing, experienced guidance, and 1% commission plus marketing.</p><address itemscope itemtype="https://schema.org/RealEstateAgent" style="font-style:normal;margin-bottom:12px"><span itemprop="name" style="display:none">The One Club</span><span itemprop="addressLocality" style="font-size:12px;color:var(--muted)">Gold Coast, QLD, Australia</span><br/><a itemprop="telephone" href="tel:1800663258" style="font-size:12px;color:var(--muted)">1800 663 258</a></address><div style="display:flex;gap:14px;margin-bottom:16px"><a href="https://www.instagram.com/theoneclub" aria-label="Instagram" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Instagram</a><a href="https://www.facebook.com/theoneclub" aria-label="Facebook" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Facebook</a><a href="https://www.linkedin.com/company/theoneclub" aria-label="LinkedIn" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a></div><div class="lic">Licensed Real Estate Agent — QLD</div></div>
     <div><div class="fh">Properties</div><ul class="flinks"><li><a href="/for-sale/" onclick="goTo('for-sale');return false;">For Sale</a></li><li><a href="/#valuation" onclick="goTo('home','valuation');return false;">Free Valuation</a></li><li><a href="/#savings" onclick="goTo('home','savings');return false;">Savings Calculator</a></li><li><a href="/rentals/" onclick="goTo('to-rent');return false;" style="opacity:.4">Rentals (Coming Soon)</a></li></ul></div>
-    <div><div class="fh">Company</div><ul class="flinks"><li><a href="/about/" onclick="goTo('about');return false;">About Us</a></li><li><a href="/how-it-works/" onclick="goTo('how-it-works');return false;">How It Works</a></li><li><a href="/about/" onclick="goTo('about','sellers');return false;">For Sellers</a></li><li><a href="/admin/" style="opacity:.4;font-size:11px">Admin</a></li></ul></div>
+    <div><div class="fh">Company</div><ul class="flinks"><li><a href="/about/" onclick="goTo('about');return false;">About Us</a></li><li><a href="/how-it-works/" onclick="goTo('how-it-works');return false;">How It Works</a></li><li><a href="/about/#sellers" onclick="goTo('about','sellers');return false;">For Sellers</a></li><li><a href="/admin/" style="opacity:.4;font-size:11px">Admin</a></li></ul></div>
     <div><div class="fh">Locations</div><ul class="flinks"><li><a>Gold Coast</a></li><li><a style="opacity:.5">Brisbane — Soon</a></li><li><a style="opacity:.5">Sydney — Soon</a></li><li><a style="opacity:.5">Melbourne — Soon</a></li></ul></div>
   </div>
   <div class="footer-bottom"><span>© 2026 The One Club Pty Ltd · <a href="https://www.theoneclub.com.au" style="color:inherit">theoneclub.com.au</a> · Gold Coast, QLD, Australia</span><span><a href="/privacy/" style="color:inherit">Privacy</a> · <a href="/terms/" style="color:inherit">Terms</a> · <a href="/complaints/" style="color:inherit">Complaints</a></span></div>
@@ -2111,12 +2125,13 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
   <div class="footer-inner">
     <div class="footer-brand"><div class="logo" style="margin-bottom:16px" onclick="goTo('home')"><img src="logo.png" alt="The One Club — Gold Coast Real Estate" width="271" height="72" loading="lazy" decoding="async" style="height:72px;width:auto;display:block"/></div><p>A smarter way to sell on the Gold Coast — professional marketing, experienced guidance, and 1% commission plus marketing.</p><address itemscope itemtype="https://schema.org/RealEstateAgent" style="font-style:normal;margin-bottom:12px"><span itemprop="name" style="display:none">The One Club</span><span itemprop="addressLocality" style="font-size:12px;color:var(--muted)">Gold Coast, QLD, Australia</span><br/><a itemprop="telephone" href="tel:1800663258" style="font-size:12px;color:var(--muted)">1800 663 258</a></address><div style="display:flex;gap:14px;margin-bottom:16px"><a href="https://www.instagram.com/theoneclub" aria-label="Instagram" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Instagram</a><a href="https://www.facebook.com/theoneclub" aria-label="Facebook" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Facebook</a><a href="https://www.linkedin.com/company/theoneclub" aria-label="LinkedIn" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a></div><div class="lic">Licensed Real Estate Agent — QLD</div></div>
     <div><div class="fh">Properties</div><ul class="flinks"><li><a href="/for-sale/" onclick="goTo('for-sale');return false;">For Sale</a></li><li><a href="/#valuation" onclick="goTo('home','valuation');return false;">Free Valuation</a></li><li><a href="/#savings" onclick="goTo('home','savings');return false;">Savings Calculator</a></li><li><a href="/rentals/" onclick="goTo('to-rent');return false;" style="opacity:.4">Rentals (Coming Soon)</a></li></ul></div>
-    <div><div class="fh">Company</div><ul class="flinks"><li><a href="/about/" onclick="goTo('about');return false;">About Us</a></li><li><a href="/how-it-works/" onclick="goTo('how-it-works');return false;">How It Works</a></li><li><a href="/about/" onclick="goTo('about','sellers');return false;">For Sellers</a></li><li><a href="/admin/" style="opacity:.4;font-size:11px">Admin</a></li></ul></div>
+    <div><div class="fh">Company</div><ul class="flinks"><li><a href="/about/" onclick="goTo('about');return false;">About Us</a></li><li><a href="/how-it-works/" onclick="goTo('how-it-works');return false;">How It Works</a></li><li><a href="/about/#sellers" onclick="goTo('about','sellers');return false;">For Sellers</a></li><li><a href="/admin/" style="opacity:.4;font-size:11px">Admin</a></li></ul></div>
     <div><div class="fh">Locations</div><ul class="flinks"><li><a>Gold Coast</a></li><li><a style="opacity:.5">Brisbane — Soon</a></li><li><a style="opacity:.5">Sydney — Soon</a></li><li><a style="opacity:.5">Melbourne — Soon</a></li></ul></div>
   </div>
   <div class="footer-bottom"><span>© 2026 The One Club Pty Ltd · <a href="https://www.theoneclub.com.au" style="color:inherit">theoneclub.com.au</a> · Gold Coast, QLD, Australia</span><span><a href="/privacy/" style="color:inherit">Privacy</a> · <a href="/terms/" style="color:inherit">Terms</a> · <a href="/complaints/" style="color:inherit">Complaints</a></span></div>
 </footer>
 </div><!-- end page-about -->
+</main>
 
 
 <!-- ════════ CHAT WIDGET ════════ -->
@@ -2145,7 +2160,8 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
     <button class="chat-qbtn" onclick="sendQuick('I want to speak with the agent')">Talk to agent</button>
   </div>
   <div style="padding:12px 16px;border-top:1px solid rgba(var(--fg-rgb),.06);display:flex;gap:8px;align-items:center;flex-shrink:0">
-    <input id="chat-input" type="text" placeholder="Ask about any property..." style="flex:1;background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:10px;padding:10px 14px;color:var(--fg);font-size:13px;font-family:inherit;outline:none" onkeydown="if(event.key==='Enter')sendChat()"/>
+    <label for="chat-input" class="sr-only">Ask a question about any property</label>
+    <input id="chat-input" type="text" aria-label="Ask a question about any property" placeholder="Ask about any property..." style="flex:1;background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:10px;padding:10px 14px;color:var(--fg);font-size:13px;font-family:inherit;outline:none" onkeydown="if(event.key==='Enter')sendChat()"/>
     <button onclick="sendChat()" style="width:36px;height:36px;border-radius:10px;background:var(--gold);border:none;display:grid;place-items:center;cursor:pointer;flex-shrink:0">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 2L7 9M14 2l-4.5 12-2-5.5L2 6.5 14 2z" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
@@ -3058,7 +3074,7 @@ function initParticles(){
       <div class="adm-login-title">The <span>One</span> Club</div>
       <div class="adm-login-sub">Admin access — enter your password</div>
       <div class="adm-field">
-        <label>Password</label>
+        <label for="adm-pw">Password</label>
         <input type="password" id="adm-pw" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" onkeydown="if(event.key==='Enter')admLogin()"/>
       </div>
       <button class="adm-login-btn" onclick="admLogin()">Sign In</button>
@@ -3142,32 +3158,32 @@ function initParticles(){
       <button class="adm-modal-close" onclick="admClosePropModal()">&#x2715;</button>
     </div>
     <div class="adm-form-grid">
-      <div class="adm-field"><label>Price (display)</label><input id="af-price" placeholder="$1,250,000"/></div>
-      <div class="adm-field"><label>Price number ($000s)</label><input id="af-priceNum" type="number" placeholder="1250"/></div>
-      <div class="adm-field"><label>Street Address</label><input id="af-address" placeholder="14 Beachside Drive"/></div>
-      <div class="adm-field"><label>Suburb</label><input id="af-suburb" placeholder="Burleigh Heads"/></div>
-      <div class="adm-field adm-full"><label>Suburb full (for display)</label><input id="af-suburbFull" placeholder="Burleigh Heads QLD 4220"/></div>
+      <div class="adm-field"><label for="af-price">Price (display)</label><input id="af-price" placeholder="$1,250,000"/></div>
+      <div class="adm-field"><label for="af-priceNum">Price number ($000s)</label><input id="af-priceNum" type="number" placeholder="1250"/></div>
+      <div class="adm-field"><label for="af-address">Street Address</label><input id="af-address" placeholder="14 Beachside Drive"/></div>
+      <div class="adm-field"><label for="af-suburb">Suburb</label><input id="af-suburb" placeholder="Burleigh Heads"/></div>
+      <div class="adm-field adm-full"><label for="af-suburbFull">Suburb full (for display)</label><input id="af-suburbFull" placeholder="Burleigh Heads QLD 4220"/></div>
     </div>
     <div class="adm-form-grid-3">
-      <div class="adm-field"><label>Beds</label><input id="af-beds" type="number" min="0"/></div>
-      <div class="adm-field"><label>Baths</label><input id="af-baths" type="number" min="0"/></div>
-      <div class="adm-field"><label>Cars</label><input id="af-cars" type="number" min="0"/></div>
+      <div class="adm-field"><label for="af-beds">Beds</label><input id="af-beds" type="number" min="0"/></div>
+      <div class="adm-field"><label for="af-baths">Baths</label><input id="af-baths" type="number" min="0"/></div>
+      <div class="adm-field"><label for="af-cars">Cars</label><input id="af-cars" type="number" min="0"/></div>
     </div>
     <div class="adm-form-grid">
-      <div class="adm-field"><label>Type</label>
+      <div class="adm-field"><label for="af-type">Type</label>
         <select id="af-type"><option value="house">House</option><option value="apartment">Apartment</option><option value="townhouse">Townhouse</option><option value="acreage">Acreage</option><option value="villa">Villa</option></select>
       </div>
-      <div class="adm-field"><label>Size</label><input id="af-size" placeholder="512m&#xB2;"/></div>
-      <div class="adm-field"><label>Badge</label>
+      <div class="adm-field"><label for="af-size">Size</label><input id="af-size" placeholder="512m&#xB2;"/></div>
+      <div class="adm-field"><label for="af-badge">Badge</label>
         <select id="af-badge"><option value="">None</option><option value="new">New</option><option value="open">Open Home</option><option value="contract">Under Contract</option></select>
       </div>
-      <div class="adm-field"><label>Status</label>
+      <div class="adm-field"><label for="af-status">Status</label>
         <select id="af-status"><option value="active">Active</option><option value="contract">Under Contract</option><option value="sold">Sold</option></select>
       </div>
     </div>
-    <div class="adm-field adm-full"><label>Description</label><textarea id="af-description" placeholder="Property description&hellip;"></textarea></div>
-    <div class="adm-field adm-full"><label>Days / Status label</label><input id="af-days" placeholder="Listed 3 days ago  or  Sold in 9 days &middot; Saved $8,100"/></div>
-    <div class="adm-field adm-full"><label>Extras (comma separated)</label><input id="af-extras" placeholder="Waterfront, Pool, Views"/></div>
+    <div class="adm-field adm-full"><label for="af-description">Description</label><textarea id="af-description" placeholder="Property description&hellip;"></textarea></div>
+    <div class="adm-field adm-full"><label for="af-days">Days / Status label</label><input id="af-days" placeholder="Listed 3 days ago  or  Sold in 9 days &middot; Saved $8,100"/></div>
+    <div class="adm-field adm-full"><label for="af-extras">Extras (comma separated)</label><input id="af-extras" placeholder="Waterfront, Pool, Views"/></div>
     <div class="adm-check-row"><input type="checkbox" id="af-featured"/><label for="af-featured">Featured listing (spans 2 columns, shown first)</label></div>
     <div class="adm-modal-footer">
       <button class="adm-btn adm-btn-outline" onclick="admClosePropModal()">Cancel</button>
@@ -3183,14 +3199,14 @@ function initParticles(){
       <span id="adm-chat-modal-title">Add Response</span>
       <button class="adm-modal-close" onclick="admCloseChatModal()">&#x2715;</button>
     </div>
-    <div class="adm-field"><label>Topic key (unique slug)</label><input id="ac-key" placeholder="e.g. parking, settlement"/></div>
+    <div class="adm-field"><label for="ac-key">Topic key (unique slug)</label><input id="ac-key" placeholder="e.g. parking, settlement"/></div>
     <div class="adm-field">
-      <label>Trigger keywords &mdash; press Enter or comma to add</label>
+      <label for="adm-kw-input">Trigger keywords &mdash; press Enter or comma to add</label>
       <div class="adm-kw-wrap" id="adm-kw-wrap" onclick="document.getElementById('adm-kw-input').focus()">
         <input class="adm-kw-input" id="adm-kw-input" placeholder="Type keyword, press Enter&hellip;" onkeydown="admKwDown(event)" oninput="admKwInput(event)"/>
       </div>
     </div>
-    <div class="adm-field"><label>Chatbot reply</label><textarea id="ac-response" style="min-height:110px" placeholder="What the chatbot says when these keywords are triggered&hellip;"></textarea></div>
+    <div class="adm-field"><label for="ac-response">Chatbot reply</label><textarea id="ac-response" style="min-height:110px" placeholder="What the chatbot says when these keywords are triggered&hellip;"></textarea></div>
     <div class="adm-modal-footer">
       <button class="adm-btn adm-btn-outline" onclick="admCloseChatModal()">Cancel</button>
       <button class="adm-btn adm-btn-gold" id="adm-chat-save-btn" onclick="admSaveChat()">Save Response</button>
