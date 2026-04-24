@@ -2,10 +2,14 @@
  * The One Club — main stylesheet
  * Extracted from index.html to enable browser caching.
  */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap');
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--bg);color:var(--fg);font-family:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-weight:400}
+.serif{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-optical-sizing:auto}
+h1,h2,h3,.display,.display-xl,.hero-headline,.tc-quote{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-optical-sizing:auto;font-weight:400;letter-spacing:-.8px}
+em{font-style:italic;font-variation-settings:"opsz" 96}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:10000}
 .skip-link:focus{position:fixed;left:16px;top:16px;width:auto;height:auto;padding:12px 18px;background:var(--gold);color:#000;font-weight:600;font-size:14px;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.4);outline:2px solid var(--gold);outline-offset:2px}
@@ -461,3 +465,100 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 @media (prefers-color-scheme: light){
   .logo img,.pre-logo-ghost,.pre-logo-fill{filter:brightness(.78) saturate(1.7) contrast(1.15)}
 }
+
+/* ═══════════════════════════════════════
+   EDITORIAL REDESIGN — homepage carousels,
+   suburb cards, guides, calculators,
+   Hamptons-inspired layout patterns.
+═══════════════════════════════════════ */
+
+/* ── Editorial nav ── */
+.nav-links a{font-family:'Fraunces',Georgia,serif;font-size:14px;font-weight:400;letter-spacing:.2px;position:relative;padding:3px 0}
+.nav-links a::after{bottom:-4px}
+.ed-hero{min-height:88svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px 24px 120px;position:relative;overflow:hidden;background:radial-gradient(ellipse 80% 70% at 50% 40%,rgba(196,168,74,.07) 0%,transparent 75%)}
+.ed-hero .page-label{margin-bottom:28px}
+.ed-hero h1{font-size:clamp(56px,8.5vw,128px);line-height:.96;letter-spacing:-3px;font-weight:300;max-width:1000px;margin:0 auto 32px}
+.ed-hero h1 em{font-style:italic;color:var(--gold);font-weight:400}
+.ed-hero-sub{max-width:620px;margin:0 auto 40px;font-size:clamp(16px,1.4vw,19px);line-height:1.65;color:var(--muted);font-family:'Inter',sans-serif;font-weight:400}
+
+/* ── Section header ── */
+.sec{padding:100px 24px;max-width:1280px;margin:0 auto}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;flex-wrap:wrap;gap:24px}
+.sec-head-l{max-width:560px}
+.sec-head .page-label{margin-bottom:14px}
+.sec-head h2{font-size:clamp(32px,4vw,52px);line-height:1.05;letter-spacing:-1.2px;font-weight:400}
+.sec-head h2 em{color:var(--gold)}
+.sec-head .body{font-size:15px;line-height:1.7;margin-top:14px}
+.sec-head .more{font-family:'Fraunces',Georgia,serif;font-size:14px;font-weight:400;color:var(--gold);border-bottom:1px solid rgba(196,168,74,.35);padding-bottom:2px;transition:border-color .2s}
+.sec-head .more:hover{border-color:var(--gold)}
+
+/* ── Carousel / scroll track ── */
+.carousel{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 24px 24px;margin:0 -24px;scrollbar-width:none}
+.carousel::-webkit-scrollbar{display:none}
+.carousel > *{scroll-snap-align:start;flex:0 0 auto}
+
+/* ── Suburb card ── */
+.sub-card{position:relative;width:320px;height:420px;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;color:#fff;cursor:pointer;transition:transform .4s var(--ease);text-decoration:none;isolation:isolate}
+.sub-card::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--grad,linear-gradient(135deg,#1a1a2e,#16213e));transition:transform .6s var(--ease)}
+.sub-card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.55) 100%)}
+.sub-card:hover{transform:translateY(-4px)}
+.sub-card:hover::before{transform:scale(1.05)}
+.sub-card-label{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:10px}
+.sub-card h3{font-family:'Fraunces',Georgia,serif;font-size:36px;font-weight:400;letter-spacing:-.8px;line-height:1;color:#fff;margin-bottom:14px}
+.sub-card-meta{font-size:12px;color:rgba(255,255,255,.75);line-height:1.6;font-family:'Inter',sans-serif}
+.sub-card-median{font-family:'Fraunces',Georgia,serif;font-size:15px;font-style:italic;color:var(--gold);margin-top:18px;letter-spacing:-.2px}
+@media(max-width:640px){.sub-card{width:260px;height:360px;padding:22px}.sub-card h3{font-size:30px}}
+
+/* Suburb gradients — curated palette so each card feels distinct */
+.g-1 { --grad: linear-gradient(135deg,#0c2338 0%,#1e4d6b 50%,#4a8aab 100%); }
+.g-2 { --grad: linear-gradient(135deg,#2a1f3a 0%,#5e3b68 50%,#d47a9b 100%); }
+.g-3 { --grad: linear-gradient(135deg,#1a3d2f 0%,#2f6c4f 50%,#8fc4a3 100%); }
+.g-4 { --grad: linear-gradient(160deg,#382418 0%,#8b4a2c 50%,#e4b583 100%); }
+.g-5 { --grad: linear-gradient(135deg,#1b1f3a 0%,#3e4a7f 50%,#a6b3d9 100%); }
+.g-6 { --grad: linear-gradient(140deg,#2a1a0e 0%,#7a3a18 50%,#f0a44a 100%); }
+.g-7 { --grad: linear-gradient(135deg,#14263a 0%,#2d5272 50%,#7ea3c0 100%); }
+.g-8 { --grad: linear-gradient(135deg,#21331e 0%,#4f7d3a 50%,#c9da9b 100%); }
+.g-9 { --grad: linear-gradient(145deg,#2b1832 0%,#7a3e67 50%,#e88eb4 100%); }
+.g-10{ --grad: linear-gradient(135deg,#0f2936 0%,#206079 50%,#76bdd4 100%); }
+.g-11{ --grad: linear-gradient(135deg,#2a1b2e 0%,#6f446c 50%,#ce9aae 100%); }
+.g-12{ --grad: linear-gradient(140deg,#1d3326 0%,#3e6a4c 50%,#a6d0a0 100%); }
+.g-13{ --grad: linear-gradient(135deg,#2a2620 0%,#716048 50%,#d4bf8d 100%); }
+.g-14{ --grad: linear-gradient(135deg,#1a2b40 0%,#35506e 50%,#88acc9 100%); }
+.g-15{ --grad: linear-gradient(135deg,#34201b 0%,#8a4a37 50%,#e8a27f 100%); }
+
+/* ── Guide / insight card ── */
+.guide-card{display:flex;flex-direction:column;width:360px;background:rgba(var(--fg-rgb),.03);border:1px solid rgba(var(--fg-rgb),.06);border-radius:6px;overflow:hidden;text-decoration:none;color:inherit;transition:all .35s var(--ease)}
+.guide-card:hover{border-color:rgba(196,168,74,.3);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.guide-card-img{width:100%;height:240px;background:var(--grad,linear-gradient(135deg,#1a1a2e,#4a3a5a));position:relative;overflow:hidden}
+.guide-card-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.35) 100%)}
+.guide-card-body{padding:24px 26px 28px;flex:1;display:flex;flex-direction:column;gap:10px}
+.guide-card-kicker{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold)}
+.guide-card-title{font-family:'Fraunces',Georgia,serif;font-size:22px;font-weight:400;line-height:1.25;letter-spacing:-.4px;color:var(--fg)}
+.guide-card-meta{font-size:12px;color:var(--muted);margin-top:auto;padding-top:12px;letter-spacing:.2px}
+@media(max-width:640px){.guide-card{width:280px}.guide-card-img{height:180px}.guide-card-title{font-size:19px}}
+
+/* ── Map placeholder ── */
+.map-placeholder{width:100%;aspect-ratio:16/9;max-height:440px;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,#0f1a25 0%,#1f3349 50%,#0f1a25 100%);position:relative;border:1px solid rgba(var(--fg-rgb),.08)}
+.map-placeholder iframe{width:100%;height:100%;border:0;filter:grayscale(.2) contrast(1.05)}
+.map-placeholder-overlay{position:absolute;inset:auto 0 0 0;padding:14px 18px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));color:rgba(255,255,255,.78);font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:600;pointer-events:none}
+
+/* ── Calculator card ── */
+.calc-card{background:rgba(var(--fg-rgb),.025);border:1px solid rgba(var(--fg-rgb),.08);border-radius:14px;padding:32px 30px;margin-bottom:24px}
+.calc-field{margin-bottom:18px}
+.calc-field label{display:block;font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.calc-field input,.calc-field select{width:100%;background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.1);border-radius:8px;padding:12px 14px;color:var(--fg);font-size:15px;font-family:inherit;outline:none;transition:border-color .2s}
+.calc-field input:focus,.calc-field select:focus{border-color:var(--gold);background:rgba(var(--fg-rgb),.06)}
+.calc-output{display:grid;grid-template-columns:1fr;gap:14px;margin-top:26px;padding-top:24px;border-top:1px solid rgba(var(--fg-rgb),.07)}
+.calc-out-row{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0}
+.calc-out-label{font-size:13px;color:var(--muted);letter-spacing:.3px}
+.calc-out-value{font-family:'Fraunces',Georgia,serif;font-size:26px;font-weight:400;color:var(--gold);letter-spacing:-.5px}
+.calc-out-value.big{font-size:42px}
+
+/* ── Article / guide page ── */
+.art{max-width:760px;margin:0 auto;padding:140px 24px 80px;font-family:'Inter',sans-serif}
+.art h1{font-family:'Fraunces',Georgia,serif;font-size:clamp(36px,5.5vw,64px);line-height:1.05;letter-spacing:-1.4px;font-weight:400;margin:20px 0 20px}
+.art h2{font-family:'Fraunces',Georgia,serif;font-size:clamp(22px,2.8vw,28px);letter-spacing:-.5px;font-weight:400;margin:40px 0 14px}
+.art p{margin:14px 0;line-height:1.75;color:rgba(var(--fg-rgb),.82);font-size:17px}
+.art ul,.art ol{margin:14px 0 14px 22px;color:rgba(var(--fg-rgb),.82);font-size:17px;line-height:1.75}
+.art li{margin-bottom:8px}
+.art strong{font-weight:500;color:var(--fg)}

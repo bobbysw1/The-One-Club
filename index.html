@@ -274,17 +274,20 @@
 <!-- ════════ NAV ════════ -->
 <nav>
   <div class="nav-row">
-    <div class="logo" id="site-logo">
-      <img src="/logo.png" alt="The One Club — Gold Coast Real Estate" width="226" height="60" loading="eager" fetchpriority="high" decoding="async" style="height:60px;width:auto;display:block"/>
-    </div>
+    <a href="/" class="logo" id="site-logo" aria-label="The One Club — home">
+      <img src="/logo.png" alt="The One Club — Gold Coast Real Estate" width="226" height="52" loading="eager" fetchpriority="high" decoding="async" style="height:52px;width:auto;display:block"/>
+    </a>
     <ul class="nav-links">
       <li><a href="/for-sale/" data-page="for-sale">For Sale</a></li>
-      <li><a href="/how-it-works/" data-page="how-it-works">How It Works</a></li>
+      <li><a href="/#suburbs" data-page="suburbs">Suburbs</a></li>
+      <li><a href="/auctions/" data-page="auctions">Auctions</a></li>
+      <li><a href="/blog/" data-page="guides">Guides</a></li>
+      <li><a href="/calculators/" data-page="calculators">Calculators</a></li>
       <li><a href="/about/" data-page="about">About</a></li>
     </ul>
     <div class="nav-cta">
       <a href="tel:1800663258" class="nav-phone" aria-label="Call 1800 663 258">1800 663 258</a>
-      <a href="/#valuation" onclick="goTo('home','valuation');return false;" class="btn btn-gold">Get Free Valuation</a>
+      <a href="/#valuation" class="btn btn-gold">Free Valuation</a>
     </div>
     <div class="ham" id="ham" onclick="toggleMenu()">
       <span></span><span></span><span></span>
@@ -295,29 +298,106 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="/" onclick="toggleMenu()">Home</a>
   <a href="/for-sale/" onclick="toggleMenu()">For Sale</a>
-  <a href="/how-it-works/" onclick="toggleMenu()">How It Works</a>
+  <a href="/#suburbs" onclick="toggleMenu()">Suburbs</a>
+  <a href="/auctions/" onclick="toggleMenu()">Auctions</a>
+  <a href="/blog/" onclick="toggleMenu()">Guides</a>
+  <a href="/calculators/" onclick="toggleMenu()">Calculators</a>
   <a href="/about/" onclick="toggleMenu()">About</a>
   <a href="tel:1800663258" onclick="toggleMenu()" style="opacity:.7">Call 1800 663 258</a>
-  <a href="/#valuation" onclick="goTo('home','valuation');toggleMenu();return false;" style="color:var(--gold);border-color:rgba(196,168,74,.2)">Get Free Valuation →</a>
+  <a href="/#valuation" onclick="toggleMenu()" style="color:var(--gold);border-color:rgba(196,168,74,.2)">Free Valuation →</a>
 </div>
 
 <main id="main-content">
 <div id="page-home" class="page active">
 
-<!-- HERO -->
-<section class="hero">
+<!-- HERO — editorial -->
+<section class="ed-hero">
   <div class="hero-glow"></div>
   <div class="hero-grid"></div>
   <div class="hero-particles" id="hero-particles"></div>
-  <div class="hero-label" data-reveal>Gold Coast property sales specialists</div>
-  <h1 class="hero-headline" data-reveal>Sell your home.<br/>Pay <em>one percent.</em></h1>
-  <p class="hero-sub" data-reveal>Traditional agents charge 2–3% commission plus a separate marketing bill. The One Club charges 1% — with photography, floor plans and the full digital campaign included. The only extras are your portal listing and an optional <a href="https://matterport.com" target="_blank" rel="noopener noreferrer" style="color:var(--gold);text-decoration:underline;text-underline-offset:3px">Matterport</a> walkthrough.</p>
-  <div class="hero-actions" data-reveal>
-    <button class="btn btn-gold btn-lg" onclick="goTo('home','valuation')">Get Your Free Valuation</button>
-    <button class="btn btn-outline btn-lg" onclick="goTo('home','savings')">See Your Savings</button>
+  <div class="page-label" data-reveal>Gold Coast property</div>
+  <h1 data-reveal>Your next chapter,<br/><em>lived on the coast.</em></h1>
+  <p class="ed-hero-sub" data-reveal>Finding — and selling — homes across the Gold Coast, with the photography, local insight and quiet confidence the best addresses deserve.</p>
+  <div class="hero-actions" data-reveal style="margin-top:8px">
+    <a class="btn btn-gold btn-lg" href="/for-sale/">Browse Properties</a>
+    <a class="btn btn-outline btn-lg" href="/#valuation">Free Valuation</a>
   </div>
   <div style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px">
     <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- SUBURBS — carousel -->
+<section class="sec" id="suburbs" style="padding-top:120px">
+  <div class="sec-head">
+    <div class="sec-head-l">
+      <div class="page-label">Find your neighbourhood</div>
+      <h2 class="serif">Live somewhere<br/><em>you love coming home to.</em></h2>
+      <p class="body">From Burleigh's headland surf to Hope Island's waterways — fifteen Gold Coast pockets, one agent who knows how each of them sells.</p>
+    </div>
+    <a class="more" href="/#suburbs-all">Browse all suburbs →</a>
+  </div>
+  <div class="carousel" data-reveal>
+    <a class="sub-card g-1" href="/burleigh-heads/"><div class="sub-card-label">Southern Gold Coast</div><h3>Burleigh<br/>Heads</h3><div class="sub-card-meta">Point break, beachfront dining, coastal-village feel.</div><div class="sub-card-median">Approx. median $2.2M</div></a>
+    <a class="sub-card g-2" href="/palm-beach/"><div class="sub-card-label">Southern Gold Coast</div><h3>Palm<br/>Beach</h3><div class="sub-card-meta">Boutique cafés, walk-everywhere, fastest appreciating strip.</div><div class="sub-card-median">Approx. median $1.9M</div></a>
+    <a class="sub-card g-3" href="/mermaid-beach/"><div class="sub-card-label">Central Gold Coast</div><h3>Mermaid<br/>Beach</h3><div class="sub-card-meta">Hedges Avenue luxury stretch, cash-buyer territory.</div><div class="sub-card-median">Approx. median $2.4M</div></a>
+    <a class="sub-card g-4" href="/hope-island/"><div class="sub-card-label">Northern Gold Coast</div><h3>Hope<br/>Island</h3><div class="sub-card-meta">Golf-and-waterways precinct, lock-and-leave lifestyle.</div><div class="sub-card-median">Approx. median $1.9M</div></a>
+    <a class="sub-card g-5" href="/surfers-paradise/"><div class="sub-card-label">Central Gold Coast</div><h3>Surfers<br/>Paradise</h3><div class="sub-card-meta">High-rise living with hinterland views, fast-moving stock.</div><div class="sub-card-median">Approx. median $1.3M</div></a>
+    <a class="sub-card g-6" href="/broadbeach/"><div class="sub-card-label">Central Gold Coast</div><h3>Broadbeach</h3><div class="sub-card-meta">Pacific Fair, light rail, beachfront towers.</div><div class="sub-card-median">Approx. median $1.8M</div></a>
+    <a class="sub-card g-7" href="/miami/"><div class="sub-card-label">Central Gold Coast</div><h3>Miami</h3><div class="sub-card-meta">Marketta strip, young-family hub, schools within walk.</div><div class="sub-card-median">Approx. median $1.6M</div></a>
+    <a class="sub-card g-8" href="/currumbin/"><div class="sub-card-label">Southern Gold Coast</div><h3>Currumbin</h3><div class="sub-card-meta">Beach, creek and the Wildlife Sanctuary precinct.</div><div class="sub-card-median">Approx. median $1.8M</div></a>
+    <a class="sub-card g-9" href="/kirra/"><div class="sub-card-label">Southern Gold Coast</div><h3>Kirra</h3><div class="sub-card-meta">World-class point break, tightly held beachfront apartments.</div><div class="sub-card-median">Approx. median $1.9M</div></a>
+    <a class="sub-card g-10" href="/coolangatta/"><div class="sub-card-label">Southern Gold Coast</div><h3>Coolangatta</h3><div class="sub-card-meta">QLD-NSW border, airport-side, Rainbow Bay and beyond.</div><div class="sub-card-median">Approx. median $1.4M</div></a>
+    <a class="sub-card g-11" href="/tugun/"><div class="sub-card-label">Southern Gold Coast</div><h3>Tugun</h3><div class="sub-card-meta">Quiet coastal pocket, family homes, beach-walks not crowds.</div><div class="sub-card-median">Approx. median $1.3M</div></a>
+    <a class="sub-card g-12" href="/bilinga/"><div class="sub-card-label">Southern Gold Coast</div><h3>Bilinga</h3><div class="sub-card-meta">Between Tugun and Kirra; low-turnover, walk-to-sand.</div><div class="sub-card-median">Approx. median $1.5M</div></a>
+    <a class="sub-card g-13" href="/robina/"><div class="sub-card-label">Central Gold Coast</div><h3>Robina</h3><div class="sub-card-meta">Commuter-belt sweet spot, strong schools, family markets.</div><div class="sub-card-median">Approx. median $1.2M</div></a>
+    <a class="sub-card g-14" href="/varsity-lakes/"><div class="sub-card-label">Central Gold Coast</div><h3>Varsity<br/>Lakes</h3><div class="sub-card-meta">Bond University, linked-lake estates, disciplined pricing.</div><div class="sub-card-median">Approx. median $1.1M</div></a>
+    <a class="sub-card g-15" href="/mudgeeraba/"><div class="sub-card-label">Hinterland</h3></div><h3>Mudgeeraba</h3><div class="sub-card-meta">Acreage, hinterland schools, motorway to the strip.</div><div class="sub-card-median">Approx. median $1.3M</div></a>
+  </div>
+</section>
+
+<!-- INSIGHTS — guides carousel -->
+<section class="sec" style="padding-top:20px;padding-bottom:40px">
+  <div class="sec-head">
+    <div class="sec-head-l">
+      <div class="page-label">Guides &amp; market insight</div>
+      <h2 class="serif">What sellers are<br/><em>asking us this month.</em></h2>
+    </div>
+    <a class="more" href="/blog/">Read all guides →</a>
+  </div>
+  <div class="carousel" data-reveal>
+    <a class="guide-card" href="/blog/cost-to-sell-a-house-gold-coast-2026/">
+      <div class="guide-card-img" style="--grad:linear-gradient(135deg,#0c2338,#4a8aab)"></div>
+      <div class="guide-card-body">
+        <div class="guide-card-kicker">Cost guide · 6 min</div>
+        <div class="guide-card-title">How much does it cost to sell a house on the Gold Coast in 2026?</div>
+        <div class="guide-card-meta">A plain-English breakdown of commission, marketing, conveyancing and the line items most sellers forget.</div>
+      </div>
+    </a>
+    <a class="guide-card" href="/blog/best-suburbs-to-buy-gold-coast-2026/">
+      <div class="guide-card-img" style="--grad:linear-gradient(135deg,#1a3d2f,#8fc4a3)"></div>
+      <div class="guide-card-body">
+        <div class="guide-card-kicker">Market pulse · 7 min</div>
+        <div class="guide-card-title">Best suburbs to buy in Gold Coast 2026</div>
+        <div class="guide-card-meta">Where buyers are actually moving this year, broken down by lifestyle, value, and growth potential.</div>
+      </div>
+    </a>
+    <a class="guide-card" href="/blog/how-to-prepare-your-home-for-sale/">
+      <div class="guide-card-img" style="--grad:linear-gradient(135deg,#2a1f3a,#d47a9b)"></div>
+      <div class="guide-card-body">
+        <div class="guide-card-kicker">Sellers · 5 min</div>
+        <div class="guide-card-title">How to prepare your home for sale on the Gold Coast</div>
+        <div class="guide-card-meta">A pragmatic two-week checklist: what's worth spending on, and what buyers genuinely don't care about.</div>
+      </div>
+    </a>
+    <a class="guide-card" href="/blog/why-1-percent-commission-doesnt-mean-less-service/">
+      <div class="guide-card-img" style="--grad:linear-gradient(135deg,#382418,#e4b583)"></div>
+      <div class="guide-card-body">
+        <div class="guide-card-kicker">The One Club · 4 min</div>
+        <div class="guide-card-title">Why 1% commission doesn't mean less service</div>
+        <div class="guide-card-meta">The traditional 2-3% agency fee was set for a different era. Here's how lower overheads improve the seller experience.</div>
+      </div>
+    </a>
   </div>
 </section>
 
