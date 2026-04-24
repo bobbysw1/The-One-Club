@@ -4,8 +4,19 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
 <title>The One Club — 1% Commission. Gold Coast Real Estate.</title>
 <meta name="description" content="The One Club helps Gold Coast homeowners sell smarter. 1% commission + marketing, premium presentation, and experienced guidance from appraisal to settlement. No bloated agency overhead."/>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9J3X74NBYJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9J3X74NBYJ');
+</script>
+<!-- Sitemap -->
+<link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
 <!-- Canonical -->
 <link rel="canonical" href="https://www.theoneclub.com.au/"/>
 <!-- Open Graph -->
@@ -235,7 +246,7 @@ html{color-scheme:light dark}:root{--bg:#000;--fg:#fff;--bg-rgb:0,0,0;--fg-rgb:2
 
 /* ── NAV ── */
 nav{position:fixed;inset:0 0 auto;z-index:500;padding:0 48px;background:rgba(var(--bg-rgb),.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(var(--fg-rgb),.05)}
-.nav-row{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-row{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:84px}
 .logo{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;letter-spacing:-.2px;cursor:pointer}
 .logo-mark{width:32px;height:32px;border-radius:8px;background:var(--gold);color:#000;display:grid;place-items:center;font-size:11px;font-weight:700;letter-spacing:-.3px}
 .nav-links{display:flex;gap:28px;list-style:none}
@@ -251,7 +262,7 @@ nav{position:fixed;inset:0 0 auto;z-index:500;padding:0 48px;background:rgba(var
 .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:transparent}
 .ham span{width:22px;height:2px;background:rgba(var(--fg-rgb),.7);border-radius:2px;transition:all .3s}
 @media(max-width:900px){nav{padding:0 20px}.nav-links,.nav-cta{display:none}.ham{display:flex}}
-.mobile-menu{display:none;position:fixed;inset:60px 0 0;background:rgba(var(--bg-rgb),.97);z-index:499;flex-direction:column;padding:32px 24px;gap:4px}
+.mobile-menu{display:none;position:fixed;inset:84px 0 0;background:rgba(var(--bg-rgb),.97);z-index:499;flex-direction:column;padding:32px 24px;gap:4px}
 .mobile-menu a{display:block;font-size:17px;font-weight:500;color:rgba(var(--fg-rgb),.7);padding:14px 0;border-bottom:1px solid rgba(var(--fg-rgb),.06);cursor:pointer}
 .mobile-menu a:hover{color:var(--fg)}
 .mobile-menu.open{display:flex}
@@ -574,20 +585,21 @@ footer{border-top:1px solid var(--subtle);padding:60px 48px 40px}
 [data-reveal="right"].on{transform:translateX(0);filter:blur(0px)}
 
 /* ── PRELOADER ── */
-#preloader{position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+#preloader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
 #preloader.pre-hidden{pointer-events:none;display:none}
-.pre-logo-wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:32px}
-.pre-logo-mark{position:relative;text-align:center}
-.pre-logo-ghost{display:block;width:clamp(360px,55vw,720px);opacity:.15;user-select:none;pointer-events:none}
-.pre-logo-fill{position:absolute;top:0;left:0;display:block;width:clamp(360px,55vw,720px);clip-path:inset(0 0 100% 0);user-select:none;pointer-events:none}
+.pre-logo-wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:28px}
+.pre-logo-mark{position:relative;text-align:center;width:clamp(320px,40vw,500px);aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.pre-logo-ghost{display:block;width:84%;opacity:.18;user-select:none;pointer-events:none}
+.pre-logo-fill{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:block;width:84%;clip-path:inset(0 0 100% 0);user-select:none;pointer-events:none}
+.pre-ring{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;transform:rotate(-90deg)}
+.pre-ring circle{fill:none;stroke-width:1.2}
+.pre-ring-track{stroke:rgba(var(--fg-rgb),.08)}
+.pre-ring-prog{stroke:var(--gold);stroke-linecap:round;stroke-dasharray:603.19;stroke-dashoffset:603.19;transition:stroke-dashoffset .04s linear}
+.pre-progress-num{font-size:11px;font-weight:700;letter-spacing:4px;color:rgba(var(--fg-rgb),.45);font-variant-numeric:tabular-nums}
 .pre-lm{display:none}.pre-ln{display:none}.pre-ls{display:none}
 .pre-logo-name{display:none}
-.pre-progress{position:absolute;bottom:52px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;z-index:2}
-.pre-progress-bar{width:140px;height:1px;background:rgba(255,255,255,.12);border-radius:1px;overflow:hidden}
-.pre-progress-fill{height:100%;background:var(--gold);width:0;transition:none;transform-origin:left}
-.pre-progress-num{font-size:9px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,.2)}
 .pre-slices{position:absolute;inset:0;display:flex;z-index:3;pointer-events:none}
-.pre-slice{flex:1;background:#000;transform-origin:bottom center;transform:scaleY(0);transition:transform .7s cubic-bezier(.87,0,.13,1)}
+.pre-slice{flex:1;background:var(--bg);transform-origin:bottom center;transform:scaleY(0);transition:transform .7s cubic-bezier(.87,0,.13,1)}
 
 /* ── CUSTOM CURSOR ── */
 #cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:9998;top:-100px;left:-100px;transform:translate(-50%,-50%);transition:width .28s var(--ease),height .28s var(--ease),background .25s,border .25s;opacity:0;will-change:left,top}
@@ -664,6 +676,12 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 
 /* ── INCLUDED GRID RESPONSIVE ── */
 @media(max-width:700px){.incl-grid-3{grid-template-columns:1fr !important}}
+
+/* ── LOGO — transparent PNG with gold boost (mode-aware) ── */
+.logo img,.pre-logo-ghost,.pre-logo-fill{filter:brightness(1.35) saturate(1.55) contrast(1.05)}
+@media (prefers-color-scheme: light){
+  .logo img,.pre-logo-ghost,.pre-logo-fill{filter:brightness(.78) saturate(1.7) contrast(1.15)}
+}
 </style>
 </head>
 <body class="preloading">
@@ -672,13 +690,14 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 <div id="preloader">
   <div class="pre-logo-wrap">
     <div class="pre-logo-mark">
-      <img class="pre-logo-ghost" src="logo_transparent.png" alt="" draggable="false">
-      <img class="pre-logo-fill" id="pre-logo-fill" src="logo_transparent.png" alt="" draggable="false">
+      <svg class="pre-ring" viewBox="0 0 200 200" aria-hidden="true">
+        <circle class="pre-ring-track" cx="100" cy="100" r="96"></circle>
+        <circle class="pre-ring-prog" id="pre-ring-prog" cx="100" cy="100" r="96"></circle>
+      </svg>
+      <img class="pre-logo-ghost" src="logo.png" alt="" draggable="false">
+      <img class="pre-logo-fill" id="pre-logo-fill" src="logo.png" alt="" draggable="false">
     </div>
-  </div>
-  <div class="pre-progress">
-    <div class="pre-progress-bar"><div class="pre-progress-fill" id="pre-progress-fill"></div></div>
-    <div class="pre-progress-num" id="pre-progress-num">0</div>
+    <div class="pre-progress-num" id="pre-progress-num">0%</div>
   </div>
   <div class="pre-slices" id="pre-slices">
     <div class="pre-slice"></div>
@@ -703,7 +722,7 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 <nav>
   <div class="nav-row">
     <div class="logo" id="site-logo">
-      <img style="height:36px;width:auto;display:block" src="logo_transparent.png" alt="The One Club" style="height:34px;width:auto;display:block;"/>
+      <img style="height:60px;width:auto;display:block" src="logo.png" alt="The One Club"/>
     </div>
     <ul class="nav-links">
       <li><a href="/for-sale/" onclick="goTo('for-sale');return false;" data-page="for-sale">For Sale</a></li>
@@ -887,28 +906,48 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
     <p class="body" data-reveal style="margin-top:20px;max-width:460px">The same property — before and after our AI enhancement process. Drag the handle to see what every listing gets, included at no extra cost.</p>
   </div>
   <div class="compare-block">
-    <div class="compare-label">Interior — Lighting & Staging</div>
-    <div class="compare" id="cmp1">
-      <div class="compare-placeholder"><div class="compare-placeholder-icon">🏠</div><div class="compare-placeholder-text">Before / After photos — add interior-before.png &amp; interior-after.png</div></div>
-      <img class="c-after" src="interior-after.png" alt="Enhanced interior" onerror="this.style.display='none'" style="position:relative;z-index:2"/>
-      <div class="c-before" id="cmp1-before" style="position:absolute;inset:0;clip-path:inset(0 50% 0 0);will-change:clip-path;overflow:hidden;z-index:3"><img src="interior-before.png" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Before" onerror="this.style.display='none'"/></div>
+    <div class="compare-label">Exterior — Sky Replacement & Lawn Enhancement</div>
+    <div class="compare" id="cmp1" style="height:auto;aspect-ratio:1264/848;max-height:820px">
+      <img class="c-after" src="exterior-after.png" alt="Enhanced exterior" onerror="this.style.display='none'" style="position:relative;z-index:2;width:100%;height:100%;object-fit:cover;object-position:center 55%"/>
+      <div class="c-before" id="cmp1-before" style="position:absolute;inset:0;clip-path:inset(0 50% 0 0);will-change:clip-path;overflow:hidden;z-index:3"><img src="exterior-before.png" style="width:100%;height:100%;object-fit:cover;object-position:center 55%;display:block;" alt="Before" onerror="this.style.display='none'"/></div>
       <div class="c-line" id="cmp1-line" style="z-index:10"></div>
       <div class="c-handle" id="cmp1-handle" style="z-index:10">⇔</div>
       <div class="c-tag before" style="z-index:10">Original</div><div class="c-tag after" style="z-index:10">Enhanced</div>
     </div>
-    <div class="compare-caption">Same room — professional lighting correction, colour grading, and virtual staging. Included with every listing.</div>
+    <div class="compare-caption">Front of house — sky replacement, HDR grading, and lawn restored to lush green. The whole frame, no crop.</div>
   </div>
-  <div class="compare-block" style="margin-bottom:80px">
-    <div class="compare-label">Exterior — Sky Replacement & HDR</div>
+  <div class="compare-block">
+    <div class="compare-label">Kitchen — Lighting Lift & Colour Grade</div>
     <div class="compare" id="cmp2">
-      <div class="compare-placeholder"><div class="compare-placeholder-icon">🏡</div><div class="compare-placeholder-text">Before / After photos — add exterior-before.png &amp; exterior-after.png</div></div>
-      <img class="c-after" src="exterior-after.png" alt="Enhanced exterior" onerror="this.style.display='none'" style="position:relative;z-index:2"/>
-      <div class="c-before" id="cmp2-before" style="position:absolute;inset:0;clip-path:inset(0 50% 0 0);will-change:clip-path;overflow:hidden;z-index:3"><img src="exterior-before.png" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Before" onerror="this.style.display='none'"/></div>
+      <img class="c-after" src="kitchen%20after.png" alt="Enhanced kitchen" onerror="this.style.display='none'" style="position:relative;z-index:2"/>
+      <div class="c-before" id="cmp2-before" style="position:absolute;inset:0;clip-path:inset(0 50% 0 0);will-change:clip-path;overflow:hidden;z-index:3"><img src="kitchen%20before%203.png" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Before" onerror="this.style.display='none'"/></div>
       <div class="c-line" id="cmp2-line" style="z-index:10"></div>
       <div class="c-handle" id="cmp2-handle" style="z-index:10">⇔</div>
       <div class="c-tag before" style="z-index:10">Original</div><div class="c-tag after" style="z-index:10">Enhanced</div>
     </div>
-    <div class="compare-caption">Same property — sky replacement, HDR grading, and lawn enhancement. Every exterior, every listing.</div>
+    <div class="compare-caption">Kitchens sell homes — daylight balancing, surface clean-up, and warm tones that make the room feel inviting.</div>
+  </div>
+  <div class="compare-block">
+    <div class="compare-label">Living Room — Lighting & Styling</div>
+    <div class="compare" id="cmp3">
+      <img class="c-after" src="image%20after.png" alt="Enhanced living room" onerror="this.style.display='none'" style="position:relative;z-index:2"/>
+      <div class="c-before" id="cmp3-before" style="position:absolute;inset:0;clip-path:inset(0 50% 0 0);will-change:clip-path;overflow:hidden;z-index:3"><img src="image%20before.png" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Before" onerror="this.style.display='none'"/></div>
+      <div class="c-line" id="cmp3-line" style="z-index:10"></div>
+      <div class="c-handle" id="cmp3-handle" style="z-index:10">⇔</div>
+      <div class="c-tag before" style="z-index:10">Original</div><div class="c-tag after" style="z-index:10">Enhanced</div>
+    </div>
+    <div class="compare-caption">Same room — professional lighting correction, colour grading, and virtual styling. Included with every listing.</div>
+  </div>
+  <div class="compare-block" style="margin-bottom:80px">
+    <div class="compare-label">Pool — Leaf Removal & Sky Replacement</div>
+    <div class="compare" id="cmp4">
+      <img class="c-after" src="pool%20after.png" alt="Enhanced pool" onerror="this.style.display='none'" style="position:relative;z-index:2"/>
+      <div class="c-before" id="cmp4-before" style="position:absolute;inset:0;clip-path:inset(0 50% 0 0);will-change:clip-path;overflow:hidden;z-index:3"><img src="pool%20before.png" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Before" onerror="this.style.display='none'"/></div>
+      <div class="c-line" id="cmp4-line" style="z-index:10"></div>
+      <div class="c-handle" id="cmp4-handle" style="z-index:10">⇔</div>
+      <div class="c-tag before" style="z-index:10">Original</div><div class="c-tag after" style="z-index:10">Enhanced</div>
+    </div>
+    <div class="compare-caption">Pool zones cleaned of debris, sky lifted from overcast to summer blue, lawn restored to lush green.</div>
   </div>
 </section>
 
@@ -978,7 +1017,7 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand"><div class="logo" style="margin-bottom:4px" onclick="goTo('home')"><img style="height:36px;width:auto;display:block" src="logo_transparent.png" alt="The One Club" style="height:38px;width:auto;display:block;"/></div><p>A smarter way to sell on the Gold Coast — professional marketing, experienced guidance, and 1% commission plus marketing.</p><address itemscope itemtype="https://schema.org/RealEstateAgent" style="font-style:normal;margin-bottom:12px"><span itemprop="name" style="display:none">The One Club</span><span itemprop="addressLocality" style="font-size:12px;color:var(--muted)">Gold Coast, QLD, Australia</span><br/><a itemprop="telephone" href="tel:1800663258" style="font-size:12px;color:var(--muted)">1800 663 258</a></address><div style="display:flex;gap:14px;margin-bottom:16px"><a href="https://www.instagram.com/theoneclub" aria-label="Instagram" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Instagram</a><a href="https://www.facebook.com/theoneclub" aria-label="Facebook" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Facebook</a><a href="https://www.linkedin.com/company/theoneclub" aria-label="LinkedIn" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a></div><div class="lic">Licensed Real Estate Agent — QLD</div></div>
+    <div class="footer-brand"><div class="logo" style="margin-bottom:16px" onclick="goTo('home')"><img style="height:72px;width:auto;display:block" src="logo.png" alt="The One Club"/></div><p>A smarter way to sell on the Gold Coast — professional marketing, experienced guidance, and 1% commission plus marketing.</p><address itemscope itemtype="https://schema.org/RealEstateAgent" style="font-style:normal;margin-bottom:12px"><span itemprop="name" style="display:none">The One Club</span><span itemprop="addressLocality" style="font-size:12px;color:var(--muted)">Gold Coast, QLD, Australia</span><br/><a itemprop="telephone" href="tel:1800663258" style="font-size:12px;color:var(--muted)">1800 663 258</a></address><div style="display:flex;gap:14px;margin-bottom:16px"><a href="https://www.instagram.com/theoneclub" aria-label="Instagram" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Instagram</a><a href="https://www.facebook.com/theoneclub" aria-label="Facebook" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Facebook</a><a href="https://www.linkedin.com/company/theoneclub" aria-label="LinkedIn" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a></div><div class="lic">Licensed Real Estate Agent — QLD</div></div>
     <div><div class="fh">Properties</div><ul class="flinks"><li><a href="/for-sale/" onclick="goTo('for-sale');return false;">For Sale</a></li><li><a href="/#valuation" onclick="goTo('home','valuation');return false;">Free Valuation</a></li><li><a href="/#savings" onclick="goTo('home','savings');return false;">Savings Calculator</a></li><li><a href="/rentals/" onclick="goTo('to-rent');return false;" style="opacity:.4">Rentals — Coming Soon</a></li></ul></div>
     <div><div class="fh">Company</div><ul class="flinks"><li><a href="/about/" onclick="goTo('about');return false;">About Us</a></li><li><a href="/how-it-works/" onclick="goTo('how-it-works');return false;">How It Works</a></li><li><a href="/about/" onclick="goTo('about','sellers');return false;">For Sellers</a></li><li><a href="/admin/" style="opacity:.4;font-size:11px">Admin</a></li></ul></div>
     <div><div class="fh">Locations</div><ul class="flinks"><li><a>Gold Coast</a></li><li><a style="opacity:.5">Brisbane — Soon</a></li><li><a style="opacity:.5">Sydney — Soon</a></li><li><a style="opacity:.5">Melbourne — Soon</a></li></ul></div>
@@ -1066,7 +1105,7 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 </section>
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand"><div class="logo" style="margin-bottom:4px" onclick="goTo('home')"><img style="height:36px;width:auto;display:block" src="logo_transparent.png" alt="The One Club" style="height:38px;width:auto;display:block;"/></div><p>Gold Coast home sales with lower commission and premium marketing.</p><address itemscope itemtype="https://schema.org/RealEstateAgent" style="font-style:normal;margin-bottom:12px"><span itemprop="name" style="display:none">The One Club</span><span itemprop="addressLocality" style="font-size:12px;color:var(--muted)">Gold Coast, QLD, Australia</span><br/><a itemprop="telephone" href="tel:1800663258" style="font-size:12px;color:var(--muted)">1800 663 258</a></address><div style="display:flex;gap:14px;margin-bottom:16px"><a href="https://www.instagram.com/theoneclub" aria-label="Instagram" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Instagram</a><a href="https://www.facebook.com/theoneclub" aria-label="Facebook" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Facebook</a><a href="https://www.linkedin.com/company/theoneclub" aria-label="LinkedIn" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a></div><div class="lic">Licensed Real Estate Agent — QLD</div></div>
+    <div class="footer-brand"><div class="logo" style="margin-bottom:16px" onclick="goTo('home')"><img style="height:72px;width:auto;display:block" src="logo.png" alt="The One Club"/></div><p>Gold Coast home sales with lower commission and premium marketing.</p><address itemscope itemtype="https://schema.org/RealEstateAgent" style="font-style:normal;margin-bottom:12px"><span itemprop="name" style="display:none">The One Club</span><span itemprop="addressLocality" style="font-size:12px;color:var(--muted)">Gold Coast, QLD, Australia</span><br/><a itemprop="telephone" href="tel:1800663258" style="font-size:12px;color:var(--muted)">1800 663 258</a></address><div style="display:flex;gap:14px;margin-bottom:16px"><a href="https://www.instagram.com/theoneclub" aria-label="Instagram" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Instagram</a><a href="https://www.facebook.com/theoneclub" aria-label="Facebook" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Facebook</a><a href="https://www.linkedin.com/company/theoneclub" aria-label="LinkedIn" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a></div><div class="lic">Licensed Real Estate Agent — QLD</div></div>
     <div><div class="fh">Properties</div><ul class="flinks"><li><a href="/for-sale/" onclick="goTo('for-sale');return false;">For Sale</a></li><li><a href="/#valuation" onclick="goTo('home','valuation');return false;">Free Valuation</a></li><li><a href="/rentals/" onclick="goTo('to-rent');return false;" style="opacity:.4">Rentals — Coming Soon</a></li></ul></div>
     <div><div class="fh">Company</div><ul class="flinks"><li><a href="/about/" onclick="goTo('about');return false;">About Us</a></li><li><a href="/how-it-works/" onclick="goTo('how-it-works');return false;">How It Works</a></li><li><a href="/admin/" style="opacity:.4;font-size:11px">Admin</a></li></ul></div>
     <div><div class="fh">Locations</div><ul class="flinks"><li><a>Gold Coast</a></li><li><a style="opacity:.5">Brisbane — Soon</a></li><li><a style="opacity:.5">Sydney — Soon</a></li></ul></div>
@@ -1190,7 +1229,7 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand"><div class="logo" style="margin-bottom:4px" onclick="goTo('home')"><img style="height:36px;width:auto;display:block" src="logo_transparent.png" alt="The One Club" style="height:38px;width:auto;display:block;"/></div><p>A smarter way to sell on the Gold Coast — professional marketing, experienced guidance, and 1% commission plus marketing.</p><address itemscope itemtype="https://schema.org/RealEstateAgent" style="font-style:normal;margin-bottom:12px"><span itemprop="name" style="display:none">The One Club</span><span itemprop="addressLocality" style="font-size:12px;color:var(--muted)">Gold Coast, QLD, Australia</span><br/><a itemprop="telephone" href="tel:1800663258" style="font-size:12px;color:var(--muted)">1800 663 258</a></address><div style="display:flex;gap:14px;margin-bottom:16px"><a href="https://www.instagram.com/theoneclub" aria-label="Instagram" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Instagram</a><a href="https://www.facebook.com/theoneclub" aria-label="Facebook" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Facebook</a><a href="https://www.linkedin.com/company/theoneclub" aria-label="LinkedIn" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a></div><div class="lic">Licensed Real Estate Agent — QLD</div></div>
+    <div class="footer-brand"><div class="logo" style="margin-bottom:16px" onclick="goTo('home')"><img style="height:72px;width:auto;display:block" src="logo.png" alt="The One Club"/></div><p>A smarter way to sell on the Gold Coast — professional marketing, experienced guidance, and 1% commission plus marketing.</p><address itemscope itemtype="https://schema.org/RealEstateAgent" style="font-style:normal;margin-bottom:12px"><span itemprop="name" style="display:none">The One Club</span><span itemprop="addressLocality" style="font-size:12px;color:var(--muted)">Gold Coast, QLD, Australia</span><br/><a itemprop="telephone" href="tel:1800663258" style="font-size:12px;color:var(--muted)">1800 663 258</a></address><div style="display:flex;gap:14px;margin-bottom:16px"><a href="https://www.instagram.com/theoneclub" aria-label="Instagram" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Instagram</a><a href="https://www.facebook.com/theoneclub" aria-label="Facebook" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Facebook</a><a href="https://www.linkedin.com/company/theoneclub" aria-label="LinkedIn" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a></div><div class="lic">Licensed Real Estate Agent — QLD</div></div>
     <div><div class="fh">Properties</div><ul class="flinks"><li><a href="/for-sale/" onclick="goTo('for-sale');return false;">For Sale</a></li><li><a href="/#valuation" onclick="goTo('home','valuation');return false;">Free Valuation</a></li><li><a href="/#savings" onclick="goTo('home','savings');return false;">Savings Calculator</a></li><li><a href="/rentals/" onclick="goTo('to-rent');return false;" style="opacity:.4">Rentals — Coming Soon</a></li></ul></div>
     <div><div class="fh">Company</div><ul class="flinks"><li><a href="/about/" onclick="goTo('about');return false;">About Us</a></li><li><a href="/how-it-works/" onclick="goTo('how-it-works');return false;">How It Works</a></li><li><a href="/about/" onclick="goTo('about','sellers');return false;">For Sellers</a></li><li><a href="/admin/" style="opacity:.4;font-size:11px">Admin</a></li></ul></div>
     <div><div class="fh">Locations</div><ul class="flinks"><li><a>Gold Coast</a></li><li><a style="opacity:.5">Brisbane — Soon</a></li><li><a style="opacity:.5">Sydney — Soon</a></li><li><a style="opacity:.5">Melbourne — Soon</a></li></ul></div>
@@ -1235,34 +1274,60 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
     <p class="body" data-reveal style="margin-top:20px;max-width:480px">Drag the handle to see exactly what our AI enhancement process does to a property image. This is what every listing gets — before and after, in one swipe.</p>
   </div>
   <div style="margin-bottom:4px;position:relative">
-    <div style="position:absolute;top:20px;left:24px;z-index:20;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Interior — Lighting &amp; Staging</div>
-    <div class="compare" id="hiw-cmp1">
-      <div class="compare-placeholder"><div class="compare-placeholder-icon">🏠</div><div class="compare-placeholder-text">Add interior-before.png &amp; interior-after.png</div></div>
-      <img class="c-after" src="interior-after.png" alt="Enhanced interior" onerror="this.style.display='none'" style="z-index:2"/>
+    <div style="position:absolute;top:20px;left:24px;z-index:20;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Exterior — Sky Replacement &amp; Lawn Enhancement</div>
+    <div class="compare" id="hiw-cmp1" style="height:auto;aspect-ratio:1264/848;max-height:820px">
+      <img class="c-after" src="exterior-after.png" alt="Enhanced exterior" onerror="this.style.display='none'" style="z-index:2;width:100%;height:100%;object-fit:cover;object-position:center 55%"/>
       <div class="c-before" id="hiw-cmp1-before" style="position:absolute;inset:0;clip-path:inset(0 50% 0 0);will-change:clip-path;overflow:hidden;z-index:3">
-        <img src="interior-before.png" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Before" onerror="this.style.display='none'"/>
+        <img src="exterior-before.png" style="width:100%;height:100%;object-fit:cover;object-position:center 55%;display:block;" alt="Before" onerror="this.style.display='none'"/>
       </div>
       <div class="c-line" id="hiw-cmp1-line" style="z-index:10"></div>
       <div class="c-handle" id="hiw-cmp1-handle" style="z-index:10">⇔</div>
       <div class="c-tag before" style="z-index:10">Original</div>
       <div class="c-tag after" style="z-index:10">Enhanced</div>
     </div>
-    <div style="padding:14px 24px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--subtle)">Same room — lighting correction, colour grading, and virtual staging. Included with every listing.</div>
+    <div style="padding:14px 24px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--subtle)">Front of house — sky replacement, HDR grading, and lawn restored to lush green. The whole frame, no crop.</div>
   </div>
-  <div style="margin-bottom:80px;position:relative">
-    <div style="position:absolute;top:20px;left:24px;z-index:20;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Exterior — Sky Replacement &amp; HDR</div>
+  <div style="margin-bottom:4px;position:relative">
+    <div style="position:absolute;top:20px;left:24px;z-index:20;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Kitchen — Lighting Lift &amp; Colour Grade</div>
     <div class="compare" id="hiw-cmp2">
-      <div class="compare-placeholder"><div class="compare-placeholder-icon">🏡</div><div class="compare-placeholder-text">Add exterior-before.png &amp; exterior-after.png</div></div>
-      <img class="c-after" src="exterior-after.png" alt="Enhanced exterior" onerror="this.style.display='none'" style="z-index:2"/>
+      <img class="c-after" src="kitchen%20after.png" alt="Enhanced kitchen" onerror="this.style.display='none'" style="z-index:2"/>
       <div class="c-before" id="hiw-cmp2-before" style="position:absolute;inset:0;clip-path:inset(0 50% 0 0);will-change:clip-path;overflow:hidden;z-index:3">
-        <img src="exterior-before.png" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Before" onerror="this.style.display='none'"/>
+        <img src="kitchen%20before%203.png" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Before" onerror="this.style.display='none'"/>
       </div>
       <div class="c-line" id="hiw-cmp2-line" style="z-index:10"></div>
       <div class="c-handle" id="hiw-cmp2-handle" style="z-index:10">⇔</div>
       <div class="c-tag before" style="z-index:10">Original</div>
       <div class="c-tag after" style="z-index:10">Enhanced</div>
     </div>
-    <div style="padding:14px 24px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--subtle)">Same property — sky replacement, HDR grading, and lawn enhancement. Every exterior, every listing.</div>
+    <div style="padding:14px 24px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--subtle)">Kitchens sell homes — daylight balancing, surface clean-up, and warm tones that make the room feel inviting.</div>
+  </div>
+  <div style="margin-bottom:4px;position:relative">
+    <div style="position:absolute;top:20px;left:24px;z-index:20;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Living Room — Lighting &amp; Styling</div>
+    <div class="compare" id="hiw-cmp3">
+      <img class="c-after" src="image%20after.png" alt="Enhanced living room" onerror="this.style.display='none'" style="z-index:2"/>
+      <div class="c-before" id="hiw-cmp3-before" style="position:absolute;inset:0;clip-path:inset(0 50% 0 0);will-change:clip-path;overflow:hidden;z-index:3">
+        <img src="image%20before.png" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Before" onerror="this.style.display='none'"/>
+      </div>
+      <div class="c-line" id="hiw-cmp3-line" style="z-index:10"></div>
+      <div class="c-handle" id="hiw-cmp3-handle" style="z-index:10">⇔</div>
+      <div class="c-tag before" style="z-index:10">Original</div>
+      <div class="c-tag after" style="z-index:10">Enhanced</div>
+    </div>
+    <div style="padding:14px 24px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--subtle)">Same room — professional lighting correction, colour grading, and virtual styling. Included with every listing.</div>
+  </div>
+  <div style="margin-bottom:80px;position:relative">
+    <div style="position:absolute;top:20px;left:24px;z-index:20;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Pool — Leaf Removal &amp; Sky Replacement</div>
+    <div class="compare" id="hiw-cmp4">
+      <img class="c-after" src="pool%20after.png" alt="Enhanced pool" onerror="this.style.display='none'" style="z-index:2"/>
+      <div class="c-before" id="hiw-cmp4-before" style="position:absolute;inset:0;clip-path:inset(0 50% 0 0);will-change:clip-path;overflow:hidden;z-index:3">
+        <img src="pool%20before.png" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Before" onerror="this.style.display='none'"/>
+      </div>
+      <div class="c-line" id="hiw-cmp4-line" style="z-index:10"></div>
+      <div class="c-handle" id="hiw-cmp4-handle" style="z-index:10">⇔</div>
+      <div class="c-tag before" style="z-index:10">Original</div>
+      <div class="c-tag after" style="z-index:10">Enhanced</div>
+    </div>
+    <div style="padding:14px 24px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--subtle)">Pool zones cleaned of debris, sky lifted from overcast to summer blue, lawn restored to lush green.</div>
   </div>
 </section>
 
@@ -1603,39 +1668,6 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
   </div>
 </section>
 
-<!-- PHOTOGRAPHY DEMO -->
-<section style="padding:100px 0 0;border-top:1px solid var(--subtle)">
-  <div style="max-width:1200px;margin:0 auto;padding:0 24px 64px">
-    <div class="page-label" data-reveal>Photography enhancement</div>
-    <div class="display" style="margin-top:20px" data-reveal>The difference<br/><em>is visible.</em></div>
-    <p class="body" data-reveal style="margin-top:20px;max-width:480px">Drag the handle to see exactly what our AI enhancement process does to a property image. This is what every listing gets — before and after, in one swipe.</p>
-  </div>
-  <div style="margin-bottom:4px;position:relative">
-    <div style="position:absolute;top:20px;left:24px;z-index:20;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Interior — Lighting & Staging</div>
-    <div class="compare" id="hiw-cmp1">
-      <div class="compare-placeholder"><div class="compare-placeholder-icon">🏠</div><div class="compare-placeholder-text">Add interior-before.png &amp; interior-after.png</div></div>
-      <img class="c-after" src="interior-after.png" alt="Enhanced interior" onerror="this.style.display='none'" style="z-index:2"/>
-      <div class="c-before" id="hiw-cmp1-before" style="position:absolute;inset:0;clip-path:inset(0 50% 0 0);will-change:clip-path;overflow:hidden;z-index:3"><img src="interior-before.png" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Before" onerror="this.style.display='none'"/></div>
-      <div class="c-line" id="hiw-cmp1-line" style="z-index:10"></div>
-      <div class="c-handle" id="hiw-cmp1-handle" style="z-index:10">⇔</div>
-      <div class="c-tag before" style="z-index:10">Original</div><div class="c-tag after" style="z-index:10">Enhanced</div>
-    </div>
-    <div style="padding:14px 24px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--subtle)">Same room — lighting correction, colour grading, and virtual staging. Included with every listing.</div>
-  </div>
-  <div style="margin-bottom:80px;position:relative">
-    <div style="position:absolute;top:20px;left:24px;z-index:20;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Exterior — Sky Replacement & HDR</div>
-    <div class="compare" id="hiw-cmp2">
-      <div class="compare-placeholder"><div class="compare-placeholder-icon">🏡</div><div class="compare-placeholder-text">Add exterior-before.png &amp; exterior-after.png</div></div>
-      <img class="c-after" src="exterior-after.png" alt="Enhanced exterior" onerror="this.style.display='none'" style="z-index:2"/>
-      <div class="c-before" id="hiw-cmp2-before" style="position:absolute;inset:0;clip-path:inset(0 50% 0 0);will-change:clip-path;overflow:hidden;z-index:3"><img src="exterior-before.png" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Before" onerror="this.style.display='none'"/></div>
-      <div class="c-line" id="hiw-cmp2-line" style="z-index:10"></div>
-      <div class="c-handle" id="hiw-cmp2-handle" style="z-index:10">⇔</div>
-      <div class="c-tag before" style="z-index:10">Original</div><div class="c-tag after" style="z-index:10">Enhanced</div>
-    </div>
-    <div style="padding:14px 24px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--subtle)">Same property — sky replacement, HDR grading, and lawn enhancement. Every exterior, every listing.</div>
-  </div>
-</section>
-
 <!-- FLOOR PLAN -->
 <section style="padding:100px 24px 100px;border-top:1px solid var(--subtle)" id="floorplan">
   <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center" class="hiw-grid">
@@ -1948,7 +1980,7 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand"><div class="logo" style="margin-bottom:4px" onclick="goTo('home')"><img style="height:36px;width:auto;display:block" src="logo_transparent.png" alt="The One Club" style="height:38px;width:auto;display:block;"/></div><p>Gold Coast home sales with lower commission and premium marketing.</p><address itemscope itemtype="https://schema.org/RealEstateAgent" style="font-style:normal;margin-bottom:12px"><span itemprop="name" style="display:none">The One Club</span><span itemprop="addressLocality" style="font-size:12px;color:var(--muted)">Gold Coast, QLD, Australia</span><br/><a itemprop="telephone" href="tel:1800663258" style="font-size:12px;color:var(--muted)">1800 663 258</a></address><div style="display:flex;gap:14px;margin-bottom:16px"><a href="https://www.instagram.com/theoneclub" aria-label="Instagram" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Instagram</a><a href="https://www.facebook.com/theoneclub" aria-label="Facebook" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Facebook</a><a href="https://www.linkedin.com/company/theoneclub" aria-label="LinkedIn" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a></div><div class="lic">Licensed Real Estate Agent — QLD</div></div>
+    <div class="footer-brand"><div class="logo" style="margin-bottom:16px" onclick="goTo('home')"><img style="height:72px;width:auto;display:block" src="logo.png" alt="The One Club"/></div><p>Gold Coast home sales with lower commission and premium marketing.</p><address itemscope itemtype="https://schema.org/RealEstateAgent" style="font-style:normal;margin-bottom:12px"><span itemprop="name" style="display:none">The One Club</span><span itemprop="addressLocality" style="font-size:12px;color:var(--muted)">Gold Coast, QLD, Australia</span><br/><a itemprop="telephone" href="tel:1800663258" style="font-size:12px;color:var(--muted)">1800 663 258</a></address><div style="display:flex;gap:14px;margin-bottom:16px"><a href="https://www.instagram.com/theoneclub" aria-label="Instagram" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Instagram</a><a href="https://www.facebook.com/theoneclub" aria-label="Facebook" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Facebook</a><a href="https://www.linkedin.com/company/theoneclub" aria-label="LinkedIn" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a></div><div class="lic">Licensed Real Estate Agent — QLD</div></div>
     <div><div class="fh">Properties</div><ul class="flinks"><li><a href="/for-sale/" onclick="goTo('for-sale');return false;">For Sale</a></li><li><a href="/rentals/" onclick="goTo('to-rent');return false;">To Rent</a></li><li><a href="/#valuation" onclick="goTo('home','valuation');return false;">Free Valuation</a></li></ul></div>
     <div><div class="fh">Company</div><ul class="flinks"><li><a href="/about/" onclick="goTo('about');return false;">About Us</a></li><li><a href="/how-it-works/" onclick="goTo('how-it-works');return false;">How It Works</a></li><li><a href="/admin/" style="opacity:.4;font-size:11px">Admin</a></li></ul></div>
     <div><div class="fh">Locations</div><ul class="flinks"><li><a>Gold Coast</a></li><li><a style="opacity:.5">Brisbane — Soon</a></li></ul></div>
@@ -2071,7 +2103,7 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand"><div class="logo" style="margin-bottom:4px" onclick="goTo('home')"><img style="height:36px;width:auto;display:block" src="logo_transparent.png" alt="The One Club" style="height:38px;width:auto;display:block;"/></div><p>A smarter way to sell on the Gold Coast — professional marketing, experienced guidance, and 1% commission plus marketing.</p><address itemscope itemtype="https://schema.org/RealEstateAgent" style="font-style:normal;margin-bottom:12px"><span itemprop="name" style="display:none">The One Club</span><span itemprop="addressLocality" style="font-size:12px;color:var(--muted)">Gold Coast, QLD, Australia</span><br/><a itemprop="telephone" href="tel:1800663258" style="font-size:12px;color:var(--muted)">1800 663 258</a></address><div style="display:flex;gap:14px;margin-bottom:16px"><a href="https://www.instagram.com/theoneclub" aria-label="Instagram" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Instagram</a><a href="https://www.facebook.com/theoneclub" aria-label="Facebook" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Facebook</a><a href="https://www.linkedin.com/company/theoneclub" aria-label="LinkedIn" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a></div><div class="lic">Licensed Real Estate Agent — QLD</div></div>
+    <div class="footer-brand"><div class="logo" style="margin-bottom:16px" onclick="goTo('home')"><img style="height:72px;width:auto;display:block" src="logo.png" alt="The One Club"/></div><p>A smarter way to sell on the Gold Coast — professional marketing, experienced guidance, and 1% commission plus marketing.</p><address itemscope itemtype="https://schema.org/RealEstateAgent" style="font-style:normal;margin-bottom:12px"><span itemprop="name" style="display:none">The One Club</span><span itemprop="addressLocality" style="font-size:12px;color:var(--muted)">Gold Coast, QLD, Australia</span><br/><a itemprop="telephone" href="tel:1800663258" style="font-size:12px;color:var(--muted)">1800 663 258</a></address><div style="display:flex;gap:14px;margin-bottom:16px"><a href="https://www.instagram.com/theoneclub" aria-label="Instagram" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Instagram</a><a href="https://www.facebook.com/theoneclub" aria-label="Facebook" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Facebook</a><a href="https://www.linkedin.com/company/theoneclub" aria-label="LinkedIn" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a></div><div class="lic">Licensed Real Estate Agent — QLD</div></div>
     <div><div class="fh">Properties</div><ul class="flinks"><li><a href="/for-sale/" onclick="goTo('for-sale');return false;">For Sale</a></li><li><a href="/#valuation" onclick="goTo('home','valuation');return false;">Free Valuation</a></li><li><a href="/#savings" onclick="goTo('home','savings');return false;">Savings Calculator</a></li><li><a href="/rentals/" onclick="goTo('to-rent');return false;" style="opacity:.4">Rentals — Coming Soon</a></li></ul></div>
     <div><div class="fh">Company</div><ul class="flinks"><li><a href="/about/" onclick="goTo('about');return false;">About Us</a></li><li><a href="/how-it-works/" onclick="goTo('how-it-works');return false;">How It Works</a></li><li><a href="/about/" onclick="goTo('about','sellers');return false;">For Sellers</a></li><li><a href="/admin/" style="opacity:.4;font-size:11px">Admin</a></li></ul></div>
     <div><div class="fh">Locations</div><ul class="flinks"><li><a>Gold Coast</a></li><li><a style="opacity:.5">Brisbane — Soon</a></li><li><a style="opacity:.5">Sydney — Soon</a></li><li><a style="opacity:.5">Melbourne — Soon</a></li></ul></div>
@@ -2176,8 +2208,12 @@ function goTo(page, anchor) {
   setTimeout(function(){
     initCompare('cmp1','cmp1-line','cmp1-handle');
     initCompare('cmp2','cmp2-line','cmp2-handle');
+    initCompare('cmp3','cmp3-line','cmp3-handle');
+    initCompare('cmp4','cmp4-line','cmp4-handle');
     initCompare('hiw-cmp1','hiw-cmp1-line','hiw-cmp1-handle');
     initCompare('hiw-cmp2','hiw-cmp2-line','hiw-cmp2-handle');
+    initCompare('hiw-cmp3','hiw-cmp3-line','hiw-cmp3-handle');
+    initCompare('hiw-cmp4','hiw-cmp4-line','hiw-cmp4-handle');
   }, 100);
   // Re-init carousel
   if (page === 'home') { setTimeout(initCarousel, 100); }
@@ -2262,6 +2298,8 @@ function initCompare(containerId, lineId, handleId) {
 }
 initCompare('cmp1','cmp1-line','cmp1-handle');
 initCompare('cmp2','cmp2-line','cmp2-handle');
+initCompare('cmp3','cmp3-line','cmp3-handle');
+initCompare('cmp4','cmp4-line','cmp4-handle');
 initCompare('hiw-cmp1','hiw-cmp1-line','hiw-cmp1-handle');
 initCompare('hiw-cmp2','hiw-cmp2-line','hiw-cmp2-handle');
 
@@ -2356,6 +2394,12 @@ var formBtn = document.getElementById('formBtn');
 if (formBtn) {
   formBtn.addEventListener('click', function(e){
     e.preventDefault();
+    if (typeof gtag === 'function') {
+      gtag('event', 'form_submit', {
+        event_category: 'Lead',
+        event_label: 'Free Valuation Form'
+      });
+    }
     this.textContent = "Request received — we'll be in touch within 24 hours";
     this.style.background = 'transparent'; this.style.color = '#4ade80';
     this.style.border = '1px solid rgba(74,222,128,.25)';
@@ -2640,11 +2684,12 @@ loadChatbotFromAPI();
 ═══════════════════════════════════════ */
 (function(){
   var fillEl    = document.getElementById('pre-logo-fill');
-  var progFill  = document.getElementById('pre-progress-fill');
+  var ringProg  = document.getElementById('pre-ring-prog');
   var progNum   = document.getElementById('pre-progress-num');
   var pre       = document.getElementById('preloader');
   if (!pre) return;
 
+  var CIRC     = 2 * Math.PI * 96; // must match circle r in SVG
   var start    = null;
   var DURATION = 1800; // ms to fill 0→100%
 
@@ -2656,16 +2701,15 @@ loadChatbotFromAPI();
     var progress = Math.min(elapsed / DURATION, 1);
     var eased    = easeOutQuart(progress);
     var n        = Math.floor(eased * 100);
-    // Logo fill: reveal from bottom using clip-path inset
-    if (fillEl)   fillEl.style.clipPath = 'inset(0 0 ' + (100 - n) + '% 0)';
-    if (progFill) progFill.style.width  = n + '%';
-    if (progNum)  progNum.textContent   = n;
+    if (fillEl)   fillEl.style.clipPath       = 'inset(0 0 ' + (100 - n) + '% 0)';
+    if (ringProg) ringProg.style.strokeDashoffset = (CIRC * (1 - eased)) + '';
+    if (progNum)  progNum.textContent         = n + '%';
     if (progress < 1) {
       requestAnimationFrame(step);
     } else {
-      if (fillEl)   fillEl.style.clipPath = 'inset(0 0 0% 0)';
-      if (progFill) progFill.style.width  = '100%';
-      if (progNum)  progNum.textContent   = '100';
+      if (fillEl)   fillEl.style.clipPath       = 'inset(0 0 0% 0)';
+      if (ringProg) ringProg.style.strokeDashoffset = '0';
+      if (progNum)  progNum.textContent         = '100%';
       setTimeout(exitPreloader, 250);
     }
   }
@@ -2673,7 +2717,7 @@ loadChatbotFromAPI();
   function exitPreloader(){
     // Phase 1: fade out logo/progress (300ms)
     var logoWrap = pre.querySelector('.pre-logo-wrap');
-    var progWrap = pre.querySelector('.pre-progress');
+    var progWrap = pre.querySelector('.pre-progress-num');
     if (logoWrap){ logoWrap.style.transition = 'opacity .3s'; logoWrap.style.opacity = '0'; }
     if (progWrap){ progWrap.style.transition = 'opacity .3s'; progWrap.style.opacity = '0'; }
 
