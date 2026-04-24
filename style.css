@@ -368,8 +368,8 @@ footer{border-top:1px solid var(--subtle);padding:60px 48px 40px}
 #preloader.pre-hidden{pointer-events:none;display:none}
 .pre-logo-wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:28px}
 .pre-logo-mark{position:relative;text-align:center;width:clamp(320px,40vw,500px);aspect-ratio:1;display:flex;align-items:center;justify-content:center}
-.pre-logo-ghost{display:block;width:84%;opacity:.18;user-select:none;pointer-events:none}
-.pre-logo-fill{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:block;width:84%;clip-path:inset(0 0 100% 0);user-select:none;pointer-events:none}
+.pre-logo-ghost{display:block;width:84%;height:auto;opacity:.18;user-select:none;pointer-events:none}
+.pre-logo-fill{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:block;width:84%;height:auto;clip-path:inset(0 0 100% 0);user-select:none;pointer-events:none}
 .pre-ring{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;transform:rotate(-90deg)}
 .pre-ring circle{fill:none;stroke-width:1.2}
 .pre-ring-track{stroke:rgba(var(--fg-rgb),.08)}
