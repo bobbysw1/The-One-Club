@@ -1185,6 +1185,18 @@ loadChatbotFromAPI();
   var pre       = document.getElementById('preloader');
   if (!pre) return;
 
+  // Preloader should run once per browser session, not on every page nav.
+  // We persist a flag in sessionStorage and, when present, skip the whole
+  // animation — instantly hiding the preloader and revealing the page.
+  try {
+    if (sessionStorage.getItem('toc.preloaded') === '1') {
+      pre.classList.add('pre-hidden');
+      pre.style.display = 'none';
+      document.body.classList.remove('preloading');
+      return;
+    }
+  } catch (e) { /* sessionStorage blocked — fall through and run preloader */ }
+
   var CIRC     = 2 * Math.PI * 96; // must match circle r in SVG
   var start    = null;
   var DURATION = 1800; // ms to fill 0→100%
@@ -1232,6 +1244,7 @@ loadChatbotFromAPI();
     setTimeout(function(){
       pre.classList.add('pre-hidden');
       document.body.classList.remove('preloading');
+      try { sessionStorage.setItem('toc.preloaded', '1'); } catch (e) {}
       // Force-reveal above-fold elements immediately
       document.querySelectorAll('.page.active [data-reveal]').forEach(function(el, i){
         setTimeout(function(){ el.classList.add('on'); }, i * 60);

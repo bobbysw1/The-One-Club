@@ -456,13 +456,18 @@ def suburb_content(s):
     save_high = trad_high - our_fee
 
     return f"""<div class="page active">
-<section class="hero" style="min-height:unset;padding:140px 24px 60px">
-  <div class="hero-glow"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-label" data-reveal>{s['name']} real estate</div>
-  <h1 class="hero-headline" data-reveal style="font-size:clamp(44px,6vw,76px);letter-spacing:-1.5px;max-width:1000px">Real estate agent in<br/><em>{s['name']}</em></h1>
-  <p class="hero-sub" data-reveal>{s['blurb']}</p>
-  <div class="hero-actions" data-reveal>
+<section style="position:relative;width:100%;height:clamp(460px,65vh,720px);overflow:hidden;margin-top:0">
+  <div style="position:absolute;inset:0;background-image:url('/images/suburbs/{s['slug']}.jpg');background-size:cover;background-position:center"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.32) 0%,rgba(0,0,0,.45) 55%,rgba(0,0,0,.92) 100%)"></div>
+  <div style="position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:100px 24px 60px;max-width:1100px;margin:0 auto;color:#fff">
+    <div class="page-label" style="color:var(--gold)" data-reveal>{s['name']} real estate</div>
+    <h1 class="serif" data-reveal style="font-size:clamp(52px,8vw,112px);letter-spacing:-2.5px;line-height:.96;font-weight:300;color:#fff;margin-top:14px;max-width:960px">Real estate agent in<br/><em>{s['name']}</em></h1>
+  </div>
+</section>
+
+<section style="padding:56px 24px 0;max-width:820px;margin:0 auto">
+  <p class="body" data-reveal style="font-size:18px;max-width:720px">{s['blurb']}</p>
+  <div data-reveal style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
     <a class="btn btn-gold btn-lg" href="/#valuation">Get Your Free Valuation</a>
     <a class="btn btn-outline btn-lg" href="/for-sale/">See current listings</a>
   </div>

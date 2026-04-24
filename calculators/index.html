@@ -968,6 +968,15 @@ loadChatbotFromAPI();
   var pre       = document.getElementById('preloader');
   if (!pre) return;
 
+  try {
+    if (sessionStorage.getItem('toc.preloaded') === '1') {
+      pre.classList.add('pre-hidden');
+      pre.style.display = 'none';
+      document.body.classList.remove('preloading');
+      return;
+    }
+  } catch (e) {}
+
   var CIRC     = 2 * Math.PI * 96; // must match circle r in SVG
   var start    = null;
   var DURATION = 1800; // ms to fill 0→100%
@@ -1015,6 +1024,7 @@ loadChatbotFromAPI();
     setTimeout(function(){
       pre.classList.add('pre-hidden');
       document.body.classList.remove('preloading');
+      try { sessionStorage.setItem('toc.preloaded', '1'); } catch (e) {}
       // Force-reveal above-fold elements immediately
       document.querySelectorAll('.page.active [data-reveal]').forEach(function(el, i){
         setTimeout(function(){ el.classList.add('on'); }, i * 60);
