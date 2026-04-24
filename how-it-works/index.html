@@ -673,7 +673,14 @@
         </div>
         <span style="font-size:11px;color:var(--muted)">Click · Drag · Explore</span>
       </div>
-      <iframe src="https://my.matterport.com/show/?m=oF8Zj5AJnU7&play=1&qs=1&brand=0&mls=1&mt=0" style="width:100%;aspect-ratio:16/9;display:block;border:none" frameborder="0" allowfullscreen allow="xr-spatial-tracking" loading="lazy"></iframe>
+      <div class="mp-embed" role="button" tabindex="0" aria-label="Play 3D tour"
+     data-src="https://my.matterport.com/show/?m=oF8Zj5AJnU7&play=1&qs=1&brand=0&mls=1&mt=0"
+     onclick="(function(el){el.innerHTML='<iframe src=\''+el.dataset.src+'\' allowfullscreen allow=\'xr-spatial-tracking\'></iframe>';})(this)"
+     onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
+  <img src="/images/matterport-cover.jpg" alt="3D tour — interior preview. Click to explore the full walkthrough." width="1400" height="788" loading="lazy" decoding="async"/>
+  <span class="mp-play">▶&nbsp;&nbsp;Play 3D Tour</span>
+</div>
+<div class="mp-caption">Interactive Matterport walkthrough · click to explore · no download required</div>
     </div>
   </div>
 </section>
@@ -1009,7 +1016,14 @@
         <div style="display:flex;align-items:center;gap:10px"><div style="width:8px;height:8px;border-radius:50%;background:#4ade80"></div><span style="font-size:12px;font-weight:600;color:rgba(var(--fg-rgb),.6)">Demo Property — Luxury Residence</span></div>
         <span style="font-size:11px;color:var(--muted)">Click · Drag · Explore</span>
       </div>
-      <iframe src="https://my.matterport.com/show/?m=oF8Zj5AJnU7&play=1&qs=1&brand=0&mls=1&mt=0" style="width:100%;aspect-ratio:16/9;display:block;border:none" frameborder="0" allowfullscreen allow="xr-spatial-tracking" loading="lazy"></iframe>
+      <div class="mp-embed" role="button" tabindex="0" aria-label="Play 3D tour"
+     data-src="https://my.matterport.com/show/?m=oF8Zj5AJnU7&play=1&qs=1&brand=0&mls=1&mt=0"
+     onclick="(function(el){el.innerHTML='<iframe src=\''+el.dataset.src+'\' allowfullscreen allow=\'xr-spatial-tracking\'></iframe>';})(this)"
+     onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
+  <img src="/images/matterport-cover.jpg" alt="3D tour — interior preview. Click to explore the full walkthrough." width="1400" height="788" loading="lazy" decoding="async"/>
+  <span class="mp-play">▶&nbsp;&nbsp;Play 3D Tour</span>
+</div>
+<div class="mp-caption">Interactive Matterport walkthrough · click to explore · no download required</div>
     </div>
   </div>
 </section>

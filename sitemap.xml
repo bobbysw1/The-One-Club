@@ -12,24 +12,6 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.theoneclub.com.au/auctions/</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.theoneclub.com.au/calculators/</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.theoneclub.com.au/mortgage/</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://www.theoneclub.com.au/how-it-works/</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -51,7 +33,7 @@
     <loc>https://www.theoneclub.com.au/blog/</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.theoneclub.com.au/burleigh-heads/</loc>
@@ -144,6 +126,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.theoneclub.com.au/blog/cheap-doesnt-mean-bad-it-means-fair/</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.theoneclub.com.au/blog/cost-to-sell-a-house-gold-coast-2026/</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -163,6 +151,18 @@
   </url>
   <url>
     <loc>https://www.theoneclub.com.au/blog/why-1-percent-commission-doesnt-mean-less-service/</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.theoneclub.com.au/blog/why-we-dont-inflate-appraisals/</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.theoneclub.com.au/blog/gold-coast-portals-realestate-vs-domain/</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

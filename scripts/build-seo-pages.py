@@ -135,93 +135,254 @@ SUBURBS = [
 ]
 
 # --------------------------------------------------------------------------
-# Blog posts. Content kept short and honest — meant as seed content the
-# user can expand later without changing structure.
+# Blog posts. Each post maps to one suburb photo for its hero; reuse
+# pool intentional to keep imagery consistent with the site's imagery.
 # --------------------------------------------------------------------------
 POSTS = [
     {
+        'slug':     'cheap-doesnt-mean-bad-it-means-fair',
+        'title':    "Cheap doesn't mean bad. It means fair.",
+        'excerpt':  "Why a 1% commission is the right price for real work — not a discount on the service, but a correction to a fee that was set before technology did half the job.",
+        'date':     '2026-04-08',
+        'read_min': 6,
+        'hero':     '/images/suburbs/palm-beach.jpg',
+        'body': [
+            ("The word 'cheap' does a lot of work in real estate", [
+                "Ask a traditional agent what they think of a 1% commission and the first word you tend to hear is <em>cheap</em>. It's a deliberate choice. In a market where most people sell a home once or twice in a lifetime, planting the idea that a lower fee must mean a lower-quality outcome is one of the most effective ways to protect a 2% to 3% baseline.",
+                "But cheap and fair are not the same thing. Cheap usually implies something has been taken out to get the price down. Fair means the price matches what the work actually costs to deliver well. Those are different arguments, and the difference matters to every seller on the Gold Coast.",
+            ]),
+            ("What the 2–3% commission was actually buying in 2002", [
+                "The fee structure most agencies still run on was normalised in an era of newspaper real-estate sections, glossy printed brochures, shopfront window displays, and a fax machine. Every listing came with real, manual cost: typesetting, offset print runs, couriers, walk-in enquiries that needed to be handed a stapled booklet.",
+                "On top of that, the agent themselves was your main source of market information. Comparable sales data wasn't on your phone. You had no independent way to check whether the price was realistic. So the agent's time, knowledge and relationships were genuinely rare resources, and the price reflected that.",
+                "A lot of that world is gone, and the rest of it has changed beyond recognition. What hasn't changed — across most agencies — is the headline fee.",
+            ]),
+            ("What it's actually buying in 2026", [
+                "Today the buyer journey lives on realestate.com.au and Domain. Listings are built once, syndicated automatically, and maintained from a browser tab. Photography, floor plans and 3D walkthroughs are produced by specialists who shoot hundreds of properties a year at a known, predictable unit cost. Enquiries route to a phone that lives in your pocket and return email alerts push pre-qualified buyers to you without a mail-merge.",
+                "The genuinely scarce resources — the things you <em>should</em> be paying well for — are narrower than they used to be. They are: a licensed agent who can price your property realistically using recent comparable sales, who will be honest when the offer on the table is the right one, and who will manage the contract through to settlement without you having to chase them. That is skilled, accountable work, and it deserves a real fee.",
+                "What doesn't deserve a fee any more is the shopfront on the main road, the franchise percentage skimmed off the top, the middle-manager who never meets a buyer, and the marketing budget that pays for the agency's next listing pitch instead of yours.",
+            ]),
+            ("Fair pricing, run the math", [
+                "A $1.5M Gold Coast home at 2.5% commission plus a conservative $8,000 marketing bill is $45,500 out of the seller's pocket. At 1% plus the same marketing it's $23,000. The difference — $22,500 — is enough to pay for a full year of private-school fees, or to clear 15% of a typical first-home deposit for the sellers' adult children.",
+                "The agency doing the 2.5% version isn't doing twice the work. They're often outsourcing to the same photographer, the same floor-plan draughtsperson, the same virtual-staging provider. The 2.5% is the price of the storefront, not the price of the result.",
+            ]),
+            ("What fair does not mean", [
+                "Fair doesn't mean stripping out the campaign. We include professional photography with AI enhancement, accurate floor plans, full syndication across the major portals, signage, and experienced negotiation as standard — the same things you'd expect from a premium agency, because those things are what actually move a house.",
+                "Fair also doesn't mean that every agent at 1% is the right choice. There are franchised discount models that pay their agents per-transaction and treat listings as volume. That's a race to the bottom on service and it will cost you on the sale price. Being cheap on the wrong thing is false economy. Being fair on the right thing is just discipline.",
+                "The test is simple: ask any agent you're interviewing what their campaign includes, how many comparable sales their proposed price is based on, how they'll keep you informed during the campaign, and what happens if the first four weeks don't produce the offer you want. If the answers are confident, specific and written down, you are probably talking to someone fair. The number on the invoice is secondary.",
+            ]),
+        ],
+    },
+    {
         'slug':     'cost-to-sell-a-house-gold-coast-2026',
         'title':    "How much does it cost to sell a house on the Gold Coast in 2026?",
-        'excerpt':  "A breakdown of commission, marketing, conveyancing and other costs — and why the headline agent fee usually isn't the biggest line item.",
+        'excerpt':  "A full breakdown of commission, marketing, conveyancing and the line items most sellers forget — and why the agent's fee is rarely the biggest number on the page.",
         'date':     '2026-02-14',
-        'read_min': 6,
+        'read_min': 8,
+        'hero':     '/images/suburbs/surfers-paradise.jpg',
         'body': [
-            ("What you actually pay to sell", [
-                "Traditional Gold Coast agents typically charge between 2% and 3% commission on the sale price, on top of a separate marketing bill that can run from $4,000 to $15,000 depending on your suburb and chosen portal tier.",
-                "On a $1,200,000 home, that's $24,000–$36,000 in commission <em>plus</em> roughly $6,000–$10,000 in marketing costs — so $30,000 to $46,000 before you've paid conveyancing, styling, or moving.",
+            ("Start with the numbers that actually leave your account", [
+                "Selling a home on the Gold Coast in 2026 is, at minimum, a five-figure exercise, and for homes above $1.5M it almost always sits in the low six figures once every bill is on the table. The reason it surprises people is that the individual costs arrive at different times — some before the campaign even starts, some only at settlement — so there isn't one moment where you see the total lined up in a single row.",
+                "This guide lines them up. Conservative range, realistic range, and the levers that actually move the number up or down.",
             ]),
-            ("The other costs most sellers forget", [
-                "Conveyancing: $1,200–$2,500 depending on complexity.",
-                "Styling and minor repairs: $2,000–$8,000 if you want to present at the top end of your price bracket.",
-                "Auction fees (if you go that route): usually $500–$1,500 for the auctioneer on the day.",
-                "Mortgage discharge and bank fees: $350–$600.",
+            ("Agent commission", [
+                "Traditional Gold Coast agents sit between 2% and 3% commission. On a $1,000,000 sale that's $20,000 to $30,000; on a $2,000,000 sale it's $40,000 to $60,000. The higher rates are more common in boutique and luxury agencies; the lower rates are more common in franchise models that pay agents per-listing.",
+                "Commission is almost always paid at settlement, not up-front, and it's usually deducted from the sale proceeds by your conveyancer. That is useful for cashflow, but it also means the number doesn't feel real until after the deal is done — which is part of why sellers under-price it in their planning.",
+                "The One Club's fee is 1%. On the same $1,000,000 home, that's $10,000; on the $2,000,000 home, $20,000. Same campaign, half to a third of the commission.",
             ]),
-            ("Where The One Club comes in", [
-                "We charge 1% commission — and that 1% already includes professional photography, floor plans, full digital marketing, and experienced negotiation. The only additional costs are your REA + Domain portal listing level, and an optional Matterport 3D walkthrough if you want one.",
-                "On that same $1,200,000 home: our commission is $12,000. Add say $2,500 in portal costs and you're at $14,500 — a saving of $15,500 to $31,500 over the traditional model, for the same premium campaign.",
+            ("Marketing package", [
+                "With most traditional agencies, marketing is billed <em>separately</em> from commission. A typical Gold Coast mid-tier campaign runs $4,000 to $8,000. Premium campaigns with auction, drone, Matterport and stronger portal placement run $8,000 to $15,000. Luxury campaigns with dedicated landing pages, print, and out-of-home media run $15,000 to $35,000.",
+                "Most of that money is spent in the first two weeks of the campaign, so if the property sits, you're still paying for a second round of portal upgrades whether the first one worked or not.",
+                "With The One Club, photography, floor plans, digital remarketing and the full campaign itself sit inside the 1% commission. The only separate marketing line is your chosen realestate.com.au and Domain listing tier — which you decide based on price bracket and visibility — plus an optional Matterport walkthrough if you want one.",
+            ]),
+            ("Conveyancing", [
+                "A Queensland conveyancer or solicitor typically charges between $1,000 and $2,500 for a standard residential sale, with complexity (off-the-plan, body corporate, split titles, duplex arrangements) pushing it higher. For a luxury or off-market deal, expect the upper end and potentially more if there are trust or company structures involved.",
+                "Conveyancing is worth paying for properly. Mistakes in contracts at settlement cost far more than the saving from using the cheapest option.",
+            ]),
+            ("Mortgage discharge, bank fees, adjustments", [
+                "Most lenders charge a mortgage discharge fee of around $350 to $600, plus any unregistered penalty interest or break costs if you're on a fixed loan. If you'd prepaid council rates, water, or strata — those are adjusted at settlement in your favour or against you.",
+                "Title registration fees and transfer fees for <em>the sale side</em> are usually minimal ($200 to $500 range), but confirm with your conveyancer.",
+            ]),
+            ("Preparation: styling, repairs, clean", [
+                "This is the line that varies most, and the line that pays back most reliably when you spend on the right things. Budget conservatively $2,000 to $5,000 for a good deep clean, minor repairs, a touch-up paint job in the highest-traffic rooms, and a few strategically placed styling pieces. Full virtual or physical staging for a premium property can add $3,000 to $12,000 and routinely returns multiples of that back.",
+                "What rarely pays back: full kitchen or bathroom renovations undertaken in the last six weeks before listing. Photography and staging will do more, faster, for a fraction of the money.",
+            ]),
+            ("A realistic worked example", [
+                "Consider a $1,500,000 Palm Beach home going to market in autumn 2026. Traditional path: 2.5% commission ($37,500) + $8,000 marketing + $1,800 conveyancing + $500 discharge + $3,500 prep = <strong>$51,300</strong>.",
+                "The One Club path: 1% commission ($15,000) including campaign + $2,200 portal tier + $400 optional Matterport + $1,800 conveyancing + $500 discharge + $3,500 prep = <strong>$23,400</strong>.",
+                "Same campaign quality, same negotiation at the finish. A saving of roughly $27,900 — enough to cover one full year of the average Gold Coast private school, or to meaningfully accelerate the deposit on the next property.",
             ]),
         ],
     },
     {
         'slug':     'best-suburbs-to-buy-gold-coast-2026',
-        'title':    "Best suburbs to buy in Gold Coast 2026",
-        'excerpt':  "Where buyers are actually moving this year, broken down by lifestyle, value, and growth potential.",
+        'title':    "Best suburbs to buy on the Gold Coast in 2026",
+        'excerpt':  "Where buyers are actually moving this year — broken down by lifestyle, value and growth potential, from the southern end up to the hinterland.",
         'date':     '2026-03-02',
-        'read_min': 7,
+        'read_min': 9,
+        'hero':     '/images/suburbs/burleigh-heads.jpg',
         'body': [
+            ("A quick 2026 market orientation", [
+                "The Gold Coast market has behaved like two separate cities for the last 18 months. The southern end — roughly Burleigh down to Coolangatta — has kept appreciating at a steady mid-single-digit clip, pulled by Sydney and Melbourne cash buyers chasing lifestyle. The central strip (Broadbeach through Surfers) has been flatter and more price-sensitive, reflecting higher apartment volume and tighter owner-occupier demand.",
+                "The north (Hope Island, Coomera, the canal estates) and the hinterland (Mudgeeraba, Tallai) have tracked somewhere between those two — strong where the stock is new and well-presented, soft where older product hasn't been repositioned.",
+                "What follows is a working guide by buyer type, not a ranked league table. The right suburb depends entirely on what you're actually trying to buy.",
+            ]),
             ("For lifestyle and long-term hold", [
-                "<strong>Palm Beach</strong> has quietly become one of the coast's fastest-appreciating suburbs. The cafe strip, walkable beach access, and new-build stock are pulling buyers that would have gone to Burleigh five years ago.",
-                "<strong>Mermaid Beach</strong> remains a stronghold for boutique houses with genuine beach frontage or a short walk to the sand. Low turnover keeps prices firm.",
+                "<strong>Palm Beach.</strong> The past decade's quiet out-performer. A walkable café strip, surfable beaches, and a genuine young-professional community have turned it into the suburb that buyers who <em>would</em> have bought Burleigh five years ago now gravitate towards. New-build product is strong; older brick walk-ups are being renovated aggressively. Expect to pay a premium for anything with direct beach access.",
+                "<strong>Mermaid Beach.</strong> Still the luxury stronghold of the coast. Hedges Avenue and the beachfront townhouse strip continue to draw cash buyers from interstate and overseas. Turnover is low, so when product does come up, the campaign and presentation matter more than almost anywhere else on the coast.",
+                "<strong>Burleigh Heads.</strong> The established benchmark. If you want the full Gold Coast lifestyle — world-class point break, beach precinct, boutique dining — and you're prepared to pay for it, Burleigh is the safe choice. The challenge in 2026 is finding product: very little comes up, and most of it sells within two weeks.",
             ]),
             ("For value on a family budget", [
-                "<strong>Robina</strong> and <strong>Varsity Lakes</strong> still offer central locations with strong schools under $1.3M for well-presented 4-bedroom homes.",
-                "<strong>Coomera</strong> and the northern growth corridor continue to reward buyers willing to be 15 minutes from the strip but close to new infrastructure.",
+                "<strong>Robina.</strong> The commuter-belt sweet spot. Strong schools (Somerset, Kings Christian), easy M1 access, and a genuine mix of 3- and 4-bedroom family homes under $1.3M. Robina is where buyers priced out of Palm Beach and Burleigh land when schools matter more than salt spray.",
+                "<strong>Varsity Lakes.</strong> Anchored by Bond University, Varsity has a disciplined pricing market because buyers and investors cross-shop aggressively. Lake-frontage townhouses hold value better than identical stock on a through street. Rental yield is typically stronger than the coast strip, which keeps investor interest healthy.",
+                "<strong>Coomera and the northern growth corridor.</strong> Newer stock, larger blocks, genuinely more value per square metre. The tradeoff is distance: you're 15 to 25 minutes from the strip, and the lifestyle pitch is different. A good pick for families who prioritise space and newer build over beach walks.",
             ]),
-            ("For the cash-buyer interstate market", [
-                "<strong>Hope Island</strong> and the northern waterways precincts continue to attract lock-and-leave retirees and second-home buyers from Sydney and Melbourne. Listings with strong 3D walkthroughs and drone coverage consistently outperform.",
+            ("For the interstate cash buyer", [
+                "<strong>Hope Island</strong> remains the go-to for lock-and-leave retirees and second-home buyers from Sydney and Melbourne. Golf course, canals, gated precincts, easy airport transfers. Listings with strong 3D walkthroughs and drone coverage consistently outperform — a disproportionate share of buyers never visit before contract.",
+                "<strong>Sanctuary Cove and Paradise Point.</strong> Similar profile to Hope Island, skewed slightly more towards luxury single-dwelling stock. Price bracket starts higher.",
+            ]),
+            ("For the southern-end sea-changer", [
+                "<strong>Currumbin.</strong> Creek, beach, and the Wildlife Sanctuary precinct. Pulls families priced out of Palm Beach who still want the southern-end lifestyle. Acreage pockets around Currumbin Valley are separately interesting to horse-and-hobby buyers.",
+                "<strong>Kirra.</strong> Iconic surf break, tightly held beachfront apartment strip. Low turnover means presentation decides the sale more than anywhere else in the south. Buyers are overwhelmingly interstate.",
+                "<strong>Coolangatta.</strong> The value pick at the very southern tip. Airport-side apartments, views across to Rainbow Bay, and a growing owner-occupier base that had previously been dominated by holiday rentals.",
+            ]),
+            ("What most buyer-ranking lists get wrong", [
+                "Headline median prices are the most misleading data point in the market. A $2.4M Mermaid Beach median is dragged up by a handful of trophy beachfront sales and doesn't reflect what a family-sized 4-bedroom home actually transacts at. Similarly, Robina's apparent discount versus Burleigh looks stark on paper but narrows considerably once you're comparing like-for-like blocks.",
+                "The right way to use this guide is to identify the two or three suburbs where the <em>lifestyle</em> matches you first, and then look at comparable sales within a 500m radius of specific blocks you'd actually live on. That is how buyers who don't overpay do it — and how agents who aren't chasing listings price their own vendor clients.",
             ]),
         ],
     },
     {
         'slug':     'how-to-prepare-your-home-for-sale',
-        'title':    "How to prepare your home for sale on the Gold Coast",
-        'excerpt':  "A pragmatic 2-week checklist: what's worth spending on, and what buyers genuinely don't care about.",
+        'title':    "How to prepare your Gold Coast home for sale",
+        'excerpt':  "A pragmatic two-week checklist for Gold Coast sellers: where presentation money pays back, and where it almost never does.",
         'date':     '2026-03-18',
-        'read_min': 5,
+        'read_min': 7,
+        'hero':     '/images/suburbs/mermaid-beach.jpg',
         'body': [
-            ("Two weeks out", [
-                "Declutter surfaces first — benches, mantels, bedside tables. Cleanliness reads as care; clutter reads as compromise.",
-                "Fix the five things: dripping taps, squeaky doors, broken light fittings, chipped tiles, peeling paint on high-traffic corners.",
-                "Book a professional clean for the day before photography.",
+            ("Start with the two-week rule", [
+                "Give yourself at minimum two clear weeks between listing decision and photography day. Not because that's how long the work takes — most of it can be done in three or four days — but because compressed timelines force mistakes: you skip the parts that move needles and keep the parts that don't, because those were the ones you already knew how to do.",
+                "The goal of preparation isn't to renovate. It's to remove every frictional reason a buyer has to say no to your home on the portal in the three seconds they spend looking at the main photo.",
             ]),
-            ("Photography week", [
-                "Open every blind and curtain. Turn on every light. Soft, abundant light is worth more than a renovation.",
-                "Style the primary bedroom and the living room to feel hotel-calm — less is more. Remove personal photos.",
-                "Clear the driveway; park cars a street away during the shoot and open-home hours.",
+            ("Week one: the triage", [
+                "Walk the whole house with a notebook, outside first. Write down every thing that, if a buyer were to notice it, would subtract a percentage point of confidence from their interest. Peeling paint on the front door. Chipped tile by the entry. A dead plant in the front yard. A garage door that doesn't sit flush.",
+                "Fix them. Most cost under $100 and take an afternoon. The ones that don't — major landscape work, driveway cracking, window frames with rot — are worth getting two quotes on before you decide whether to repair, disclose, or absorb the discount.",
+                "Now do the inside. Dripping taps, squeaky doors, broken light fittings, chipped tiles, dead bulbs, drawers that don't close. Any single one of these noticed in an open home turns your property from 'move-in ready' to 'needs work' in the buyer's head — and it is very hard to unwind that.",
             ]),
-            ("Where not to overspend", [
-                "Full kitchen renovations almost never recoup their cost at sale. Instead: replace the cabinet handles, paint the walls, and let the photography do the work.",
-                "Expensive landscaping pays off at the <em>curb</em>, not the backyard. Focus on the first 10 metres a buyer sees.",
+            ("Week two: the edit, not the renovation", [
+                "Clutter is the single biggest photographable cost most sellers pay. Benches, mantels, bedside tables, bathroom shelves — clear them. A coffee maker and a fruit bowl is a kitchen. A coffee maker, fruit bowl, toaster, four loose cords, and a stack of unopened mail is a life, and buyers cannot see past it to the property underneath.",
+                "Take down personal photography, religious imagery, sporting memorabilia. Leave art and plants. The goal is to let the buyer imagine their own life here, not to showcase yours.",
+                "Book a professional deep-clean for the day before photography. Pay for windows inside <em>and</em> out. The photography day itself should cost you nothing except turning lights on.",
+            ]),
+            ("Photography day", [
+                "Open every blind and every curtain. Turn on every light, including under-bench kitchen LEDs and range hoods with a warm bulb. Natural light is better than any expensive light kit, but it needs to be let in.",
+                "Park cars off the property a street away, and make sure the neighbours know the photographer will be there. A boat trailer in frame is a subtraction.",
+                "Style the main bedroom and one living space to a very high standard — matching linen, folded throws, one good piece of art, a single styled tray on the bedside. The photographer will move from there. Resist over-styling every room. Two beautifully composed shots are worth six average ones.",
+            ]),
+            ("Where the money pays back — and where it does not", [
+                "Pays back consistently: deep clean, touch-up paint in high-traffic areas, styling of the main bedroom and living room, landscaping of the street-facing yard (the first 10 metres a buyer sees), replaced cabinet handles, replaced door hardware.",
+                "Pays back inconsistently: partial room renovations, new carpet (buyers usually want to pick their own), solar panels added immediately before sale.",
+                "Rarely pays back in a six-week campaign: full kitchen renovation, full bathroom renovation, extensions, pool resurfacing, fresh landscaping in the back yard that buyers won't see until after contract.",
+                "If you are tempted by a big renovation, the test is simple: would you do this if you were staying for another five years? If yes, you're doing it for you, not for resale, and the economics of that are completely different. Most sellers regret the ones they did and very few regret the ones they didn't.",
             ]),
         ],
     },
     {
         'slug':     'why-1-percent-commission-doesnt-mean-less-service',
         'title':    "Why 1% commission doesn't mean less service",
-        'excerpt':  "The traditional 2–3% agency model was built for a different era. Here's how lower overheads and better tools actually improve the seller experience.",
+        'excerpt':  "The traditional 2–3% agency model was built for a different era. Here's how lower overheads, better tools and a tighter team actually improve the seller experience — not degrade it.",
         'date':     '2026-04-01',
-        'read_min': 4,
+        'read_min': 6,
+        'hero':     '/images/suburbs/broadbeach.jpg',
         'body': [
-            ("The fee was set when marketing was manual", [
-                "Agency commissions of 2–3% were normalised in a world of newspaper ads, printed brochures, and shopfront window displays. Every listing meant real, manual cost.",
-                "Today the campaign lives on realestate.com.au, Domain, and a targeted digital buy. The photography and floor plans can be produced to premium standard at predictable unit cost.",
+            ("The argument being made against 1%", [
+                "The most common criticism of a 1% commission, made politely at dinner parties and less politely on listing pitches, is that you cannot possibly get the same quality of campaign, the same experience of agent, or the same negotiation outcome at a third of the fee. The implication is that a traditional 2–3% commission is what quality costs, and any fee below that is a signal that quality has been removed to chase a headline.",
+                "It's a neat argument. It is also mostly wrong — but the reasons why are worth unpacking, because they point to why the old fee structure persisted so long after the market it was designed for stopped existing.",
             ]),
-            ("Where our 1% goes", [
-                "Professional photography, AI enhancement, floor plans, and an optional 3D walkthrough — all produced by people who do this every week, not outsourced to the cheapest option.",
-                "A real agent running the campaign: inspections, enquiries, buyer qualification, negotiation, contract management through to settlement. Nothing outsourced to a call centre.",
+            ("What the 2–3% fee was actually paying for in 1995", [
+                "In the late 1990s, listing a Gold Coast home meant paying for: a half-page full-colour spot in the Saturday edition of the Gold Coast Bulletin, a run of glossy printed brochures, a shopfront window display, a photocopied briefing pack couriered to every competing agent in the network, and an auctioneer's time for a Saturday on-site call-up. Each of those was a real, hard, per-listing cost.",
+                "The agent themselves was also the gatekeeper of information. There were no public comparable sales databases, no portal browsing history, no buyer remarketing. Their time, their relationships, and their access to the under-the-radar buyer pool were genuinely rare resources.",
+                "A 2.5% commission in that world was probably about right. It priced in hard printing costs, genuine information asymmetry, and a much larger relationship-driven business model.",
             ]),
-            ("What we removed", [
-                "Shopfront overhead, multiple layers of franchise margin, and the pressure to inflate appraisals to win listings. Those costs were never in the seller's interest.",
+            ("What changed, in order", [
+                "First, the portals. realestate.com.au and Domain moved the buyer journey online, and over fifteen years turned what had been expensive print marketing into a syndicated feed that takes an agent ten minutes to publish. Print advertising became optional and, for most price brackets, measurably less effective than its digital equivalent.",
+                "Second, photography and presentation as a specialist trade. Independent photographers, floor-plan draughts, virtual staging and 3D walkthrough services priced those parts of the campaign as predictable units of work. A premium photography + floor plan + drone package that agencies used to budget at $3,000 can now be delivered for a fraction of that — and at higher quality, because the specialists shoot hundreds of homes a year.",
+                "Third, data. Recent comparable sales are a few clicks away. Buyers arrive at inspections knowing what the last three similar sales were, sometimes better than the junior agent who is showing them through. The information asymmetry that supported a big fee is gone.",
+                "Fourth, software. CRMs that used to belong to the biggest franchises now come monthly and per-agent. Enquiry qualification, buyer remarketing, contract management all sit inside tools a single licensed agent can run from a laptop in Palm Beach.",
+            ]),
+            ("Where our 1% actually goes", [
+                "Professional photography, AI enhancement of those photographs for portal performance, accurate floor plans, optional 3D Matterport walkthroughs, a syndicated listing across the major portals at whatever tier you choose, a targeted digital remarketing campaign for buyers who've viewed comparable homes, signage, and a full four- to six-week campaign of buyer enquiry handling, open homes, inspections, negotiation and contract management through to settlement.",
+                "Nothing is outsourced to a call centre. Nothing is handed to an intern. The agent you meet at the appraisal is the agent running the campaign, taking the offers, and sitting across the table negotiating the final price.",
+            ]),
+            ("What we removed, and why that improves service rather than degrading it", [
+                "Shopfront overhead. The second and third tier of franchise margin. Per-listing ad spend that was designed to win the <em>next</em> listing more than to sell yours. The institutional pressure to talk a vendor into a price 5–10% above realistic so the agency can \"win\" the listing, then spend the following four weeks walking you back down to the number you should have launched at.",
+                "None of those things were serving you. They were serving the agency's business model. Removing them doesn't subtract from the campaign — it subtracts from what the <em>agency</em> was getting out of it, which is a very different sentence.",
+                "A smaller business, with less overhead, with a single licensed agent accountable for your campaign end to end, can spend more time on your property and less time chasing the next one. That is how a 1% model improves service, not degrades it.",
+            ]),
+        ],
+    },
+    {
+        'slug':     'why-we-dont-inflate-appraisals',
+        'title':    "Why we don't inflate appraisals to win listings",
+        'excerpt':  "The most common trick in the Australian real estate playbook — and the single biggest reason honest sellers end up selling for less than they should.",
+        'date':     '2026-04-15',
+        'read_min': 5,
+        'hero':     '/images/suburbs/hope-island.jpg',
+        'body': [
+            ("The pitch", [
+                "Three agents appraise your home. Two of them quote a range of $1.3M to $1.4M. The third one confidently quotes $1.55M. You pick the third.",
+                "Four weeks into the campaign, with two open homes done and no written offers, the third agent suggests a price adjustment. \"The market's not where we hoped. We should reset at $1.42M.\" Six weeks in you've dropped again. Eight weeks in you're at $1.35M, your listing has \"new price\" badges on the portals, and every buyer who looks at it assumes it has a problem.",
+                "You sell at $1.32M, with a stale listing.",
+            ]),
+            ("What happened", [
+                "The third agent never actually thought your property was worth $1.55M. The purpose of that number was to win the listing. Once your contract is signed and the property is on the market, the agent's incentive flips — every day on market costs them money, so they need to bring you down to the realistic price they knew all along.",
+                "This isn't a rare event. In most major Australian markets, surveys put the rate of significant over-quoting of vendors in the 30-50% range. The Gold Coast is no exception. If three agents appraise a property, at least one of them is quoting high to win.",
+            ]),
+            ("Why it costs you more than just the difference", [
+                "Over-quoted listings sell for <em>less</em> than honestly-priced ones, not the same. Three reasons.",
+                "<strong>Launch momentum is everything.</strong> The first 10 days on a portal produce the largest buyer audience any listing ever gets. If the asking price filters you out of the searches that real buyers are running, you burn that audience on nobody. By the time the price has been dropped twice, the most active buyers have already seen and dismissed the listing.",
+                "<strong>Multiple price reductions signal weakness.</strong> Buyers are extremely good at reading \"new price\" badges and days-on-market counters. A listing that's been on for 75 days with three reductions will attract only bargain hunters.",
+                "<strong>The psychological anchor moves the wrong way.</strong> A vendor who started at $1.55M and has been walked down to $1.35M will often accept an offer at $1.32M — because the distance from $1.35M to $1.32M feels smaller than the distance from $1.4M (the real number) to $1.32M would have felt from day one.",
+            ]),
+            ("How we appraise", [
+                "We give you a range backed by three to six genuinely comparable recent sales — same suburb, similar size, similar condition, sold in the last 90 days. Not auction clearance rates from two years ago, not \"my gut feeling\", not what the agency needs the number to be.",
+                "If you tell us you want a higher number than the comparables support, we will tell you so — and we'll tell you what the statistical likelihood of getting that number looks like based on the recent data. If you want to price optimistically with eyes open, that's your call. But the number isn't a winning-the-pitch fabrication, and you'll always know which part is realistic and which part is reach.",
+            ]),
+            ("What to ask any agent you're interviewing", [
+                "Ask for their three comparable sales in writing. Ask when each of them sold and what condition it was in. Ask what the median days-on-market is for properties in your bracket in your suburb in the last 90 days. Ask what price reduction strategy they'd recommend if the first two opens don't produce serious enquiry.",
+                "If you can't get specific, written answers to those four questions, you're being pitched a number rather than offered an appraisal. That's a warning, and it has nothing to do with what commission the agent charges.",
+            ]),
+        ],
+    },
+    {
+        'slug':     'gold-coast-portals-realestate-vs-domain',
+        'title':    "What Gold Coast sellers get wrong about listing portals",
+        'excerpt':  "realestate.com.au, Domain and Homely sit at the top of most campaign budgets — here's how their pricing tiers actually work, which ones matter on the Gold Coast, and where the money is usually wasted.",
+        'date':     '2026-04-22',
+        'read_min': 7,
+        'hero':     '/images/suburbs/coolangatta.jpg',
+        'body': [
+            ("The portal tier system, plainly", [
+                "Every major Australian real-estate portal operates a tiered listing model. Your property can be shown as a standard listing (cheapest, least visible), or upgraded up to a \"premiere\" or \"gold\"-level placement that gets photo carousels, larger tiles in search results, priority placement at the top of the search page, and boosted email alerts to active buyers in your price bracket.",
+                "For a Gold Coast home in 2026, a mid-tier realestate.com.au upgrade is typically $900 to $1,400 depending on suburb. A top-tier placement is $2,500 to $3,500. Domain runs comparably. Multi-portal upgrades at premium tier can run your campaign's portal line alone to $4,500 to $6,500.",
+            ]),
+            ("Why the portal is usually the highest-leverage spend", [
+                "Roughly 75% of buyers will see your property first on a portal. The portal is the equivalent of the shop-front window, the Saturday ad, and the agency sign all fused into one — except the decision a buyer makes to click through your listing in their three-second scan is informed almost entirely by the thumbnail, the headline number, and the property's position in the search result page.",
+                "Position is bought. A premiere-tier listing from a private vendor sits above a standard-tier listing from a franchise agency. That's how the economics of the portal works.",
+                "For most Gold Coast brackets — $800K to $2.5M — the incremental spend from mid-tier to top-tier is one of the highest-return line items in the whole campaign. It's the difference between being seen by the buyer who will pay your asking price and being skipped.",
+            ]),
+            ("When it's wasted money", [
+                "Very low price bracket (under $650K). At this level the buyer audience on the portals is broad and price-sensitive. Position matters less; presentation and price matter more. Save the upgrade budget for styling.",
+                "Ultra-premium ($4M+). At this level buyer discovery often happens off-portal — through specific agents, interstate buyer's agents, or private buyer lists. The portal is still used, but the incremental return from premiere placement drops sharply.",
+                "Short-campaign or off-market strategies. If you're testing a price for two weeks before a formal launch, the portal upgrade won't have time to amortise. Soft-launch first, upgrade at full launch.",
+            ]),
+            ("How to read a portal upgrade quote from an agency", [
+                "The most common portal-spend problem is not that the tier was wrong — it's that the agency chose the tier that suits <em>their</em> business model (premium = higher commission on the listing pitch) rather than the one that suits the property.",
+                "Ask every agent you interview to show you, in writing, the specific package they're recommending (realestate.com.au tier, Domain tier, Homely inclusion, social boost), the cost of each line, and the reason they chose that tier for your property specifically based on recent comparable listings in your bracket.",
+                "If the reply is \"we always run premiere on everything above $1M\", you are being sold the agency's default, not a campaign.",
+            ]),
+            ("How we handle portals", [
+                "Portal spend is the only significant \"extra\" cost outside our 1% commission. We explain the tiers, show you what comparable listings in your bracket are running at, and recommend the tier that maximises your visibility for your bracket. You choose.",
+                "If mid-tier is right, we say mid-tier. If premiere is justified, we say premiere and show you why. What we will not do is talk you into a premiere tier for a $750K apartment because the commission math makes it easier on our end.",
             ]),
         ],
     },
@@ -372,32 +533,34 @@ def build_suburb(s):
 # Blog listing page
 # --------------------------------------------------------------------------
 def blog_card(post):
+    hero = post.get('hero', '/images/suburbs/burleigh-heads.jpg')
     return f"""
-    <a class="listing-card" href="/blog/{post['slug']}/" style="display:flex;flex-direction:column;gap:14px;padding:28px;border:1px solid rgba(var(--fg-rgb),.08);border-radius:18px;background:rgba(var(--fg-rgb),.02);text-decoration:none;color:inherit;transition:all .3s var(--ease)">
-      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">{post['date']} · {post['read_min']} min read</div>
-      <div style="font-size:22px;font-weight:500;letter-spacing:-.5px;line-height:1.25;color:var(--fg)">{post['title']}</div>
-      <div style="font-size:14px;color:var(--muted);line-height:1.6">{post['excerpt']}</div>
-      <div style="margin-top:6px;font-size:13px;font-weight:600;color:var(--gold);letter-spacing:.3px">Read article →</div>
+    <a class="guide-card" href="/blog/{post['slug']}/">
+      <div class="guide-card-img" style="background-image:url('{hero}');background-size:cover;background-position:center"></div>
+      <div class="guide-card-body">
+        <div class="guide-card-kicker">{post['date']} · {post['read_min']} min read</div>
+        <div class="guide-card-title">{post['title']}</div>
+        <div class="guide-card-meta">{post['excerpt']}</div>
+      </div>
     </a>"""
 
 def build_blog_index():
     cards = ''.join(blog_card(p) for p in POSTS)
     canonical = f"{SITE_URL}/blog/"
-    title = "Gold Coast Real Estate Blog | The One Club"
-    descr = "Practical guides on selling your Gold Coast home, suburb buying guides and cost breakdowns — written by The One Club."
+    title = "Gold Coast Real Estate Guides | The One Club"
+    descr = "Long-form guides on selling your Gold Coast home, commission, cost, presentation, auction vs private treaty, and where the 2026 market is actually moving."
     jsonld = f"""<script type="application/ld+json">
-{{"@context":"https://schema.org","@type":"Blog","name":"The One Club Blog","url":"{canonical}","publisher":{{"@id":"{SITE_URL}/#business"}}}}
+{{"@context":"https://schema.org","@type":"Blog","name":"The One Club Journal","url":"{canonical}","publisher":{{"@id":"{SITE_URL}/#business"}}}}
 </script>"""
     content = f"""<div class="page active">
-<section class="page-hero" style="padding-bottom:60px">
+<section class="sec" style="padding-top:140px;padding-bottom:40px">
   <div class="page-label" data-reveal>The One Club Journal</div>
-  <h1 class="display" data-reveal style="margin-top:16px;font-size:clamp(48px,6vw,86px);letter-spacing:-2px">Gold Coast<br/><em>real estate, written plainly.</em></h1>
-  <div class="gold-rule" data-reveal></div>
-  <p class="body" data-reveal style="max-width:580px;font-size:16px">Straightforward guides on commission, cost, presentation and where the Gold Coast market is actually moving in 2026.</p>
+  <h1 class="serif" data-reveal style="margin-top:16px;font-size:clamp(48px,6.5vw,100px);letter-spacing:-2.5px;line-height:1;font-weight:300">Gold Coast property,<br/><em>written plainly.</em></h1>
+  <p class="body" data-reveal style="max-width:620px;font-size:17px;margin-top:24px">Long-form guides on what selling actually costs, how to price a home so buyers respond, how agencies structure fees, and where the 2026 market is moving — written to be useful whether you sell with us or not.</p>
 </section>
 
-<section style="padding:0 24px 120px;max-width:1100px;margin:0 auto">
-  <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">{cards}
+<section class="sec" style="padding-top:20px;padding-bottom:120px">
+  <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px">{cards}
   </div>
 </section>
 </div>
@@ -422,42 +585,56 @@ def build_blog_post(post):
 
     body_sections = ''
     for heading, paragraphs in post['body']:
-        paras_html = ''.join(
-            f'<li style="margin-bottom:10px;line-height:1.65">{p}</li>' if p.startswith('<strong>') or '•' in p or len(p) < 140 else ''
-            for p in paragraphs
+        # Render as <ul> only if ALL paragraphs are short + strong-led bullets.
+        looks_listy = (
+            len(paragraphs) > 2
+            and all(len(p) < 260 and p.startswith('<strong>') for p in paragraphs)
         )
-        # Decide between <ul> and <p> based on whether all paragraphs look list-shaped
-        looks_listy = all(len(p) < 220 and (p.startswith('<strong>') or p.endswith('.')) for p in paragraphs) and len(paragraphs) > 1 and paragraphs[0].count('.') <= 2
-        if looks_listy and any(p.startswith('<strong>') for p in paragraphs):
-            items = ''.join(f'<li style="margin-bottom:10px;line-height:1.65">{p}</li>' for p in paragraphs)
-            body_sections += f"""
-    <h2 style="font-size:clamp(22px,3vw,30px);font-weight:500;letter-spacing:-.5px;margin-top:48px;margin-bottom:18px">{heading}</h2>
-    <ul style="padding-left:22px;color:rgba(var(--fg-rgb),.82);font-size:16px">{items}</ul>"""
+        if looks_listy:
+            items = ''.join(f'<li>{p}</li>' for p in paragraphs)
+            body_sections += f'<h2>{heading}</h2><ul>{items}</ul>'
         else:
-            ps = ''.join(f'<p style="margin-bottom:16px;line-height:1.75;color:rgba(var(--fg-rgb),.82);font-size:16px">{p}</p>' for p in paragraphs)
-            body_sections += f"""
-    <h2 style="font-size:clamp(22px,3vw,30px);font-weight:500;letter-spacing:-.5px;margin-top:48px;margin-bottom:18px">{heading}</h2>
-    {ps}"""
+            ps = ''.join(f'<p>{p}</p>' for p in paragraphs)
+            body_sections += f'<h2>{heading}</h2>{ps}'
 
+    hero = post.get('hero','/images/suburbs/burleigh-heads.jpg')
     content = f"""<div class="page active">
-<article style="max-width:760px;margin:0 auto;padding:140px 24px 80px">
-  <nav aria-label="Breadcrumb" style="font-size:12px;color:var(--muted);margin-bottom:32px"><a href="/" style="color:inherit">Home</a> · <a href="/blog/" style="color:inherit">Blog</a> · <span style="color:var(--fg)">{post['date']}</span></nav>
-  <div class="page-label" style="color:var(--gold)" data-reveal>The One Club Journal · {post['read_min']} min read</div>
-  <h1 class="display" data-reveal style="margin-top:18px;font-size:clamp(36px,5vw,60px);letter-spacing:-1.2px;line-height:1.1">{post['title']}</h1>
-  <div class="gold-rule" data-reveal></div>
-  <div data-reveal style="font-size:13px;color:var(--muted)">By <strong style="color:var(--fg);font-weight:500">The One Club</strong> · Published {post['date']}</div>
-  <div style="margin-top:40px">{body_sections}</div>
+<section style="position:relative;width:100%;height:clamp(280px,46vh,520px);overflow:hidden;margin-top:0">
+  <div style="position:absolute;inset:0;background-image:url('{hero}');background-size:cover;background-position:center"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.45) 60%,rgba(0,0,0,.92) 100%)"></div>
+  <div style="position:absolute;inset:auto 0 0 0;padding:0 24px 48px;max-width:900px;margin:0 auto;color:#fff">
+    <nav aria-label="Breadcrumb" style="font-size:12px;color:rgba(255,255,255,.65);margin-bottom:18px"><a href="/" style="color:inherit">Home</a> · <a href="/blog/" style="color:inherit">Journal</a></nav>
+    <div class="page-label" style="color:var(--gold)">{post['date']} · {post['read_min']} min read</div>
+    <h1 class="serif" style="margin-top:12px;font-size:clamp(32px,5vw,58px);letter-spacing:-1.3px;line-height:1.08;font-weight:400;color:#fff">{post['title']}</h1>
+  </div>
+</section>
 
-  <aside style="margin-top:64px;padding:28px;border:1px solid rgba(196,168,74,.2);border-radius:16px;background:rgba(196,168,74,.04)">
-    <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Ready to sell?</div>
-    <div style="margin-top:10px;font-size:18px;line-height:1.5">Request a free appraisal. Clear price range, recommended strategy, full 1% fee breakdown — within 24 hours.</div>
-    <div style="margin-top:18px"><a class="btn btn-gold btn-lg" href="/#valuation">Get your free valuation</a></div>
+<article class="art">
+  <p style="font-size:19px;line-height:1.65;color:var(--fg);font-weight:400;margin-bottom:24px;font-family:'Fraunces',Georgia,serif;font-style:italic">{post['excerpt']}</p>
+  <div style="display:flex;align-items:center;gap:14px;padding:16px 0;border-top:1px solid var(--subtle);border-bottom:1px solid var(--subtle);margin-bottom:28px;font-size:13px;color:var(--muted)">
+    <span>By <strong style="color:var(--fg);font-weight:500">The One Club</strong></span>
+    <span style="opacity:.4">·</span>
+    <span>Published {post['date']}</span>
+  </div>
+  {body_sections}
+
+  <aside style="margin-top:64px;padding:32px;border:1px solid rgba(196,168,74,.25);border-radius:14px;background:rgba(196,168,74,.05)">
+    <div class="page-label">Ready to sell?</div>
+    <div class="serif" style="margin-top:12px;font-size:24px;line-height:1.3;letter-spacing:-.4px">Get a free appraisal for your Gold Coast home.</div>
+    <p style="margin-top:10px;font-size:15px;color:var(--muted);line-height:1.65">Realistic price range, recommended strategy, full 1% fee breakdown — within 24 hours.</p>
+    <div style="margin-top:20px"><a class="btn btn-gold btn-lg" href="/#valuation">Request a free valuation</a></div>
   </aside>
 </article>
 
-<section style="max-width:1100px;margin:60px auto;padding:0 24px 120px;border-top:1px solid var(--subtle);padding-top:60px">
-  <div class="page-label" data-reveal>More from the journal</div>
-  <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:24px">{related_cards}
+<section class="sec" style="padding-top:80px;padding-bottom:120px;border-top:1px solid var(--subtle)">
+  <div class="sec-head">
+    <div class="sec-head-l">
+      <div class="page-label">More from the journal</div>
+      <h2 class="serif">Keep reading.</h2>
+    </div>
+    <a class="more" href="/blog/">All guides →</a>
+  </div>
+  <div class="carousel" data-reveal>{related_cards}
   </div>
 </section>
 </div>
