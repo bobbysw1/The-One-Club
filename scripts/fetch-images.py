@@ -108,7 +108,7 @@ def score_title(t):
 # US/historical false positives.
 OVERRIDES = {
     'miami':      'File:Miami Beach, Gold Coast, Queensland seen from Mick Schamburg Park.jpg',
-    'palm-beach': 'File:Australian white ibis Palm Beach Gold Coast Queensland IMG 0090.jpg',
+    'palm-beach': 'File:2024-10-04 Palm Beach, Queensland 02.jpg',
 }
 
 attributions = []
