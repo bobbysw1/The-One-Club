@@ -394,8 +394,6 @@
    SPA NAVIGATION
 ═══════════════════════════════════════ */
 var currentPage = 'home';
-
-var currentPage = "about";
 var pageUrls = {'home':'/','for-sale':'/for-sale/','how-it-works':'/how-it-works/','about':'/about/','to-rent':'/rentals/'};
 function goTo(page, anchor) {
   if (page === currentPage) {
@@ -410,22 +408,6 @@ function goTo(page, anchor) {
   window.location.href = url;
 }
 function toggleMenu() { document.getElementById("mobileMenu").classList.toggle("open"); }
-
-    var target = document.getElementById('page-' + s.page);
-    if (target) { target.classList.add('active'); currentPage = s.page; }
-    document.querySelectorAll('.nav-links a[data-page]').forEach(function(a){
-      a.classList.toggle('active', a.dataset.page === s.page);
-    });
-    window.scrollTo(0, 0);
-    if (s.anchor) {
-      setTimeout(function(){
-        var el = document.getElementById(s.anchor);
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 100);
-    }
-    setTimeout(revealAll, 50);
-  }
-});
 
 /* ═══════════════════════════════════════
    SCROLL PROGRESS

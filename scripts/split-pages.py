@@ -223,10 +223,18 @@ def rewrite_goto_js(html, current_page):
         '}\n'
         'function toggleMenu() { document.getElementById("mobileMenu").classList.toggle("open"); }\n'
     )
+    # The legacy SPA router block runs from `var pageUrls = {...};` down
+    # through the end of the popstate listener. The popstate body contains
+    # nested `});` from inline forEach/setTimeout calls, so a non-greedy
+    # match closes too early and strands the remainder of the listener
+    # body — causing a JS syntax error at runtime. Anchor the trailing
+    # match on `}\);\n\n/\*` (the blank line + start of the next comment
+    # block) to force a greedy match through to the real end.
     html = re.sub(
         r'var pageUrls = \{[\s\S]*?\};\s*'
         r'// ── GitHub Pages SPA 404 redirect handler ──[\s\S]*?'
-        r'window\.addEventListener\(\'popstate\',[\s\S]*?\}\);',
+        r'window\.addEventListener\(\'popstate\',[\s\S]*?\}\);\n'
+        r'(?=\n/\*)',
         new_router,
         html, count=1,
     )
