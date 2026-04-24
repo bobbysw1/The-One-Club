@@ -232,6 +232,18 @@ def rewrite_goto_js(html, current_page):
     )
     return html
 
+_LOCAL_ASSETS = ['logo.png', 'style.css', 'exterior-before.png', 'exterior-after.png',
+                 'kitchen%20before%203.png', 'kitchen%20after.png',
+                 'image%20before.png', 'image%20after.png',
+                 'pool%20before.png', 'pool%20after.png']
+def absolutise_local_paths(html):
+    """Pages live at deeper routes than /, so relative src/href to repo-root
+    assets (logo.png, style.css, listing imagery) must start with a leading
+    slash."""
+    for name in _LOCAL_ASSETS:
+        html = re.sub(rf'(src|href)="{re.escape(name)}"', rf'\1="/{name}"', html)
+    return html
+
 def prune_compare_inits(html, page_key):
     """initCompare() is called for every slider across both home and HIW. On a
     single-page MPA file only that page's IDs exist, so drop the irrelevant
@@ -272,6 +284,7 @@ def assemble(page_key, meta):
     body = strip_spa_onclicks(body)
     body = rewrite_goto_js(body, current_page)
     body = prune_compare_inits(body, page_key)
+    body = absolutise_local_paths(body)
     return body
 
 # -- Write outputs -------------------------------------------------------------
