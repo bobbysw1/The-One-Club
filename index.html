@@ -259,6 +259,10 @@ nav{position:fixed;inset:0 0 auto;z-index:500;padding:0 48px;background:rgba(var
 .btn-gold{background:var(--gold);color:#000}
 .btn-gold:hover{background:#d4b857;transform:translateY(-1px);box-shadow:0 6px 24px rgba(196,168,74,.28)}
 .btn-lg{padding:13px 28px;font-size:14px;border-radius:9px}
+.btn-gold.btn-lg{padding:16px 36px;font-size:15px}
+.nav-phone{display:inline-flex;align-items:center;font-size:12px;font-weight:500;color:var(--muted);letter-spacing:.3px;text-decoration:none;padding:6px 2px;transition:color .2s var(--ease)}
+.nav-phone:hover{color:var(--fg)}
+@media(max-width:900px){.nav-phone{display:none}}
 .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:transparent}
 .ham span{width:22px;height:2px;background:rgba(var(--fg-rgb),.7);border-radius:2px;transition:all .3s}
 @media(max-width:900px){nav{padding:0 20px}.nav-links,.nav-cta{display:none}.ham{display:flex}}
@@ -574,7 +578,10 @@ footer{border-top:1px solid var(--subtle);padding:60px 48px 40px}
 .chat-qbtn:hover{background:rgba(196,168,74,.1);border-color:rgba(196,168,74,.25);color:var(--gold)}
 #chat-messages::-webkit-scrollbar{width:4px}
 #chat-messages::-webkit-scrollbar-thumb{background:rgba(var(--fg-rgb),.1);border-radius:2px}
-@media(max-width:440px){#chat-panel{width:calc(100vw - 24px) !important;right:12px !important;bottom:88px !important}}
+#chat-bubble{position:fixed;bottom:28px;right:28px;z-index:800;width:56px;height:56px;border-radius:50%;background:var(--gold);display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 24px rgba(196,168,74,.35);transition:all .25s var(--ease)}
+#chat-bubble:hover{transform:scale(1.08)}
+@media(max-width:768px){#chat-bubble{bottom:84px;right:16px}}
+@media(max-width:440px){#chat-panel{width:calc(100vw - 24px) !important;right:12px !important;bottom:148px !important}}
 
 /* ── REVEAL — blur-in ── */
 [data-reveal]{opacity:0;transform:translateY(32px);filter:blur(6px);transition:opacity .95s var(--ease),transform .95s var(--ease),filter .95s var(--ease)}
@@ -728,11 +735,10 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
       <li><a href="/for-sale/" onclick="goTo('for-sale');return false;" data-page="for-sale">For Sale</a></li>
       <li><a href="/how-it-works/" onclick="goTo('how-it-works');return false;" data-page="how-it-works">How It Works</a></li>
       <li><a href="/about/" onclick="goTo('about');return false;" data-page="about">About</a></li>
-      <li><a href="/rentals/" onclick="goTo('to-rent');return false;" data-page="to-rent" style="opacity:.45">Rentals — Coming Soon</a></li>
     </ul>
     <div class="nav-cta">
-      <button class="btn btn-outline" onclick="goTo('home','valuation')">Free Valuation</button>
-      <a href="tel:1800663258" class="btn btn-gold">Sell With Us</a>
+      <a href="tel:1800663258" class="nav-phone" aria-label="Call 1800 663 258">1800 663 258</a>
+      <a href="/#valuation" onclick="goTo('home','valuation');return false;" class="btn btn-gold">Get Free Valuation</a>
     </div>
     <div class="ham" id="ham" onclick="toggleMenu()">
       <span></span><span></span><span></span>
@@ -745,8 +751,8 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
   <a href="/for-sale/" onclick="goTo('for-sale');toggleMenu();return false;">For Sale</a>
   <a href="/how-it-works/" onclick="goTo('how-it-works');toggleMenu();return false;">How It Works</a>
   <a href="/about/" onclick="goTo('about');toggleMenu();return false;">About</a>
-  <a href="/rentals/" onclick="goTo('to-rent');toggleMenu();return false;" style="opacity:.45">Rentals — Coming Soon</a>
-  <a href="/#valuation" onclick="goTo('home','valuation');toggleMenu();return false;" style="color:var(--gold);border-color:rgba(196,168,74,.2)">Free Valuation →</a>
+  <a href="tel:1800663258" onclick="toggleMenu()" style="opacity:.7">Call 1800 663 258</a>
+  <a href="/#valuation" onclick="goTo('home','valuation');toggleMenu();return false;" style="color:var(--gold);border-color:rgba(196,168,74,.2)">Get Free Valuation →</a>
 </div>
 
 <!-- ════════════════════════════════════════
@@ -1018,7 +1024,7 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 <footer>
   <div class="footer-inner">
     <div class="footer-brand"><div class="logo" style="margin-bottom:16px" onclick="goTo('home')"><img src="logo.png" alt="The One Club — Gold Coast Real Estate" width="271" height="72" loading="lazy" decoding="async" style="height:72px;width:auto;display:block"/></div><p>A smarter way to sell on the Gold Coast — professional marketing, experienced guidance, and 1% commission plus marketing.</p><address itemscope itemtype="https://schema.org/RealEstateAgent" style="font-style:normal;margin-bottom:12px"><span itemprop="name" style="display:none">The One Club</span><span itemprop="addressLocality" style="font-size:12px;color:var(--muted)">Gold Coast, QLD, Australia</span><br/><a itemprop="telephone" href="tel:1800663258" style="font-size:12px;color:var(--muted)">1800 663 258</a></address><div style="display:flex;gap:14px;margin-bottom:16px"><a href="https://www.instagram.com/theoneclub" aria-label="Instagram" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Instagram</a><a href="https://www.facebook.com/theoneclub" aria-label="Facebook" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Facebook</a><a href="https://www.linkedin.com/company/theoneclub" aria-label="LinkedIn" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a></div><div class="lic">Licensed Real Estate Agent — QLD</div></div>
-    <div><div class="fh">Properties</div><ul class="flinks"><li><a href="/for-sale/" onclick="goTo('for-sale');return false;">For Sale</a></li><li><a href="/#valuation" onclick="goTo('home','valuation');return false;">Free Valuation</a></li><li><a href="/#savings" onclick="goTo('home','savings');return false;">Savings Calculator</a></li><li><a href="/rentals/" onclick="goTo('to-rent');return false;" style="opacity:.4">Rentals — Coming Soon</a></li></ul></div>
+    <div><div class="fh">Properties</div><ul class="flinks"><li><a href="/for-sale/" onclick="goTo('for-sale');return false;">For Sale</a></li><li><a href="/#valuation" onclick="goTo('home','valuation');return false;">Free Valuation</a></li><li><a href="/#savings" onclick="goTo('home','savings');return false;">Savings Calculator</a></li><li><a href="/rentals/" onclick="goTo('to-rent');return false;" style="opacity:.4">Rentals (Coming Soon)</a></li></ul></div>
     <div><div class="fh">Company</div><ul class="flinks"><li><a href="/about/" onclick="goTo('about');return false;">About Us</a></li><li><a href="/how-it-works/" onclick="goTo('how-it-works');return false;">How It Works</a></li><li><a href="/about/" onclick="goTo('about','sellers');return false;">For Sellers</a></li><li><a href="/admin/" style="opacity:.4;font-size:11px">Admin</a></li></ul></div>
     <div><div class="fh">Locations</div><ul class="flinks"><li><a>Gold Coast</a></li><li><a style="opacity:.5">Brisbane — Soon</a></li><li><a style="opacity:.5">Sydney — Soon</a></li><li><a style="opacity:.5">Melbourne — Soon</a></li></ul></div>
   </div>
@@ -1106,7 +1112,7 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 <footer>
   <div class="footer-inner">
     <div class="footer-brand"><div class="logo" style="margin-bottom:16px" onclick="goTo('home')"><img src="logo.png" alt="The One Club — Gold Coast Real Estate" width="271" height="72" loading="lazy" decoding="async" style="height:72px;width:auto;display:block"/></div><p>Gold Coast home sales with lower commission and premium marketing.</p><address itemscope itemtype="https://schema.org/RealEstateAgent" style="font-style:normal;margin-bottom:12px"><span itemprop="name" style="display:none">The One Club</span><span itemprop="addressLocality" style="font-size:12px;color:var(--muted)">Gold Coast, QLD, Australia</span><br/><a itemprop="telephone" href="tel:1800663258" style="font-size:12px;color:var(--muted)">1800 663 258</a></address><div style="display:flex;gap:14px;margin-bottom:16px"><a href="https://www.instagram.com/theoneclub" aria-label="Instagram" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Instagram</a><a href="https://www.facebook.com/theoneclub" aria-label="Facebook" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Facebook</a><a href="https://www.linkedin.com/company/theoneclub" aria-label="LinkedIn" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a></div><div class="lic">Licensed Real Estate Agent — QLD</div></div>
-    <div><div class="fh">Properties</div><ul class="flinks"><li><a href="/for-sale/" onclick="goTo('for-sale');return false;">For Sale</a></li><li><a href="/#valuation" onclick="goTo('home','valuation');return false;">Free Valuation</a></li><li><a href="/rentals/" onclick="goTo('to-rent');return false;" style="opacity:.4">Rentals — Coming Soon</a></li></ul></div>
+    <div><div class="fh">Properties</div><ul class="flinks"><li><a href="/for-sale/" onclick="goTo('for-sale');return false;">For Sale</a></li><li><a href="/#valuation" onclick="goTo('home','valuation');return false;">Free Valuation</a></li><li><a href="/rentals/" onclick="goTo('to-rent');return false;" style="opacity:.4">Rentals (Coming Soon)</a></li></ul></div>
     <div><div class="fh">Company</div><ul class="flinks"><li><a href="/about/" onclick="goTo('about');return false;">About Us</a></li><li><a href="/how-it-works/" onclick="goTo('how-it-works');return false;">How It Works</a></li><li><a href="/admin/" style="opacity:.4;font-size:11px">Admin</a></li></ul></div>
     <div><div class="fh">Locations</div><ul class="flinks"><li><a>Gold Coast</a></li><li><a style="opacity:.5">Brisbane — Soon</a></li><li><a style="opacity:.5">Sydney — Soon</a></li></ul></div>
   </div>
@@ -1230,7 +1236,7 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 <footer>
   <div class="footer-inner">
     <div class="footer-brand"><div class="logo" style="margin-bottom:16px" onclick="goTo('home')"><img src="logo.png" alt="The One Club — Gold Coast Real Estate" width="271" height="72" loading="lazy" decoding="async" style="height:72px;width:auto;display:block"/></div><p>A smarter way to sell on the Gold Coast — professional marketing, experienced guidance, and 1% commission plus marketing.</p><address itemscope itemtype="https://schema.org/RealEstateAgent" style="font-style:normal;margin-bottom:12px"><span itemprop="name" style="display:none">The One Club</span><span itemprop="addressLocality" style="font-size:12px;color:var(--muted)">Gold Coast, QLD, Australia</span><br/><a itemprop="telephone" href="tel:1800663258" style="font-size:12px;color:var(--muted)">1800 663 258</a></address><div style="display:flex;gap:14px;margin-bottom:16px"><a href="https://www.instagram.com/theoneclub" aria-label="Instagram" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Instagram</a><a href="https://www.facebook.com/theoneclub" aria-label="Facebook" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Facebook</a><a href="https://www.linkedin.com/company/theoneclub" aria-label="LinkedIn" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a></div><div class="lic">Licensed Real Estate Agent — QLD</div></div>
-    <div><div class="fh">Properties</div><ul class="flinks"><li><a href="/for-sale/" onclick="goTo('for-sale');return false;">For Sale</a></li><li><a href="/#valuation" onclick="goTo('home','valuation');return false;">Free Valuation</a></li><li><a href="/#savings" onclick="goTo('home','savings');return false;">Savings Calculator</a></li><li><a href="/rentals/" onclick="goTo('to-rent');return false;" style="opacity:.4">Rentals — Coming Soon</a></li></ul></div>
+    <div><div class="fh">Properties</div><ul class="flinks"><li><a href="/for-sale/" onclick="goTo('for-sale');return false;">For Sale</a></li><li><a href="/#valuation" onclick="goTo('home','valuation');return false;">Free Valuation</a></li><li><a href="/#savings" onclick="goTo('home','savings');return false;">Savings Calculator</a></li><li><a href="/rentals/" onclick="goTo('to-rent');return false;" style="opacity:.4">Rentals (Coming Soon)</a></li></ul></div>
     <div><div class="fh">Company</div><ul class="flinks"><li><a href="/about/" onclick="goTo('about');return false;">About Us</a></li><li><a href="/how-it-works/" onclick="goTo('how-it-works');return false;">How It Works</a></li><li><a href="/about/" onclick="goTo('about','sellers');return false;">For Sellers</a></li><li><a href="/admin/" style="opacity:.4;font-size:11px">Admin</a></li></ul></div>
     <div><div class="fh">Locations</div><ul class="flinks"><li><a>Gold Coast</a></li><li><a style="opacity:.5">Brisbane — Soon</a></li><li><a style="opacity:.5">Sydney — Soon</a></li><li><a style="opacity:.5">Melbourne — Soon</a></li></ul></div>
   </div>
@@ -2104,7 +2110,7 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 <footer>
   <div class="footer-inner">
     <div class="footer-brand"><div class="logo" style="margin-bottom:16px" onclick="goTo('home')"><img src="logo.png" alt="The One Club — Gold Coast Real Estate" width="271" height="72" loading="lazy" decoding="async" style="height:72px;width:auto;display:block"/></div><p>A smarter way to sell on the Gold Coast — professional marketing, experienced guidance, and 1% commission plus marketing.</p><address itemscope itemtype="https://schema.org/RealEstateAgent" style="font-style:normal;margin-bottom:12px"><span itemprop="name" style="display:none">The One Club</span><span itemprop="addressLocality" style="font-size:12px;color:var(--muted)">Gold Coast, QLD, Australia</span><br/><a itemprop="telephone" href="tel:1800663258" style="font-size:12px;color:var(--muted)">1800 663 258</a></address><div style="display:flex;gap:14px;margin-bottom:16px"><a href="https://www.instagram.com/theoneclub" aria-label="Instagram" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Instagram</a><a href="https://www.facebook.com/theoneclub" aria-label="Facebook" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">Facebook</a><a href="https://www.linkedin.com/company/theoneclub" aria-label="LinkedIn" style="color:var(--muted);font-size:12px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a></div><div class="lic">Licensed Real Estate Agent — QLD</div></div>
-    <div><div class="fh">Properties</div><ul class="flinks"><li><a href="/for-sale/" onclick="goTo('for-sale');return false;">For Sale</a></li><li><a href="/#valuation" onclick="goTo('home','valuation');return false;">Free Valuation</a></li><li><a href="/#savings" onclick="goTo('home','savings');return false;">Savings Calculator</a></li><li><a href="/rentals/" onclick="goTo('to-rent');return false;" style="opacity:.4">Rentals — Coming Soon</a></li></ul></div>
+    <div><div class="fh">Properties</div><ul class="flinks"><li><a href="/for-sale/" onclick="goTo('for-sale');return false;">For Sale</a></li><li><a href="/#valuation" onclick="goTo('home','valuation');return false;">Free Valuation</a></li><li><a href="/#savings" onclick="goTo('home','savings');return false;">Savings Calculator</a></li><li><a href="/rentals/" onclick="goTo('to-rent');return false;" style="opacity:.4">Rentals (Coming Soon)</a></li></ul></div>
     <div><div class="fh">Company</div><ul class="flinks"><li><a href="/about/" onclick="goTo('about');return false;">About Us</a></li><li><a href="/how-it-works/" onclick="goTo('how-it-works');return false;">How It Works</a></li><li><a href="/about/" onclick="goTo('about','sellers');return false;">For Sellers</a></li><li><a href="/admin/" style="opacity:.4;font-size:11px">Admin</a></li></ul></div>
     <div><div class="fh">Locations</div><ul class="flinks"><li><a>Gold Coast</a></li><li><a style="opacity:.5">Brisbane — Soon</a></li><li><a style="opacity:.5">Sydney — Soon</a></li><li><a style="opacity:.5">Melbourne — Soon</a></li></ul></div>
   </div>
@@ -2114,7 +2120,7 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 
 
 <!-- ════════ CHAT WIDGET ════════ -->
-<div id="chat-bubble" style="position:fixed;bottom:28px;right:28px;z-index:800;width:56px;height:56px;border-radius:50%;background:var(--gold);display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 24px rgba(196,168,74,.35);transition:all .25s var(--ease)" onclick="toggleChat()" onmouseenter="this.style.transform='scale(1.08)'" onmouseleave="this.style.transform='scale(1)'">
+<div id="chat-bubble" onclick="toggleChat()">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </div>
 <div id="chat-dot" style="position:fixed;bottom:72px;right:28px;z-index:801;width:14px;height:14px;border-radius:50%;background:#4ade80;border:2px solid #000;animation:pulse-dot 2s ease-in-out infinite;pointer-events:none"></div>
