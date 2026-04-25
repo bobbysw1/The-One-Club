@@ -611,10 +611,13 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 .ed-hero .btn-outline:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.14)}
 
 /* ── About / Meet Bobby section ── */
-#bobby > div{display:grid;grid-template-columns:minmax(260px,360px) 1fr;gap:64px;align-items:center;max-width:1100px;margin:0 auto}
-@media (max-width:780px){
-  #bobby > div{grid-template-columns:1fr;gap:32px}
-  #bobby > div > div:first-child{max-width:340px;margin:0 auto}
+#bobby{padding-top:56px;padding-bottom:56px}
+#bobby > div{display:grid;grid-template-columns:minmax(260px,340px) 1fr;gap:56px;align-items:start;max-width:1080px;margin:0 auto}
+#bobby > div > div:last-child{max-width:600px}
+@media (max-width:900px){
+  #bobby > div{grid-template-columns:1fr;gap:28px;max-width:560px}
+  #bobby > div > div:first-child{max-width:280px;margin:0 auto}
+  #bobby > div > div:last-child{max-width:none;text-align:left}
 }
 
 
@@ -627,4 +630,17 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
   .sec-head{margin-bottom:28px}
   .ed-hero{padding:120px 20px 80px}
   .manifesto-line{font-size:clamp(17px,4.4vw,22px);padding:10px 0}
+}
+
+/* ── Mobile typography: drop the huge display minimums ── */
+@media (max-width:640px){
+  .display{font-size:clamp(30px,8vw,40px) !important;letter-spacing:-1px}
+  .display-xl{font-size:clamp(36px,9vw,48px) !important;letter-spacing:-1.4px}
+  .ed-hero h1{font-size:clamp(28px,7.6vw,40px);letter-spacing:-1px;line-height:1.1}
+  .sec-head h2,
+  h2.serif{font-size:clamp(26px,6.8vw,36px);letter-spacing:-.7px}
+  .body{font-size:15px;line-height:1.65}
+  .ed-hero-sub{font-size:14.5px;line-height:1.6}
+  /* Bobby bio paragraphs nudged down too */
+  #bobby p{font-size:15.5px !important;line-height:1.65 !important}
 }
