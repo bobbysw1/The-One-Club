@@ -244,24 +244,10 @@
 
 <!-- ════ PRELOADER ════ -->
 <div id="preloader">
-  <div class="pre-logo-wrap">
-    <div class="pre-logo-mark">
-      <svg class="pre-ring" viewBox="0 0 200 200" aria-hidden="true">
-        <circle class="pre-ring-track" cx="100" cy="100" r="96"></circle>
-        <circle class="pre-ring-prog" id="pre-ring-prog" cx="100" cy="100" r="96"></circle>
-      </svg>
-      <img class="pre-logo-ghost" src="/logo.png" alt="" width="2639" height="709" decoding="async" draggable="false">
-      <img class="pre-logo-fill" id="pre-logo-fill" src="/logo.png" alt="" width="2639" height="709" decoding="async" draggable="false">
-    </div>
-    <div class="pre-progress-num" id="pre-progress-num">0%</div>
-  </div>
-  <div class="pre-slices" id="pre-slices">
-    <div class="pre-slice"></div>
-    <div class="pre-slice"></div>
-    <div class="pre-slice"></div>
-    <div class="pre-slice"></div>
-    <div class="pre-slice"></div>
-    <div class="pre-slice"></div>
+  <div class="pre-mark">
+    <img class="pre-logo-sm" src="/logo.png" alt="" width="226" height="60" decoding="async"/>
+    <div class="pre-line"></div>
+    <div class="pre-kicker">Gold Coast property</div>
   </div>
 </div>
 
@@ -889,12 +875,8 @@ loadChatbotFromAPI();
    PRELOADER
 ═══════════════════════════════════════ */
 (function(){
-  var fillEl    = document.getElementById('pre-logo-fill');
-  var ringProg  = document.getElementById('pre-ring-prog');
-  var progNum   = document.getElementById('pre-progress-num');
-  var pre       = document.getElementById('preloader');
+  var pre = document.getElementById('preloader');
   if (!pre) return;
-
   try {
     if (sessionStorage.getItem('toc.preloaded') === '1') {
       pre.classList.add('pre-hidden');
@@ -903,85 +885,14 @@ loadChatbotFromAPI();
       return;
     }
   } catch (e) {}
-
-  var CIRC     = 2 * Math.PI * 96; // must match circle r in SVG
-  var start    = null;
-  var DURATION = 1800; // ms to fill 0→100%
-
-  function easeOutQuart(t){ return 1 - Math.pow(1-t, 4); }
-
-  function step(ts){
-    if (!start) start = ts;
-    var elapsed  = ts - start;
-    var progress = Math.min(elapsed / DURATION, 1);
-    var eased    = easeOutQuart(progress);
-    var n        = Math.floor(eased * 100);
-    if (fillEl)   fillEl.style.clipPath       = 'inset(0 0 ' + (100 - n) + '% 0)';
-    if (ringProg) ringProg.style.strokeDashoffset = (CIRC * (1 - eased)) + '';
-    if (progNum)  progNum.textContent         = n + '%';
-    if (progress < 1) {
-      requestAnimationFrame(step);
-    } else {
-      if (fillEl)   fillEl.style.clipPath       = 'inset(0 0 0% 0)';
-      if (ringProg) ringProg.style.strokeDashoffset = '0';
-      if (progNum)  progNum.textContent         = '100%';
-      setTimeout(exitPreloader, 250);
-    }
-  }
-
-  function exitPreloader(){
-    // Phase 1: fade out logo/progress (300ms)
-    var logoWrap = pre.querySelector('.pre-logo-wrap');
-    var progWrap = pre.querySelector('.pre-progress-num');
-    if (logoWrap){ logoWrap.style.transition = 'opacity .3s'; logoWrap.style.opacity = '0'; }
-    if (progWrap){ progWrap.style.transition = 'opacity .3s'; progWrap.style.opacity = '0'; }
-
-    // Phase 2: slices sweep UP covering the screen (starts after 200ms)
-    var slices = pre.querySelectorAll('.pre-slice');
-    setTimeout(function(){
-      slices.forEach(function(s, i){
-        setTimeout(function(){
-          s.style.transform = 'scaleY(1)';
-        }, i * 60);
-      });
-    }, 200);
-
-    // Phase 3: once slices fully cover, hide preloader and reveal page
-    var delay = 200 + slices.length * 60 + 500;
-    setTimeout(function(){
-      pre.classList.add('pre-hidden');
-      document.body.classList.remove('preloading');
-      try { sessionStorage.setItem('toc.preloaded', '1'); } catch (e) {}
-      // Force-reveal above-fold elements immediately
-      document.querySelectorAll('.page.active [data-reveal]').forEach(function(el, i){
-        setTimeout(function(){ el.classList.add('on'); }, i * 60);
-      });
-      revealAll();
-      initParticles();
-    }, delay);
-  }
-
-  function startWhenReady(){
-    // Collect all Cormorant Garamond font faces registered from Google Fonts
-    var loadPromises = [];
-    if (document.fonts) {
-      document.fonts.forEach(function(face){
-        if (face.family && face.family.indexOf('Cormorant') !== -1){
-          loadPromises.push(face.load());
-        }
-      });
-    }
-    var fontWait = loadPromises.length
-      ? Promise.race([Promise.all(loadPromises), new Promise(function(r){ setTimeout(r, 3000); })])
-      : Promise.resolve();
-    fontWait.then(function(){ requestAnimationFrame(step); });
-  }
-
-  if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', startWhenReady);
-  } else {
-    startWhenReady();
-  }
+  setTimeout(function(){
+    pre.classList.add('pre-hidden');
+    document.body.classList.remove('preloading');
+    try { sessionStorage.setItem('toc.preloaded', '1'); } catch (e) {}
+    setTimeout(function(){ pre.style.display = 'none'; }, 700);
+    if (typeof revealAll === 'function') revealAll();
+    if (typeof initParticles === 'function') initParticles();
+  }, 1500);
 })();
 
 /* ═══════════════════════════════════════
