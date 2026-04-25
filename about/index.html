@@ -316,6 +316,32 @@
   </div>
 </section>
 
+<!-- MEET BOBBY -->
+<section class="sec" id="bobby" style="padding-top:100px;padding-bottom:100px;border-top:1px solid var(--subtle)">
+  <div style="display:grid;grid-template-columns:minmax(260px,360px) 1fr;gap:64px;align-items:center;max-width:1100px;margin:0 auto">
+    <div data-reveal="left">
+      <div style="aspect-ratio:4/5;border-radius:10px;background:linear-gradient(160deg,#1a1a2e 0%,#3e2f5a 50%,#1a1a2e 100%);position:relative;overflow:hidden;border:1px solid rgba(var(--fg-rgb),.08)">
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:rgba(255,255,255,.55);text-align:center;padding:24px">
+          <div style="font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:60px;font-weight:300;color:rgba(255,255,255,.18)">B</div>
+          <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4)">Photo · coming soon</div>
+        </div>
+      </div>
+    </div>
+    <div data-reveal="right">
+      <div class="page-label">Meet your agent</div>
+      <h2 class="serif" style="font-size:clamp(36px,4.6vw,64px);letter-spacing:-1.5px;line-height:1.05;font-weight:300;margin-top:14px">I'm <em>Bobby.</em></h2>
+      <p style="font-size:18px;line-height:1.7;color:rgba(var(--fg-rgb),.82);margin-top:24px">Ten-plus years of property sales experience across London and the Gold Coast. Forward-thinking by default — I lean on AI and the right tools to give every campaign more time, sharper presentation and better buyer reach than the old playbook ever could.</p>
+      <p style="font-size:17px;line-height:1.7;color:rgba(var(--fg-rgb),.7);margin-top:18px">Every property I take on gets the same treatment, regardless of price bracket. And every extra dollar I find for you on the way to a contract is a dollar that benefits both of us — that alignment is the engine, not the marketing line.</p>
+      <p style="font-size:17px;line-height:1.7;color:rgba(var(--fg-rgb),.7);margin-top:18px">If you're <strong style="color:var(--fg);font-weight:500">selling</strong>: you get one experienced agent end-to-end, real comparable-sales data behind the asking price, and a campaign that actually shows your home at its best — no corner-cutting because I work for less.</p>
+      <p style="font-size:17px;line-height:1.7;color:rgba(var(--fg-rgb),.7);margin-top:18px">If you're <strong style="color:var(--fg);font-weight:500">buying</strong>: I'll match you to the right property, give you honest feedback on what's actually a good buy, and answer every question without the runaround. The market is doing what it's doing — my job is to help you read it clearly.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px">
+        <a class="btn btn-gold" href="/#valuation">Free Valuation</a>
+        <a class="btn btn-outline" href="tel:1800663258">Call 1800 663 258</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- VALUES -->
 <section style="padding:100px 24px;max-width:1200px;margin:0 auto;border-top:1px solid var(--subtle)">
   <div data-reveal><div class="display">What we<br/><em>actually believe.</em></div><div class="gold-rule"></div></div>
@@ -764,6 +790,77 @@ function addMessage(text, type){
   b.style.cssText = type === 'user' ? 'background:var(--gold);color:#000;border-radius:14px 4px 14px 14px;padding:10px 14px;font-size:13px;line-height:1.55;max-width:260px;font-weight:500;white-space:pre-line' : 'background:rgba(var(--fg-rgb),.06);border-radius:4px 14px 14px 14px;padding:12px 14px;font-size:13px;line-height:1.65;color:rgba(var(--fg-rgb),.82);max-width:290px;white-space:pre-line';
   b.textContent = text; w.appendChild(b); c.appendChild(w); c.scrollTop = c.scrollHeight;
 }
+/* ──────────────────────────────────────────────
+   Gemini fallback for the chatbot.
+   - Only fires when the local knowledge base has no match.
+   - Rate-limited to MAX_GEMINI calls per browser session so a
+     malicious/curious visitor can't drain the API quota.
+   - Pre-filtered for off-topic queries client-side before the
+     API call, AND given a system prompt that pins it to property
+     topics with a fixed deflection line for anything else.
+   - API key is referrer-restricted in Google Cloud Console.
+───────────────────────────────────────────────── */
+var GEMINI_KEY  = 'AIzaSyC6xH0fPBmD8ccciX5jdNeQIwFFRkPkxcA';
+var GEMINI_URL  = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + GEMINI_KEY;
+var MAX_GEMINI  = 6; // hard cap of API calls per browser session
+var DEFLECT_MSG = "That sits a bit outside what I can help with. If you have a property question I'm happy to dig in — otherwise the fastest way to a real answer is the Free Valuation form at the bottom of the page.";
+
+var GEMINI_SYS = "You are the chatbot for The One Club, a Gold Coast real estate agency that charges 1% commission and includes professional photography, floor plans, 3D Matterport walkthroughs and full digital marketing in the price. The lead agent is Bobby, with 10+ years of property sales experience across London and the Gold Coast. ONLY answer questions related to: Gold Coast real estate; buying or selling property; our 1% commission and what it includes; the photography/marketing/auction process; suburbs on the Gold Coast (Burleigh, Palm Beach, Mermaid, Surfers, Hope Island, Robina, Coolangatta, Mudgeeraba, Currumbin, Kirra etc.); or general property concepts that apply in Queensland (transfer duty, conveyancing, mortgages at a high level). If the user asks about ANYTHING else — jokes, the weather, sports, recipes, code, math, politics, casual chit-chat — respond with EXACTLY this sentence and nothing else: '" + DEFLECT_MSG + "'. Keep all answers under 130 words. Use plain English. Do NOT invent specific listings, prices, sale results, or made-up testimonials.";
+
+// Quick client-side noise filter. If the message clearly isn't about
+// property or our services, deflect without calling the API.
+var OFF_TOPIC_RE = /\b(weather|joke|funny|riddle|recipe|cook|sport|football|cricket|nba|nfl|election|trump|biden|crypto|bitcoin|stock|share market|capital of|who is|tell me about yourself|are you (a|an) ai|what.*your name|hi+|hello+|hey+|sup|yo+\b)\b/i;
+
+function _looksOnTopic(msg){
+  if (!msg || msg.length < 4) return false;
+  if (OFF_TOPIC_RE.test(msg)) return false;
+  // Require at least one alphanumeric token longer than 2 chars
+  var words = msg.split(/\s+/).filter(function(w){ return w.length > 2 && /[a-zA-Z]/.test(w); });
+  return words.length >= 1;
+}
+
+function _geminiBudgetRemaining(){
+  try {
+    var n = parseInt(sessionStorage.getItem('toc.gemini.calls') || '0', 10);
+    return MAX_GEMINI - n;
+  } catch(e) { return MAX_GEMINI; }
+}
+function _geminiBumpCount(){
+  try {
+    var n = parseInt(sessionStorage.getItem('toc.gemini.calls') || '0', 10);
+    sessionStorage.setItem('toc.gemini.calls', String(n + 1));
+  } catch(e) {}
+}
+
+function askGemini(userMsg){
+  return fetch(GEMINI_URL, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      system_instruction: { parts: [{ text: GEMINI_SYS }] },
+      contents: [{ parts: [{ text: userMsg.slice(0, 400) }] }],
+      generationConfig: { maxOutputTokens: 220, temperature: 0.35, topP: 0.9 }
+    })
+  })
+  .then(function(r){ if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+  .then(function(d){
+    var t = d && d.candidates && d.candidates[0] && d.candidates[0].content
+            && d.candidates[0].content.parts && d.candidates[0].content.parts[0]
+            && d.candidates[0].content.parts[0].text;
+    return (t || DEFLECT_MSG).trim();
+  })
+  .catch(function(){ return DEFLECT_MSG; });
+}
+
+// Wrap getBotReply so we know when local KB hit vs. fell through to the
+// generic "I want to make sure you get an accurate answer" fallback.
+var LOCAL_FALLBACK_PREFIX = "That's a good one";
+function _localOrNull(msg){
+  var reply = getBotReply(msg);
+  if (reply && reply.indexOf(LOCAL_FALLBACK_PREFIX) === 0) return null;
+  return reply;
+}
+
 function sendChat(){
   var input = document.getElementById('chat-input');
   var msg = input.value.trim(); if (!msg) return;
@@ -773,7 +870,29 @@ function sendChat(){
   t.innerHTML = '<div style="width:28px;height:28px;border-radius:8px;background:var(--gold);display:grid;place-items:center;font-size:9px;font-weight:700;color:#000;flex-shrink:0">1%</div><div style="background:rgba(var(--fg-rgb),.06);border-radius:4px 14px 14px 14px;padding:12px 14px;font-size:13px;color:var(--muted)">Typing...</div>';
   document.getElementById('chat-messages').appendChild(t);
   document.getElementById('chat-messages').scrollTop = 99999;
-  setTimeout(function(){ var ti = document.getElementById('typing-indicator'); if(ti) ti.remove(); addMessage(getBotReply(msg), 'bot'); }, 800 + Math.random() * 900);
+
+  // 1. Try local knowledge base — instant, free.
+  var local = _localOrNull(msg);
+  if (local){
+    setTimeout(function(){ var ti = document.getElementById('typing-indicator'); if(ti) ti.remove(); addMessage(local, 'bot'); }, 700 + Math.random() * 600);
+    return;
+  }
+  // 2. Off-topic / nonsense → deflect immediately, no API call.
+  if (!_looksOnTopic(msg)){
+    setTimeout(function(){ var ti = document.getElementById('typing-indicator'); if(ti) ti.remove(); addMessage(DEFLECT_MSG, 'bot'); }, 600);
+    return;
+  }
+  // 3. Out of session budget → deflect.
+  if (_geminiBudgetRemaining() <= 0){
+    setTimeout(function(){ var ti = document.getElementById('typing-indicator'); if(ti) ti.remove(); addMessage("I've answered as much as I can in this session. The agent will follow up directly — please leave your details on the Free Valuation form at the bottom of the page.", 'bot'); }, 600);
+    return;
+  }
+  // 4. Gemini fallback.
+  _geminiBumpCount();
+  askGemini(msg).then(function(reply){
+    var ti = document.getElementById('typing-indicator'); if(ti) ti.remove();
+    addMessage(reply, 'bot');
+  });
 }
 function sendQuick(text){ document.getElementById('chat-input').value = text; sendChat(); }
 </script>
