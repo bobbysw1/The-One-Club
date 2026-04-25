@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 TEMPLATE = ROOT / 'about' / 'index.html'
 SITE_URL = 'https://www.theoneclub.com.au'
+GMAPS_KEY = 'AIzaSyDyWnJ2ud9rWnBqUY96uankmuUnH-gxIRM'  # restricted to theoneclub.com.au + localhost
 
 # Suburb centres (approx lat,lng) for map placeholders
 SUBURB_COORDS = {
@@ -338,20 +339,23 @@ for slug, (lat, lng, name) in SUBURB_COORDS.items():
     html = p.read_text()
     if 'map-placeholder' in html:
         continue  # already added
-    # Build an embedded OpenStreetMap iframe (no API key needed). Bbox is
-    # tight around the suburb centre.
-    bbox = f"{lng-0.025},{lat-0.015},{lng+0.025},{lat+0.015}"
+    # Google Maps Embed API — `place` mode drops a labelled pin centred on
+    # the query. Key is restricted to theoneclub.com.au + localhost in the
+    # Google Cloud Console.
+    import urllib.parse
+    q = urllib.parse.quote(f'{name}, QLD, Australia')
+    map_src = f'https://www.google.com/maps/embed/v1/place?key={GMAPS_KEY}&q={q}&zoom=14&maptype=roadmap'
     map_html = f'''
 <section class="sec" style="padding-top:20px;padding-bottom:40px">
   <div class="sec-head">
     <div class="sec-head-l">
       <div class="page-label">Find your way around</div>
       <h2 class="serif" style="font-size:clamp(30px,3.8vw,46px)">Where is <em>{name}?</em></h2>
-      <p class="body" style="font-size:15px">Tap the map below to explore the neighbourhood. We will swap in an interactive Google Maps view with listing pins once the Maps API key is connected.</p>
+      <p class="body" style="font-size:15px">Pinned to the centre of the suburb. Drag, zoom, or open in Google Maps for full directions and street view.</p>
     </div>
   </div>
   <div class="map-placeholder">
-    <iframe title="{name} map" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox={bbox}&layer=mapnik&marker={lat}%2C{lng}" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe title="{name} map" loading="lazy" src="{map_src}" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     <div class="map-placeholder-overlay">{name}, Gold Coast · QLD</div>
   </div>
 </section>
