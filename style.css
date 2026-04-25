@@ -604,3 +604,6 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
   .hero-video{display:none}
   .ed-hero{background:#0a0e14}
 }
+/* Hero CTAs sit over a varied dark video, so the secondary button needs an opaque-enough outline + white text. */
+.ed-hero .btn-outline{color:#fff;border:1.5px solid rgba(255,255,255,.55);background:rgba(255,255,255,.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.ed-hero .btn-outline:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.14)}
