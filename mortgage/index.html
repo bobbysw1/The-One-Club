@@ -266,6 +266,7 @@
       <li><a href="/auctions/" data-page="auctions">Auctions</a></li>
       <li><a href="/blog/" data-page="guides">Guides</a></li>
       <li><a href="/calculators/" data-page="calculators">Calculators</a></li>
+      <li><a href="/agents/" data-page="agents">Agents</a></li>
       <li><a href="/about/" data-page="about">About</a></li>
     </ul>
     <div class="nav-cta">
@@ -285,6 +286,7 @@
   <a href="/auctions/" onclick="toggleMenu()">Auctions</a>
   <a href="/blog/" onclick="toggleMenu()">Guides</a>
   <a href="/calculators/" onclick="toggleMenu()">Calculators</a>
+  <a href="/agents/" onclick="toggleMenu()">Agents</a>
   <a href="/about/" onclick="toggleMenu()">About</a>
   <a href="tel:+61404774272" onclick="toggleMenu()" style="opacity:.7">Call +61 404 774 272</a>
   <a href="/#valuation" onclick="toggleMenu()" style="color:var(--gold);border-color:rgba(196,168,74,.2)">Free Valuation →</a>
@@ -929,6 +931,12 @@ loadChatbotFromAPI();
       pre.classList.add('pre-hidden');
       pre.style.display = 'none';
       document.body.classList.remove('preloading');
+      // Even though the preloader is skipped, the reveal observer still
+      // needs wiring or no [data-reveal] element ever animates.
+      setTimeout(function(){
+        if (typeof revealAll === 'function') revealAll();
+        if (typeof initParticles === 'function') initParticles();
+      }, 30);
       return;
     }
   } catch (e) {}
