@@ -268,6 +268,9 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .badge-new{background:var(--gold);color:#000}
 .badge-contract{background:rgba(74,222,128,.2);border:1px solid rgba(74,222,128,.3);color:#4ade80}
 .badge-open{background:rgba(99,179,237,.2);border:1px solid rgba(99,179,237,.3);color:#63b3ed}
+.tour-badge{position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;gap:5px;font-family:inherit;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:5px 10px 5px 9px;border-radius:5px;background:rgba(var(--bg-rgb),.78);backdrop-filter:blur(8px);color:var(--gold);border:1px solid rgba(196,168,74,.35);cursor:pointer;transition:background .2s,transform .2s var(--ease);z-index:2}
+.tour-badge:hover{background:rgba(196,168,74,.18);transform:translateY(-1px)}
+.tour-badge::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(196,168,74,.18)}
 .listing-icons{position:absolute;bottom:12px;right:12px;display:flex;gap:6px}
 .listing-icon{width:28px;height:28px;border-radius:7px;background:rgba(var(--bg-rgb),.65);backdrop-filter:blur(6px);display:grid;place-items:center}
 .listing-icon svg{width:13px;height:13px}

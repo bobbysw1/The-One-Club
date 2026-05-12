@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>3D Walkthrough Guide for Agents | The One Club</title>
+<meta name="description" content="How to capture, process and publish a 3D walkthrough of a property using your phone — for The One Club agents."/>
+<link rel="canonical" href="https://www.theoneclub.com.au/agents/3d-walkthrough-guide/"/>
+<link rel="preload" href="/style.css" as="style"/>
+<link rel="stylesheet" href="/style.css"/>
+<style>
+  .guide-wrap{max-width:860px;margin:0 auto;padding:140px 24px 96px}
+  .guide-wrap h1{font-family:var(--serif,'GT Sectra','Georgia',serif);font-size:clamp(40px,5.4vw,72px);letter-spacing:-1.6px;line-height:1.04;font-weight:300;margin:14px 0 22px}
+  .guide-wrap h1 em{font-style:italic}
+  .guide-wrap h2{font-family:var(--serif,'GT Sectra','Georgia',serif);font-size:clamp(24px,3vw,34px);letter-spacing:-.6px;font-weight:400;margin:56px 0 14px}
+  .guide-wrap h3{font-size:15px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;margin:28px 0 10px;color:var(--gold)}
+  .guide-wrap p{font-size:16px;line-height:1.7;color:rgba(var(--fg-rgb),.82);margin:0 0 16px}
+  .guide-wrap ol,.guide-wrap ul{font-size:16px;line-height:1.75;color:rgba(var(--fg-rgb),.82);padding-left:22px;margin:0 0 18px}
+  .guide-wrap li{margin-bottom:10px}
+  .guide-wrap li strong{color:rgba(var(--fg-rgb),.95)}
+  .guide-wrap a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(196,168,74,.3)}
+  .guide-wrap a:hover{border-bottom-color:var(--gold)}
+  .callout{background:rgba(196,168,74,.06);border:1px solid rgba(196,168,74,.18);border-radius:12px;padding:18px 22px;margin:24px 0}
+  .callout-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+  .callout p{margin:0;font-size:14px}
+  .step{display:grid;grid-template-columns:48px 1fr;gap:16px;padding:18px 0;border-top:1px solid rgba(var(--fg-rgb),.08)}
+  .step:last-child{border-bottom:1px solid rgba(var(--fg-rgb),.08)}
+  .step-n{font-family:var(--serif,'GT Sectra','Georgia',serif);font-size:30px;font-weight:300;color:var(--gold);line-height:1;padding-top:4px}
+  .step-body h4{font-size:15px;font-weight:600;margin:0 0 6px}
+  .step-body p{margin:0;font-size:14px;line-height:1.65}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 8px}
+  .pill{font-size:11px;font-weight:600;letter-spacing:.5px;padding:5px 11px;border-radius:999px;background:rgba(var(--fg-rgb),.06);color:rgba(var(--fg-rgb),.75)}
+  .page-label{font-size:11px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--gold);opacity:.9}
+  .back-link{font-size:13px;color:var(--muted);display:inline-flex;align-items:center;gap:6px;margin-top:48px;border:0!important}
+  .back-link:hover{color:var(--gold)}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<nav>
+  <div class="nav-row">
+    <a href="/" class="logo" aria-label="The One Club — home">
+      <img src="/logo.png" alt="The One Club — Gold Coast Real Estate" width="193" height="52" loading="eager" decoding="async" style="height:52px;width:auto;display:block"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/for-sale/">For Sale</a></li>
+      <li><a href="/#suburbs">Suburbs</a></li>
+      <li><a href="/auctions/">Auctions</a></li>
+      <li><a href="/blog/">Guides</a></li>
+      <li><a href="/calculators/">Calculators</a></li>
+      <li><a href="/agents/">Agents</a></li>
+      <li><a href="/about/">About</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:+61404774272" class="nav-phone">+61 404 774 272</a>
+      <a href="/#valuation" class="btn btn-gold">Free Valuation</a>
+    </div>
+    <div class="ham" id="ham" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <a href="/for-sale/">For Sale</a>
+  <a href="/agents/">Agents</a>
+  <a href="/about/">About</a>
+</div>
+
+<main id="main-content">
+<div class="guide-wrap">
+  <div class="page-label">Agent tools</div>
+  <h1>Capture a <em>3D walkthrough</em><br/>with your phone.</h1>
+  <p style="font-size:18px;color:rgba(var(--fg-rgb),.7);max-width:640px">An interactive 3D tour lets buyers walk through a property from anywhere. Better than video, cheaper than Matterport, and you can shoot it yourself in about thirty minutes.</p>
+
+  <h2>Why we bother</h2>
+  <p>Listings with a real 3D walkthrough get more enquiries and stronger qualified offers — buyers self-filter, interstate buyers can inspect from their couch, and the property feels open even when an open home isn't scheduled.</p>
+  <p>The tech we use — PlayCanvas SuperSplat — runs in any phone browser. There's nothing to download for the buyer. We get the same result as a Matterport tour, for free, captured from a phone you already own.</p>
+
+  <div style="margin:32px 0 8px;display:grid;grid-template-columns:minmax(0,480px) 1fr;gap:28px;align-items:center" class="guide-proof-row">
+    <div style="position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000;border:1px solid rgba(var(--fg-rgb),.08);box-shadow:0 24px 60px -20px rgba(0,0,0,.5)">
+      <video controls playsinline webkit-playsinline preload="metadata" poster="/video/walkthrough-demo-1-poster.jpg" style="width:100%;height:100%;object-fit:cover;display:block;background:#000">
+        <source media="(max-width:720px)" src="/video/walkthrough-demo-1-mobile.mp4" type="video/mp4"/>
+        <source src="/video/walkthrough-demo-1.hevc.mp4" type='video/mp4; codecs="hvc1"'/>
+        <source src="/video/walkthrough-demo-1.mp4" type="video/mp4"/>
+        Your browser does not support embedded video.
+      </video>
+    </div>
+    <div>
+      <div class="callout-title" style="margin-bottom:8px">What it looks like</div>
+      <p style="font-size:14px;line-height:1.65;margin:0">A real example of the workflow — phone capture in, photorealistic interactive walkthrough out. Watch the clip before you head out to your first capture so you know what "good" looks like on the way back.</p>
+    </div>
+  </div>
+  <style>
+    @media(max-width:680px){.guide-proof-row{grid-template-columns:1fr!important}}
+  </style>
+
+  <h2>What you'll need</h2>
+  <ul>
+    <li><strong>Your phone</strong> — iPhone or Android, any model from the last three or four years.</li>
+    <li><strong>Polycam</strong> (recommended) — free app, available on iOS and Android. <a href="https://poly.cam" target="_blank" rel="noopener">poly.cam</a>. Use "Gaussian Splat" capture mode. Luma AI also works if you prefer it.</li>
+    <li><strong>About 30–45 minutes on site</strong> plus 15–30 minutes cloud processing time after you finish.</li>
+    <li><strong>Good lighting</strong> — open every blind, turn on every light. Dim rooms produce wobbly tours.</li>
+  </ul>
+
+  <h2>The capture</h2>
+  <p>Think of the room as a balloon you're trying to inflate with overlapping photographs. The app captures continuously while you move — you don't tap the shutter, you just walk.</p>
+
+  <div class="step">
+    <div class="step-n">1</div>
+    <div class="step-body">
+      <h4>Open Polycam and choose Gaussian Splat mode</h4>
+      <p>Tap the capture button. Hold the phone vertically at chest height, slightly tilted down so you capture floors as well as walls.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-n">2</div>
+    <div class="step-body">
+      <h4>Walk the perimeter of each room</h4>
+      <p>Slowly. Glide, don't jerk. About one step per second. Hug the walls — start in a corner and move along the wall, keeping the opposite corner of the room in frame.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-n">3</div>
+    <div class="step-body">
+      <h4>Then a second pass through the centre</h4>
+      <p>Slow 360° turn standing in the middle. This fills in the gaps the wall pass missed — especially the ceiling and floor.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-n">4</div>
+    <div class="step-body">
+      <h4>Overlap between rooms</h4>
+      <p>Don't lift the phone to walk through a doorway — keep capturing through it. The processor uses doorways to stitch rooms together. If you stop and start, you'll get a disconnected scene.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-n">5</div>
+    <div class="step-body">
+      <h4>Cover the outside features</h4>
+      <p>Pool, entertaining area, frontage. Don't bother with the whole yard — capture the parts the buyer will actually care about. Avoid pointing directly at the sun or windows reflecting harsh light.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-n">6</div>
+    <div class="step-body">
+      <h4>Stop the capture and let Polycam upload</h4>
+      <p>Processing takes 15–30 minutes in the cloud. You can leave the property — the result lands in your Polycam library when ready. Email yourself a notification if you want.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">Capture rules of thumb</div>
+    <p>Slow movement, no jerks · Constant height (chest level) · Every blind open, every light on · Capture continuously between rooms · No mirrors directly in frame (they confuse the splat) · Avoid clutter — fewer floating objects = cleaner tour.</p>
+  </div>
+
+  <h2>Process and publish</h2>
+  <div class="step">
+    <div class="step-n">1</div>
+    <div class="step-body">
+      <h4>Export from Polycam</h4>
+      <p>Open the finished scene → Share → Export → choose <strong>.ply (Gaussian Splat)</strong>. Save it to Files or Drive. The file is usually 100–300MB.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-n">2</div>
+    <div class="step-body">
+      <h4>Open SuperSplat in your browser</h4>
+      <p>Go to <a href="https://superspl.at/editor" target="_blank" rel="noopener">superspl.at/editor</a>. Drag the .ply file straight into the browser window. It loads in about 30 seconds.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-n">3</div>
+    <div class="step-body">
+      <h4>Clean it up (optional but worth it)</h4>
+      <p>Use the box-select tool to delete obvious junk — floating bits, the sky, anything visibly broken. Two or three minutes here makes a noticeable difference. Then File → Save to keep your edits.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-n">4</div>
+    <div class="step-body">
+      <h4>Publish</h4>
+      <p>File → Publish. SuperSplat gives you a URL like <code>https://superspl.at/view?id=XXXX</code>. Copy it.</p>
+    </div>
+  </div>
+
+  <h2>Add it to the listing</h2>
+  <ol>
+    <li>Log into the admin panel from the <a href="/for-sale/">For Sale</a> page.</li>
+    <li>Open the property and click <strong>Edit</strong>.</li>
+    <li>Paste your SuperSplat URL into the <strong>3D Walkthrough URL</strong> field.</li>
+    <li>Save. The "3D Tour" badge will appear on the listing card immediately. Buyers tap it to open the tour in a full-screen viewer.</li>
+  </ol>
+
+  <h2>Troubleshooting</h2>
+  <h3>The tour is wobbly or warped</h3>
+  <p>Usually means you moved too fast or there wasn't enough overlap between angles. Re-shoot the affected room and walk slower. Lighting helps — bright rooms track much better than dim ones.</p>
+  <h3>Whole sections are missing</h3>
+  <p>You stopped capturing between rooms. Re-shoot with continuous capture through doorways.</p>
+  <h3>File is too big to upload</h3>
+  <p>In SuperSplat, use File → Export with the compressed <strong>.sog</strong> format. It's typically a quarter of the size with no visible quality loss. Then publish.</p>
+  <h3>It looks fine in SuperSplat but won't load on my phone</h3>
+  <p>Older phones can struggle with very large splats. Open the scene in SuperSplat, select a chunk of background you don't need, delete it, re-publish. Smaller scenes are friendlier to mobile devices.</p>
+
+  <a class="back-link" href="/for-sale/">← Back to listings</a>
+</div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo" style="margin-bottom:16px"><img src="/logo.png" alt="The One Club" width="268" height="72" loading="lazy" decoding="async" style="height:72px;width:auto;display:block"/></div>
+      <p>A smarter way to sell on the Gold Coast — professional marketing, experienced guidance, and 1% commission plus portal listing.</p>
+      <div class="lic">Licensed Real Estate Agent — QLD</div>
+    </div>
+    <div><div class="fh">Properties</div><ul class="flinks"><li><a href="/for-sale/">For Sale</a></li><li><a href="/#valuation">Free Valuation</a></li></ul></div>
+    <div><div class="fh">Company</div><ul class="flinks"><li><a href="/about/">About Us</a></li><li><a href="/how-it-works/">How It Works</a></li><li><a href="/agents/">Our Agents</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 The One Club Pty Ltd · Gold Coast, QLD, Australia</span><span><a href="/privacy/" style="color:inherit">Privacy</a> · <a href="/terms/" style="color:inherit">Terms</a></span></div>
+</footer>
+</body>
+</html>
