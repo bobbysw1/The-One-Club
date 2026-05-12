@@ -650,23 +650,25 @@
       <div class="gold-rule" data-reveal></div>
       <p class="body" data-reveal style="font-size:15px">This is a real, interactive 3D walkthrough — not a video, not a slideshow. Click and drag to look around. Use the arrows to move through the property. Powered by PlayCanvas SuperSplat, runs in any browser, and included on every listing — no $1,000–$1,500 Matterport bill, no third party.</p>
     </div>
-    <div data-reveal style="border:1px solid rgba(var(--fg-rgb),.07);border-radius:20px;overflow:hidden">
-      <div style="padding:14px 20px;background:rgba(var(--fg-rgb),.025);border-bottom:1px solid rgba(var(--fg-rgb),.06);display:flex;align-items:center;justify-content:space-between">
-        <div style="display:flex;align-items:center;gap:10px">
-          <div style="width:8px;height:8px;border-radius:50%;background:#4ade80"></div>
-          <span style="font-size:12px;font-weight:600;color:rgba(var(--fg-rgb),.6)">Demo Property — Luxury Residence</span>
-        </div>
-        <span style="font-size:11px;color:var(--muted)">Click · Drag · Explore</span>
+    <div data-reveal style="display:grid;grid-template-columns:repeat(2,minmax(0,560px));gap:24px;justify-content:center" class="hiw-tour-grid">
+      <div style="position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;border:1px solid rgba(var(--fg-rgb),.08);box-shadow:0 24px 60px -20px rgba(0,0,0,.5)">
+        <video controls playsinline webkit-playsinline preload="metadata" poster="/video/walkthrough-demo-1-poster.jpg" style="width:100%;height:100%;object-fit:cover;display:block;background:#000">
+          <source media="(max-width:720px)" src="/video/walkthrough-demo-1-mobile.mp4" type="video/mp4"/>
+          <source src="/video/walkthrough-demo-1.hevc.mp4" type='video/mp4; codecs="hvc1"'/>
+          <source src="/video/walkthrough-demo-1.mp4" type="video/mp4"/>
+          Your browser does not support embedded video.
+        </video>
       </div>
-      <div class="mp-embed" role="button" tabindex="0" aria-label="Play 3D tour"
-     data-src="https://superspl.at/view?id=demo"
-     onclick="(function(el){el.innerHTML='<iframe src=\''+el.dataset.src+'\' allowfullscreen allow=\'xr-spatial-tracking\'></iframe>';})(this)"
-     onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
-  <img src="/images/matterport-cover.jpg" alt="3D tour — interior preview. Click to explore the full walkthrough." width="1400" height="788" loading="lazy" decoding="async"/>
-  <span class="mp-play">▶&nbsp;&nbsp;Play 3D Tour</span>
-</div>
-<div class="mp-caption">Powered by PlayCanvas SuperSplat · runs in any browser · no download required</div>
+      <div style="position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;border:1px solid rgba(var(--fg-rgb),.08);box-shadow:0 24px 60px -20px rgba(0,0,0,.5)">
+        <video controls playsinline webkit-playsinline preload="metadata" poster="/video/walkthrough-demo-2-poster.jpg" style="width:100%;height:100%;object-fit:cover;display:block;background:#000">
+          <source media="(max-width:720px)" src="/video/walkthrough-demo-2-mobile.mp4" type="video/mp4"/>
+          <source src="/video/walkthrough-demo-2.hevc.mp4" type='video/mp4; codecs="hvc1"'/>
+          <source src="/video/walkthrough-demo-2.mp4" type="video/mp4"/>
+          Your browser does not support embedded video.
+        </video>
+      </div>
     </div>
+    <style>@media(max-width:760px){.hiw-tour-grid{grid-template-columns:minmax(0,560px)!important;gap:16px!important}}</style>
   </div>
 </section>
 
@@ -996,20 +998,25 @@
       <div class="gold-rule" data-reveal></div>
       <p class="body" data-reveal style="font-size:15px">This is a real, interactive 3D walkthrough — not a video, not a slideshow. Click and drag to look around. Use the arrows to move through the property. Powered by PlayCanvas SuperSplat and included on every listing — what it takes to give buyers (especially interstate) the confidence to make an offer without visiting in person.</p>
     </div>
-    <div data-reveal style="border:1px solid rgba(var(--fg-rgb),.07);border-radius:20px;overflow:hidden">
-      <div style="padding:14px 20px;background:rgba(var(--fg-rgb),.025);border-bottom:1px solid rgba(var(--fg-rgb),.06);display:flex;align-items:center;justify-content:space-between">
-        <div style="display:flex;align-items:center;gap:10px"><div style="width:8px;height:8px;border-radius:50%;background:#4ade80"></div><span style="font-size:12px;font-weight:600;color:rgba(var(--fg-rgb),.6)">Demo Property — Luxury Residence</span></div>
-        <span style="font-size:11px;color:var(--muted)">Click · Drag · Explore</span>
+    <div data-reveal style="display:grid;grid-template-columns:repeat(2,minmax(0,560px));gap:24px;justify-content:center" class="hiw-tour-grid-2">
+      <div style="position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;border:1px solid rgba(var(--fg-rgb),.08);box-shadow:0 24px 60px -20px rgba(0,0,0,.5)">
+        <video controls playsinline webkit-playsinline preload="metadata" poster="/video/walkthrough-demo-1-poster.jpg" style="width:100%;height:100%;object-fit:cover;display:block;background:#000">
+          <source media="(max-width:720px)" src="/video/walkthrough-demo-1-mobile.mp4" type="video/mp4"/>
+          <source src="/video/walkthrough-demo-1.hevc.mp4" type='video/mp4; codecs="hvc1"'/>
+          <source src="/video/walkthrough-demo-1.mp4" type="video/mp4"/>
+          Your browser does not support embedded video.
+        </video>
       </div>
-      <div class="mp-embed" role="button" tabindex="0" aria-label="Play 3D tour"
-     data-src="https://superspl.at/view?id=demo"
-     onclick="(function(el){el.innerHTML='<iframe src=\''+el.dataset.src+'\' allowfullscreen allow=\'xr-spatial-tracking\'></iframe>';})(this)"
-     onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
-  <img src="/images/matterport-cover.jpg" alt="3D tour — interior preview. Click to explore the full walkthrough." width="1400" height="788" loading="lazy" decoding="async"/>
-  <span class="mp-play">▶&nbsp;&nbsp;Play 3D Tour</span>
-</div>
-<div class="mp-caption">Powered by PlayCanvas SuperSplat · runs in any browser · no download required</div>
+      <div style="position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;border:1px solid rgba(var(--fg-rgb),.08);box-shadow:0 24px 60px -20px rgba(0,0,0,.5)">
+        <video controls playsinline webkit-playsinline preload="metadata" poster="/video/walkthrough-demo-2-poster.jpg" style="width:100%;height:100%;object-fit:cover;display:block;background:#000">
+          <source media="(max-width:720px)" src="/video/walkthrough-demo-2-mobile.mp4" type="video/mp4"/>
+          <source src="/video/walkthrough-demo-2.hevc.mp4" type='video/mp4; codecs="hvc1"'/>
+          <source src="/video/walkthrough-demo-2.mp4" type="video/mp4"/>
+          Your browser does not support embedded video.
+        </video>
+      </div>
     </div>
+    <style>@media(max-width:760px){.hiw-tour-grid-2{grid-template-columns:minmax(0,560px)!important;gap:16px!important}}</style>
   </div>
 </section>
 
