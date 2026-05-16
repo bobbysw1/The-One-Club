@@ -510,7 +510,7 @@
   <div class="calc" data-reveal>
     <div class="calc-price-label">Property sale price</div>
     <div class="calc-price-val" id="priceVal">$1,500,000</div>
-    <div class="range-wrap"><label for="priceRange" class="sr-only">Property price estimate</label><input type="range" id="priceRange" aria-label="Property price estimate" min="300000" max="5000000" step="25000" value="1500000" style="--pct:29.3%" oninput="calcUpdate(this)"/></div>
+    <div class="range-wrap"><label for="priceRange" class="sr-only">Property price estimate</label><input type="range" id="priceRange" aria-label="Property price estimate" min="300000" max="5000000" step="25000" value="1500000" style="--pct:29.3%" oninput="calcUpdate(this)" onchange="calcUpdate(this)"/></div>
     <div class="range-labels" style="width:100%;max-width:600px"><span>$300K</span><span>$5M</span></div>
     <div class="calc-split">
       <div class="calc-col"><div class="calc-col-label">Traditional (2.5%)</div><div class="calc-col-val struck" id="tradVal">$37,500</div></div>
@@ -956,27 +956,17 @@ initCompare('cmp4','cmp4-line','cmp4-handle');
    SAVINGS CALCULATOR
 ═══════════════════════════════════════ */
 function fmtCurrency(n){ return '$' + Math.round(n).toLocaleString('en-AU'); }
-var saveAnimFrame, prevSave = 22500;
-function animateTo(el, from, to, duration){
-  cancelAnimationFrame(saveAnimFrame);
-  var start = performance.now();
-  (function tick(now){
-    var t = Math.min(1, (now - start) / duration);
-    var ease = 1 - Math.pow(1 - t, 4);
-    el.textContent = fmtCurrency(from + (to - from) * ease);
-    if (t < 1) saveAnimFrame = requestAnimationFrame(tick);
-  })(start);
-}
 function calcUpdate(input){
   if (!input) return;
-  var v = parseInt(input.value), min = parseInt(input.min), max = parseInt(input.max);
+  var v = parseInt(input.value, 10);
+  if (isNaN(v)) return;
+  var min = parseInt(input.min, 10), max = parseInt(input.max, 10);
   input.style.setProperty('--pct', ((v - min) / (max - min) * 100).toFixed(2) + '%');
   var trad = v * 0.025, ours = v * 0.01, save = trad - ours;
   var pEl = document.getElementById('priceVal'); if (pEl) pEl.textContent = fmtCurrency(v);
   var tEl = document.getElementById('tradVal'); if (tEl) tEl.textContent = fmtCurrency(trad);
   var oEl = document.getElementById('ourVal');  if (oEl) oEl.textContent = fmtCurrency(ours);
-  var sEl = document.getElementById('saveVal'); if (sEl) animateTo(sEl, prevSave, save, 500);
-  prevSave = save;
+  var sEl = document.getElementById('saveVal'); if (sEl) sEl.textContent = fmtCurrency(save);
 }
 calcUpdate(document.getElementById('priceRange'));
 
