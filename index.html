@@ -900,14 +900,29 @@ function revealAll() {
     }
     requestAnimationFrame(step);
   }
+  var fired = new WeakSet();
+  function fire(strip){
+    if (fired.has(strip)) return;
+    fired.add(strip);
+    strip.querySelectorAll('[data-count-to]').forEach(countUp);
+  }
   var co = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if (!e.isIntersecting) return;
-      e.target.querySelectorAll('[data-count-to]').forEach(countUp);
+      fire(e.target);
       co.unobserve(e.target);
     });
   }, { threshold: 0.4 });
-  document.querySelectorAll('.counter-strip').forEach(function(s){ co.observe(s); });
+  document.querySelectorAll('.counter-strip').forEach(function(s){
+    co.observe(s);
+    // Fallback: if the strip is already on-screen (e.g. above-the-fold on
+    // tall viewports) the observer's threshold may not fire on load. Fire
+    // immediately when the strip is within the viewport, and unconditionally
+    // after 1s so it never sticks at 0.
+    var r = s.getBoundingClientRect();
+    if (r.top < (window.innerHeight || document.documentElement.clientHeight) && r.bottom > 0) fire(s);
+    setTimeout(function(){ fire(s); }, 1000);
+  });
 })();
 revealAll();
 
