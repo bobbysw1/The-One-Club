@@ -869,7 +869,7 @@ function buildListingCard(p) {
     ' data-type="' + p.type + '" data-beds="' + p.beds + '" data-price="' + p.priceNum + '" data-suburb="' + p.suburb + '" data-reveal>',
     '<div class="listing-img">',
     (p.photos && p.photos.length
-      ? '<img src="' + p.photos[0] + '" alt="' + p.address + ' — property for sale" width="800" height="600" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">'
+      ? '<img src="' + p.photos[0] + '" alt="' + p.address + ' — property for sale" width="800" height="600" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">'
         + '<div class="listing-placeholder ' + clr + '" style="display:none"><div class="lp-addr">' + p.address + '<br/>' + p.suburb + '</div></div>'
       : '<div class="listing-placeholder ' + clr + '"><div class="lp-addr">' + p.address + '<br/>' + p.suburb + '</div></div>'),
     badgeHTML,
@@ -1561,8 +1561,8 @@ function admRenderProps() {
       + '<span>' + p.type + '</span><span>' + p.size + '</span>'
       + '<span style="color:' + statusColor + '">' + p.status + '</span></div></div>'
       + '<div class="adm-row-actions">'
-      + '<button class="adm-btn adm-btn-outline adm-btn-sm" onclick="admEditProp('' + p.id + '')">Edit</button>'
-      + '<button class="adm-btn adm-btn-danger adm-btn-sm" onclick="admDeleteProp('' + p.id + '','' + p.address.replace(/'/g,"\'") + '')">Delete</button>'
+      + '<button class="adm-btn adm-btn-outline adm-btn-sm" onclick="admEditProp(\'' + p.id + '\')">Edit</button>'
+      + '<button class="adm-btn adm-btn-danger adm-btn-sm" onclick="admDeleteProp(\'' + p.id + '\',\'' + p.address.replace(/'/g, "\\'") + '\')">Delete</button>'
       + '</div></div>';
   }).join('');
 }
@@ -1677,8 +1677,8 @@ function admRenderChat() {
     return '<div class="adm-chat-row">'
       + '<div class="adm-chat-key"><span>' + key.toUpperCase() + '</span>'
       + '<div style="display:flex;gap:7px">'
-      + '<button class="adm-btn adm-btn-outline adm-btn-sm" onclick="admEditChat('' + key + '')">Edit</button>'
-      + '<button class="adm-btn adm-btn-danger adm-btn-sm" onclick="admDeleteChat('' + key + '')">Delete</button>'
+      + '<button class="adm-btn adm-btn-outline adm-btn-sm" onclick="admEditChat(\'' + key + '\')">Edit</button>'
+      + '<button class="adm-btn adm-btn-danger adm-btn-sm" onclick="admDeleteChat(\'' + key + '\')">Delete</button>'
       + '</div></div>'
       + '<div class="adm-kw-tags">' + (kws || '<span style="font-size:10px;color:var(--muted)">No keywords</span>') + '</div>'
       + '<div class="adm-chat-response">' + val.response + '</div>'
@@ -1745,7 +1745,7 @@ function admRenderKw() {
   var wrap = document.getElementById('adm-kw-wrap');
   var pills = _admKeywords.map(function(k) {
     return '<span class="adm-kw-pill">' + k
-      + '<button class="adm-kw-rm" onclick="admRemoveKw('' + k + '')">×</button></span>';
+      + '<button class="adm-kw-rm" onclick="admRemoveKw(\'' + k + '\')">×</button></span>';
   }).join('');
   wrap.innerHTML = pills + '<input class="adm-kw-input" id="adm-kw-input" placeholder="Type keyword, press Enter…"'
     + ' onkeydown="admKwDown(event)" oninput="admKwInput(event)"/>';

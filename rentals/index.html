@@ -326,29 +326,31 @@
         <button class="tab-btn" id="tab-tenant" onclick="switchTab('tenant')">I'm a Tenant</button>
       </div>
       <!-- Landlord form -->
-      <div id="form-landlord">
+      <form id="form-landlord" data-lead-form="landlord" data-gtag-label="Landlord Register" data-success="Registered! We'll be in touch when rentals launch." novalidate>
         <div class="frow">
-          <div class="field"><label for="ll-first">First Name</label><input id="ll-first" name="firstName" type="text" autocomplete="given-name" placeholder="Michael"/></div>
-          <div class="field"><label for="ll-last">Last Name</label><input id="ll-last" name="lastName" type="text" autocomplete="family-name" placeholder="Chen"/></div>
+          <div class="field"><label for="ll-first">First Name</label><input id="ll-first" name="firstName" type="text" autocomplete="given-name" placeholder="Michael" required aria-required="true"/><span class="field-error">Enter your first name</span></div>
+          <div class="field"><label for="ll-last">Last Name</label><input id="ll-last" name="lastName" type="text" autocomplete="family-name" placeholder="Chen" required aria-required="true"/><span class="field-error">Enter your last name</span></div>
         </div>
-        <div class="field"><label for="ll-email">Email</label><input id="ll-email" name="email" type="email" autocomplete="email" placeholder="you@email.com"/></div>
-        <div class="field"><label for="ll-phone">Phone</label><input id="ll-phone" name="phone" type="tel" autocomplete="tel" placeholder="04xx xxx xxx"/></div>
-        <div class="field"><label for="ll-address">Property Address</label><input id="ll-address" name="address" type="text" autocomplete="street-address" placeholder="12 Beachfront Drive, Burleigh Heads"/></div>
+        <div class="field"><label for="ll-email">Email</label><input id="ll-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required aria-required="true"/><span class="field-error">Enter a valid email</span></div>
+        <div class="field"><label for="ll-phone">Phone</label><input id="ll-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="04xx xxx xxx" required aria-required="true" pattern="[0-9+ ()\-]{6,}"/><span class="field-error">Enter a valid phone number</span></div>
+        <div class="field"><label for="ll-address">Property Address</label><input id="ll-address" name="address" type="text" autocomplete="street-address" placeholder="12 Beachfront Drive, Burleigh Heads" required aria-required="true"/><span class="field-error">Enter the property address</span></div>
         <div class="frow">
           <div class="field"><label for="ll-type">Property Type</label><select id="ll-type" name="propertyType"><option>House</option><option>Apartment</option><option>Townhouse</option><option>Unit</option></select></div>
           <div class="field"><label for="ll-rented">Currently Rented?</label><select id="ll-rented" name="rentedStatus"><option>Yes, tenanted</option><option>Vacant</option><option>Owner occupied</option></select></div>
         </div>
-        <button class="fsub" id="landlordBtn" onclick="submitForm('landlord')">Register as Landlord</button>
+        <input class="hp-field" name="hp_field" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+        <button class="fsub" id="landlordBtn" type="submit">Register as Landlord</button>
         <p style="text-align:center;margin-top:12px;font-size:11px;color:rgba(var(--fg-rgb),.2)">We'll be in touch when rentals launch. No spam.</p>
-      </div>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
       <!-- Tenant form -->
-      <div id="form-tenant" style="display:none">
+      <form id="form-tenant" data-lead-form="tenant" data-gtag-label="Tenant Register" data-success="Registered! We'll be in touch with matching rentals." style="display:none" novalidate>
         <div class="frow">
-          <div class="field"><label for="tn-first">First Name</label><input id="tn-first" name="firstName" type="text" autocomplete="given-name" placeholder="Emily"/></div>
-          <div class="field"><label for="tn-last">Last Name</label><input id="tn-last" name="lastName" type="text" autocomplete="family-name" placeholder="Walsh"/></div>
+          <div class="field"><label for="tn-first">First Name</label><input id="tn-first" name="firstName" type="text" autocomplete="given-name" placeholder="Emily" required aria-required="true"/><span class="field-error">Enter your first name</span></div>
+          <div class="field"><label for="tn-last">Last Name</label><input id="tn-last" name="lastName" type="text" autocomplete="family-name" placeholder="Walsh" required aria-required="true"/><span class="field-error">Enter your last name</span></div>
         </div>
-        <div class="field"><label for="tn-email">Email</label><input id="tn-email" name="email" type="email" autocomplete="email" placeholder="you@email.com"/></div>
-        <div class="field"><label for="tn-phone">Phone</label><input id="tn-phone" name="phone" type="tel" autocomplete="tel" placeholder="04xx xxx xxx"/></div>
+        <div class="field"><label for="tn-email">Email</label><input id="tn-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required aria-required="true"/><span class="field-error">Enter a valid email</span></div>
+        <div class="field"><label for="tn-phone">Phone</label><input id="tn-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="04xx xxx xxx" required aria-required="true" pattern="[0-9+ ()\-]{6,}"/><span class="field-error">Enter a valid phone number</span></div>
         <div class="frow">
           <div class="field"><label for="tn-type">Looking For</label><select id="tn-type" name="propertyType"><option>House</option><option>Apartment</option><option>Any</option></select></div>
           <div class="field"><label for="tn-budget">Budget / week</label><select id="tn-budget" name="budget"><option>Under $500</option><option>$500–$750</option><option>$750–$1,000</option><option>$1,000+</option></select></div>
@@ -357,9 +359,11 @@
           <div class="field"><label for="tn-beds">Bedrooms</label><select id="tn-beds" name="bedrooms"><option>1 bed</option><option>2 beds</option><option>3 beds</option><option>4+ beds</option></select></div>
           <div class="field"><label for="tn-movein">Move-in</label><select id="tn-movein" name="moveIn"><option>ASAP</option><option>1–4 weeks</option><option>1–3 months</option></select></div>
         </div>
-        <button class="fsub" id="tenantBtn" onclick="submitForm('tenant')">Register as Tenant</button>
+        <input class="hp-field" name="hp_field" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+        <button class="fsub" id="tenantBtn" type="submit">Register as Tenant</button>
         <p style="text-align:center;margin-top:12px;font-size:11px;color:rgba(var(--fg-rgb),.2)">We'll contact you as soon as matching rentals are listed. No spam.</p>
-      </div>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </div>
 </div>
@@ -606,27 +610,7 @@ function fpSwitch(level){
   document.getElementById('fp-level-btn-l1').classList.toggle('active', level === 'l1');
 }
 
-/* ═══════════════════════════════════════
-   VALUATION FORM
-═══════════════════════════════════════ */
-var formBtn = document.getElementById('formBtn');
-if (formBtn) {
-  formBtn.addEventListener('click', function(e){
-    e.preventDefault();
-    if (typeof gtag === 'function') {
-      gtag('event', 'form_submit', {
-        event_category: 'Lead',
-        event_label: 'Free Valuation Form'
-      });
-    }
-    this.textContent = "Request received — we'll be in touch within 24 hours";
-    this.style.background = 'transparent'; this.style.color = '#4ade80';
-    this.style.border = '1px solid rgba(74,222,128,.25)';
-  });
-}
-/* ═══════════════════════════════════════
-   TO RENT — TAB SWITCHING & FORM SUBMIT
-═══════════════════════════════════════ */
+/* Forms (landlord / tenant) are handled by /assets/lead-form.js — posts to /api/lead. */
 function switchTab(tab) {
   var landlordForm = document.getElementById('form-landlord');
   var tenantForm = document.getElementById('form-tenant');
@@ -638,17 +622,8 @@ function switchTab(tab) {
   if (landlordBtn) landlordBtn.classList.toggle('active', tab === 'landlord');
   if (tenantBtn) tenantBtn.classList.toggle('active', tab === 'tenant');
 }
-function submitForm(type) {
-  var btn = document.getElementById(type + 'Btn');
-  if (!btn) return;
-  btn.textContent = "Registered! We'll be in touch when rentals launch.";
-  btn.style.background = 'transparent';
-  btn.style.color = '#4ade80';
-  btn.style.border = '1px solid rgba(74,222,128,.25)';
-  btn.style.boxShadow = 'none';
-  btn.style.transform = 'none';
-  btn.disabled = true;
-}
+// Legacy stub — old markup used onclick="submitForm(...)"; new forms use submit handler in lead-form.js.
+function submitForm() { /* no-op */ }
 
 /* ═══════════════════════════════════════
    LISTING FILTERS
@@ -897,7 +872,7 @@ function buildListingCard(p) {
     ' data-type="' + p.type + '" data-beds="' + p.beds + '" data-price="' + p.priceNum + '" data-suburb="' + p.suburb + '" data-reveal>',
     '<div class="listing-img">',
     (p.photos && p.photos.length
-      ? '<img src="' + p.photos[0] + '" alt="' + p.address + ' — property for sale" width="800" height="600" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">'
+      ? '<img src="' + p.photos[0] + '" alt="' + p.address + ' — property for sale" width="800" height="600" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">'
         + '<div class="listing-placeholder ' + clr + '" style="display:none"><div class="lp-addr">' + p.address + '<br/>' + p.suburb + '</div></div>'
       : '<div class="listing-placeholder ' + clr + '"><div class="lp-addr">' + p.address + '<br/>' + p.suburb + '</div></div>'),
     badgeHTML,
@@ -1589,8 +1564,8 @@ function admRenderProps() {
       + '<span>' + p.type + '</span><span>' + p.size + '</span>'
       + '<span style="color:' + statusColor + '">' + p.status + '</span></div></div>'
       + '<div class="adm-row-actions">'
-      + '<button class="adm-btn adm-btn-outline adm-btn-sm" onclick="admEditProp('' + p.id + '')">Edit</button>'
-      + '<button class="adm-btn adm-btn-danger adm-btn-sm" onclick="admDeleteProp('' + p.id + '','' + p.address.replace(/'/g,"\'") + '')">Delete</button>'
+      + '<button class="adm-btn adm-btn-outline adm-btn-sm" onclick="admEditProp(\'' + p.id + '\')">Edit</button>'
+      + '<button class="adm-btn adm-btn-danger adm-btn-sm" onclick="admDeleteProp(\'' + p.id + '\',\'' + p.address.replace(/'/g, "\\'") + '\')">Delete</button>'
       + '</div></div>';
   }).join('');
 }
@@ -1705,8 +1680,8 @@ function admRenderChat() {
     return '<div class="adm-chat-row">'
       + '<div class="adm-chat-key"><span>' + key.toUpperCase() + '</span>'
       + '<div style="display:flex;gap:7px">'
-      + '<button class="adm-btn adm-btn-outline adm-btn-sm" onclick="admEditChat('' + key + '')">Edit</button>'
-      + '<button class="adm-btn adm-btn-danger adm-btn-sm" onclick="admDeleteChat('' + key + '')">Delete</button>'
+      + '<button class="adm-btn adm-btn-outline adm-btn-sm" onclick="admEditChat(\'' + key + '\')">Edit</button>'
+      + '<button class="adm-btn adm-btn-danger adm-btn-sm" onclick="admDeleteChat(\'' + key + '\')">Delete</button>'
       + '</div></div>'
       + '<div class="adm-kw-tags">' + (kws || '<span style="font-size:10px;color:var(--muted)">No keywords</span>') + '</div>'
       + '<div class="adm-chat-response">' + val.response + '</div>'
@@ -1773,7 +1748,7 @@ function admRenderKw() {
   var wrap = document.getElementById('adm-kw-wrap');
   var pills = _admKeywords.map(function(k) {
     return '<span class="adm-kw-pill">' + k
-      + '<button class="adm-kw-rm" onclick="admRemoveKw('' + k + '')">×</button></span>';
+      + '<button class="adm-kw-rm" onclick="admRemoveKw(\'' + k + '\')">×</button></span>';
   }).join('');
   wrap.innerHTML = pills + '<input class="adm-kw-input" id="adm-kw-input" placeholder="Type keyword, press Enter…"'
     + ' onkeydown="admKwDown(event)" oninput="admKwInput(event)"/>';
@@ -1828,5 +1803,6 @@ document.addEventListener('keydown', function(e) {
 })();
 </script>
 
+<script src="/assets/lead-form.js" defer></script>
 </body>
 </html>

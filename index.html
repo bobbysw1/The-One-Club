@@ -762,20 +762,22 @@
   <div class="display" data-reveal>Find out what your<br/>home could <em>sell for.</em></div>
   <div class="gold-rule" data-reveal style="margin:24px auto;"></div>
   <p class="body" data-reveal style="text-align:center;margin:0 auto 48px">Request a free appraisal and we'll come back with a realistic price range, a recommended selling approach, and a clear breakdown of our 1% fee plus portal listing.</p>
-  <div class="form-card" data-reveal>
+  <form class="form-card" data-reveal data-lead-form="valuation" data-gtag-label="Free Valuation Form" novalidate>
     <div class="frow">
-      <div class="field"><label for="val-first">First Name</label><input id="val-first" name="firstName" type="text" autocomplete="given-name" placeholder="Sarah"/></div>
-      <div class="field"><label for="val-last">Last Name</label><input id="val-last" name="lastName" type="text" autocomplete="family-name" placeholder="Mitchell"/></div>
+      <div class="field"><label for="val-first">First Name</label><input id="val-first" name="firstName" type="text" autocomplete="given-name" placeholder="Sarah" required aria-required="true"/><span class="field-error">Enter your first name</span></div>
+      <div class="field"><label for="val-last">Last Name</label><input id="val-last" name="lastName" type="text" autocomplete="family-name" placeholder="Mitchell" required aria-required="true"/><span class="field-error">Enter your last name</span></div>
     </div>
-    <div class="field"><label for="val-address">Property Address</label><input id="val-address" name="address" type="text" autocomplete="street-address" placeholder="12 Beachfront Drive, Burleigh Heads QLD 4220"/></div>
+    <div class="field"><label for="val-address">Property Address</label><input id="val-address" name="address" type="text" autocomplete="street-address" placeholder="12 Beachfront Drive, Burleigh Heads QLD 4220" required aria-required="true"/><span class="field-error">Enter the property address</span></div>
     <div class="frow">
-      <div class="field"><label for="val-phone">Phone</label><input id="val-phone" name="phone" type="tel" autocomplete="tel" placeholder="04xx xxx xxx"/></div>
-      <div class="field"><label for="val-email">Email</label><input id="val-email" name="email" type="email" autocomplete="email" placeholder="you@email.com"/></div>
+      <div class="field"><label for="val-phone">Phone</label><input id="val-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="04xx xxx xxx" required aria-required="true" pattern="[0-9+ ()\-]{6,}"/><span class="field-error">Enter a valid phone number</span></div>
+      <div class="field"><label for="val-email">Email</label><input id="val-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required aria-required="true"/><span class="field-error">Enter a valid email</span></div>
     </div>
     <div class="field"><label for="val-timeline">Selling timeline</label><select id="val-timeline" name="timeline"><option>As soon as possible</option><option>Within 3 months</option><option>3–6 months</option><option>Just exploring</option></select></div>
-    <button class="fsub" id="formBtn">Request Free Valuation</button>
+    <input class="hp-field" name="hp_field" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+    <button class="fsub" id="formBtn" type="submit">Request Free Valuation</button>
     <p class="form-note">No obligation. No pressure. Just clear advice.</p>
-  </div>
+    <p class="form-status" role="status" aria-live="polite"></p>
+  </form>
 </section>
 
 <!-- FOOTER -->
@@ -1027,24 +1029,7 @@ function fpSwitch(level){
   document.getElementById('fp-level-btn-l1').classList.toggle('active', level === 'l1');
 }
 
-/* ═══════════════════════════════════════
-   VALUATION FORM
-═══════════════════════════════════════ */
-var formBtn = document.getElementById('formBtn');
-if (formBtn) {
-  formBtn.addEventListener('click', function(e){
-    e.preventDefault();
-    if (typeof gtag === 'function') {
-      gtag('event', 'form_submit', {
-        event_category: 'Lead',
-        event_label: 'Free Valuation Form'
-      });
-    }
-    this.textContent = "Request received — we'll be in touch within 24 hours";
-    this.style.background = 'transparent'; this.style.color = '#4ade80';
-    this.style.border = '1px solid rgba(74,222,128,.25)';
-  });
-}
+/* Valuation form: handled by /assets/lead-form.js (POSTs to /api/lead). */
 /* ═══════════════════════════════════════
    TO RENT — TAB SWITCHING & FORM SUBMIT
 ═══════════════════════════════════════ */
@@ -2249,5 +2234,6 @@ document.addEventListener('keydown', function(e) {
 })();
 </script>
 
+<script src="/assets/lead-form.js" defer></script>
 </body>
 </html>
