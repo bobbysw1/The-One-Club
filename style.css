@@ -622,7 +622,16 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 /* ── Editorial hero video ── */
 .ed-hero{isolation:isolate}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;pointer-events:none;background:#000}
-.hero-video-tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.35) 55%,rgba(0,0,0,.78) 100%);z-index:-1;pointer-events:none}
+/* Two layered overlays: a top-to-bottom darkening ramp + a centre-weighted band
+   where the headline + subtitle sit. The vignette keeps the gold italic
+   "meet the right people." readable against bright/sky-heavy hero footage. */
+.hero-video-tint{position:absolute;inset:0;z-index:-1;pointer-events:none;background:
+  radial-gradient(ellipse 70% 55% at 50% 50%, rgba(20,40,30,.55) 0%, rgba(20,40,30,.35) 55%, rgba(20,40,30,0) 85%),
+  linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.30) 55%, rgba(0,0,0,.78) 100%)
+}
+.ed-hero h1{text-shadow:0 2px 18px rgba(0,0,0,.55)}
+.ed-hero h1 em{font-weight:500;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.ed-hero .ed-hero-sub{text-shadow:0 1px 10px rgba(0,0,0,.5)}
 .ed-hero .page-label{color:rgba(255,255,255,.8)}
 .ed-hero h1{color:#fff}
 .ed-hero h1 em{color:var(--gold)}
