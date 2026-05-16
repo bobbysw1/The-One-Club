@@ -49,9 +49,20 @@ nav{position:fixed;inset:0 0 auto;z-index:500;padding:0 48px;background:rgba(var
 .logo{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;letter-spacing:-.2px;cursor:pointer}
 .logo-mark{width:32px;height:32px;border-radius:8px;background:var(--gold);color:#000;display:grid;place-items:center;font-size:11px;font-weight:700;letter-spacing:-.3px}
 .nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{font-size:13px;font-weight:500;color:var(--muted);transition:color .2s;cursor:pointer}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);transition:color .2s;cursor:pointer;white-space:nowrap}
 .nav-links a:hover,.nav-links a.active{color:var(--fg)}
-.nav-cta{display:flex;gap:10px}
+.nav-cta{display:flex;gap:10px;align-items:center}
+.nav-cta>*{white-space:nowrap}
+/* Narrow-desktop layout: tighten nav between 900 and 1280px so "For Sale"
+   and the phone number don't wrap onto two lines. */
+@media(min-width:901px) and (max-width:1280px){
+  nav{padding:0 28px}
+  .nav-links{gap:18px}
+  .nav-links a{font-size:12.5px}
+  .nav-cta{gap:8px}
+}
+/* Hide the phone number below 1180px; keep the Free Valuation CTA. */
+@media(max-width:1180px){.nav-phone{display:none}}
 .btn{display:inline-flex;align-items:center;padding:9px 20px;border-radius:7px;font-size:13px;font-weight:600;transition:all .2s var(--ease);cursor:pointer;border:none;font-family:inherit}
 .btn-outline{background:transparent;border:1px solid rgba(var(--fg-rgb),.14);color:var(--muted)}
 .btn-outline:hover{border-color:rgba(var(--fg-rgb),.3);color:var(--fg)}
@@ -61,7 +72,6 @@ nav{position:fixed;inset:0 0 auto;z-index:500;padding:0 48px;background:rgba(var
 .btn-gold.btn-lg{padding:16px 36px;font-size:15px}
 .nav-phone{display:inline-flex;align-items:center;font-size:12px;font-weight:500;color:var(--muted);letter-spacing:.3px;text-decoration:none;padding:6px 2px;transition:color .2s var(--ease)}
 .nav-phone:hover{color:var(--fg)}
-@media(max-width:900px){.nav-phone{display:none}}
 .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:transparent}
 .ham span{width:22px;height:2px;background:rgba(var(--fg-rgb),.7);border-radius:2px;transition:all .3s}
 @media(max-width:900px){nav{padding:0 20px}.nav-links,.nav-cta{display:none}.ham{display:flex}}
