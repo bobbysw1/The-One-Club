@@ -306,8 +306,61 @@
   <h1 class="serif" data-reveal style="font-size:clamp(48px,7vw,108px);letter-spacing:-2.5px;line-height:1;font-weight:300;margin-top:18px">Listings<br/><em>landing soon.</em></h1>
   <p class="body" data-reveal style="max-width:620px;font-size:17px;margin-top:26px">We are setting up our first set of Gold Coast vendor listings now. Register your interest and we will email you the moment new properties go live — and notify you about pre-market opportunities before they hit the portals.</p>
   <div class="hero-actions" data-reveal style="margin-top:36px;justify-content:flex-start">
-    <a class="btn btn-gold btn-lg" href="/#valuation">Register interest</a>
+    <a class="btn btn-gold btn-lg" href="#buyer-register">Get early access to new listings</a>
     <a class="btn btn-outline btn-lg" href="/#suburbs">Browse suburbs</a>
+  </div>
+</section>
+
+<!-- BUYER REGISTER -->
+<section class="sec" style="padding-top:20px;padding-bottom:80px" id="buyer-register">
+  <div style="max-width:780px;margin:0 auto">
+    <div class="page-label" data-reveal>Buyer register</div>
+    <h2 class="display" data-reveal style="margin:14px 0 8px">Get notified before<br/><em>listings hit the portals.</em></h2>
+    <p class="body" data-reveal style="max-width:560px;margin:0 auto 32px;font-size:15px">Tell us what you're after and we'll send matching listings — and pre-market opportunities — straight to your inbox.</p>
+    <form class="form-card" data-reveal data-lead-form="buyer" data-gtag-event="buyer_register" data-gtag-label="For Sale Buyer Register" data-success="Registered — we'll be in touch with matching listings." novalidate>
+      <div class="frow">
+        <div class="field"><label for="b-first">First Name</label><input id="b-first" name="firstName" type="text" autocomplete="given-name" placeholder="Sarah" required aria-required="true"/><span class="field-error">Enter your first name</span></div>
+        <div class="field"><label for="b-last">Last Name</label><input id="b-last" name="lastName" type="text" autocomplete="family-name" placeholder="Mitchell" required aria-required="true"/><span class="field-error">Enter your last name</span></div>
+      </div>
+      <div class="frow">
+        <div class="field"><label for="b-email">Email</label><input id="b-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required aria-required="true"/><span class="field-error">Enter a valid email</span></div>
+        <div class="field"><label for="b-phone">Phone</label><input id="b-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="04xx xxx xxx" required aria-required="true" pattern="[0-9+ ()\-]{6,}"/><span class="field-error">Enter a valid phone number</span></div>
+      </div>
+      <div class="field"><label for="b-suburbs">Suburbs of interest</label>
+        <select id="b-suburbs" name="suburbs" multiple size="5" style="height:auto;min-height:120px">
+          <option value="Bilinga">Bilinga</option>
+          <option value="Broadbeach">Broadbeach</option>
+          <option value="Burleigh Heads">Burleigh Heads</option>
+          <option value="Coolangatta">Coolangatta</option>
+          <option value="Currumbin">Currumbin</option>
+          <option value="Hope Island">Hope Island</option>
+          <option value="Kirra">Kirra</option>
+          <option value="Mermaid Beach">Mermaid Beach</option>
+          <option value="Miami">Miami</option>
+          <option value="Mudgeeraba">Mudgeeraba</option>
+          <option value="Palm Beach">Palm Beach</option>
+          <option value="Robina">Robina</option>
+          <option value="Surfers Paradise">Surfers Paradise</option>
+          <option value="Tugun">Tugun</option>
+          <option value="Varsity Lakes">Varsity Lakes</option>
+        </select>
+        <span style="font-size:11px;color:var(--muted);margin-top:4px">Hold ⌘ / Ctrl to select more than one.</span>
+      </div>
+      <div class="frow">
+        <div class="field"><label for="b-type">Property Type</label><select id="b-type" name="propertyType"><option>House</option><option>Apartment</option><option>Townhouse</option><option>Acreage</option><option>Any</option></select></div>
+        <div class="field"><label for="b-price">Price Range</label><select id="b-price" name="priceRange"><option>Under $1M</option><option>$1M–$1.5M</option><option>$1.5M–$2M</option><option>$2M–$3M</option><option>$3M+</option></select></div>
+      </div>
+      <div class="frow">
+        <div class="field"><label for="b-beds">Bedrooms (min)</label><select id="b-beds" name="bedroomsMin"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5+</option></select></div>
+        <div class="field"><label for="b-timeline">Timeline</label><select id="b-timeline" name="timeline"><option>Buying now</option><option>1–3 months</option><option>3–6 months</option><option>Just looking</option></select></div>
+      </div>
+      <div class="field"><label for="b-notes">Notes (optional)</label><input id="b-notes" name="notes" type="text" placeholder="Pool, school catchment, anything specific…"/></div>
+      <input class="hp-field" name="hp_field" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+      <button class="fsub" type="submit">Send my preferences</button>
+      <p class="form-note">No spam. We email when we have something that fits.</p>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+    <p style="text-align:center;margin-top:24px;font-size:13px;color:var(--muted)">Already selling? <a href="/#valuation" style="color:var(--gold)">Get a free valuation →</a></p>
   </div>
 </section>
 
@@ -1797,5 +1850,6 @@ document.addEventListener('keydown', function(e) {
 })();
 </script>
 
+<script src="/assets/lead-form.js" defer></script>
 </body>
 </html>

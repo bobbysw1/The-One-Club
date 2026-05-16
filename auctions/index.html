@@ -326,7 +326,60 @@
   <div style="padding:48px 32px;border:1px dashed rgba(var(--fg-rgb),.14);border-radius:12px;text-align:center;color:var(--muted)">
     <div style="font-family:'Fraunces',Georgia,serif;font-size:22px;color:var(--fg);letter-spacing:-.4px">No auctions scheduled right now.</div>
     <div style="margin-top:8px;font-size:14px">Register interest and we will be in touch as soon as the next campaign opens.</div>
-    <div style="margin-top:24px"><a class="btn btn-gold" href="/#valuation">Register interest</a></div>
+    <div style="margin-top:24px"><a class="btn btn-gold" href="#auction-register">Get notified when auctions open</a></div>
+  </div>
+</section>
+
+<!-- AUCTION BUYER REGISTER -->
+<section class="sec" style="padding-top:40px;padding-bottom:60px" id="auction-register">
+  <div style="max-width:780px;margin:0 auto">
+    <div class="page-label" data-reveal>Auction register</div>
+    <h2 class="display" data-reveal style="margin:14px 0 8px">Get the auction book<br/><em>every Monday.</em></h2>
+    <p class="body" data-reveal style="max-width:560px;margin:0 auto 32px;font-size:15px">Tell us what you're after and we'll email you the auction calendar plus pre-market opportunities as campaigns open.</p>
+    <form class="form-card" data-reveal data-lead-form="auction-buyer" data-gtag-event="buyer_register" data-gtag-label="Auction Buyer Register" data-success="Registered — we'll send the auction book each Monday." novalidate>
+      <div class="frow">
+        <div class="field"><label for="a-first">First Name</label><input id="a-first" name="firstName" type="text" autocomplete="given-name" placeholder="Sarah" required aria-required="true"/><span class="field-error">Enter your first name</span></div>
+        <div class="field"><label for="a-last">Last Name</label><input id="a-last" name="lastName" type="text" autocomplete="family-name" placeholder="Mitchell" required aria-required="true"/><span class="field-error">Enter your last name</span></div>
+      </div>
+      <div class="frow">
+        <div class="field"><label for="a-email">Email</label><input id="a-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required aria-required="true"/><span class="field-error">Enter a valid email</span></div>
+        <div class="field"><label for="a-phone">Phone</label><input id="a-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="04xx xxx xxx" required aria-required="true" pattern="[0-9+ ()\-]{6,}"/><span class="field-error">Enter a valid phone number</span></div>
+      </div>
+      <div class="field"><label for="a-suburbs">Suburbs of interest</label>
+        <select id="a-suburbs" name="suburbs" multiple size="5" style="height:auto;min-height:120px">
+          <option value="Bilinga">Bilinga</option>
+          <option value="Broadbeach">Broadbeach</option>
+          <option value="Burleigh Heads">Burleigh Heads</option>
+          <option value="Coolangatta">Coolangatta</option>
+          <option value="Currumbin">Currumbin</option>
+          <option value="Hope Island">Hope Island</option>
+          <option value="Kirra">Kirra</option>
+          <option value="Mermaid Beach">Mermaid Beach</option>
+          <option value="Miami">Miami</option>
+          <option value="Mudgeeraba">Mudgeeraba</option>
+          <option value="Palm Beach">Palm Beach</option>
+          <option value="Robina">Robina</option>
+          <option value="Surfers Paradise">Surfers Paradise</option>
+          <option value="Tugun">Tugun</option>
+          <option value="Varsity Lakes">Varsity Lakes</option>
+        </select>
+        <span style="font-size:11px;color:var(--muted);margin-top:4px">Hold ⌘ / Ctrl to select more than one.</span>
+      </div>
+      <div class="frow">
+        <div class="field"><label for="a-type">Property Type</label><select id="a-type" name="propertyType"><option>House</option><option>Apartment</option><option>Townhouse</option><option>Acreage</option><option>Any</option></select></div>
+        <div class="field"><label for="a-price">Price Range</label><select id="a-price" name="priceRange"><option>Under $1M</option><option>$1M–$1.5M</option><option>$1.5M–$2M</option><option>$2M–$3M</option><option>$3M+</option></select></div>
+      </div>
+      <div class="frow">
+        <div class="field"><label for="a-beds">Bedrooms (min)</label><select id="a-beds" name="bedroomsMin"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5+</option></select></div>
+        <div class="field"><label for="a-timeline">Timeline</label><select id="a-timeline" name="timeline"><option>Buying now</option><option>1–3 months</option><option>3–6 months</option><option>Just looking</option></select></div>
+      </div>
+      <div class="field"><label for="a-notes">Notes (optional)</label><input id="a-notes" name="notes" type="text" placeholder="Pool, school catchment, anything specific…"/></div>
+      <input class="hp-field" name="hp_field" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+      <button class="fsub" type="submit">Send me the auction book</button>
+      <p class="form-note">No spam. We email when there's an auction or pre-market that fits.</p>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+    <p style="text-align:center;margin-top:24px;font-size:13px;color:var(--muted)">Already selling? <a href="/#valuation" style="color:var(--gold)">Get a free valuation →</a></p>
   </div>
 </section>
 
@@ -1765,5 +1818,6 @@ document.addEventListener('keydown', function(e) {
 })();
 </script>
 
+<script src="/assets/lead-form.js" defer></script>
 </body>
 </html>
