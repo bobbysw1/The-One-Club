@@ -144,3 +144,56 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
+
+/* Chip multi-select — hydrates any <fieldset data-chip-multi> on the page.
+ * Each chip is a real <button aria-pressed>, so keyboard, touch, and screen
+ * readers all work without a custom widget role. The hidden <input> stays
+ * in sync with the chip selection so the existing lead-form gather picks
+ * it up unchanged. */
+(function () {
+  function hydrate(fs) {
+    if (fs.__chipBound) return;
+    fs.__chipBound = true;
+    var chips  = fs.querySelectorAll('.chip');
+    var hidden = fs.querySelector('input[type="hidden"]');
+    var count  = fs.querySelector('.chip-count');
+    function sync() {
+      var picked = [];
+      chips.forEach(function (c) { if (c.getAttribute('aria-pressed') === 'true') picked.push(c.value); });
+      if (hidden) hidden.value = picked.join(', ');
+      if (count) {
+        count.textContent = picked.length === 0
+          ? 'None selected'
+          : (picked.length === 1 ? '1 selected' : picked.length + ' selected');
+      }
+    }
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () {
+        c.setAttribute('aria-pressed', c.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+        sync();
+      });
+    });
+    sync();
+  }
+  function init() {
+    document.querySelectorAll('fieldset[data-chip-multi]').forEach(hydrate);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+/* Deep-link scroll fallback — re-applies location.hash after the DOM is parsed.
+ * Belt-and-braces for cases where the browser's native hash scroll fired before
+ * layout was stable (sticky header, late-loading webfonts, etc.). */
+(function () {
+  function deepLink() {
+    var hash = window.location.hash;
+    if (!hash || hash.length < 2) return;
+    var id;
+    try { id = decodeURIComponent(hash.slice(1)); } catch (e) { id = hash.slice(1); }
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', deepLink);
+  else deepLink();
+})();

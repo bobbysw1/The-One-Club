@@ -6,7 +6,9 @@
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--fg);font-family:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-weight:400}
+/* overflow-x:clip prevents horizontal scroll without turning <body> into a scroll container —
+   so html stays the scroller and `html{scroll-behavior:smooth}` (above) applies to anchor jumps. */
+body{background:var(--bg);color:var(--fg);font-family:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip;font-weight:400}
 .serif{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-optical-sizing:auto}
 h1,h2,h3,.display,.display-xl,.hero-headline,.tc-quote{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-optical-sizing:auto;font-weight:400;letter-spacing:-.8px}
 em{font-style:italic;font-variation-settings:"opsz" 96}
@@ -17,12 +19,12 @@ a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 html{color-scheme:light dark}
 /* ─── Palette: deep sage + gold (editorial v2) ─── */
-:root{--bg:#1F3D24;--fg:#FFFFFF;--bg-rgb:31,61,36;--fg-rgb:255,255,255;--gold:#C4A84A;--gold-dim:rgba(196,168,74,.12);--accent-deep:#27433A;--accent-soft:#7A9684;--muted:rgba(var(--fg-rgb),.65);--subtle:rgba(var(--fg-rgb),.13);--surface-1:rgba(var(--fg-rgb),.055);--surface-2:rgba(var(--fg-rgb),.09);--surface-border:rgba(var(--fg-rgb),.14);--ease:cubic-bezier(.22,1,.36,1)}
+:root{--bg:#1F3D24;--fg:#FFFFFF;--bg-rgb:31,61,36;--fg-rgb:255,255,255;--gold:#C4A84A;--gold-dim:rgba(196,168,74,.12);--accent-deep:#27433A;--accent-soft:#7A9684;--muted:rgba(var(--fg-rgb),.78);--text-muted:rgba(var(--fg-rgb),.78);--subtle:rgba(var(--fg-rgb),.13);--surface-1:rgba(var(--fg-rgb),.055);--surface-2:rgba(var(--fg-rgb),.09);--surface-border:rgba(var(--fg-rgb),.14);--ease:cubic-bezier(.22,1,.36,1)}
 @media (prefers-color-scheme: light){
-  :root:not([data-theme="dark"]){--bg:#E9EFE3;--fg:#1A2620;--bg-rgb:233,239,227;--fg-rgb:26,38,32;--muted:rgba(var(--fg-rgb),.62);--subtle:rgba(var(--fg-rgb),.11);--surface-1:rgba(var(--fg-rgb),.035);--surface-2:rgba(var(--fg-rgb),.065);--surface-border:rgba(var(--fg-rgb),.11)}
+  :root:not([data-theme="dark"]){--bg:#E9EFE3;--fg:#1A2620;--bg-rgb:233,239,227;--fg-rgb:26,38,32;--muted:rgba(var(--fg-rgb),.72);--text-muted:rgba(var(--fg-rgb),.72);--subtle:rgba(var(--fg-rgb),.11);--surface-1:rgba(var(--fg-rgb),.035);--surface-2:rgba(var(--fg-rgb),.065);--surface-border:rgba(var(--fg-rgb),.11)}
 }
-:root[data-theme="light"]{--bg:#F4F6F1;--fg:#1A2620;--bg-rgb:244,246,241;--fg-rgb:26,38,32;--muted:rgba(var(--fg-rgb),.62);--subtle:rgba(var(--fg-rgb),.11);--surface-1:rgba(var(--fg-rgb),.035);--surface-2:rgba(var(--fg-rgb),.065);--surface-border:rgba(var(--fg-rgb),.11);color-scheme:light}
-:root[data-theme="dark"]{--bg:#1F3D24;--fg:#FFFFFF;--bg-rgb:31,61,36;--fg-rgb:255,255,255;--muted:rgba(var(--fg-rgb),.65);--subtle:rgba(var(--fg-rgb),.13);--surface-1:rgba(var(--fg-rgb),.055);--surface-2:rgba(var(--fg-rgb),.09);--surface-border:rgba(var(--fg-rgb),.14);color-scheme:dark}
+:root[data-theme="light"]{--bg:#F4F6F1;--fg:#1A2620;--bg-rgb:244,246,241;--fg-rgb:26,38,32;--muted:rgba(var(--fg-rgb),.72);--text-muted:rgba(var(--fg-rgb),.72);--subtle:rgba(var(--fg-rgb),.11);--surface-1:rgba(var(--fg-rgb),.035);--surface-2:rgba(var(--fg-rgb),.065);--surface-border:rgba(var(--fg-rgb),.11);color-scheme:light}
+:root[data-theme="dark"]{--bg:#1F3D24;--fg:#FFFFFF;--bg-rgb:31,61,36;--fg-rgb:255,255,255;--muted:rgba(var(--fg-rgb),.78);--text-muted:rgba(var(--fg-rgb),.78);--subtle:rgba(var(--fg-rgb),.13);--surface-1:rgba(var(--fg-rgb),.055);--surface-2:rgba(var(--fg-rgb),.09);--surface-border:rgba(var(--fg-rgb),.14);color-scheme:dark}
 
 /* ── Theme toggle (bottom-left floating button) ── */
 .theme-toggle{position:fixed;bottom:28px;left:28px;z-index:800;width:44px;height:44px;border-radius:50%;background:rgba(var(--fg-rgb),.08);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border:1px solid rgba(var(--fg-rgb),.15);color:var(--fg);cursor:pointer;display:grid;place-items:center;font-family:inherit;transition:all .25s var(--ease);padding:0}
@@ -51,6 +53,10 @@ nav{position:fixed;inset:0 0 auto;z-index:500;padding:0 48px;background:rgba(var
 .nav-links{display:flex;gap:28px;list-style:none}
 .nav-links a{font-size:13px;font-weight:500;color:var(--muted);transition:color .2s;cursor:pointer;white-space:nowrap}
 .nav-links a:hover,.nav-links a.active{color:var(--fg)}
+/* "Soon" badge on nav links that point to pages without real inventory yet.
+   Remove the rule (or its data-page selector) when listings go live. */
+.nav-links a[data-page="for-sale"],.nav-links a[data-page="auctions"]{display:inline-flex;align-items:center;gap:8px}
+.nav-links a[data-page="for-sale"]::after,.nav-links a[data-page="auctions"]::after{content:"Soon";font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--gold);background:rgba(196,168,74,.12);border:1px solid rgba(196,168,74,.3);border-radius:999px;padding:2px 7px;line-height:1}
 .nav-cta{display:flex;gap:10px;align-items:center}
 .nav-cta>*{white-space:nowrap}
 /* Narrow-desktop layout: tighten nav between 900 and 1280px so "For Sale"
@@ -68,6 +74,7 @@ nav{position:fixed;inset:0 0 auto;z-index:500;padding:0 48px;background:rgba(var
 .btn-outline:hover{border-color:rgba(var(--fg-rgb),.3);color:var(--fg)}
 .btn-gold{background:var(--gold);color:#000}
 .btn-gold:hover{background:#d4b857;transform:translateY(-1px);box-shadow:0 6px 24px rgba(196,168,74,.28)}
+.btn:focus-visible,.btn-gold:focus-visible,.btn-outline:focus-visible{outline:2px solid var(--gold);outline-offset:3px;box-shadow:0 0 0 4px rgba(196,168,74,.18)}
 .btn-lg{padding:13px 28px;font-size:14px;border-radius:9px}
 .btn-gold.btn-lg{padding:16px 36px;font-size:15px}
 .nav-phone{display:inline-flex;align-items:center;font-size:12px;font-weight:500;color:var(--muted);letter-spacing:.3px;text-decoration:none;padding:6px 2px;transition:color .2s var(--ease)}
@@ -79,6 +86,35 @@ nav{position:fixed;inset:0 0 auto;z-index:500;padding:0 48px;background:rgba(var
 .mobile-menu a{display:block;font-size:17px;font-weight:500;color:rgba(var(--fg-rgb),.7);padding:14px 0;border-bottom:1px solid rgba(var(--fg-rgb),.06);cursor:pointer}
 .mobile-menu a:hover{color:var(--fg)}
 .mobile-menu.open{display:flex}
+
+/* Mobile sticky CTA bar — primary conversion path stays visible while scrolling on phones.
+   Hidden above 900px (header CTA is visible there). Honours iOS safe-area. */
+.mobile-cta-bar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:600;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(var(--bg-rgb),.94);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-top:1px solid rgba(var(--fg-rgb),.08);box-shadow:0 -12px 32px rgba(0,0,0,.35)}
+.mobile-cta-bar a.btn{flex:1;justify-content:center;padding:14px 18px;font-size:14px}
+.mobile-cta-bar .row{display:flex;gap:8px;align-items:center;max-width:520px;margin:0 auto}
+.mobile-cta-bar .tel{flex:0 0 auto;width:46px;height:46px;display:inline-flex;align-items:center;justify-content:center;border-radius:9px;background:rgba(var(--fg-rgb),.06);border:1px solid rgba(var(--fg-rgb),.1);color:var(--fg)}
+@media(max-width:900px){.mobile-cta-bar{display:block}body{padding-bottom:80px}}
+
+/* Hero mini-form — compact "email + suburb" form shown directly under the hero CTAs.
+   Glassmorphic so it sits naturally on top of the hero video. */
+.hero-mini-form{margin-top:28px;max-width:580px;width:100%;display:grid;grid-template-columns:1.4fr 1fr auto;gap:8px;padding:10px;border-radius:14px;background:rgba(0,0,0,.32);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.14)}
+.hero-mini-form input,.hero-mini-form select{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:12px 14px;color:#fff;font-size:14px;font-family:inherit;outline:none;-webkit-appearance:none;min-width:0}
+.hero-mini-form input::placeholder{color:rgba(255,255,255,.6)}
+.hero-mini-form input:focus,.hero-mini-form select:focus{border-color:var(--gold);background:rgba(255,255,255,.14)}
+.hero-mini-form select option{background:#0a0e14;color:#fff}
+.hero-mini-form button{background:var(--gold);color:#000;border:none;border-radius:9px;padding:12px 20px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;transition:all .2s var(--ease)}
+.hero-mini-form button:hover{background:#d4b857;transform:translateY(-1px);box-shadow:0 8px 24px rgba(196,168,74,.32)}
+.hero-mini-form button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.hero-mini-form .form-status{grid-column:1/-1;text-align:center;font-size:12px;color:rgba(255,255,255,.85);margin:6px 0 0;min-height:14px}
+.hero-mini-form .form-status.is-error{color:#fca5a5}
+.hero-mini-form .form-status.is-ok{color:#86efac}
+.hero-mini-form .field-error{display:none}
+.hero-mini-foot{font-size:11px;color:rgba(255,255,255,.7);margin-top:8px;text-align:center}
+.hero-mini-foot a{color:inherit;text-decoration:underline}
+@media(max-width:640px){
+  .hero-mini-form{grid-template-columns:1fr;padding:12px}
+  .hero-mini-form button{padding:14px 20px}
+}
 
 /* ── PAGE SYSTEM ── */
 .page{display:none;min-height:100vh}
@@ -125,10 +161,17 @@ nav{position:fixed;inset:0 0 auto;z-index:500;padding:0 48px;background:rgba(var
 .versus-row .new{color:#4ade80;font-size:12px;font-weight:600}
 
 /* ── SAVINGS CALC ── */
-.savings-section{padding:56px 24px 64px;max-width:900px;margin:0 auto;text-align:center}
+.savings-section{padding:40px 24px 48px;max-width:900px;margin:0 auto;text-align:center}
 .calc{display:flex;flex-direction:column;align-items:center;gap:0}
 .calc-price-label{font-size:13px;color:var(--muted);font-weight:500;letter-spacing:.5px;margin-bottom:16px}
-.calc-price-val{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:clamp(56px,8vw,96px);font-weight:400;line-height:1;letter-spacing:-3px;margin-bottom:24px}
+.calc-price-val{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:clamp(56px,8vw,96px);font-weight:400;line-height:1;letter-spacing:-3px;margin-bottom:12px}
+.calc-price-input-wrap{display:inline-flex;align-items:center;gap:8px;margin-bottom:18px;background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.1);border-radius:10px;padding:6px 10px 6px 14px}
+.calc-price-input-wrap:focus-within{border-color:var(--gold);background:rgba(var(--fg-rgb),.06)}
+.calc-price-input-wrap .prefix{font-size:14px;color:var(--muted);font-weight:600}
+.calc-price-input-wrap input{width:140px;background:transparent;border:none;outline:none;color:var(--fg);font-size:15px;font-family:inherit;font-feature-settings:"tnum";font-variant-numeric:tabular-nums;font-weight:600;text-align:right;padding:6px 4px;-moz-appearance:textfield}
+.calc-price-input-wrap input::-webkit-outer-spin-button,.calc-price-input-wrap input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.calc-breakdown{margin-top:6px;font-size:12px;color:var(--muted);text-align:center;line-height:1.6}
+.calc-breakdown b{color:var(--fg);font-weight:600}
 .range-wrap{width:100%;max-width:600px;position:relative;margin-bottom:8px}
 input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:2px;outline:none;cursor:pointer;border-radius:1px;background:linear-gradient(to right,var(--gold) 0%,var(--gold) var(--pct,30%),rgba(var(--fg-rgb),.1) var(--pct,30%),rgba(var(--fg-rgb),.1) 100%)}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;cursor:ew-resize;transition:transform .15s;box-shadow:0 0 0 4px rgba(196,168,74,.25)}
@@ -148,7 +191,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .saving-note{font-size:13px;color:var(--muted);margin-top:12px}
 
 /* ── PHOTO COMPARE ── */
-.photos-section{padding:0 0 56px}
+.photos-section{padding:0 0 40px}
 .photos-header{padding:0 24px 64px;max-width:1200px;margin:0 auto}
 .compare-block{margin-bottom:4px;position:relative}
 .compare-label{position:absolute;top:20px;left:24px;z-index:20;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
@@ -167,7 +210,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .compare-caption{padding:14px 24px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--subtle)}
 
 /* ── TIMELINE ── */
-.timeline-section{padding:56px 24px 56px;max-width:1200px;margin:0 auto}
+.timeline-section{padding:40px 24px 40px;max-width:1200px;margin:0 auto}
 .steps{margin-top:64px;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--subtle);border:1px solid var(--subtle);border-radius:16px;overflow:hidden}
 @media(max-width:800px){.steps{grid-template-columns:1fr}}
 .step{padding:32px 24px;background:var(--bg);transition:background .3s}
@@ -177,7 +220,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .step-body{font-size:13px;color:var(--muted);line-height:1.65}
 
 /* ── TESTIMONIALS ── */
-.testimonials-section{padding:56px 24px 56px}
+.testimonials-section{padding:40px 24px 40px}
 .tc-wrap{max-width:1200px;margin:0 auto}
 .tc-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:56px;flex-wrap:wrap;gap:24px}
 .tc-outer{overflow:hidden}
@@ -200,7 +243,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .tc-dot.active{background:var(--gold);width:20px;border-radius:3px}
 
 /* ── FORM ── */
-.form-section{padding:56px 24px 72px;max-width:560px;margin:0 auto;text-align:center}
+.form-section{padding:40px 24px 56px;max-width:560px;margin:0 auto;text-align:center}
 .form-card{background:rgba(var(--fg-rgb),.025);border:1px solid rgba(var(--fg-rgb),.07);border-radius:20px;padding:36px;text-align:left}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:500px){.frow{grid-template-columns:1fr}}
@@ -211,7 +254,10 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .field select option{background:var(--bg)}
 .fsub{width:100%;margin-top:8px;background:var(--gold);color:#000;padding:15px;border-radius:9px;border:none;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;transition:all .2s var(--ease)}
 .fsub:hover{background:#d4b857;transform:translateY(-1px);box-shadow:0 8px 24px rgba(196,168,74,.28)}
-.form-note{text-align:center;margin-top:14px;font-size:12px;color:rgba(var(--fg-rgb),.22)}
+.form-note{text-align:center;margin-top:14px;font-size:12px;color:rgba(var(--fg-rgb),.55)}
+.form-note a{color:inherit;text-decoration:underline}
+.form-note a:hover{color:var(--gold)}
+.label-opt{text-transform:none;letter-spacing:0;font-weight:400;color:rgba(var(--fg-rgb),.55);margin-left:4px}
 .field.invalid input,.field.invalid select{border-color:rgba(239,68,68,.55)}
 .field-error{display:none;color:#ef4444;font-size:11px;margin-top:4px;letter-spacing:.2px}
 .field.invalid .field-error{display:block}
@@ -219,6 +265,31 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .form-status.is-error{color:#ef4444}
 .form-status.is-ok{color:#4ade80}
 .hp-field{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+
+/* Chip multi-select — replaces native <select multiple> so mobile users can actually use it.
+   Each chip is a real <button> so keyboard, screen reader, and touch all work. */
+.chip-multi{border:none;padding:0;margin:0}
+.chip-multi-legend{display:flex;justify-content:space-between;align-items:baseline;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;width:100%;padding:0}
+.chip-multi-legend .chip-count{font-size:10px;font-weight:600;letter-spacing:.6px;color:var(--gold);text-transform:none;letter-spacing:0}
+.chip-multi-list{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:8px 14px;background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.12);border-radius:999px;color:var(--fg);font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s var(--ease)}
+.chip:hover{border-color:rgba(196,168,74,.4);background:rgba(196,168,74,.06)}
+.chip:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.chip[aria-pressed="true"]{background:var(--gold);color:#000;border-color:var(--gold);font-weight:600}
+.chip[aria-pressed="true"]::before{content:"✓";margin-right:6px;font-weight:700}
+@media(max-width:640px){
+  .chip{min-height:44px;min-width:44px;padding:10px 16px;font-size:14px}
+}
+
+/* Chat-bubble close button — session-level dismiss. */
+.chat-close{position:absolute;top:-6px;right:-6px;width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.7);color:#fff;border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;cursor:pointer;font-size:14px;line-height:1;padding:0;font-family:inherit;transition:all .2s var(--ease);z-index:801}
+.chat-close:hover{background:#000;transform:scale(1.1)}
+.chat-close:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+#chat-bubble{position:relative}
+/* Hide chat widget on very narrow screens (≤640px) — replaced by a link in the mobile menu. */
+@media(max-width:640px){
+  #chat-bubble,#chat-dot,#chat-panel,.chat-close{display:none !important}
+}
 
 /* ── HOW IT WORKS ── */
 .fp-wrap{background:rgba(var(--fg-rgb),.02);border:1px solid rgba(var(--fg-rgb),.06);border-radius:20px;overflow:hidden}
@@ -399,16 +470,25 @@ footer{border-top:1px solid var(--subtle);padding:60px 48px 40px}
 #chat-messages::-webkit-scrollbar-thumb{background:rgba(var(--fg-rgb),.1);border-radius:2px}
 #chat-bubble{position:fixed;bottom:28px;right:28px;z-index:800;width:56px;height:56px;border-radius:50%;background:var(--gold);display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 24px rgba(196,168,74,.35);transition:all .25s var(--ease)}
 #chat-bubble:hover{transform:scale(1.08)}
-@media(max-width:768px){#chat-bubble{bottom:84px;right:16px}}
+/* Lift chat bubble above the persistent mobile CTA bar (same 900px breakpoint). */
+@media(max-width:900px){#chat-bubble{bottom:calc(84px + env(safe-area-inset-bottom,0px));right:16px}#chat-panel{bottom:calc(152px + env(safe-area-inset-bottom,0px));right:16px}#chat-dot{bottom:calc(128px + env(safe-area-inset-bottom,0px))}}
 @media(max-width:440px){#chat-panel{width:calc(100vw - 24px) !important;right:12px !important;bottom:148px !important}}
 
 /* ── REVEAL — blur-in ── */
-[data-reveal]{opacity:0;transform:translateY(32px);filter:blur(6px);transition:opacity .95s var(--ease),transform .95s var(--ease),filter .95s var(--ease)}
+[data-reveal]{opacity:0;transform:translateY(32px);filter:blur(6px);transition:opacity .95s var(--ease),transform .95s var(--ease),filter .95s var(--ease);animation:reveal-failsafe 0s 1.5s forwards}
 [data-reveal].on{opacity:1;transform:translateY(0);filter:blur(0px)}
 [data-reveal="left"]{transform:translateX(-32px);filter:blur(6px)}
 [data-reveal="left"].on{transform:translateX(0);filter:blur(0px)}
 [data-reveal="right"]{transform:translateX(32px);filter:blur(6px)}
 [data-reveal="right"].on{transform:translateX(0);filter:blur(0px)}
+/* Failsafe: if the IntersectionObserver never fires (lazy load, JS error,
+   element already in view at load, no-JS), CSS forces the end-state at 1.5s
+   so content can never stay invisible. The .on transition still runs normally
+   when the observer is healthy and adds the class before then. */
+@keyframes reveal-failsafe{to{opacity:1;transform:none;filter:none}}
+@media (prefers-reduced-motion: reduce){
+  [data-reveal]{opacity:1 !important;transform:none !important;filter:none !important;animation:none !important;transition:none !important}
+}
 
 /* ── PRELOADER ── */
 /* ── PRELOADER (minimal modern fade) ── */
@@ -522,7 +602,8 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 .ed-hero-sub{max-width:620px;margin:0 auto 40px;font-size:clamp(16px,1.4vw,19px);line-height:1.65;color:var(--muted);font-family:'Inter',sans-serif;font-weight:400}
 
 /* ── Section header ── */
-.sec{padding:56px 24px;max-width:1280px;margin:0 auto}
+.sec{padding:40px 24px;max-width:1280px;margin:0 auto}
+@media(max-width:700px){.sec{padding:44px 20px}}
 .sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;flex-wrap:wrap;gap:24px}
 .sec-head-l{max-width:560px}
 .sec-head .page-label{margin-bottom:14px}
@@ -533,9 +614,27 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 .sec-head .more:hover{border-color:var(--gold)}
 
 /* ── Carousel / scroll track ── */
-.carousel{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 24px 24px;margin:0 -24px;scrollbar-width:none}
+.carousel{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 24px 24px;margin:0 -24px;scrollbar-width:none;cursor:grab;-webkit-overflow-scrolling:touch}
+.carousel:active{cursor:grabbing}
 .carousel::-webkit-scrollbar{display:none}
 .carousel > *{scroll-snap-align:start;flex:0 0 auto}
+
+/* Carousel controls — prev/next arrows + pagination dots + right-edge fade.
+   Markup injected by JS so existing .carousel HTML stays untouched. */
+.carousel-shell{position:relative}
+.carousel-shell::after{content:"";position:absolute;top:0;right:0;bottom:24px;width:64px;background:linear-gradient(to right,transparent,rgba(var(--bg-rgb),.9));pointer-events:none;z-index:2}
+.cr-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border-radius:50%;background:rgba(var(--bg-rgb),.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(var(--fg-rgb),.18);color:var(--fg);display:grid;place-items:center;cursor:pointer;transition:all .2s var(--ease);font-family:inherit;padding:0}
+.cr-arrow:hover{background:var(--gold);color:#000;border-color:var(--gold);transform:translateY(-50%) scale(1.06)}
+.cr-arrow:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.cr-arrow[disabled]{opacity:.25;cursor:default;pointer-events:none}
+.cr-prev{left:8px}
+.cr-next{right:8px}
+.cr-dots{display:flex;gap:8px;justify-content:center;margin-top:18px}
+.cr-dot{width:8px;height:8px;border-radius:50%;border:none;padding:0;background:rgba(var(--fg-rgb),.18);cursor:pointer;transition:all .2s var(--ease)}
+.cr-dot:hover{background:rgba(var(--fg-rgb),.36)}
+.cr-dot.is-active{background:var(--gold);width:24px;border-radius:4px}
+.cr-dot:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media(hover:none){.cr-arrow{display:none}.carousel-shell::after{display:none}}
 
 /* ── Suburb card (theatrical hover) ── */
 .sub-card{position:relative;width:320px;height:420px;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;color:#fff;cursor:pointer;transition:transform .55s var(--ease),box-shadow .55s var(--ease),outline-color .35s var(--ease);text-decoration:none;isolation:isolate;outline:1px solid rgba(196,168,74,0);outline-offset:0}
@@ -573,8 +672,9 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 .g-15{ --grad: linear-gradient(135deg,#34201b 0%,#8a4a37 50%,#e8a27f 100%); }
 
 /* ── Guide / insight card ── */
-.guide-card{display:flex;flex-direction:column;width:360px;background:rgba(var(--fg-rgb),.03);border:1px solid rgba(var(--fg-rgb),.06);border-radius:6px;overflow:hidden;text-decoration:none;color:inherit;transition:all .35s var(--ease)}
-.guide-card:hover{border-color:rgba(196,168,74,.3);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.guide-card{display:flex;flex-direction:column;width:360px;background:rgba(var(--fg-rgb),.055);border:1px solid rgba(196,168,74,.18);border-radius:6px;overflow:hidden;text-decoration:none;color:inherit;transition:all .35s var(--ease)}
+.guide-card:hover{border-color:rgba(196,168,74,.55);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.guide-card:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .guide-card-img{width:100%;height:240px;background:var(--grad,linear-gradient(135deg,#1a1a2e,#4a3a5a));position:relative;overflow:hidden}
 .guide-card-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.35) 100%)}
 .guide-card-body{padding:24px 26px 28px;flex:1;display:flex;flex-direction:column;gap:10px}
@@ -684,7 +784,7 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 .counter-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:36px}
 .counter-cell{text-align:center;border-right:1px solid var(--subtle);padding:0 12px}
 .counter-cell:last-child{border-right:none}
-.counter-num{font-family:'Fraunces',Georgia,serif;font-weight:300;font-size:clamp(40px,5.5vw,76px);letter-spacing:-1.4px;line-height:1;color:var(--gold);font-feature-settings:"tnum";font-variant-numeric:tabular-nums}
+.counter-num{font-family:'Fraunces',Georgia,serif;font-weight:300;font-size:clamp(48px,6.5vw,88px);letter-spacing:-1.6px;line-height:1;color:var(--gold);font-feature-settings:"tnum";font-variant-numeric:tabular-nums}
 .counter-num .suffix,.counter-num .prefix{color:var(--gold);font-style:italic}
 .counter-label{font-size:11px;font-weight:600;letter-spacing:2.4px;text-transform:uppercase;color:var(--muted);margin-top:14px;line-height:1.5}
 @media(max-width:780px){
@@ -732,6 +832,12 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 .agent-card-name{font-family:'Fraunces',Georgia,serif;font-size:26px;font-weight:400;letter-spacing:-.5px;line-height:1.1}
 .agent-card-role{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:10px}
 .agent-card-blurb{font-size:14px;line-height:1.65;color:var(--muted);margin-top:12px}
+.agent-card-meta{margin-top:18px;display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--muted);line-height:1.55}
+.agent-card-meta strong{color:var(--fg);font-weight:600}
+.agent-card-foot{margin-top:auto;padding:14px 26px 18px;border-top:1px solid var(--subtle);display:flex;flex-direction:column;gap:6px;background:rgba(var(--fg-rgb),.015)}
+.agent-card-foot a{color:var(--muted);font-size:12px;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.agent-card-foot a:hover{color:var(--gold)}
+.agent-card-foot .lic{font-size:10px;letter-spacing:.6px;margin-top:2px}
 
 
 /* ── Sage accents put to work ── */
