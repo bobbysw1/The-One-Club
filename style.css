@@ -95,27 +95,6 @@ nav{position:fixed;inset:0 0 auto;z-index:500;padding:0 48px;background:rgba(var
 .mobile-cta-bar .tel{flex:0 0 auto;width:46px;height:46px;display:inline-flex;align-items:center;justify-content:center;border-radius:9px;background:rgba(var(--fg-rgb),.06);border:1px solid rgba(var(--fg-rgb),.1);color:var(--fg)}
 @media(max-width:900px){.mobile-cta-bar{display:block}body{padding-bottom:80px}}
 
-/* Hero mini-form — compact "email + suburb" form shown directly under the hero CTAs.
-   Glassmorphic so it sits naturally on top of the hero video. */
-.hero-mini-form{margin-top:28px;max-width:580px;width:100%;display:grid;grid-template-columns:1.4fr 1fr auto;gap:8px;padding:10px;border-radius:14px;background:rgba(0,0,0,.32);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.14)}
-.hero-mini-form input,.hero-mini-form select{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:12px 14px;color:#fff;font-size:14px;font-family:inherit;outline:none;-webkit-appearance:none;min-width:0}
-.hero-mini-form input::placeholder{color:rgba(255,255,255,.6)}
-.hero-mini-form input:focus,.hero-mini-form select:focus{border-color:var(--gold);background:rgba(255,255,255,.14)}
-.hero-mini-form select option{background:#0a0e14;color:#fff}
-.hero-mini-form button{background:var(--gold);color:#000;border:none;border-radius:9px;padding:12px 20px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;transition:all .2s var(--ease)}
-.hero-mini-form button:hover{background:#d4b857;transform:translateY(-1px);box-shadow:0 8px 24px rgba(196,168,74,.32)}
-.hero-mini-form button:focus-visible{outline:2px solid #fff;outline-offset:2px}
-.hero-mini-form .form-status{grid-column:1/-1;text-align:center;font-size:12px;color:rgba(255,255,255,.85);margin:6px 0 0;min-height:14px}
-.hero-mini-form .form-status.is-error{color:#fca5a5}
-.hero-mini-form .form-status.is-ok{color:#86efac}
-.hero-mini-form .field-error{display:none}
-.hero-mini-foot{font-size:11px;color:rgba(255,255,255,.7);margin-top:8px;text-align:center}
-.hero-mini-foot a{color:inherit;text-decoration:underline}
-@media(max-width:640px){
-  .hero-mini-form{grid-template-columns:1fr;padding:12px}
-  .hero-mini-form button{padding:14px 20px}
-}
-
 /* ── PAGE SYSTEM ── */
 .page{display:none;min-height:100vh}
 .page.active{display:block}
