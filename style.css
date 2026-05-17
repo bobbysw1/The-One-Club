@@ -56,7 +56,7 @@ nav{position:fixed;inset:0 0 auto;z-index:500;padding:0 48px;background:rgba(var
 /* "Soon" badge on nav links that point to pages without real inventory yet.
    Remove the rule (or its data-page selector) when listings go live. */
 .nav-links a[data-page="for-sale"],.nav-links a[data-page="auctions"]{display:inline-flex;align-items:center;gap:8px}
-.nav-links a[data-page="for-sale"]::after,.nav-links a[data-page="auctions"]::after{content:"Soon";font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--gold);background:rgba(196,168,74,.12);border:1px solid rgba(196,168,74,.3);border-radius:999px;padding:2px 7px;line-height:1}
+.nav-links a[data-page="for-sale"]::after,.nav-links a[data-page="auctions"]::after{content:"soon";font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:11px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--gold);background:transparent;border:none;padding:0;line-height:1;opacity:.85}
 .nav-cta{display:flex;gap:10px;align-items:center}
 .nav-cta>*{white-space:nowrap}
 /* Narrow-desktop layout: tighten nav between 900 and 1280px so "For Sale"
@@ -94,6 +94,18 @@ nav{position:fixed;inset:0 0 auto;z-index:500;padding:0 48px;background:rgba(var
 .mobile-cta-bar .row{display:flex;gap:8px;align-items:center;max-width:520px;margin:0 auto}
 .mobile-cta-bar .tel{flex:0 0 auto;width:46px;height:46px;display:inline-flex;align-items:center;justify-content:center;border-radius:9px;background:rgba(var(--fg-rgb),.06);border:1px solid rgba(var(--fg-rgb),.1);color:var(--fg)}
 @media(max-width:900px){.mobile-cta-bar{display:block}body{padding-bottom:80px}}
+
+/* Reusable hero block for inner pages — set --hero-img on the section to
+   override. Sits behind a dark gradient so the existing h1/p typography
+   reads cleanly on top. Max-width is unset so the image extends edge-to-edge. */
+.page-hero{position:relative;max-width:none;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding:160px 24px 88px;min-height:clamp(420px,58vh,620px);display:flex;flex-direction:column;justify-content:flex-end;color:#fff;overflow:hidden;isolation:isolate}
+.page-hero::before{content:"";position:absolute;inset:0;z-index:-2;background-image:var(--hero-img);background-size:cover;background-position:center}
+.page-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(15,28,18,.3) 0%,rgba(15,28,18,.55) 55%,rgba(31,61,36,.96) 100%)}
+.page-hero > *{max-width:1280px;width:100%;margin-left:auto;margin-right:auto}
+.page-hero .page-label{color:var(--gold)}
+.page-hero h1,.page-hero h2{color:#fff}
+.page-hero .body{color:rgba(255,255,255,.86)}
+@media(max-width:700px){.page-hero{padding:140px 20px 64px;min-height:clamp(360px,52vh,520px)}}
 
 /* ── PAGE SYSTEM ── */
 .page{display:none;min-height:100vh}
@@ -251,13 +263,14 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .chip-multi-legend{display:flex;justify-content:space-between;align-items:baseline;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;width:100%;padding:0}
 .chip-multi-legend .chip-count{font-size:10px;font-weight:600;letter-spacing:.6px;color:var(--gold);text-transform:none;letter-spacing:0}
 .chip-multi-list{display:flex;flex-wrap:wrap;gap:8px}
-.chip{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:8px 14px;background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.12);border-radius:999px;color:var(--fg);font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s var(--ease)}
-.chip:hover{border-color:rgba(196,168,74,.4);background:rgba(196,168,74,.06)}
-.chip:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.chip[aria-pressed="true"]{background:var(--gold);color:#000;border-color:var(--gold);font-weight:600}
-.chip[aria-pressed="true"]::before{content:"✓";margin-right:6px;font-weight:700}
+/* Suburb selector — refined squares with subtle gold underline on select. */
+.chip-multi-list{gap:4px 2px}
+.chip{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:7px 16px;background:transparent;border:none;border-bottom:1px solid rgba(var(--fg-rgb),.14);color:var(--muted);font-family:'Fraunces',Georgia,serif;font-size:14px;font-weight:400;letter-spacing:.1px;cursor:pointer;transition:color .2s var(--ease),border-color .25s var(--ease)}
+.chip:hover{color:var(--fg);border-bottom-color:rgba(var(--fg-rgb),.4)}
+.chip:focus-visible{outline:none;color:var(--fg);border-bottom-color:var(--gold);box-shadow:none}
+.chip[aria-pressed="true"]{color:var(--gold);border-bottom:1px solid var(--gold);font-weight:500}
 @media(max-width:640px){
-  .chip{min-height:44px;min-width:44px;padding:10px 16px;font-size:14px}
+  .chip{min-height:44px;min-width:44px;padding:10px 18px;font-size:15px}
 }
 
 /* Chat-bubble close button — session-level dismiss. */
@@ -482,12 +495,9 @@ footer{border-top:1px solid var(--subtle);padding:60px 48px 40px}
 @keyframes pre-line{from{width:0}to{width:96px}}
 @media (prefers-reduced-motion: reduce){.pre-mark,.pre-line,.pre-kicker{animation:none;opacity:1;transform:none}.pre-line{width:96px}}
 
-/* ── CUSTOM CURSOR ── */
-#cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:9998;top:-100px;left:-100px;transform:translate(-50%,-50%);transition:width .28s var(--ease),height .28s var(--ease),background .25s,border .25s;opacity:0;will-change:left,top}
-#cursor-ring{position:fixed;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(196,168,74,.45);pointer-events:none;z-index:9997;top:-100px;left:-100px;transform:translate(-50%,-50%);opacity:0;will-change:left,top;transition:width .38s var(--ease),height .38s var(--ease),opacity .3s}
-/* cursor shown via JS after first mousemove */
-body.cursor-hover #cursor{width:32px;height:32px;background:rgba(196,168,74,.1);border:1.5px solid var(--gold)}
-body.cursor-hover #cursor-ring{width:52px;height:52px;opacity:.3}
+/* Custom cursor removed by request — neutralised sitewide here so the
+   per-page markup and JS can stay until a later cleanup pass. */
+#cursor,#cursor-ring{display:none !important}
 
 /* ── PAGE TRANSITION OVERLAY ── */
 #page-transition{position:fixed;inset:0;z-index:8000;background:#000;pointer-events:none;transform:scaleY(0);transform-origin:bottom;will-change:transform}
