@@ -1218,43 +1218,86 @@ function addMessage(text, type){
   b.textContent = text; w.appendChild(b); c.appendChild(w); c.scrollTop = c.scrollHeight;
 }
 /* ──────────────────────────────────────────────
-   Mistral AI fallback for the chatbot.
-   - Local KB handles common questions instantly.
-   - Unknown questions are sent to /api/chat (Mistral + optional Tavily grounding).
-   - Conversation history sent for context-aware follow-ups.
-   - Off-topic queries are deflected client-side without an API call.
+   Mistral AI chatbot — runs entirely client-side.
+   1. Local KB handles common questions instantly.
+   2. Tavily searches for live Gold Coast context.
+   3. Mistral generates a grounded, property-focused reply.
+   4. Off-topic queries deflected without any API call.
 ───────────────────────────────────────────────── */
-var DEFLECT_MSG = "That sits outside what I can help with. For any Gold Coast property question I'm here — otherwise the Free Valuation form at the bottom of the page is the fastest way to reach Bobby directly.";
+var MISTRAL_KEY  = 'P4XNhVDsCkCh93POycGBvVT71WnLkO8C';
+var TAVILY_KEY   = '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';
+var MISTRAL_URL  = 'https://api.mistral.ai/v1/chat/completions';
+var TAVILY_URL   = 'https://api.tavily.com/search';
+var DEFLECT_MSG  = "That sits outside what I can help with. For any Gold Coast property question I'm here — otherwise the Free Valuation form at the bottom of the page is the fastest way to reach Bobby directly.";
 var CHAT_HISTORY = [];
 
-var OFF_TOPIC_RE = /\b(weather|joke|funny|riddle|recipe|cook|sport|football|cricket|nba|nfl|election|trump|biden|crypto|bitcoin|stock|share market|capital of|who is|tell me about yourself|are you (a|an) ai|what.*your name)\b/i;
+var AI_SYSTEM = "You are the AI assistant for The One Club, a Gold Coast real estate agency charging 1% commission. The lead agent is Bobby — 10+ years experience across London and the Gold Coast. Everything is included in the 1%: professional AI-enhanced photography, floor plans, interactive 3D walkthrough (captured in-house using PlayCanvas SuperSplat Gaussian splat technology), digital marketing on Meta and Google, signboard, and settlement coordination. The only extra the seller pays is their portal listing on REA and Domain.\n\nAnswer questions about: Gold Coast real estate; buying or selling property; the 1% commission model; photography, marketing, 3D walkthroughs, floor plans; Gold Coast suburbs (Burleigh Heads, Palm Beach, Surfers Paradise, Broadbeach, Hope Island, Robina, Mermaid Beach, Coolangatta, Mudgeeraba, Currumbin, Kirra, Southport, Coomera, Varsity Lakes); school catchments in QLD; body corporate; settlement; mortgages at a high level.\n\nFor school catchment questions: state the most likely state school zone for the address or suburb, then always add: 'Confirm at edmap.eq.edu.au — zone boundaries change.'\n\nIf asked about anything unrelated to property or our services, reply with exactly: 'That sits outside what I can help with. For any Gold Coast property question I\'m here — otherwise the Free Valuation form at the bottom of the page is the fastest way to reach Bobby directly.'\n\nKeep answers under 150 words. Plain English. Never invent specific listing addresses, prices, or sale results.";
+
+var OFF_TOPIC_RE = /\b(weather|joke|funny|riddle|recipe|cook|sport|football|cricket|nba|nfl|election|trump|biden|crypto|bitcoin|stock market|capital of|tell me about yourself|are you (a|an) ai|what.*your name)\b/i;
 
 function _looksOnTopic(msg){
   if (!msg || msg.length < 4) return false;
   if (OFF_TOPIC_RE.test(msg)) return false;
-  var words = msg.split(/\s+/).filter(function(w){ return w.length > 2 && /[a-zA-Z]/.test(w); });
-  return words.length >= 1;
+  return msg.split(/\s+/).filter(function(w){ return w.length > 2 && /[a-zA-Z]/.test(w); }).length >= 1;
 }
 
 var LOCAL_FALLBACK_PREFIX = "That's a good one";
 function _localOrNull(msg){
   var reply = getBotReply(msg);
-  if (reply && reply.indexOf(LOCAL_FALLBACK_PREFIX) === 0) return null;
+  if (!reply || reply.indexOf(LOCAL_FALLBACK_PREFIX) === 0) return null;
   return reply;
 }
 
 function askAI(userMsg){
-  return fetch(ONECLUB_API + '/chat', {
+  var q = userMsg.slice(0, 400);
+  // Step 1 — optional Tavily search for live context
+  var tavilyP = fetch(TAVILY_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {'Content-Type':'application/json'},
     body: JSON.stringify({
-      message: userMsg.slice(0, 400),
-      history: CHAT_HISTORY.slice(-6)
+      api_key: TAVILY_KEY,
+      query: q + ' Gold Coast real estate Queensland',
+      search_depth: 'basic',
+      max_results: 3,
+      include_answer: true
     })
   })
-  .then(function(r){ if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
-  .then(function(d){ return (d.reply || DEFLECT_MSG).trim(); })
-  .catch(function(){ return DEFLECT_MSG; });
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    return d.answer
+      || (d.results||[]).slice(0,2).map(function(r){ return r.content; }).join(' ').slice(0,500);
+  })
+  .catch(function(){ return ''; });
+
+  // Step 2 — Mistral with Tavily context injected into system prompt
+  return tavilyP.then(function(ctx){
+    var sys = AI_SYSTEM + (ctx ? '\n\nCurrent web context:\n' + ctx : '');
+    var messages = [{role:'system', content:sys}]
+      .concat(CHAT_HISTORY.slice(-6).map(function(h){
+        return {role: h.role, content: String(h.content).slice(0,400)};
+      }))
+      .concat([{role:'user', content:q}]);
+
+    return fetch(MISTRAL_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + MISTRAL_KEY
+      },
+      body: JSON.stringify({
+        model: 'mistral-small-latest',
+        messages: messages,
+        max_tokens: 320,
+        temperature: 0.5
+      })
+    })
+    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function(d){
+      var t = d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content;
+      return (t||DEFLECT_MSG).trim();
+    })
+    .catch(function(){ return DEFLECT_MSG; });
+  });
 }
 
 function _typingDots(){
