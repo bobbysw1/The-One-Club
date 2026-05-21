@@ -1176,17 +1176,10 @@ var propertyKB = {
   contract: "Once a contract is signed by both parties, the cooling-off period applies (typically 5 business days in QLD for a residential property — buyers can exit but forfeit a penalty). After that, the condition period runs — usually finance (14 days) and building and pest (7–14 days).\n\nWe monitor every condition deadline and coordinate with all parties. When all conditions are satisfied, the contract becomes unconditional. Settlement follows — typically 30–45 days later. We handle the paperwork, adjustments, and final handover coordination."
 };
 
-// Returns true when the message contains a specific address or suburb name —
-// used to skip local KB entries that can't answer address-specific questions.
-var SUBURB_RE = /\d+\s+\w|\bpalm beach\b|\bsurfers\b|\bburleigh\b|\bcoolangatta\b|\bkirra\b|\brobina\b|\bhope island\b|\bbroadbeach\b|\bmermaid\b|\bsouthport\b|\bcoomera\b|\bmudgeeraba\b|\bcurrumbin\b|\bvarsity\b|\bbilinga\b|\btugun\b|\bmiami\b/i;
-
 function getBotReply(msg) {
   var l = msg.toLowerCase();
-  // School/catchment questions with a specific address or suburb → always let AI handle it
-  if (l.match(/school|catchment|zone|educa/)) {
-    if (SUBURB_RE.test(msg)) return null; // pass to Mistral
-    return propertyKB.school;
-  }
+  // School/catchment — always handled by Mistral (it can look up actual QLD zones)
+  if (l.match(/school|catchment|zone|educa/)) return null;
   if (l.match(/what.*(includ|cover|get|come with)|includ.*1%|cover.*1%/)) return propertyKB.included;
   if (l.match(/1%|commission|fee|charge|how much|cost|price.*agent|agent.*price/)) return propertyKB.commission;
   if (l.match(/photo|image|picture|staging|virtual stag|hdr|sky|enhance|before.*after/)) return propertyKB.photography;
@@ -1219,19 +1212,17 @@ function addMessage(text, type){
 }
 /* ──────────────────────────────────────────────
    Mistral AI chatbot — runs entirely client-side.
-   1. Local KB handles common questions instantly.
-   2. Tavily searches for live Gold Coast context.
-   3. Mistral generates a grounded, property-focused reply.
-   4. Off-topic queries deflected without any API call.
+   1. Local KB handles simple FAQs instantly.
+   2. Everything else goes directly to Mistral.
+   3. Off-topic queries deflected without an API call.
+   Note: Tavily removed — server-side API, CORS-blocked in browsers.
 ───────────────────────────────────────────────── */
 var MISTRAL_KEY  = 'P4XNhVDsCkCh93POycGBvVT71WnLkO8C';
-var TAVILY_KEY   = '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';
 var MISTRAL_URL  = 'https://api.mistral.ai/v1/chat/completions';
-var TAVILY_URL   = 'https://api.tavily.com/search';
 var DEFLECT_MSG  = "That sits outside what I can help with. For any Gold Coast property question I'm here — otherwise the Free Valuation form at the bottom of the page is the fastest way to reach Bobby directly.";
 var CHAT_HISTORY = [];
 
-var AI_SYSTEM = "You are the AI assistant for The One Club, a Gold Coast real estate agency charging 1% commission. The lead agent is Bobby — 10+ years experience across London and the Gold Coast. Everything is included in the 1%: professional AI-enhanced photography, floor plans, interactive 3D walkthrough (captured in-house using PlayCanvas SuperSplat Gaussian splat technology), digital marketing on Meta and Google, signboard, and settlement coordination. The only extra the seller pays is their portal listing on REA and Domain.\n\nAnswer questions about: Gold Coast real estate; buying or selling property; the 1% commission model; photography, marketing, 3D walkthroughs, floor plans; Gold Coast suburbs (Burleigh Heads, Palm Beach, Surfers Paradise, Broadbeach, Hope Island, Robina, Mermaid Beach, Coolangatta, Mudgeeraba, Currumbin, Kirra, Southport, Coomera, Varsity Lakes); school catchments in QLD; body corporate; settlement; mortgages at a high level.\n\nFor school catchment questions: state the most likely state school zone for the address or suburb, then always add: 'Confirm at edmap.eq.edu.au — zone boundaries change.'\n\nIf asked about anything unrelated to property or our services, reply with exactly: 'That sits outside what I can help with. For any Gold Coast property question I\'m here — otherwise the Free Valuation form at the bottom of the page is the fastest way to reach Bobby directly.'\n\nKeep answers under 150 words. Plain English. Never invent specific listing addresses, prices, or sale results.";
+var AI_SYSTEM = "You are the AI assistant for The One Club, a Gold Coast real estate agency charging 1% commission. The lead agent is Bobby — 10+ years experience across London and the Gold Coast. Everything is included in the 1%: professional AI-enhanced photography, floor plans, interactive 3D walkthrough (captured in-house using PlayCanvas SuperSplat technology), digital marketing on Meta and Google, signboard, and settlement coordination. The only extra is the portal listing on REA and Domain (seller chooses Standard, Feature or Premiere level).\n\nAnswer questions about: Gold Coast real estate; buying or selling property; the 1% commission model and what is included; photography, 3D walkthroughs, floor plans; Gold Coast suburbs including Burleigh Heads, Palm Beach, Surfers Paradise, Broadbeach, Hope Island, Robina, Mermaid Beach, Coolangatta, Mudgeeraba, Currumbin, Kirra, Southport, Coomera, Varsity Lakes, Bilinga, Tugun, Miami; QLD school catchment zones; body corporate fees; settlement process; mortgages at a high level.\n\nFor school catchment questions: give your best answer for the suburb or address, then always end with — Confirm the exact zone at edmap.eq.edu.au as boundaries do change.\n\nFor anything unrelated to property: reply with exactly — That sits outside what I can help with. For any Gold Coast property question I'm here — otherwise the Free Valuation form at the bottom of the page is the fastest way to reach Bobby directly.\n\nKeep all answers under 150 words. Plain English. Never invent specific listing addresses, prices, or sale results.";
 
 var OFF_TOPIC_RE = /\b(weather|joke|funny|riddle|recipe|cook|sport|football|cricket|nba|nfl|election|trump|biden|crypto|bitcoin|stock market|capital of|tell me about yourself|are you (a|an) ai|what.*your name)\b/i;
 
@@ -1249,53 +1240,31 @@ function _localOrNull(msg){
 }
 
 function askAI(userMsg){
-  var q = userMsg.slice(0, 400);
-  // Step 1 — optional Tavily search for live context
-  var tavilyP = fetch(TAVILY_URL, {
+  var q = userMsg.slice(0, 500);
+  var messages = [{role:'system', content:AI_SYSTEM}]
+    .concat(CHAT_HISTORY.slice(-8).map(function(h){
+      return {role: h.role, content: String(h.content).slice(0, 500)};
+    }))
+    .concat([{role:'user', content:q}]);
+
+  return fetch(MISTRAL_URL, {
     method: 'POST',
-    headers: {'Content-Type':'application/json'},
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + MISTRAL_KEY
+    },
     body: JSON.stringify({
-      api_key: TAVILY_KEY,
-      query: q + ' Gold Coast real estate Queensland',
-      search_depth: 'basic',
-      max_results: 3,
-      include_answer: true
+      model: 'mistral-small-latest',
+      messages: messages,
+      max_tokens: 320,
+      temperature: 0.5
     })
   })
-  .then(function(r){ return r.json(); })
+  .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
   .then(function(d){
-    return d.answer
-      || (d.results||[]).slice(0,2).map(function(r){ return r.content; }).join(' ').slice(0,500);
+    var t = d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content;
+    return (t||DEFLECT_MSG).trim();
   })
-  .catch(function(){ return ''; });
-
-  // Step 2 — Mistral with Tavily context injected into system prompt
-  return tavilyP.then(function(ctx){
-    var sys = AI_SYSTEM + (ctx ? '\n\nCurrent web context:\n' + ctx : '');
-    var messages = [{role:'system', content:sys}]
-      .concat(CHAT_HISTORY.slice(-6).map(function(h){
-        return {role: h.role, content: String(h.content).slice(0,400)};
-      }))
-      .concat([{role:'user', content:q}]);
-
-    return fetch(MISTRAL_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + MISTRAL_KEY
-      },
-      body: JSON.stringify({
-        model: 'mistral-small-latest',
-        messages: messages,
-        max_tokens: 320,
-        temperature: 0.5
-      })
-    })
-    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function(d){
-      var t = d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content;
-      return (t||DEFLECT_MSG).trim();
-    })
     .catch(function(){ return DEFLECT_MSG; });
   });
 }
