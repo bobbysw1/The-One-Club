@@ -1176,8 +1176,17 @@ var propertyKB = {
   contract: "Once a contract is signed by both parties, the cooling-off period applies (typically 5 business days in QLD for a residential property — buyers can exit but forfeit a penalty). After that, the condition period runs — usually finance (14 days) and building and pest (7–14 days).\n\nWe monitor every condition deadline and coordinate with all parties. When all conditions are satisfied, the contract becomes unconditional. Settlement follows — typically 30–45 days later. We handle the paperwork, adjustments, and final handover coordination."
 };
 
+// Returns true when the message contains a specific address or suburb name —
+// used to skip local KB entries that can't answer address-specific questions.
+var SUBURB_RE = /\d+\s+\w|\bpalm beach\b|\bsurfers\b|\bburleigh\b|\bcoolangatta\b|\bkirra\b|\brobina\b|\bhope island\b|\bbroadbeach\b|\bmermaid\b|\bsouthport\b|\bcoomera\b|\bmudgeeraba\b|\bcurrumbin\b|\bvarsity\b|\bbilinga\b|\btugun\b|\bmiami\b/i;
+
 function getBotReply(msg) {
   var l = msg.toLowerCase();
+  // School/catchment questions with a specific address or suburb → always let AI handle it
+  if (l.match(/school|catchment|zone|educa/)) {
+    if (SUBURB_RE.test(msg)) return null; // pass to Mistral
+    return propertyKB.school;
+  }
   if (l.match(/what.*(includ|cover|get|come with)|includ.*1%|cover.*1%/)) return propertyKB.included;
   if (l.match(/1%|commission|fee|charge|how much|cost|price.*agent|agent.*price/)) return propertyKB.commission;
   if (l.match(/photo|image|picture|staging|virtual stag|hdr|sky|enhance|before.*after/)) return propertyKB.photography;
@@ -1185,17 +1194,16 @@ function getBotReply(msg) {
   if (l.match(/floor.?plan|layout|floorplan|plan|room.*dimension|dimension/)) return propertyKB.floorplan;
   if (l.match(/inspect|open home|visit|view.*property|come.*see|book.*time|arrange/)) return propertyKB.inspection;
   if (l.match(/list|available|current|for sale|on market|what.*propert|propert.*for sale/)) return propertyKB.listings;
-  if (l.match(/valuation|apprais|worth|value.*property|price.*property|what.*get|estimate/)) return propertyKB.valuation;
-  if (l.match(/sav|keep|different|versus|vs|traditional|other agent|compari/)) return propertyKB.savings;
+  if (l.match(/valuation|apprais|worth|value.*property|price.*property|estimate/)) return propertyKB.valuation;
+  if (l.match(/sav|keep|versus|vs|traditional|other agent|compari/)) return propertyKB.savings;
   if (l.match(/agent|person|human|speak|call|talk|contact|reach|meet/)) return propertyKB.agent;
   if (l.match(/settl|after.*contract|once.*sign|handover|completion|final/)) return propertyKB.settlement;
   if (l.match(/offer|bid|negotiat|counter|best.*final|multi.*offer/)) return propertyKB.offer;
   if (l.match(/market|advertis|campaign|facebook|instagram|google|social|digital/)) return propertyKB.marketing;
-  if (l.match(/body.?corp|strat|levy|levies|sinking|bcmc|owners|lot entitl/)) return propertyKB.bodycorp;
-  if (l.match(/suburb|area|location|where|cover|gold coast|region/)) return propertyKB.suburb;
+  if (l.match(/body.?corp|levy|levies|sinking|bcmc|owners|lot entitl/)) return propertyKB.bodycorp;
   if (l.match(/rent|rental|manage|landlord|tenant|property manag|leasing/)) return propertyKB.rent;
   if (l.match(/buy|buyer|purchas|looking.*buy|want.*buy|purchase/)) return propertyKB.buyer;
-  if (l.match(/why|reason|benefit|advantage|better|different|trust|credib/)) return propertyKB.why;
+  if (l.match(/why|reason|benefit|advantage|better|trust|credib/)) return propertyKB.why;
   if (l.match(/contract|condition|cooling.?off|finance.*condition|uncondit/)) return propertyKB.contract;
   if (l.match(/how.*work|process|step|end.to.end|start.*finish|what happen/)) return propertyKB.how;
   return "That's a good one — I want to make sure you get an accurate answer rather than a guess. The agent will follow up within the hour during business hours (8am–8pm Gold Coast time). Or if you want to jump straight in, use the Free Valuation form at the bottom of the page and include your question in the notes.";
