@@ -1670,26 +1670,23 @@ loadChatbotFromAPI();
     var drag = null;
     carousel.addEventListener('pointerdown', function(e){
       if (e.pointerType !== 'mouse') return;
-      drag = { x: e.clientX, left: carousel.scrollLeft, moved: false };
-      try { carousel.setPointerCapture(e.pointerId); } catch(_) {}
+      drag = { x: e.clientX, scrollStart: carousel.scrollLeft };
     });
     carousel.addEventListener('pointermove', function(e){
       if (!drag) return;
-      var dx = e.clientX - drag.x;
-      if (Math.abs(dx) > 8) drag.moved = true;
-      carousel.scrollLeft = drag.left - dx;
+      carousel.scrollLeft = drag.scrollStart - (e.clientX - drag.x);
     });
-    function endDrag(e){
-      if (drag && drag.moved) {
-        // suppress the click that would otherwise open the card
-        var stop = function(ev){ ev.stopPropagation(); ev.preventDefault(); carousel.removeEventListener('click', stop, true); };
+    function endDrag(){
+      if (drag && Math.abs(carousel.scrollLeft - drag.scrollStart) > 12) {
+        // suppress the click only when a real scroll occurred
+        var stop = function(ev){ ev.preventDefault(); carousel.removeEventListener('click', stop, true); };
         carousel.addEventListener('click', stop, true);
-        setTimeout(function(){ carousel.removeEventListener('click', stop, true); }, 50);
+        setTimeout(function(){ carousel.removeEventListener('click', stop, true); }, 100);
       }
       drag = null;
     }
-    carousel.addEventListener('pointerup', endDrag);
-    carousel.addEventListener('pointercancel', endDrag);
+    window.addEventListener('pointerup', endDrag);
+    window.addEventListener('pointercancel', endDrag);
 
     update();
   }
