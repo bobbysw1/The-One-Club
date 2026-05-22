@@ -1402,10 +1402,13 @@ function loadChatbotFromAPI() {
     .catch(function() {});
 }
 
-// Extend getBotReply to use API keyword data when available
+// Extend getBotReply to use API keyword data when available.
+// School / catchment / suburb-specific questions ALWAYS go to the AI —
+// the local KB can't reason about an address, so we skip the override.
 var _origGetBotReply = getBotReply;
+var _SKIP_KB_RE = /school|catchment|zone|educa|primary|high school|burleigh|palm beach|surfers|broadbeach|hope island|robina|mermaid|coolangatta|mudgeeraba|currumbin|kirra|southport|coomera|varsity|bilinga|tugun|miami|ave|avenue|street|st\b|rd\b|road/i;
 getBotReply = function(msg) {
-  if (window._chatbotData) {
+  if (window._chatbotData && !_SKIP_KB_RE.test(msg)) {
     var l = msg.toLowerCase();
     var entries = Object.values(window._chatbotData);
     for (var i = 0; i < entries.length; i++) {
