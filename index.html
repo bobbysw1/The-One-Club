@@ -1214,14 +1214,42 @@ function getBotReply(msg) {
   if (l.match(/how.*work|process|step|end.to.end|start.*finish|what happen/)) return propertyKB.how;
   return "That's a good one — I want to make sure you get an accurate answer rather than a guess. The agent will follow up within the hour during business hours (8am–8pm Gold Coast time). Or if you want to jump straight in, use the Free Valuation form at the bottom of the page and include your question in the notes.";
 }
+function _escapeHTML(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function renderMarkdown(text){
+  var s = _escapeHTML(text);
+  // Markdown links [label](url) — do these BEFORE bare-URL autolink so
+  // the URL inside parentheses doesn't get linkified twice.
+  s = s.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+  // Bare URLs → clickable, but skip ones already inside an href.
+  s = s.replace(/(^|[^"=>])(https?:\/\/[^\s<)]+[^\s<).,!?])/g, '$1<a href="$2" target="_blank" rel="noopener noreferrer">$2</a>');
+  // Bold **text** and italic *text* — bold first so ** doesn't get parsed as nested italics.
+  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/(^|[^*])\*([^*\n]+)\*/g, '$1<em>$2</em>');
+  // Preserve line breaks
+  s = s.replace(/\n/g, '<br/>');
+  return s;
+}
 function addMessage(text, type){
   var c = document.getElementById('chat-messages');
   var w = document.createElement('div');
   w.style.cssText = 'display:flex;gap:10px;align-items:flex-start' + (type === 'user' ? ';justify-content:flex-end' : '');
   if (type === 'bot'){ var av = document.createElement('div'); av.style.cssText = 'width:28px;height:28px;border-radius:8px;background:var(--gold);display:grid;place-items:center;font-size:9px;font-weight:700;color:#000;flex-shrink:0'; av.textContent = '1%'; w.appendChild(av); }
   var b = document.createElement('div');
-  b.style.cssText = type === 'user' ? 'background:var(--gold);color:#000;border-radius:14px 4px 14px 14px;padding:10px 14px;font-size:13px;line-height:1.55;max-width:260px;font-weight:500;white-space:pre-line' : 'background:rgba(var(--fg-rgb),.06);border-radius:4px 14px 14px 14px;padding:12px 14px;font-size:13px;line-height:1.65;color:rgba(var(--fg-rgb),.82);max-width:290px;white-space:pre-line';
-  b.textContent = text; w.appendChild(b); c.appendChild(w); c.scrollTop = c.scrollHeight;
+  b.style.cssText = type === 'user'
+    ? 'background:var(--gold);color:#000;border-radius:14px 4px 14px 14px;padding:10px 14px;font-size:13px;line-height:1.55;max-width:260px;font-weight:500;white-space:pre-line;word-wrap:break-word;overflow-wrap:anywhere'
+    : 'background:rgba(var(--fg-rgb),.06);border-radius:4px 14px 14px 14px;padding:12px 14px;font-size:13px;line-height:1.65;color:rgba(var(--fg-rgb),.82);max-width:290px;word-wrap:break-word;overflow-wrap:anywhere';
+  if (type === 'user') {
+    b.textContent = text;
+  } else {
+    b.innerHTML = renderMarkdown(text);
+    // Style any links inside the bot bubble
+    Array.prototype.forEach.call(b.querySelectorAll('a'), function(a){
+      a.style.color = 'var(--gold)';
+      a.style.textDecoration = 'underline';
+      a.style.textUnderlineOffset = '2px';
+    });
+  }
+  w.appendChild(b); c.appendChild(w); c.scrollTop = c.scrollHeight;
 }
 /* ──────────────────────────────────────────────
    Mistral AI chatbot — runs entirely client-side.
