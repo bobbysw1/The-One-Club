@@ -1676,7 +1676,7 @@ loadChatbotFromAPI();
     carousel.addEventListener('pointermove', function(e){
       if (!drag) return;
       var dx = e.clientX - drag.x;
-      if (Math.abs(dx) > 4) drag.moved = true;
+      if (Math.abs(dx) > 8) drag.moved = true;
       carousel.scrollLeft = drag.left - dx;
     });
     function endDrag(e){
