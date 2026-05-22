@@ -17,12 +17,8 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const MISTRAL_KEY = process.env.MISTRAL_API_KEY;
-  const TAVILY_KEY  = process.env.TAVILY_API_KEY;
-
-  if (!MISTRAL_KEY) {
-    return res.status(503).json({ error: 'AI not configured' });
-  }
+  const MISTRAL_KEY = process.env.MISTRAL_API_KEY || 'P4XNhVDsCkCh93POycGBvVT71WnLkO8C';
+  const TAVILY_KEY  = process.env.TAVILY_API_KEY  || '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';
 
   const { message, history = [] } = req.body || {};
 
