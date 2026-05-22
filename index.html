@@ -1213,16 +1213,12 @@ function addMessage(text, type){
 /* ──────────────────────────────────────────────
    Mistral AI chatbot — runs entirely client-side.
    1. Local KB handles simple FAQs instantly.
-   2. Everything else goes directly to Mistral.
+   2. Everything else goes to /api/chat (Vercel serverless → Tavily + Mistral).
    3. Off-topic queries deflected without an API call.
-   Note: Tavily removed — server-side API, CORS-blocked in browsers.
 ───────────────────────────────────────────────── */
-var MISTRAL_KEY  = 'P4XNhVDsCkCh93POycGBvVT71WnLkO8C';
-var MISTRAL_URL  = 'https://api.mistral.ai/v1/chat/completions';
+var CHAT_API     = '/api/chat';
 var DEFLECT_MSG  = "That sits outside what I can help with. For any Gold Coast property question I'm here — otherwise the Free Valuation form at the bottom of the page is the fastest way to reach Bobby directly.";
 var CHAT_HISTORY = [];
-
-var AI_SYSTEM = "You are the AI assistant for The One Club, a Gold Coast real estate agency charging 1% commission. The lead agent is Bobby — 10+ years experience across London and the Gold Coast. Everything is included in the 1%: professional AI-enhanced photography, floor plans, interactive 3D walkthrough (captured in-house using PlayCanvas SuperSplat technology), digital marketing on Meta and Google, signboard, and settlement coordination. The only extra is the portal listing on REA and Domain (seller chooses Standard, Feature or Premiere level).\n\nAnswer questions about: Gold Coast real estate; buying or selling property; the 1% commission model and what is included; photography, 3D walkthroughs, floor plans; Gold Coast suburbs including Burleigh Heads, Palm Beach, Surfers Paradise, Broadbeach, Hope Island, Robina, Mermaid Beach, Coolangatta, Mudgeeraba, Currumbin, Kirra, Southport, Coomera, Varsity Lakes, Bilinga, Tugun, Miami; QLD school catchment zones; body corporate fees; settlement process; mortgages at a high level.\n\nFor school catchment questions: give your best answer for the suburb or address, then always end with — Confirm the exact zone at edmap.eq.edu.au as boundaries do change.\n\nFor anything unrelated to property: reply with exactly — That sits outside what I can help with. For any Gold Coast property question I'm here — otherwise the Free Valuation form at the bottom of the page is the fastest way to reach Bobby directly.\n\nKeep all answers under 150 words. Plain English. Never invent specific listing addresses, prices, or sale results.";
 
 var OFF_TOPIC_RE = /\b(weather|joke|funny|riddle|recipe|cook|sport|football|cricket|nba|nfl|election|trump|biden|crypto|bitcoin|stock market|capital of|tell me about yourself|are you (a|an) ai|what.*your name)\b/i;
 
@@ -1240,33 +1236,18 @@ function _localOrNull(msg){
 }
 
 function askAI(userMsg){
-  var q = userMsg.slice(0, 500);
-  var messages = [{role:'system', content:AI_SYSTEM}]
-    .concat(CHAT_HISTORY.slice(-8).map(function(h){
-      return {role: h.role, content: String(h.content).slice(0, 500)};
-    }))
-    .concat([{role:'user', content:q}]);
-
-  return fetch(MISTRAL_URL, {
+  return fetch(CHAT_API, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + MISTRAL_KEY
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: 'mistral-small-latest',
-      messages: messages,
-      max_tokens: 320,
-      temperature: 0.5
+      message: userMsg.slice(0, 500),
+      history: CHAT_HISTORY.slice(-8)
     })
   })
   .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
-  .then(function(d){
-    var t = d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content;
-    return (t||DEFLECT_MSG).trim();
-  })
-    .catch(function(){ return DEFLECT_MSG; });
-  });
+  .then(function(d){ return (d.reply || DEFLECT_MSG).trim(); })
+  .catch(function(){ return DEFLECT_MSG; });
+}
 }
 
 function _typingDots(){
