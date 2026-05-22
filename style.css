@@ -279,9 +279,11 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .chat-close:hover{background:#000;transform:scale(1.1)}
 .chat-close:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 #chat-bubble{position:relative}
-/* Hide chat widget on very narrow screens (≤640px) — replaced by a link in the mobile menu. */
+/* Chat panel goes full-width on mobile */
 @media(max-width:640px){
-  #chat-bubble,#chat-dot,#chat-panel,.chat-close{display:none !important}
+  #chat-panel{width:calc(100vw - 16px);right:8px;left:8px;bottom:calc(88px + env(safe-area-inset-bottom,0px));border-radius:16px}
+  #chat-bubble{bottom:calc(24px + env(safe-area-inset-bottom,0px));right:16px}
+  #chat-dot{bottom:calc(68px + env(safe-area-inset-bottom,0px));right:22px}
 }
 
 /* ── HOW IT WORKS ── */
@@ -365,6 +367,8 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .listing-days{font-size:11px;color:var(--muted)}
 .listing-cta{font-size:12px;font-weight:600;color:var(--gold);display:flex;align-items:center;gap:4px;transition:gap .2s}
 .listing-card:hover .listing-cta{gap:8px}
+.listing-chat-btn{display:flex;align-items:center;gap:6px;width:100%;margin-top:10px;padding:9px 14px;background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:10px;color:var(--muted);font-size:12px;font-family:inherit;cursor:pointer;transition:all .2s var(--ease);text-align:left}
+.listing-chat-btn:hover{background:rgba(196,168,74,.08);border-color:rgba(196,168,74,.25);color:var(--gold)}
 .listing-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
 .lp-1{background:linear-gradient(135deg,#0d1117 0%,#1a1a2e 40%,#16213e 100%)}
 .lp-2{background:linear-gradient(135deg,#0d1117 0%,#1c2333 40%,#0f2027 100%)}

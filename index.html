@@ -1115,6 +1115,19 @@ function toggleChat(){
   if (chatOpen){ panel.style.display = 'flex'; document.getElementById('chat-dot').style.display = 'none'; document.getElementById('chat-input').focus(); }
   else { panel.style.display = 'none'; }
 }
+function openChatForProperty(address, suburb){
+  // Re-show chat widget if it was dismissed, then open it pre-filled
+  try { sessionStorage.removeItem('toc.chat.dismissed'); } catch(_) {}
+  ['chat-bubble','chat-dot'].forEach(function(id){
+    var el = document.getElementById(id); if (el) el.style.display = '';
+  });
+  if (!chatOpen) toggleChat();
+  var input = document.getElementById('chat-input');
+  if (input) {
+    input.value = 'I have a question about ' + address + (suburb ? ', ' + suburb : '');
+    input.focus();
+  }
+}
 function dismissChat(){
   // Hide for this browsing session — comes back next visit.
   try { sessionStorage.setItem('toc.chat.dismissed', '1'); } catch(_) {}
@@ -1345,6 +1358,10 @@ function buildListingCard(p) {
     '</div>',
     p.description ? '<p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px">' + p.description + '</p>' : '',
     '<div class="listing-footer"><span class="listing-days">' + p.days + '</span>' + ctaHTML + '</div>',
+    '<button class="listing-chat-btn" onclick="event.stopPropagation();openChatForProperty(\'' + (p.address || '').replace(/'/g,"\\'") + '\',\'' + (p.suburb || '').replace(/'/g,"\\'") + '\')" aria-label="Ask a question about ' + p.address + '">',
+    '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>',
+    'Ask a question',
+    '</button>',
     '</div></div>'
   ].join('');
 }
