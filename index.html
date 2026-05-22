@@ -1261,7 +1261,6 @@ function askAI(userMsg){
   .then(function(d){ return (d.reply || DEFLECT_MSG).trim(); })
   .catch(function(){ return DEFLECT_MSG; });
 }
-}
 
 function _typingDots(){
   var t = document.createElement('div');
