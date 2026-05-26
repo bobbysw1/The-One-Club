@@ -887,3 +887,108 @@ section[style*="border-top:1px solid var(--subtle)"]{border-top-color:rgba(122,1
   .incl-row-name{font-size:14.5px}
   .incl-row-note{font-size:12.5px}
 }
+
+/* ═══════════════════════════════════════
+   POLISH PASS — refined reveals, hero parallax,
+   pinned compare moment, typography rhythm.
+   Additive only; no overrides of working rules.
+═══════════════════════════════════════ */
+
+/* Reveals — slightly slower, softer easing, gold rule draws horizontally */
+[data-reveal]{transition:opacity 1.05s var(--ease),transform 1.05s var(--ease),filter 1.05s var(--ease)}
+.gold-rule[data-reveal]{transform:scaleX(0);transform-origin:left;opacity:1;filter:none;transition:transform 1s var(--ease) .15s}
+.gold-rule[data-reveal].on{transform:scaleX(1)}
+/* Centred rules (used in the savings + process sections) draw from the middle outward */
+.gold-rule[data-reveal][style*="margin:24px auto"],
+.gold-rule[data-reveal][style*="margin-left:auto"]{transform-origin:center}
+
+/* Hero parallax — JS sets --py on .ed-hero. Headline drifts up slower than scroll,
+   video tint and label drift the other way for depth. GPU-only transforms. */
+.ed-hero{--py:0}
+.ed-hero h1{transform:translate3d(0,calc(var(--py) * -.18px),0);will-change:transform}
+.ed-hero .ed-hero-sub{transform:translate3d(0,calc(var(--py) * -.12px),0);will-change:transform}
+.ed-hero .hero-actions{transform:translate3d(0,calc(var(--py) * -.08px),0);will-change:transform}
+.ed-hero .page-label{transform:translate3d(0,calc(var(--py) * -.05px),0);will-change:transform}
+.ed-hero .hero-video{transform:translate3d(0,calc(var(--py) * .25px),0) scale(1.08);will-change:transform}
+.ed-hero .hero-video-tint{transform:translate3d(0,calc(var(--py) * .14px),0);will-change:transform}
+@media (prefers-reduced-motion: reduce){
+  .ed-hero h1,.ed-hero .ed-hero-sub,.ed-hero .hero-actions,
+  .ed-hero .page-label,.ed-hero .hero-video,.ed-hero .hero-video-tint{transform:none !important}
+}
+
+/* Pinned compare moment — first photo compare gets a sticky pin so the eye
+   lingers on the drag handle as the user enters the section. */
+#photos .compare-block:first-of-type{position:relative}
+#photos .compare-block:first-of-type .compare{position:sticky;top:84px;z-index:1}
+@media (max-width:760px){
+  #photos .compare-block:first-of-type .compare{position:relative;top:auto}
+}
+
+/* Typography rhythm — lift section labels, tighten section heads,
+   open up the line-height on the editorial sub. */
+.page-label{font-size:11.5px;letter-spacing:3.4px;opacity:1}
+.sec-head{margin-bottom:56px}
+.sec-head h2{font-weight:300}
+.ed-hero h1{font-weight:300;letter-spacing:-1.6px}
+.ed-hero-sub{letter-spacing:.05px}
+
+/* Scroll-driven section dividers — hairlines fade in from the centre */
+section[style*="border-top:1px solid var(--subtle)"]{position:relative}
+section[style*="border-top:1px solid var(--subtle)"]::before{
+  content:"";position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+  width:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  opacity:.7;transition:width 1.2s var(--ease);pointer-events:none
+}
+section[style*="border-top:1px solid var(--subtle)"].in-view::before{width:min(420px,60%)}
+
+/* Subtle hero scroll cue — gentle nudge so people know to keep going */
+.ed-hero::after{
+  content:"";position:absolute;left:50%;bottom:36px;transform:translateX(-50%);
+  width:1px;height:54px;
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.55) 35%,var(--gold));
+  opacity:.6;animation:hero-cue 2.6s var(--ease) infinite;pointer-events:none;z-index:1
+}
+@keyframes hero-cue{
+  0%{opacity:0;transform:translate(-50%,-10px) scaleY(.6)}
+  35%{opacity:.7}
+  70%{opacity:.7;transform:translate(-50%,0) scaleY(1)}
+  100%{opacity:0;transform:translate(-50%,18px) scaleY(.7)}
+}
+@media (prefers-reduced-motion: reduce){.ed-hero::after{animation:none;opacity:.4}}
+
+/* Heading uniformity — all .display headings match .sec-head h2 style
+   ("Walk every room / before you visit."): Fraunces serif, weight 400,
+   slightly smaller size than before. Gold italic em retained. */
+.display,.display-xl,
+.sec-head h2,
+h2.serif{
+  font-family:'Fraunces',Georgia,'Times New Roman',serif !important;
+  font-optical-sizing:auto;
+  font-weight:400 !important;
+  letter-spacing:-1.1px !important;
+  line-height:1.06 !important;
+}
+.display{font-size:clamp(32px,4vw,52px) !important}
+.display-xl{font-size:clamp(38px,5vw,64px) !important}
+.display em,.display-xl em,
+.sec-head h2 em,
+h2.serif em{
+  font-style:italic;
+  color:var(--gold);
+  font-weight:400;
+  font-variation-settings:"opsz" 96;
+}
+/* Mobile — keep displays readable but compact */
+@media (max-width:640px){
+  .display{font-size:clamp(26px,7vw,34px) !important;letter-spacing:-.7px !important}
+  .display-xl{font-size:clamp(30px,8vw,40px) !important;letter-spacing:-.9px !important}
+}
+
+/* Testimonial cards — softer hover, no tilt, no whole-row shadow bleed */
+.tc-card{transform:none !important}
+.tc-card:hover{
+  background:var(--surface-2);
+  border-color:rgba(196,168,74,.28);
+  box-shadow:0 8px 28px rgba(0,0,0,.18) !important;
+  transform:translateY(-2px) !important;
+}
