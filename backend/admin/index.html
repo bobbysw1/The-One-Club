@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>The One Club — Admin</title>
+<title>The One Club | Admin</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -149,7 +149,7 @@ button{cursor:pointer;font-family:inherit}
 <div id="login-screen">
   <div class="login-box">
     <div class="login-logo">The <span>One</span> Club</div>
-    <div class="login-sub">Admin Panel — enter your password to continue</div>
+    <div class="login-sub">Admin Panel, enter your password to continue</div>
     <div class="login-field">
       <label>Password</label>
       <input type="password" id="login-pw" placeholder="••••••••••" onkeydown="if(event.key==='Enter')login()"/>
@@ -171,11 +171,11 @@ button{cursor:pointer;font-family:inherit}
     <nav class="sidebar-nav">
       <button class="nav-item active" onclick="showSection('properties')" id="nav-properties">
         <span class="icon">🏠</span> Properties
-        <span class="nav-count" id="prop-count">—</span>
+        <span class="nav-count" id="prop-count">-</span>
       </button>
       <button class="nav-item" onclick="showSection('chatbot')" id="nav-chatbot">
         <span class="icon">💬</span> Chatbot
-        <span class="nav-count" id="chat-count">—</span>
+        <span class="nav-count" id="chat-count">-</span>
       </button>
     </nav>
     <div class="sidebar-footer">
@@ -200,15 +200,15 @@ button{cursor:pointer;font-family:inherit}
 
       <div class="stats-row">
         <div class="stat-card">
-          <div class="stat-val" id="stat-active">—</div>
+          <div class="stat-val" id="stat-active">-</div>
           <div class="stat-label">Active Listings</div>
         </div>
         <div class="stat-card">
-          <div class="stat-val" id="stat-contract">—</div>
+          <div class="stat-val" id="stat-contract">-</div>
           <div class="stat-label">Under Contract</div>
         </div>
         <div class="stat-card">
-          <div class="stat-val" id="stat-total">—</div>
+          <div class="stat-val" id="stat-total">-</div>
           <div class="stat-label">Total Listings</div>
         </div>
       </div>
@@ -319,7 +319,7 @@ button{cursor:pointer;font-family:inherit}
       <input id="c-key" placeholder="e.g. parking, settlement, process" id="c-key"/>
     </div>
     <div class="field">
-      <label>Trigger Keywords — press Enter or comma to add</label>
+      <label>Trigger Keywords, press Enter or comma to add</label>
       <div class="keywords-wrap" id="kw-wrap" onclick="document.getElementById('kw-input').focus()">
         <input class="kw-input" id="kw-input" placeholder="Type keyword, press Enter…" onkeydown="kwKeydown(event)" oninput="kwInput(event)"/>
       </div>
@@ -402,7 +402,7 @@ async function loadProperties() {
     renderProperties();
     updateStats();
     document.getElementById('prop-count').textContent = properties.length;
-  } catch(e) { toast('Cannot load properties — is the server running?', 'error'); }
+  } catch(e) { toast('Cannot load properties, is the server running?', 'error'); }
 }
 
 function updateStats() {
@@ -550,7 +550,7 @@ async function loadChatbot() {
     chatbot = await r.json();
     renderChatbot();
     document.getElementById('chat-count').textContent = Object.keys(chatbot).length;
-  } catch(e) { toast('Cannot load chatbot — is the server running?', 'error'); }
+  } catch(e) { toast('Cannot load chatbot, is the server running?', 'error'); }
 }
 
 function renderChatbot() {
@@ -599,7 +599,7 @@ function editChat(key) {
   document.getElementById('c-key').disabled = true;
   document.getElementById('c-response').value = entry.response || '';
   renderKeywords();
-  document.getElementById('chat-modal-title').textContent = 'Edit Response — ' + key;
+  document.getElementById('chat-modal-title').textContent = 'Edit Response, ' + key;
   document.getElementById('chat-save-btn').textContent = 'Update Response';
   document.getElementById('chat-modal').style.display = 'flex';
 }

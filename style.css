@@ -497,6 +497,10 @@ footer{border-top:1px solid var(--subtle);padding:60px 48px 40px}
 .pre-line{height:1px;width:0;background:rgba(var(--fg-rgb),.55);animation:pre-line 1.1s cubic-bezier(.4,0,.15,1) .9s forwards}
 .pre-kicker{display:none}
 @keyframes pre-fade-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.pre-choice{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:6px;opacity:0;transform:translateY(8px);transition:opacity .55s ease,transform .55s ease;pointer-events:none}
+.pre-choice.on{opacity:1;transform:none;pointer-events:auto}
+.pre-choice-label{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted)}
+.pre-choice-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 @keyframes pre-line{from{width:0}to{width:96px}}
 @media (prefers-reduced-motion: reduce){.pre-mark,.pre-line,.pre-kicker{animation:none;opacity:1;transform:none}.pre-line{width:96px}}
 

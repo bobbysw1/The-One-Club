@@ -1,4 +1,4 @@
-/* The One Club — shared lead-form submitter.
+/* The One Club | shared lead-form submitter.
  *
  * Markup contract (per form):
  *   <form data-lead-form="valuation" novalidate>
@@ -12,7 +12,7 @@
  *   </form>
  *
  * Optional attributes on <form>:
- *   data-success         Custom success message (default: "Request received — we'll be in touch within 24 hours")
+ *   data-success         Custom success message (default: "Request received, we'll be in touch within 24 hours")
  *   data-gtag-event      Custom GA event name (default: form_submit)
  *   data-gtag-label      GA event label
  *
@@ -104,7 +104,7 @@
       }
       // Success: show success state on the button + GA event.
       if (btn) {
-        var success = form.getAttribute('data-success') || "Request received — we'll be in touch within 24 hours";
+        var success = form.getAttribute('data-success') || "Request received, we'll be in touch within 24 hours";
         btn.textContent = success;
         btn.style.background = 'transparent';
         btn.style.color = '#4ade80';
@@ -145,7 +145,7 @@
   else init();
 })();
 
-/* Chip multi-select — hydrates any <fieldset data-chip-multi> on the page.
+/* Chip multi-select, hydrates any <fieldset data-chip-multi> on the page.
  * Each chip is a real <button aria-pressed>, so keyboard, touch, and screen
  * readers all work without a custom widget role. The hidden <input> stays
  * in sync with the chip selection so the existing lead-form gather picks
@@ -182,7 +182,7 @@
   else init();
 })();
 
-/* Deep-link scroll fallback — re-applies location.hash after the DOM is parsed.
+/* Deep-link scroll fallback, re-applies location.hash after the DOM is parsed.
  * Belt-and-braces for cases where the browser's native hash scroll fired before
  * layout was stable (sticky header, late-loading webfonts, etc.). */
 (function () {

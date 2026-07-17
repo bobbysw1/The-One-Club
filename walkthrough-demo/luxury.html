@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One Burleigh — Gold Coast's Most Exclusive Residence</title>
+<meta name="robots" content="noindex">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          gold: '#C4A84A',
+          'gold-dim': 'rgba(196,168,74,0.12)',
+          'gold-light': '#d4b857',
+          ocean: '#4A7A9A',
+          'warm-100': '#FAF8F4',
+          'warm-200': '#F2EDE4',
+          'warm-900': '#1A1612',
+        },
+        fontFamily: {
+          sans: ['-apple-system','BlinkMacSystemFont','SF Pro Display','SF Pro Text','system-ui','sans-serif'],
+          serif: ['Georgia','Times New Roman','serif'],
+        },
+        letterSpacing: {
+          widest: '0.25em',
+        }
+      }
+    }
+  }
+</script>
+<style>
+  /* Base */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: auto; background: #0a0906; }
+  body { margin: 0; -webkit-font-smoothing: antialiased; color: #1A1612; overflow-x: hidden; }
+
+  /* Walkthrough scroll track */
+  #walkthrough { position: relative; height: 700vh; }
+  #walkthrough-viewport {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: #0a0906;
+  }
+
+  /* Scene layers */
+  .scene {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    will-change: opacity, transform;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.08);
+  }
+  .scene.is-active { opacity: 1; }
+
+  /* Ken Burns on each scene image */
+  .scene-img {
+    position: absolute;
+    inset: -5%;
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+    animation: kenburns 18s ease-in-out infinite alternate;
+  }
+  @keyframes kenburns {
+    from { transform: scale(1) translate(0,0); }
+    to   { transform: scale(1.07) translate(-1%, -1%); }
+  }
+
+  /* Scene overlay — gradient for legibility */
+  .scene-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(10,9,6,0.15) 0%,
+      transparent 30%,
+      transparent 55%,
+      rgba(10,9,6,0.55) 100%
+    );
+    z-index: 1;
+  }
+
+  /* Scene copy */
+  .scene-copy {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: 0 10vw 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  /* Nav */
+  #nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    transition: background .4s ease, border-color .4s ease;
+  }
+  #nav.scrolled {
+    background: rgba(10,9,6,0.7);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Chapter label */
+  #chapter-display {
+    position: absolute;
+    bottom: 80px;
+    right: 10vw;
+    z-index: 3;
+    text-align: right;
+    pointer-events: none;
+  }
+
+  /* Progress bar */
+  #progress-bar {
+    position: fixed;
+    bottom: 0; left: 0;
+    height: 2px;
+    width: 0%;
+    background: #C4A84A;
+    z-index: 200;
+    box-shadow: 0 0 12px rgba(196,168,74,0.5);
+    transition: width 0.1s linear;
+  }
+
+  /* Scroll cue */
+  .scroll-cue-line {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.5);
+    animation: drop 2s ease-in-out infinite;
+    margin: 10px auto 0;
+  }
+  @keyframes drop {
+    0%   { transform: scaleY(0); transform-origin: top; }
+    48%  { transform: scaleY(1); transform-origin: top; }
+    50%  { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* Preloader */
+  #preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: #0a0906;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 24px;
+    transition: opacity 0.8s ease;
+  }
+  #preloader.hidden { opacity: 0; pointer-events: none; }
+  .loader-bar {
+    width: 120px;
+    height: 1px;
+    background: rgba(255,255,255,0.12);
+    overflow: hidden;
+  }
+  .loader-fill {
+    height: 100%;
+    background: #C4A84A;
+    animation: load 1.6s cubic-bezier(.4,0,.2,1) forwards;
+  }
+  @keyframes load { from { width: 0% } to { width: 100% } }
+
+  /* Specs section */
+  .spec-card {
+    border-top: 1px solid rgba(26,22,18,0.12);
+    padding: 28px 0;
+    transition: border-color 0.3s ease;
+  }
+  .spec-card:hover { border-color: #C4A84A; }
+
+  /* CTA section */
+  .enquire-input {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #fff;
+    padding: 16px 20px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    border-radius: 0;
+  }
+  .enquire-input::placeholder { color: rgba(255,255,255,0.35); }
+  .enquire-input:focus { border-color: #C4A84A; }
+
+  /* Smooth chapter name transition */
+  .chapter-name-inner {
+    display: block;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+  .chapter-name-inner.exit {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .scene-copy { padding: 0 6vw 60px; flex-direction: column; gap: 16px; align-items: flex-start; }
+    #chapter-display { right: 6vw; bottom: 64px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Preloader -->
+<div id="preloader">
+  <div style="font-family:-apple-system,sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.4)">One Burleigh</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- Progress -->
+<div id="progress-bar"></div>
+
+<!-- ── Navigation ── -->
+<nav id="nav" class="px-8 md:px-12 py-5">
+  <div class="max-w-screen-xl mx-auto flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-3 no-underline">
+      <div class="w-7 h-7 rounded-sm flex items-center justify-center" style="background:#C4A84A">
+        <span style="font-size:9px;font-weight:800;letter-spacing:-0.5px;color:#000">1C</span>
+      </div>
+      <span style="font-size:13px;letter-spacing:2.5px;text-transform:uppercase;font-weight:500;color:#fff">One Burleigh</span>
+    </a>
+    <!-- Links -->
+    <div class="hidden md:flex items-center gap-10">
+      <a href="#walkthrough" style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Experience</a>
+      <a href="#specs" style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Details</a>
+      <a href="#enquire" style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Enquire</a>
+    </div>
+    <!-- CTA -->
+    <a href="#enquire" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;background:#C4A84A;color:#000;padding:10px 22px;text-decoration:none;transition:background .2s" onmouseover="this.style.background='#d4b857'" onmouseout="this.style.background='#C4A84A'">
+      Private Viewing
+    </a>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section id="hero" style="position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#0a0906">
+  <!-- Hero image -->
+  <div style="position:absolute;inset:-5%;background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=85');background-size:cover;background-position:center;animation:kenburns 20s ease-in-out infinite alternate"></div>
+  <!-- Overlay -->
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,9,6,.25) 0%,rgba(10,9,6,.1) 40%,rgba(10,9,6,.6) 100%)"></div>
+  <!-- Copy -->
+  <div style="position:relative;z-index:2;text-align:center;padding:0 24px">
+    <div style="font-size:10px;letter-spacing:5px;text-transform:uppercase;color:#C4A84A;font-weight:600;margin-bottom:22px">Burleigh Heads · Gold Coast</div>
+    <h1 style="font-family:Georgia,serif;font-size:clamp(48px,8vw,96px);font-weight:300;color:#fff;letter-spacing:-2px;line-height:0.95;margin:0 0 28px">Waterfront Living<br><em style="font-style:italic;color:rgba(255,255,255,0.75)">Redefined.</em></h1>
+    <p style="font-size:15px;color:rgba(255,255,255,0.6);letter-spacing:.5px;max-width:480px;margin:0 auto 48px;line-height:1.6">Gold Coast's most exceptional waterfront residence. 5 bedrooms, 820 m² of pure luxury.</p>
+    <a href="#walkthrough" style="display:inline-block;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:600;border:1px solid rgba(255,255,255,0.35);color:#fff;padding:14px 36px;text-decoration:none;transition:all .3s;backdrop-filter:blur(10px)" onmouseover="this.style.background='rgba(196,168,74,0.15)';this.style.borderColor='#C4A84A';this.style.color='#C4A84A'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(255,255,255,0.35)';this.style.color='#fff'">
+      Begin the Walkthrough
+    </a>
+  </div>
+  <!-- Scroll cue -->
+  <div id="hero-scroll-cue" style="position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:3;text-align:center;pointer-events:none">
+    <div style="font-size:9px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,0.5)">Scroll</div>
+    <div class="scroll-cue-line"></div>
+  </div>
+</section>
+
+<!-- ── Walkthrough ── -->
+<section id="walkthrough">
+  <div id="walkthrough-viewport">
+
+    <!-- Scene 1: Exterior -->
+    <div class="scene" id="scene-0">
+      <div class="scene-img" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=85')"></div>
+      <div class="scene-overlay"></div>
+      <div class="scene-copy">
+        <div>
+          <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#C4A84A;margin-bottom:12px;font-weight:600">The Exterior</div>
+          <h2 style="font-family:Georgia,serif;font-size:clamp(28px,4vw,52px);font-weight:300;color:#fff;letter-spacing:-1px;margin:0;max-width:520px;line-height:1.1">A home that<br>commands the horizon.</h2>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.55);max-width:280px;line-height:1.7;text-align:right">Architecturally designed for the Gold Coast's demanding light — and equally demanding eye.</p>
+      </div>
+    </div>
+
+    <!-- Scene 2: Grand Foyer -->
+    <div class="scene" id="scene-1">
+      <div class="scene-img" style="background-image:url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1920&q=85')"></div>
+      <div class="scene-overlay"></div>
+      <div class="scene-copy">
+        <div>
+          <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#C4A84A;margin-bottom:12px;font-weight:600">Grand Entrance</div>
+          <h2 style="font-family:Georgia,serif;font-size:clamp(28px,4vw,52px);font-weight:300;color:#fff;letter-spacing:-1px;margin:0;max-width:520px;line-height:1.1">Where first impressions<br>are permanent.</h2>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.55);max-width:280px;line-height:1.7;text-align:right">European oak herringbone floors, 4.2m ceilings, and a custom void that lets the light do the talking.</p>
+      </div>
+    </div>
+
+    <!-- Scene 3: Open-plan Living -->
+    <div class="scene" id="scene-2">
+      <div class="scene-img" style="background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1920&q=85')"></div>
+      <div class="scene-overlay"></div>
+      <div class="scene-copy">
+        <div>
+          <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#C4A84A;margin-bottom:12px;font-weight:600">Living Spaces</div>
+          <h2 style="font-family:Georgia,serif;font-size:clamp(28px,4vw,52px);font-weight:300;color:#fff;letter-spacing:-1px;margin:0;max-width:520px;line-height:1.1">Living, exactly<br>as it should be.</h2>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.55);max-width:280px;line-height:1.7;text-align:right">Open-plan living dissolves into ocean view through 9m of frameless glass. Inside and outside become the same thing.</p>
+      </div>
+    </div>
+
+    <!-- Scene 4: Chef's Kitchen -->
+    <div class="scene" id="scene-3">
+      <div class="scene-img" style="background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1920&q=85')"></div>
+      <div class="scene-overlay"></div>
+      <div class="scene-copy">
+        <div>
+          <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#C4A84A;margin-bottom:12px;font-weight:600">The Kitchen</div>
+          <h2 style="font-family:Georgia,serif;font-size:clamp(28px,4vw,52px);font-weight:300;color:#fff;letter-spacing:-1px;margin:0;max-width:520px;line-height:1.1">Crafted for those<br>who notice the details.</h2>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.55);max-width:280px;line-height:1.7;text-align:right">Sub-Zero refrigeration, Gaggenau appliances, and 6m of Calacatta marble — the finest materials, without compromise.</p>
+      </div>
+    </div>
+
+    <!-- Scene 5: Master Suite -->
+    <div class="scene" id="scene-4">
+      <div class="scene-img" style="background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1920&q=85')"></div>
+      <div class="scene-overlay"></div>
+      <div class="scene-copy">
+        <div>
+          <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#C4A84A;margin-bottom:12px;font-weight:600">Master Suite</div>
+          <h2 style="font-family:Georgia,serif;font-size:clamp(28px,4vw,52px);font-weight:300;color:#fff;letter-spacing:-1px;margin:0;max-width:520px;line-height:1.1">Rest in<br>quiet luxury.</h2>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.55);max-width:280px;line-height:1.7;text-align:right">Wake to an uninterrupted Pacific view. The ensuite is a spa retreat — heated Bianco Dolomite floors, freestanding bath, rain shower.</p>
+      </div>
+    </div>
+
+    <!-- Scene 6: Rooftop / Pool -->
+    <div class="scene" id="scene-5">
+      <div class="scene-img" style="background-image:url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1920&q=85')"></div>
+      <div class="scene-overlay"></div>
+      <div class="scene-copy">
+        <div>
+          <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#C4A84A;margin-bottom:12px;font-weight:600">Rooftop Terrace</div>
+          <h2 style="font-family:Georgia,serif;font-size:clamp(28px,4vw,52px);font-weight:300;color:#fff;letter-spacing:-1px;margin:0;max-width:520px;line-height:1.1">Your private piece<br>of the Gold Coast sky.</h2>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.55);max-width:280px;line-height:1.7;text-align:right">Infinity edge pool, full summer kitchen, and 360° views from Burleigh Head to the hinterland. The Gold Coast, curated.</p>
+      </div>
+    </div>
+
+    <!-- Chapter indicator -->
+    <div id="chapter-display">
+      <div style="font-size:9px;letter-spacing:3.5px;text-transform:uppercase;color:#C4A84A;font-weight:700;margin-bottom:8px" id="chap-num">01 of 06</div>
+      <div style="font-family:Georgia,serif;font-size:22px;font-weight:300;color:#fff;letter-spacing:-.3px">
+        <span class="chapter-name-inner" id="chap-name">Exterior</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Specifications ── -->
+<section id="specs" style="background:#FAF8F4;padding:120px 10vw">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="margin-bottom:72px">
+      <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#C4A84A;font-weight:600;margin-bottom:16px">Property Details</div>
+      <h2 style="font-family:Georgia,serif;font-size:clamp(36px,5vw,64px);font-weight:300;letter-spacing:-1.5px;color:#1A1612;margin:0;line-height:1">One Burleigh.<br><em style="color:rgba(26,22,18,0.4)">By every measure.</em></h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0">
+
+      <div class="spec-card" style="padding-right:48px">
+        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(26,22,18,0.4);margin-bottom:10px">Land</div>
+        <div style="font-family:Georgia,serif;font-size:36px;font-weight:300;color:#1A1612;margin-bottom:4px">1,240 m²</div>
+        <div style="font-size:13px;color:rgba(26,22,18,0.5)">Prime waterfront, Burleigh Heads</div>
+      </div>
+
+      <div class="spec-card" style="padding-right:48px">
+        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(26,22,18,0.4);margin-bottom:10px">Home</div>
+        <div style="font-family:Georgia,serif;font-size:36px;font-weight:300;color:#1A1612;margin-bottom:4px">820 m²</div>
+        <div style="font-size:13px;color:rgba(26,22,18,0.5)">Across three architecturally considered levels</div>
+      </div>
+
+      <div class="spec-card" style="padding-right:48px">
+        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(26,22,18,0.4);margin-bottom:10px">Bedrooms</div>
+        <div style="font-family:Georgia,serif;font-size:36px;font-weight:300;color:#1A1612;margin-bottom:4px">5 + Study</div>
+        <div style="font-size:13px;color:rgba(26,22,18,0.5)">Including master retreat with Pacific outlook</div>
+      </div>
+
+      <div class="spec-card" style="padding-right:48px">
+        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(26,22,18,0.4);margin-bottom:10px">Bathrooms</div>
+        <div style="font-family:Georgia,serif;font-size:36px;font-weight:300;color:#1A1612;margin-bottom:4px">5 + Powder</div>
+        <div style="font-size:13px;color:rgba(26,22,18,0.5)">Heated floors, freestanding bath, rain showers</div>
+      </div>
+
+      <div class="spec-card" style="padding-right:48px">
+        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(26,22,18,0.4);margin-bottom:10px">Parking</div>
+        <div style="font-family:Georgia,serif;font-size:36px;font-weight:300;color:#1A1612;margin-bottom:4px">4 Cars</div>
+        <div style="font-size:13px;color:rgba(26,22,18,0.5)">Climate-controlled garage + EV charging</div>
+      </div>
+
+      <div class="spec-card" style="padding-right:48px">
+        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(26,22,18,0.4);margin-bottom:10px">Outlook</div>
+        <div style="font-family:Georgia,serif;font-size:36px;font-weight:300;color:#1A1612;margin-bottom:4px">360°</div>
+        <div style="font-size:13px;color:rgba(26,22,18,0.5)">Pacific Ocean, Burleigh Head, hinterland</div>
+      </div>
+
+    </div>
+
+    <!-- Finishes -->
+    <div style="margin-top:80px;padding-top:48px;border-top:1px solid rgba(26,22,18,0.1)">
+      <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#C4A84A;font-weight:600;margin-bottom:32px">Signature Finishes</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px 48px">
+        <div style="font-size:13px;color:rgba(26,22,18,0.6);line-height:1.8">European oak herringbone floors throughout</div>
+        <div style="font-size:13px;color:rgba(26,22,18,0.6);line-height:1.8">Calacatta marble kitchen benchtops</div>
+        <div style="font-size:13px;color:rgba(26,22,18,0.6);line-height:1.8">Gaggenau + Sub-Zero appliances</div>
+        <div style="font-size:13px;color:rgba(26,22,18,0.6);line-height:1.8">Floor-to-ceiling frameless glazing</div>
+        <div style="font-size:13px;color:rgba(26,22,18,0.6);line-height:1.8">4.2m ground floor ceiling height</div>
+        <div style="font-size:13px;color:rgba(26,22,18,0.6);line-height:1.8">Crestron smart home integration</div>
+        <div style="font-size:13px;color:rgba(26,22,18,0.6);line-height:1.8">Infinity edge pool + cabana</div>
+        <div style="font-size:13px;color:rgba(26,22,18,0.6);line-height:1.8">Private deepwater pontoon</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Enquire ── -->
+<section id="enquire" style="background:#0a0906;padding:120px 10vw;position:relative;overflow:hidden">
+  <!-- Background accent -->
+  <div style="position:absolute;top:-40%;right:-10%;width:600px;height:600px;border-radius:50%;background:rgba(196,168,74,0.04);pointer-events:none"></div>
+  <div style="max-width:640px;margin:0 auto;position:relative;z-index:1">
+    <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#C4A84A;font-weight:600;margin-bottom:16px;text-align:center">Private Viewing</div>
+    <h2 style="font-family:Georgia,serif;font-size:clamp(36px,5vw,60px);font-weight:300;color:#fff;letter-spacing:-1.5px;text-align:center;margin:0 0 16px;line-height:1.05">Experience it<br><em style="color:rgba(255,255,255,0.4)">in person.</em></h2>
+    <p style="font-size:14px;color:rgba(255,255,255,0.45);text-align:center;line-height:1.7;margin:0 0 56px">Strictly private viewings. Register below and our team will be in touch within 24 hours.</p>
+
+    <form onsubmit="return false" style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <input class="enquire-input" type="text" placeholder="First name">
+        <input class="enquire-input" type="text" placeholder="Last name">
+      </div>
+      <input class="enquire-input" type="email" placeholder="Email address">
+      <input class="enquire-input" type="tel" placeholder="Phone number">
+      <select class="enquire-input" style="appearance:none;cursor:pointer;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='rgba(255,255,255,0.3)' d='M1 1l5 5 5-5'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 16px center">
+        <option value="" disabled selected style="background:#0a0906">Preferred viewing time</option>
+        <option style="background:#0a0906">Morning (9am – 12pm)</option>
+        <option style="background:#0a0906">Afternoon (12pm – 4pm)</option>
+        <option style="background:#0a0906">Evening (4pm – 7pm)</option>
+      </select>
+      <button type="submit" style="background:#C4A84A;color:#000;border:none;padding:18px;font-family:inherit;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;cursor:pointer;transition:background .2s;margin-top:8px" onmouseover="this.style.background='#d4b857'" onmouseout="this.style.background='#C4A84A'">
+        Register Interest
+      </button>
+    </form>
+
+    <p style="font-size:11px;color:rgba(255,255,255,0.2);text-align:center;margin-top:24px;letter-spacing:.5px">By enquiring you agree to be contacted by The One Club regarding this property.</p>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer style="background:#050403;padding:60px 10vw 40px;border-top:1px solid rgba(255,255,255,0.05)">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:start;margin-bottom:60px">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+          <div style="width:28px;height:28px;border-radius:4px;background:#C4A84A;display:flex;align-items:center;justify-content:center">
+            <span style="font-size:9px;font-weight:800;color:#000">1C</span>
+          </div>
+          <span style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.6)">The One Club</span>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.3);line-height:1.7;max-width:360px">Gold Coast's most trusted property advisory, representing exceptional homes for discerning buyers and sellers since 2018.</p>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px">Contact</div>
+        <a href="tel:+61412345678" style="display:block;font-size:14px;color:rgba(255,255,255,0.6);text-decoration:none;margin-bottom:6px;transition:color .2s" onmouseover="this.style.color='#C4A84A'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">+61 4 1234 5678</a>
+        <a href="mailto:hello@theoneclub.com.au" style="display:block;font-size:13px;color:rgba(255,255,255,0.35);text-decoration:none;transition:color .2s" onmouseover="this.style.color='#C4A84A'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">hello@theoneclub.com.au</a>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.05);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
+      <div style="font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:.5px">© 2026 The One Club. All rights reserved. Licensed Real Estate Agent.</div>
+      <div style="display:flex;gap:24px">
+        <a href="#" style="font-size:11px;color:rgba(255,255,255,0.2);text-decoration:none;transition:color .2s" onmouseover="this.style.color='rgba(255,255,255,0.5)'" onmouseout="this.style.color='rgba(255,255,255,0.2)'">Privacy</a>
+        <a href="#" style="font-size:11px;color:rgba(255,255,255,0.2);text-decoration:none;transition:color .2s" onmouseover="this.style.color='rgba(255,255,255,0.5)'" onmouseout="this.style.color='rgba(255,255,255,0.2)'">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// ── Chapters ──
+const chapters = [
+  { num:'01 of 06', name:'Exterior' },
+  { num:'02 of 06', name:'Grand Entrance' },
+  { num:'03 of 06', name:'Living Spaces' },
+  { num:'04 of 06', name:'The Kitchen' },
+  { num:'05 of 06', name:'Master Suite' },
+  { num:'06 of 06', name:'Rooftop Terrace' },
+];
+
+const scenes = document.querySelectorAll('.scene');
+const chapNum  = document.getElementById('chap-num');
+const chapName = document.getElementById('chap-name');
+let currentChapter = -1;
+
+function setChapter(i) {
+  if (i === currentChapter) return;
+  currentChapter = i;
+  chapNum.textContent = chapters[i].num;
+  chapName.classList.add('exit');
+  setTimeout(() => {
+    chapName.textContent = chapters[i].name;
+    chapName.classList.remove('exit');
+  }, 200);
+}
+
+// ── Walkthrough GSAP timeline ──
+// Each scene occupies an equal fraction of the 700vh scroll track
+// Overlap windows allow crossfades between them
+const tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '#walkthrough',
+    start: 'top top',
+    end: 'bottom bottom',
+    scrub: 1.8,
+    onUpdate(self) {
+      // Progress bar
+      document.getElementById('progress-bar').style.width = (self.progress * 100) + '%';
+      // Chapter
+      const idx = Math.min(Math.floor(self.progress * 6), 5);
+      setChapter(idx);
+    }
+  }
+});
+
+// Build the timeline: each scene fades in, holds, fades out
+// 6 scenes over a normalised duration of 6 units
+const hold = 0.7;   // hold time per scene (in timeline units)
+const fade = 0.35;  // crossfade duration
+
+// Scene 0 starts visible
+gsap.set('#scene-0', { opacity: 1, scale: 1 });
+setChapter(0);
+
+scenes.forEach((scene, i) => {
+  const start = i * (hold + fade * 0.5);
+
+  if (i === 0) {
+    // First scene: just fade out at the end of its window
+    tl.to(scene, { opacity: 0, scale: 0.98, duration: fade, ease:'power2.inOut' }, start + hold);
+  } else {
+    // Subsequent scenes: fade in then hold then fade out
+    tl.fromTo(scene,
+      { opacity: 0, scale: 1.06 },
+      { opacity: 1, scale: 1, duration: fade, ease:'power2.out' },
+      start
+    );
+    if (i < scenes.length - 1) {
+      tl.to(scene, { opacity: 0, scale: 0.98, duration: fade, ease:'power2.inOut' }, start + hold);
+    }
+  }
+});
+
+// ── Nav scroll state ──
+ScrollTrigger.create({
+  start: 'top -80px',
+  onUpdate(self) {
+    document.getElementById('nav').classList.toggle('scrolled', self.scroll() > 80);
+  }
+});
+
+// ── Hero scroll cue fade ──
+ScrollTrigger.create({
+  trigger: '#hero',
+  start: 'top top',
+  end: '20% top',
+  scrub: true,
+  onUpdate(self) {
+    document.getElementById('hero-scroll-cue').style.opacity = 1 - self.progress;
+  }
+});
+
+// ── Preloader ──
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const pre = document.getElementById('preloader');
+    pre.classList.add('hidden');
+    setTimeout(() => pre.remove(), 800);
+  }, 1800);
+});
+
+// ── Specs section: stagger cards in ──
+gsap.from('.spec-card', {
+  opacity: 0,
+  y: 30,
+  duration: 0.7,
+  stagger: 0.1,
+  ease: 'power2.out',
+  scrollTrigger: {
+    trigger: '#specs',
+    start: 'top 75%',
+  }
+});
+
+// ── Enquire section ──
+gsap.from('#enquire form, #enquire h2, #enquire p', {
+  opacity: 0,
+  y: 40,
+  duration: 0.8,
+  stagger: 0.12,
+  ease: 'power3.out',
+  scrollTrigger: {
+    trigger: '#enquire',
+    start: 'top 70%',
+  }
+});
+</script>
+
+</body>
+</html>
