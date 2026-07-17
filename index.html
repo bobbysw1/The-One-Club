@@ -196,6 +196,7 @@
     <div class="pre-region-kicker">Where are you selling?</div>
   </div>
   <a class="pre-half gc" href="/" onclick="chooseRegion('gc');return false;" aria-label="Enter the Gold Coast site">
+    <video class="pre-half-video" muted loop playsinline preload="none" aria-hidden="true"><source src="/video/selector-gc.mp4" type="video/mp4"/></video>
     <span class="pre-half-kicker">South East Queensland</span>
     <span class="pre-half-name">Gold<br/><em>Coast.</em></span>
     <span class="pre-half-tag">Surfers Paradise to Coolangatta</span>
@@ -203,6 +204,7 @@
   </a>
   <div class="pre-region-divider" aria-hidden="true"></div>
   <a class="pre-half cn" href="/cairns/" onclick="chooseRegion('cairns');return false;" aria-label="Enter the Cairns and Port Douglas site">
+    <video class="pre-half-video" muted loop playsinline preload="none" aria-hidden="true"><source src="/video/selector-cairns.mp4" type="video/mp4"/></video>
     <span class="pre-half-kicker">Far North Queensland</span>
     <span class="pre-half-name">Cairns &amp;<br/><em>Port Douglas.</em></span>
     <span class="pre-half-tag">Palm Cove to the Tablelands</span>
@@ -1518,6 +1520,7 @@ function chooseRegion(region){
     }
   } catch (e) {}
   window.__preDismiss = function(){
+    pre.querySelectorAll('video').forEach(function(v){ try { v.pause(); } catch (e) {} });
     pre.classList.add('pre-hidden');
     document.body.classList.remove('preloading');
     try { sessionStorage.setItem('toc.preloaded', '1'); } catch (e) {}
@@ -1525,6 +1528,17 @@ function chooseRegion(region){
     if (typeof revealAll === 'function') revealAll();
     if (typeof initParticles === 'function') initParticles();
   };
+  // Hover brings each half's hero loop to life (pointer devices only;
+  // the sub-1MB clips are fetched on first hover, never up front).
+  if (matchMedia('(hover:hover)').matches) {
+    pre.querySelectorAll('.pre-half').forEach(function(h){
+      var v = h.querySelector('.pre-half-video');
+      if (!v) return;
+      v.addEventListener('playing', function(){ h.classList.add('playing'); });
+      h.addEventListener('mouseenter', function(){ var p = v.play(); if (p && p.catch) p.catch(function(){}); });
+      h.addEventListener('mouseleave', function(){ v.pause(); h.classList.remove('playing'); });
+    });
+  }
   // No choice made: continue into the Gold Coast site just before the
   // CSS pre-auto-hide failsafe (9s on the region chooser) kicks in.
   setTimeout(function(){ window.__preDismiss(); }, 8600);
