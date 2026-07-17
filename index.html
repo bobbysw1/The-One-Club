@@ -1529,9 +1529,11 @@ function chooseRegion(region){
     if (typeof revealAll === 'function') revealAll();
     if (typeof initParticles === 'function') initParticles();
   };
-  // Hover brings each half's hero loop to life (pointer devices only;
-  // the sub-1MB clips are fetched on first hover, never up front).
-  if (matchMedia('(hover:hover)').matches) {
+  // Hover brings each half's hero loop to life (pointer devices only).
+  // The clips are warmed in the background once the chooser is on screen,
+  // so the first hover plays instantly instead of waiting on the download.
+  var saveData = navigator.connection && navigator.connection.saveData;
+  if (matchMedia('(hover:hover)').matches && !saveData) {
     pre.querySelectorAll('.pre-half').forEach(function(h){
       var v = h.querySelector('.pre-half-video');
       if (!v) return;
@@ -1539,6 +1541,12 @@ function chooseRegion(region){
       h.addEventListener('mouseenter', function(){ var p = v.play(); if (p && p.catch) p.catch(function(){}); });
       h.addEventListener('mouseleave', function(){ v.pause(); h.classList.remove('playing'); });
     });
+    setTimeout(function(){
+      pre.querySelectorAll('.pre-half-video').forEach(function(v){
+        v.preload = 'auto';
+        try { v.load(); } catch (e) {}
+      });
+    }, 700);
   }
   // The chooser waits for an explicit choice; the 9s CSS failsafe only
   // applies when JavaScript is unavailable (no .js class on the preloader).
