@@ -176,6 +176,8 @@
 }
 </script>
 <link rel="preload" href="/style.css" as="style"/>
+<link rel="preload" href="/images/selector-gc.webp" as="image"/>
+<link rel="preload" href="/images/selector-cairns.webp" as="image"/>
 <link rel="stylesheet" href="/style.css"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
@@ -188,18 +190,24 @@
 <a class="skip-link" href="#main-content">Skip to main content</a>
 
 <!-- ════ PRELOADER ════ -->
-<div id="preloader">
-  <div class="pre-mark">
+<div id="preloader" class="pre-region">
+  <div class="pre-region-brand">
     <img class="pre-logo-sm" src="/logo.png" alt="" width="223" height="60" decoding="async"/>
-    <div class="pre-line"></div>
-    <div class="pre-choice" id="preChoice">
-      <div class="pre-choice-label">Where are you selling?</div>
-      <div class="pre-choice-btns">
-        <button type="button" class="btn btn-gold" onclick="chooseRegion('gc')">Gold Coast</button>
-        <a class="btn btn-outline" href="/cairns/" onclick="chooseRegion('cairns');return false;">Cairns &amp; Port Douglas</a>
-      </div>
-    </div>
+    <div class="pre-region-kicker">Where are you selling?</div>
   </div>
+  <a class="pre-half gc" href="/" onclick="chooseRegion('gc');return false;" aria-label="Enter the Gold Coast site">
+    <span class="pre-half-kicker">South East Queensland</span>
+    <span class="pre-half-name">Gold<br/><em>Coast.</em></span>
+    <span class="pre-half-tag">Surfers Paradise to Coolangatta</span>
+    <span class="pre-half-enter">Enter</span>
+  </a>
+  <div class="pre-region-divider" aria-hidden="true"></div>
+  <a class="pre-half cn" href="/cairns/" onclick="chooseRegion('cairns');return false;" aria-label="Enter the Cairns and Port Douglas site">
+    <span class="pre-half-kicker">Far North Queensland</span>
+    <span class="pre-half-name">Cairns &amp;<br/><em>Port Douglas.</em></span>
+    <span class="pre-half-tag">Palm Cove to the Tablelands</span>
+    <span class="pre-half-enter">Enter</span>
+  </a>
 </div>
 
 <!-- ════ CURSOR ════ -->
@@ -1517,14 +1525,9 @@ function chooseRegion(region){
     if (typeof revealAll === 'function') revealAll();
     if (typeof initParticles === 'function') initParticles();
   };
-  // Reveal the region chooser once the logo animation lands.
-  setTimeout(function(){
-    var c = document.getElementById('preChoice');
-    if (c) c.classList.add('on');
-  }, 1300);
   // No choice made: continue into the Gold Coast site just before the
-  // CSS pre-auto-hide failsafe (6s) kicks in.
-  setTimeout(function(){ window.__preDismiss(); }, 5600);
+  // CSS pre-auto-hide failsafe (9s on the region chooser) kicks in.
+  setTimeout(function(){ window.__preDismiss(); }, 8600);
 })();
 
 /* ═══════════════════════════════════════

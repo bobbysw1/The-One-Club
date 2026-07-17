@@ -501,6 +501,34 @@ footer{border-top:1px solid var(--subtle);padding:60px 48px 40px}
 .pre-choice.on{opacity:1;transform:none;pointer-events:auto}
 .pre-choice-label{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted)}
 .pre-choice-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+#preloader.pre-region{animation:pre-auto-hide 9s linear forwards;flex-direction:row;align-items:stretch;justify-content:stretch}
+.pre-region-brand{position:absolute;top:40px;left:0;right:0;z-index:6;display:flex;flex-direction:column;align-items:center;gap:14px;opacity:0;transform:translateY(8px);animation:pre-fade-in .8s cubic-bezier(.22,1,.36,1) .15s forwards;pointer-events:none}
+.pre-region-kicker{font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:3.5px;padding-left:3.5px;text-transform:uppercase;color:rgba(255,255,255,.55);text-align:center;text-shadow:0 1px 12px rgba(0,0,0,.4)}
+.pre-half{position:relative;flex:1 1 50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-decoration:none;color:#fff;overflow:hidden;isolation:isolate;opacity:0;animation:pre-fade-in .9s cubic-bezier(.22,1,.36,1) forwards}
+.pre-half.gc{animation-delay:.35s}
+.pre-half.cn{animation-delay:.55s}
+.pre-half::before{content:"";position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;filter:grayscale(30%) brightness(.45);transform:scale(1.05);transition:filter .8s cubic-bezier(.22,1,.36,1),transform 1.2s cubic-bezier(.22,1,.36,1)}
+.pre-half.gc::before{background-image:url(/images/selector-gc.webp)}
+.pre-half.cn::before{background-image:url(/images/selector-cairns.webp)}
+.pre-half::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(14,24,16,.4),rgba(14,24,16,.68))}
+.pre-half:hover::before,.pre-half:focus-visible::before{filter:grayscale(0%) brightness(.66);transform:none}
+.pre-half-kicker{font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;padding-left:3px;text-transform:uppercase;color:rgba(255,255,255,.5);text-align:center}
+.pre-half-name{font-family:'Fraunces',Georgia,serif;font-weight:300;font-size:clamp(34px,4.6vw,68px);letter-spacing:-1.5px;line-height:1.05;text-align:center}
+.pre-half-name em{font-style:italic;color:var(--gold)}
+.pre-half-tag{font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,.65);letter-spacing:.4px;text-align:center}
+.pre-half-enter{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:2.6px;padding-left:2.6px;text-transform:uppercase;color:var(--gold);border-bottom:1px solid rgba(196,168,74,.4);padding-bottom:5px;opacity:.65;transition:opacity .4s}
+.pre-half:hover .pre-half-enter,.pre-half:focus-visible .pre-half-enter{opacity:1}
+.pre-region-divider{flex:0 0 1px;background:linear-gradient(transparent,rgba(196,168,74,.55),transparent);z-index:2}
+@media(max-width:720px){
+  #preloader.pre-region{flex-direction:column}
+  .pre-region-brand{top:20px}
+  .pre-region-brand .pre-logo-sm{width:150px}
+  .pre-half{padding:24px}
+  .pre-half.gc{padding-top:120px}
+  .pre-half-name{font-size:clamp(30px,9vw,40px)}
+  .pre-region-divider{flex-basis:1px;width:100%;background:linear-gradient(90deg,transparent,rgba(196,168,74,.55),transparent)}
+}
+@media (prefers-reduced-motion: reduce){.pre-region-brand,.pre-half{animation:none;opacity:1;transform:none}}
 @keyframes pre-line{from{width:0}to{width:96px}}
 @media (prefers-reduced-motion: reduce){.pre-mark,.pre-line,.pre-kicker{animation:none;opacity:1;transform:none}.pre-line{width:96px}}
 
