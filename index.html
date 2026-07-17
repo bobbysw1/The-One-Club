@@ -1519,6 +1519,7 @@ function chooseRegion(region){
       return;
     }
   } catch (e) {}
+  pre.classList.add('js'); // JS present: the chooser waits for an explicit choice
   window.__preDismiss = function(){
     pre.querySelectorAll('video').forEach(function(v){ try { v.pause(); } catch (e) {} });
     pre.classList.add('pre-hidden');
@@ -1539,9 +1540,8 @@ function chooseRegion(region){
       h.addEventListener('mouseleave', function(){ v.pause(); h.classList.remove('playing'); });
     });
   }
-  // No choice made: continue into the Gold Coast site just before the
-  // CSS pre-auto-hide failsafe (9s on the region chooser) kicks in.
-  setTimeout(function(){ window.__preDismiss(); }, 8600);
+  // The chooser waits for an explicit choice; the 9s CSS failsafe only
+  // applies when JavaScript is unavailable (no .js class on the preloader).
 })();
 
 /* ═══════════════════════════════════════
