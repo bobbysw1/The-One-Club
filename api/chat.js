@@ -106,7 +106,7 @@ function emailShell({ badge, headline, meta, bodyHtml, ctaHtml }) {
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto">
       <tr>
         <td align="center" style="padding-bottom:26px">
-          <img src="https://www.theoneclub.com.au/logo.png" width="176" alt="The One Club" style="display:block;width:176px;max-width:176px;height:auto;border:0;outline:none"/>
+          <img src="https://www.theoneclub.com.au/logo-email.png" width="176" height="47" alt="The One Club" style="display:block;width:176px;max-width:176px;height:auto;border:0;outline:none"/>
         </td>
       </tr>
       <tr>
