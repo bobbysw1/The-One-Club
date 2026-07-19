@@ -83,6 +83,64 @@ function escapeHTML(s) {
   ));
 }
 
+// Brand shell for outbound emails — deep green + gold, table-based layout
+// so it renders reliably in iOS Mail / Apple Mail (and degrades gracefully
+// everywhere else). Serif/sans fallback stacks approximate the site's
+// Fraunces + Inter pairing since webfonts aren't reliable in email clients.
+// Kept as a duplicate of the one in api/lead.js rather than a shared import,
+// since these are independent Vercel functions and a broken shared module
+// would take both down at once.
+const BRAND = {
+  green: '#1F3D24',
+  greenDark: '#1A2620',
+  gold: '#C4A84A',
+  cream: '#F4F6F1',
+  muted: '#6B7A70',
+  sans: "-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif",
+  serif: "Georgia,'Times New Roman',serif"
+};
+
+function emailShell({ badge, headline, meta, bodyHtml, ctaHtml }) {
+  return `
+  <div style="background-color:${BRAND.green};padding:32px 16px 40px">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto">
+      <tr>
+        <td align="center" style="padding-bottom:26px">
+          <img src="https://www.theoneclub.com.au/logo.png" width="176" alt="The One Club" style="display:block;width:176px;max-width:176px;height:auto;border:0;outline:none"/>
+        </td>
+      </tr>
+      <tr>
+        <td style="background-color:${BRAND.cream};border-radius:14px">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse">
+            <tr><td style="height:4px;line-height:4px;font-size:4px;background-color:${BRAND.gold};border-radius:14px 14px 0 0">&nbsp;</td></tr>
+            <tr>
+              <td style="padding:34px 32px 4px">
+                ${badge ? `<div style="font-family:${BRAND.sans};font-size:11px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:${BRAND.gold};margin-bottom:10px">${badge}</div>` : ''}
+                <div style="font-family:${BRAND.serif};font-style:italic;font-weight:400;font-size:24px;color:${BRAND.greenDark};margin-bottom:8px;line-height:1.25">${headline}</div>
+                ${meta ? `<div style="font-family:${BRAND.sans};font-size:12px;color:${BRAND.muted};margin-bottom:22px">${meta}</div>` : '<div style="height:12px;line-height:12px;font-size:12px">&nbsp;</div>'}
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 32px 8px">${bodyHtml}</td>
+            </tr>
+            <tr><td style="padding:${ctaHtml ? '14px 32px 34px' : '0 32px 30px'}">${ctaHtml || ''}</td></tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td align="center" style="padding-top:26px">
+          <p style="margin:0;font-family:${BRAND.sans};font-size:11px;line-height:1.7;color:rgba(255,255,255,.5)">
+            The One Club&nbsp;&nbsp;&middot;&nbsp;&nbsp;1% commission&nbsp;&nbsp;&middot;&nbsp;&nbsp;Gold Coast &amp; Cairns<br/>
+            <a href="tel:+61404774272" style="color:rgba(255,255,255,.72);text-decoration:none">+61 404 774 272</a>
+            &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+            <a href="mailto:bobby@theoneclub.com.au" style="color:rgba(255,255,255,.72);text-decoration:none">bobby@theoneclub.com.au</a>
+          </p>
+        </td>
+      </tr>
+    </table>
+  </div>`;
+}
+
 // Emails the full chat transcript to Bobby when the bot escalates, so a
 // human sees the exact conversation instead of the visitor having to
 // re-explain themselves over the phone. Never blocks or throws — a failed
@@ -96,21 +154,30 @@ async function sendEscalationEmail({ history, message, region, page }) {
   const LEAD_TO   = process.env.LEAD_TO_EMAIL   || 'bobby@theoneclub.com.au';
   const LEAD_FROM = process.env.LEAD_FROM_EMAIL || 'leads@theoneclub.com.au';
   const isCairns  = region === 'cairns';
+  const timestamp = new Date().toLocaleString('en-AU', {
+    dateStyle: 'medium', timeStyle: 'short', timeZone: 'Australia/Brisbane'
+  });
 
   const rows = [...history.slice(-8), { role: 'user', content: message }]
     .map(m => {
-      const who = m.role === 'user' ? 'Visitor' : 'AI';
-      return `<tr><td style="padding:6px 12px 6px 0;color:#666;font-size:12px;white-space:nowrap;vertical-align:top">${who}</td><td style="padding:6px 0;font-size:14px">${escapeHTML(m.content)}</td></tr>`;
+      const isVisitor = m.role === 'user';
+      return `
+        <tr>
+          <td style="padding:10px 0;border-bottom:1px solid rgba(26,38,32,.08);font-family:${BRAND.sans};font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:${isVisitor ? BRAND.gold : BRAND.muted};width:64px;vertical-align:top;white-space:nowrap">${isVisitor ? 'Visitor' : 'AI'}</td>
+          <td style="padding:10px 0;border-bottom:1px solid rgba(26,38,32,.08);font-family:${BRAND.sans};font-size:14px;color:${BRAND.greenDark};line-height:1.5;vertical-align:top">${escapeHTML(m.content)}</td>
+        </tr>`;
     })
     .join('');
 
-  const html = `
-    <div style="font-family:-apple-system,BlinkMacSystemFont,sans-serif;max-width:600px">
-      <h2 style="margin:0 0 6px;font-size:18px">Chat escalation, needs a human</h2>
-      <p style="margin:0 0 16px;color:#666;font-size:13px">${new Date().toISOString()} · ${isCairns ? 'Cairns & Port Douglas' : 'Gold Coast'} site${page ? ' · ' + escapeHTML(page) : ''}</p>
-      <table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%">${rows}</table>
-      <p style="margin-top:20px;color:#666;font-size:12px">The visitor was told you'd be in touch, no phone number was collected, this is everything they typed.</p>
-    </div>`;
+  const html = emailShell({
+    badge: 'Chat Escalation',
+    headline: 'Needs a human touch',
+    meta: `${escapeHTML(timestamp)}&nbsp;&nbsp;&middot;&nbsp;&nbsp;${isCairns ? 'Cairns & Port Douglas' : 'Gold Coast'} site${page ? '&nbsp;&nbsp;&middot;&nbsp;&nbsp;' + escapeHTML(page) : ''}`,
+    bodyHtml: `
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse">${rows}</table>
+      <p style="margin:18px 0 0;font-family:${BRAND.sans};font-size:12px;color:${BRAND.muted};line-height:1.5">The visitor was told you'd be in touch. No phone number was collected, this is everything they typed.</p>`,
+    ctaHtml: ''
+  });
 
   try {
     const res = await fetch('https://api.resend.com/emails', {
