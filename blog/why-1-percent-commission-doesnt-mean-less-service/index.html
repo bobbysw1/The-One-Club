@@ -309,7 +309,7 @@
 <main id="main-content">
 <div class="page active">
 <section style="position:relative;width:100%;height:clamp(280px,46vh,520px);overflow:hidden;margin-top:0">
-  <div style="position:absolute;inset:0;background-image:url('/images/suburbs/broadbeach.jpg');background-size:cover;background-position:center"></div>
+  <div style="position:absolute;inset:0;background-image:url('/images/suburbs/broadbeach.webp');background-size:cover;background-position:center"></div>
   <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.45) 60%,rgba(0,0,0,.92) 100%)"></div>
   <div style="position:absolute;inset:auto 0 0 0;padding:0 24px 48px;max-width:900px;margin:0 auto;color:#fff">
     
@@ -345,7 +345,7 @@
   </div>
   <div class="carousel" data-reveal>
     <a class="guide-card" href="/blog/cheap-doesnt-mean-bad-it-means-fair/">
-      <div class="guide-card-img" style="background-image:url('/images/suburbs/palm-beach.jpg');background-size:cover;background-position:center"></div>
+      <div class="guide-card-img" style="background-image:url('/images/suburbs/palm-beach.webp');background-size:cover;background-position:center"></div>
       <div class="guide-card-body">
         <div class="guide-card-kicker">2026-04-08 · 6 min read</div>
         <div class="guide-card-title">Cheap doesn't mean bad. It means fair.</div>
@@ -353,7 +353,7 @@
       </div>
     </a>
     <a class="guide-card" href="/blog/cost-to-sell-a-house-gold-coast-2026/">
-      <div class="guide-card-img" style="background-image:url('/images/suburbs/surfers-paradise.jpg');background-size:cover;background-position:center"></div>
+      <div class="guide-card-img" style="background-image:url('/images/suburbs/surfers-paradise.webp');background-size:cover;background-position:center"></div>
       <div class="guide-card-body">
         <div class="guide-card-kicker">2026-02-14 · 8 min read</div>
         <div class="guide-card-title">How much does it cost to sell a house on the Gold Coast in 2026?</div>
@@ -361,7 +361,7 @@
       </div>
     </a>
     <a class="guide-card" href="/blog/best-suburbs-to-buy-gold-coast-2026/">
-      <div class="guide-card-img" style="background-image:url('/images/suburbs/burleigh-heads.jpg');background-size:cover;background-position:center"></div>
+      <div class="guide-card-img" style="background-image:url('/images/suburbs/burleigh-heads.webp');background-size:cover;background-position:center"></div>
       <div class="guide-card-body">
         <div class="guide-card-kicker">2026-03-02 · 9 min read</div>
         <div class="guide-card-title">Best suburbs to buy on the Gold Coast in 2026</div>
@@ -620,32 +620,6 @@ function submitForm(type) {
 }
 
 /* ═══════════════════════════════════════
-   LISTING FILTERS
-═══════════════════════════════════════ */
-function applyFilter(){
-  var type = document.getElementById('filterType').value;
-  var beds = parseInt(document.getElementById('filterBeds').value) || 0;
-  var price = parseInt(document.getElementById('filterPrice').value) || 99999;
-  var suburb = document.getElementById('filterSuburb').value;
-  var cards = document.querySelectorAll('.listing-card');
-  var visible = 0;
-  cards.forEach(function(card){
-    var cType = card.dataset.type || '', cBeds = parseInt(card.dataset.beds) || 0;
-    var cPrice = parseInt(card.dataset.price) || 0, cSuburb = card.dataset.suburb || '';
-    var show = (!type || cType === type) && (!beds || cBeds >= beds) && (cPrice <= price) && (!suburb || cSuburb === suburb);
-    card.style.display = show ? '' : 'none';
-    if (show) visible++;
-    if (card.classList.contains('featured-card')) card.style.gridColumn = show ? '' : 'span 1';
-  });
-  document.getElementById('filterCount').textContent = 'Showing ' + visible + ' propert' + (visible === 1 ? 'y' : 'ies');
-  document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
-}
-function clearFilters(){
-  ['filterType','filterBeds','filterPrice','filterSuburb'].forEach(function(id){ document.getElementById(id).value = ''; });
-  applyFilter();
-}
-
-/* ═══════════════════════════════════════
    CHAT WIDGET
 ═══════════════════════════════════════ */
 var chatOpen = false;
@@ -845,79 +819,7 @@ function sendQuick(text){ document.getElementById('chat-input').value = text; se
    BACKEND API - DYNAMIC LISTINGS + CHATBOT
    Backend: http://localhost:3001  (node backend/server.js)
 ============================================== */
-var ONECLUB_API = (window.ONECLUB_API || 'http://localhost:3001') + '/api';
 var GH_RAW = 'https://raw.githubusercontent.com/bobbysw1/The-One-Club/main/backend/data/';
-
-function buildListingCard(p) {
-  var badgeHTML = '';
-  if (p.featured)                badgeHTML = '<span class="featured-badge listing-badge">Featured</span>';
-  else if (p.badge === 'new')    badgeHTML = '<span class="badge-new listing-badge">New</span>';
-  else if (p.badge === 'contract') badgeHTML = '<span class="badge-contract listing-badge">Under Contract</span>';
-  else if (p.badge === 'open')   badgeHTML = '<span class="badge-open listing-badge">Open Home</span>';
-  var types = {house:'House',apartment:'Apartment',townhouse:'Townhouse',acreage:'Acreage',villa:'Villa'};
-  var typeLabel = types[p.type] || p.type;
-  var extrasHTML = (p.extras || []).map(function(e){ return '<span class="listing-feature">' + e + '</span>'; }).join('');
-  var ctaHTML = p.status === 'contract'
-    ? '<span class="listing-cta" style="color:#4ade80">Under contract</span>'
-    : '<span class="listing-cta">View property &#x2192;</span>';
-  var clr = ['lp-1','lp-2','lp-3','lp-4'][Math.abs((p.id || '').charCodeAt(0) || 0) % 4];
-  return [
-    '<div class="listing-card' + (p.featured ? ' featured-card' : '') + '"',
-    ' data-type="' + p.type + '" data-beds="' + p.beds + '" data-price="' + p.priceNum + '" data-suburb="' + p.suburb + '" data-reveal>',
-    '<div class="listing-img">',
-    (p.photos && p.photos.length
-      ? '<img src="' + p.photos[0] + '" alt="' + p.address + ', property for sale" width="800" height="600" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">'
-        + '<div class="listing-placeholder ' + clr + '" style="display:none"><div class="lp-addr">' + p.address + '<br/>' + p.suburb + '</div></div>'
-      : '<div class="listing-placeholder ' + clr + '"><div class="lp-addr">' + p.address + '<br/>' + p.suburb + '</div></div>'),
-    badgeHTML,
-    '<div class="listing-icons">',
-    '<div class="listing-icon"><svg viewBox="0 0 13 13" fill="none" stroke="rgba(var(--fg-rgb),.6)" stroke-width="1.4"><path d="M2 10V5.5L6.5 2 11 5.5V10a.5.5 0 01-.5.5h-8A.5.5 0 012 10z"/></svg></div>',
-    '<div class="listing-icon"><svg viewBox="0 0 13 13" fill="none" stroke="rgba(var(--fg-rgb),.6)" stroke-width="1.4"><circle cx="6.5" cy="5.5" r="2"/><path d="M6.5 11s-4-3.5-4-5.5a4 4 0 118 0c0 2-4 5.5-4 5.5z"/></svg></div>',
-    '</div></div>',
-    '<div class="listing-body">',
-    '<div class="listing-price">' + p.price + '</div>',
-    '<div class="listing-address">' + p.address + '</div>',
-    '<div class="listing-suburb">' + p.suburbFull + '</div>',
-    '<div class="listing-features">',
-    '<span class="listing-feature">&#x1F6CC; ' + p.beds + ' bed</span>',
-    '<span class="listing-feature">&#x1F6BF; ' + p.baths + ' bath</span>',
-    '<span class="listing-feature">&#x1F697; ' + p.cars + ' car</span>',
-    '<span class="listing-feature">&#x1F3E0; ' + typeLabel + '</span>',
-    '<span class="listing-feature">&#x1F4CF; ' + p.size + '</span>',
-    extrasHTML,
-    '</div>',
-    p.description ? '<p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px">' + p.description + '</p>' : '',
-    '<div class="listing-footer"><span class="listing-days">' + p.days + '</span>' + ctaHTML + '</div>',
-    '</div></div>'
-  ].join('');
-}
-
-function loadListingsFromAPI() {
-  fetch(GH_RAW + 'properties.json?t=' + Date.now())
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      var grid = document.getElementById('listingsGrid');
-      if (!grid) return;
-      var sorted = data.slice().sort(function(a, b) { return (b.featured ? 1 : 0) - (a.featured ? 1 : 0); });
-      var noResults = '<div id="noResults" style="display:none;text-align:center;padding:80px 24px;grid-column:1/-1">'
-        + '<div style="font-size:48px;margin-bottom:16px;opacity:.3">&#x1F3E0;</div>'
-        + '<div style="font-size:17px;font-weight:600;margin-bottom:8px">No listings match your filters</div>'
-        + '<div style="font-size:14px;color:var(--muted);margin-bottom:24px">Try widening your search or <a href="#" onclick="clearFilters()" style="color:var(--gold)">clear all filters</a></div>'
-        + '</div>';
-      grid.innerHTML = sorted.map(buildListingCard).join('') + noResults;
-      var suburbs = data.map(function(p) { return p.suburb; })
-        .filter(function(s, i, a) { return a.indexOf(s) === i; }).sort();
-      var sel = document.getElementById('filterSuburb');
-      if (sel) {
-        sel.innerHTML = '<option value="">All suburbs</option>'
-          + suburbs.map(function(s) { return '<option value="' + s + '">' + s + '</option>'; }).join('');
-      }
-      var count = document.getElementById('filterCount');
-      if (count) count.textContent = 'Showing ' + data.length + ' propert' + (data.length === 1 ? 'y' : 'ies');
-      setTimeout(revealAll, 50);
-    })
-    .catch(function() { /* backend offline - hardcoded HTML stays */ });
-}
 
 function loadChatbotFromAPI() {
   fetch(GH_RAW + 'chatbot.json?t=' + Date.now())
@@ -945,15 +847,7 @@ getBotReply = function(msg) {
   return _origGetBotReply(msg);
 };
 
-// Reload listings when user navigates to For Sale
-var _origGoTo = goTo;
-goTo = function(page, anchor) {
-  _origGoTo(page, anchor);
-  if (page === 'for-sale') setTimeout(loadListingsFromAPI, 80);
-};
-
 // Boot
-loadListingsFromAPI();
 loadChatbotFromAPI();
 </script>
 

@@ -10,7 +10,7 @@ html{scroll-behavior:smooth}
    so html stays the scroller and `html{scroll-behavior:smooth}` (above) applies to anchor jumps. */
 body{background:var(--bg);color:var(--fg);font-family:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip;font-weight:400}
 .serif{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-optical-sizing:auto}
-h1,h2,h3,.display,.display-xl,.hero-headline,.tc-quote{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-optical-sizing:auto;font-weight:400;letter-spacing:-.8px}
+h1,h2,h3,.display,.tc-quote{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-optical-sizing:auto;font-weight:400;letter-spacing:-.8px}
 em{font-style:italic;font-variation-settings:"opsz" 96}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:10000}
@@ -114,8 +114,6 @@ nav{position:fixed;inset:0 0 auto;z-index:500;padding:0 48px;background:rgba(var
 /* ── TYPOGRAPHY ── */
 .display{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:clamp(42px,5vw,72px);line-height:1.0;letter-spacing:-1.5px;font-weight:400}
 .display em{font-style:italic;color:var(--gold)}
-.display-xl{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:clamp(52px,7vw,96px);line-height:.95;letter-spacing:-2.5px;font-weight:400}
-.display-xl em{font-style:italic;color:var(--gold)}
 .body{font-size:17px;line-height:1.8;color:var(--muted);max-width:600px}
 .body strong{color:rgba(var(--fg-rgb),.85);font-weight:500}
 .gold-rule{width:40px;height:1px;background:var(--gold);margin:32px 0}
@@ -125,9 +123,6 @@ nav{position:fixed;inset:0 0 auto;z-index:500;padding:0 48px;background:rgba(var
 .hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden}
 .hero-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 50% 60%,rgba(196,168,74,.07) 0%,transparent 70%)}
 .hero-grid{position:absolute;inset:0;pointer-events:none;opacity:.025;background-image:linear-gradient(rgba(var(--fg-rgb),.6) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--fg-rgb),.6) 1px,transparent 1px);background-size:80px 80px}
-.hero-label{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:36px;opacity:.9}
-.hero-headline{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:clamp(44px,6vw,86px);line-height:.97;letter-spacing:-2px;font-weight:400;max-width:900px;margin-bottom:36px}
-.hero-headline em{font-style:italic;color:var(--gold)}
 .hero-sub{font-size:clamp(15px,1.8vw,18px);color:var(--muted);line-height:1.7;max-width:480px;margin-bottom:48px}
 .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .scroll-line{width:1px;height:40px;background:linear-gradient(var(--gold),transparent);animation:scrollpulse 2s ease-in-out infinite}
@@ -189,9 +184,6 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .compare-label{position:absolute;top:20px;left:24px;z-index:20;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
 .compare{position:relative;width:100%;aspect-ratio:3/2;max-height:780px;overflow:hidden;cursor:ew-resize;user-select:none;background:linear-gradient(135deg,#0d1117 0%,#1a1a2e 50%,#0f2027 100%)}
 @media(max-width:700px){.compare{aspect-ratio:4/3;max-height:none}}
-.compare-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;pointer-events:none;z-index:1}
-.compare-placeholder-icon{font-size:36px;opacity:.18}
-.compare-placeholder-text{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(var(--fg-rgb),.2)}
 .compare .c-after{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .compare .c-before{position:absolute;inset:0;width:100%;height:100%;clip-path:inset(0 50% 0 0);will-change:clip-path;overflow:hidden}
 .compare .c-line{position:absolute;top:0;bottom:0;left:50%;width:2px;background:rgba(var(--fg-rgb),.9);transform:translateX(-50%);pointer-events:none}
@@ -333,15 +325,6 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .cta-banner{background:rgba(196,168,74,.06);border:1px solid rgba(196,168,74,.14);border-radius:20px;padding:60px 48px;text-align:center;margin-top:80px}
 @media(max-width:600px){.cta-banner{padding:40px 24px}}
 
-/* ── FOR SALE ── */
-.filter-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.filter-select{background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.1);border-radius:9px;padding:10px 14px;color:rgba(var(--fg-rgb),.7);font-size:13px;font-family:inherit;outline:none;cursor:pointer;-webkit-appearance:none;appearance:none;transition:border-color .2s;min-width:140px}
-.filter-select:focus{border-color:rgba(196,168,74,.4)}
-.filter-select option{background:var(--bg)}
-.filter-count{font-size:13px;color:var(--muted);margin-left:auto}
-.listings-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-@media(max-width:1000px){.listings-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.listings-grid{grid-template-columns:1fr}}
 .listing-card{background:var(--surface-1);border:1px solid var(--surface-border);border-radius:16px;overflow:hidden;transition:border-color .3s,transform .3s var(--ease),background .3s;cursor:pointer}
 .listing-card:hover{border-color:rgba(var(--fg-rgb),.28);background:var(--surface-2);transform:translateY(-3px)}
 .listing-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--surface-2)}
@@ -379,7 +362,6 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 @media(max-width:600px){.featured-card{grid-column:span 1}}
 .featured-card .listing-img{aspect-ratio:16/7}
 .featured-badge{position:absolute;top:12px;left:12px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:5px;background:rgba(196,168,74,.15);border:1px solid rgba(196,168,74,.3);color:var(--gold)}
-.include-strip{display:flex;gap:20px;flex-wrap:wrap;margin-top:20px}
 .include-pill{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:rgba(var(--fg-rgb),.5);letter-spacing:.5px}
 .include-pill::before{content:'✓';color:#4ade80}
 
@@ -444,8 +426,6 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .value-title{font-size:17px;font-weight:600;margin-bottom:12px}
 .value-body{font-size:14px;color:var(--muted);line-height:1.7}
 .page-hero{padding:140px 24px 64px;max-width:1200px;margin:0 auto}
-.display-xl{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:clamp(52px,7vw,96px);line-height:.95;letter-spacing:-2.5px;font-weight:400}
-.display-xl em{font-style:italic;color:var(--gold)}
 
 /* ── FOOTER ── */
 footer{border-top:1px solid var(--subtle);padding:60px 48px 40px}
@@ -495,12 +475,7 @@ footer{border-top:1px solid var(--subtle);padding:60px 48px 40px}
 .pre-mark{display:flex;flex-direction:column;align-items:center;gap:24px;opacity:0;transform:translateY(8px);animation:pre-fade-in .8s cubic-bezier(.22,1,.36,1) .15s forwards}
 .pre-logo-sm{display:block;width:clamp(180px,22vw,280px);height:auto}
 .pre-line{height:1px;width:0;background:rgba(var(--fg-rgb),.55);animation:pre-line 1.1s cubic-bezier(.4,0,.15,1) .9s forwards}
-.pre-kicker{display:none}
 @keyframes pre-fade-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.pre-choice{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:6px;opacity:0;transform:translateY(8px);transition:opacity .55s ease,transform .55s ease;pointer-events:none}
-.pre-choice.on{opacity:1;transform:none;pointer-events:auto}
-.pre-choice-label{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted)}
-.pre-choice-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 #preloader.pre-region{animation:pre-auto-hide 9s linear forwards;flex-direction:row;align-items:stretch;justify-content:stretch}
 #preloader.pre-region.js{animation:none}
 .pre-region-brand{position:absolute;top:40px;left:0;right:0;z-index:6;display:flex;flex-direction:column;align-items:center;gap:14px;opacity:0;transform:translateY(8px);animation:pre-fade-in .8s cubic-bezier(.22,1,.36,1) .15s forwards;pointer-events:none}
@@ -534,7 +509,7 @@ footer{border-top:1px solid var(--subtle);padding:60px 48px 40px}
 }
 @media (prefers-reduced-motion: reduce){.pre-region-brand,.pre-half{animation:none;opacity:1;transform:none}}
 @keyframes pre-line{from{width:0}to{width:96px}}
-@media (prefers-reduced-motion: reduce){.pre-mark,.pre-line,.pre-kicker{animation:none;opacity:1;transform:none}.pre-line{width:96px}}
+@media (prefers-reduced-motion: reduce){.pre-mark,.pre-line{animation:none;opacity:1;transform:none}.pre-line{width:96px}}
 
 /* Custom cursor removed by request — neutralised sitewide here so the
    per-page markup and JS can stay until a later cleanup pass. */
@@ -590,7 +565,6 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 [data-reveal].on .gold-rule{transform:scaleX(1) !important}
 
 /* ── TESTIMONIAL STAR RATING ── */
-.tc-stars{color:var(--gold);font-size:11px;letter-spacing:1px;margin-bottom:12px;opacity:.9}
 
 /* ── MOBILE MENU — smooth stagger ── */
 .mobile-menu a{opacity:0;transform:translateX(-16px);transition:opacity .35s var(--ease),transform .35s var(--ease),color .2s}
@@ -607,14 +581,13 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 .scroll-line{background:linear-gradient(var(--gold),rgba(196,168,74,.2),transparent) !important}
 
 /* ── INCLUDED GRID RESPONSIVE ── */
-@media(max-width:700px){.incl-grid-3{grid-template-columns:1fr !important}}
 
 /* ── LOGO — transparent PNG with gold boost (mode-aware) ── */
-.logo img,.pre-logo-ghost,.pre-logo-fill,.pre-logo-sm{filter:brightness(1.35) saturate(1.55) contrast(1.05)}
+.logo img,.pre-logo-sm{filter:brightness(1.35) saturate(1.55) contrast(1.05)}
 @media (prefers-color-scheme: light){
-  :root:not([data-theme="dark"]) .logo img,:root:not([data-theme="dark"]) .pre-logo-ghost,:root:not([data-theme="dark"]) .pre-logo-fill,:root:not([data-theme="dark"]) .pre-logo-sm{filter:brightness(.78) saturate(1.7) contrast(1.15)}
+  :root:not([data-theme="dark"]) .logo img,:root:not([data-theme="dark"]) .pre-logo-sm{filter:brightness(.78) saturate(1.7) contrast(1.15)}
 }
-:root[data-theme="light"] .logo img,:root[data-theme="light"] .pre-logo-ghost,:root[data-theme="light"] .pre-logo-fill,:root[data-theme="light"] .pre-logo-sm{filter:brightness(.78) saturate(1.7) contrast(1.15)}
+:root[data-theme="light"] .logo img,:root[data-theme="light"] .pre-logo-sm{filter:brightness(.78) saturate(1.7) contrast(1.15)}
 
 /* ═══════════════════════════════════════
    EDITORIAL REDESIGN — homepage carousels,
@@ -741,15 +714,6 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 .art li{margin-bottom:8px}
 .art strong{font-weight:500;color:var(--fg)}
 
-/* ── Matterport click-to-load embed ── */
-.mp-embed{position:relative;width:100%;aspect-ratio:16/9;max-height:620px;border-radius:10px;overflow:hidden;background:#0a0e14;cursor:pointer;display:block}
-.mp-embed img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease)}
-.mp-embed:hover img{transform:scale(1.03)}
-.mp-embed::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 45% 35% at 50% 50%,rgba(0,0,0,.45),transparent 70%),linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.5));pointer-events:none;transition:opacity .3s;z-index:1}
-.mp-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(12,18,26,.75);color:#fff !important;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1.5px solid rgba(255,255,255,.45);padding:18px 34px;border-radius:50px;font-weight:500;font-size:16px;font-family:'Fraunces',Georgia,serif;font-style:italic;letter-spacing:.3px;cursor:pointer;box-shadow:0 10px 36px rgba(0,0,0,.6);transition:all .3s var(--ease);display:inline-flex;align-items:center;gap:12px;z-index:3;pointer-events:none;white-space:nowrap}
-.mp-embed:hover .mp-play{transform:translate(-50%,-50%) scale(1.06);box-shadow:0 14px 44px rgba(0,0,0,.7),0 0 0 14px rgba(196,168,74,.18)}
-.mp-embed iframe{width:100%;height:100%;border:0;display:block}
-.mp-caption{margin-top:14px;font-size:12px;color:var(--muted);text-align:center;letter-spacing:.3px}
 
 /* ── Editorial hero video ── */
 .ed-hero{isolation:isolate}
@@ -801,7 +765,6 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 /* ── Mobile typography: drop the huge display minimums ── */
 @media (max-width:640px){
   .display{font-size:clamp(30px,8vw,40px) !important;letter-spacing:-1px}
-  .display-xl{font-size:clamp(36px,9vw,48px) !important;letter-spacing:-1.4px}
   .ed-hero h1{font-size:clamp(28px,7.6vw,40px);letter-spacing:-1px;line-height:1.1}
   .sec-head h2,
   h2.serif{font-size:clamp(26px,6.8vw,36px);letter-spacing:-.7px}
@@ -997,7 +960,7 @@ section[style*="border-top:1px solid var(--subtle)"].in-view::before{width:min(4
 /* Heading uniformity — all .display headings match .sec-head h2 style
    ("Walk every room / before you visit."): Fraunces serif, weight 400,
    slightly smaller size than before. Gold italic em retained. */
-.display,.display-xl,
+.display,
 .sec-head h2,
 h2.serif{
   font-family:'Fraunces',Georgia,'Times New Roman',serif !important;
@@ -1007,8 +970,7 @@ h2.serif{
   line-height:1.06 !important;
 }
 .display{font-size:clamp(32px,4vw,52px) !important}
-.display-xl{font-size:clamp(38px,5vw,64px) !important}
-.display em,.display-xl em,
+.display em,
 .sec-head h2 em,
 h2.serif em{
   font-style:italic;
@@ -1019,7 +981,6 @@ h2.serif em{
 /* Mobile — keep displays readable but compact */
 @media (max-width:640px){
   .display{font-size:clamp(26px,7vw,34px) !important;letter-spacing:-.7px !important}
-  .display-xl{font-size:clamp(30px,8vw,40px) !important;letter-spacing:-.9px !important}
 }
 
 /* Testimonial cards — softer hover, no tilt, no whole-row shadow bleed */

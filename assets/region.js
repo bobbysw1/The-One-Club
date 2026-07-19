@@ -41,12 +41,28 @@
       .replace(/\x01/g, 'Cairns & Port Douglas and the Gold Coast');
   }
 
+  // Some lines pair a region name with region-specific facts (prices, stats)
+  // that a word-level swap can't correct safely, e.g. "$900,000" tied to
+  // "Gold Coast". Those are authored explicitly via data-cairns-text
+  // (textContent) or data-cairns-html (innerHTML, for lines with emphasis
+  // markup) and applied whole, never touched by the generic word swap below.
+  function applyOverrides(root) {
+    if (!root || !root.querySelectorAll) return;
+    root.querySelectorAll('[data-cairns-text]').forEach(function (el) {
+      el.textContent = el.getAttribute('data-cairns-text');
+    });
+    root.querySelectorAll('[data-cairns-html]').forEach(function (el) {
+      el.innerHTML = el.getAttribute('data-cairns-html');
+    });
+  }
+
   function walk(root) {
     if (!root) return;
     var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode: function (n) {
         var p = n.parentNode && n.parentNode.nodeName;
         if (p === 'SCRIPT' || p === 'STYLE' || p === 'NOSCRIPT' || p === 'TEXTAREA') return NodeFilter.FILTER_REJECT;
+        if (n.parentNode && n.parentNode.closest && n.parentNode.closest('[data-cairns-text],[data-cairns-html]')) return NodeFilter.FILTER_REJECT;
         return n.nodeValue.indexOf('Gold Coast') !== -1 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
       }
     });
@@ -67,6 +83,7 @@
 
   function apply() {
     document.title = swapText(document.title);
+    applyOverrides(document);
     walk(document.body);
     rewriteLinks(document);
     // Content injected later (chat replies, listings) stays consistent too.
@@ -77,7 +94,7 @@
           for (var j = 0; j < added.length; j++) {
             var n = added[j];
             if (n.nodeType === 3 && n.nodeValue.indexOf('Gold Coast') !== -1) n.nodeValue = swapText(n.nodeValue);
-            else if (n.nodeType === 1) { walk(n); rewriteLinks(n); }
+            else if (n.nodeType === 1) { applyOverrides(n); walk(n); rewriteLinks(n); }
           }
         }
       });

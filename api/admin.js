@@ -1,15 +1,20 @@
 // Vercel serverless function — admin API
 // Reads and writes JSON data files in backend/data/ via the GitHub Contents API.
 // Auth: password sent in X-Admin-Password header (checked on every request).
-
-const ADMIN_PASSWORD = 'oneclub2026';
+//
+// Both secrets below must be set as Vercel environment variables
+// (Project Settings → Environment Variables). Never hardcode a real value
+// here — this file is committed to a public repo, so any literal string
+// in it is exposed to anyone who reads the source.
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';
 
 // Fine-grained Personal Access Token with Contents: Read & Write on this repo.
-// Paste your token between the quotes below. Generate at:
+// Generate at:
 //   https://github.com/settings/personal-access-tokens/new
 //   Repository: bobbysw1/The-One-Club
 //   Permissions: Contents → Read and write
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN || 'PASTE_YOUR_GITHUB_TOKEN_HERE';
+// Set it as GITHUB_TOKEN in Vercel, do not paste it here.
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN || '';
 
 const GITHUB_OWNER  = 'bobbysw1';
 const GITHUB_REPO   = 'The-One-Club';
@@ -63,6 +68,10 @@ async function ghPutFile(path, dataObj, sha, message) {
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
+  if (!ADMIN_PASSWORD) {
+    return res.status(503).json({ error: 'Admin password not configured. Set ADMIN_PASSWORD in Vercel env vars.' });
+  }
+
   const { action, file, data, password } = req.body || {};
 
   // ── LOGIN ────────────────────────────────────────────────
@@ -75,8 +84,8 @@ export default async function handler(req, res) {
   const hdrPw = req.headers['x-admin-password'];
   if (hdrPw !== ADMIN_PASSWORD) return res.status(401).json({ error: 'Unauthorised' });
 
-  if (!GITHUB_TOKEN || GITHUB_TOKEN === 'PASTE_YOUR_GITHUB_TOKEN_HERE') {
-    return res.status(503).json({ error: 'GitHub token not configured. Paste your PAT into api/admin.js.' });
+  if (!GITHUB_TOKEN) {
+    return res.status(503).json({ error: 'GitHub token not configured. Set GITHUB_TOKEN in Vercel env vars.' });
   }
 
   const filePath = FILES[file];

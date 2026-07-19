@@ -1,7 +1,7 @@
 // Vercel serverless function, proxy for Mistral + Tavily
 // Browser calls /api/chat; this function runs server-side so API keys are never exposed.
 
-const CHAT_SYSTEM = `You are the AI assistant for The One Club, a Gold Coast real estate agency charging 1% commission. The lead agent is Bobby, 10+ years experience across London and the Gold Coast. Everything is included in the 1%: professional AI-enhanced photography, floor plans, interactive 3D walkthrough (captured in-house using PlayCanvas SuperSplat technology), digital marketing on Meta and Google, signboard, and settlement coordination. The only extra is the portal listing on REA and Domain (seller chooses Standard, Feature or Premiere level).
+const CHAT_SYSTEM_GC = `You are the AI assistant for The One Club, a Gold Coast real estate agency charging 1% commission. The lead agent is Bobby, 10+ years experience across London and the Gold Coast. Everything is included in the 1%: professional AI-enhanced photography, floor plans, interactive 3D walkthrough (captured in-house using PlayCanvas SuperSplat technology), digital marketing on Meta and Google, signboard, and settlement coordination. The only extra is the portal listing on REA and Domain (seller chooses Standard, Feature or Premiere level).
 
 Answer questions about: Gold Coast real estate; buying or selling property; the 1% commission model and what is included; photography, 3D walkthroughs, floor plans; Gold Coast suburbs including Burleigh Heads, Palm Beach, Surfers Paradise, Broadbeach, Hope Island, Robina, Mermaid Beach, Coolangatta, Mudgeeraba, Currumbin, Kirra, Southport, Coomera, Varsity Lakes, Bilinga, Tugun, Miami; QLD school catchment zones; body corporate fees; settlement process; mortgages at a high level.
 
@@ -11,20 +11,40 @@ For anything unrelated to property: reply with exactly, That sits outside what I
 
 Keep all answers under 150 words. Plain English. Never invent specific listing addresses, prices, or sale results.`;
 
+const CHAT_SYSTEM_CAIRNS = `You are the AI assistant for The One Club, a Cairns & Port Douglas real estate agency charging 1% commission. The lead agent is Bobby, 10+ years experience across London, the Gold Coast and now Far North Queensland. Everything is included in the 1%: professional AI-enhanced photography, floor plans, interactive 3D walkthrough (captured in-house using PlayCanvas SuperSplat technology), digital marketing on Meta and Google, signboard, and settlement coordination. The only extra is the portal listing on REA and Domain (seller chooses Standard, Feature or Premiere level).
+
+Answer questions about: Cairns and Port Douglas real estate; buying or selling property; the 1% commission model and what is included; photography, 3D walkthroughs, floor plans; Cairns and Port Douglas suburbs including Palm Cove, Trinity Beach, Kewarra Beach, Clifton Beach, Yorkeys Knob, Smithfield, Redlynch, Edge Hill, Whitfield, Cairns City, Cairns North, Parramatta Park, Manunda, Manoora, Mooroobool, Earlville, Woree, Bayview Heights, Mount Sheridan, Bentley Park, Edmonton, Gordonvale, Kuranda, the Atherton Tablelands, and Port Douglas; QLD school catchment zones; body corporate fees; settlement process; mortgages at a high level; the wet and dry season selling calendar in Far North Queensland.
+
+For school catchment questions: give your best answer for the suburb or address, then always end with, Confirm the exact zone at edmap.eq.edu.au as boundaries do change.
+
+For anything unrelated to property: reply with exactly, That sits outside what I can help with. For any Cairns or Port Douglas property question I'm here, otherwise the Free Valuation form at the bottom of the page is the fastest way to reach Bobby directly.
+
+Keep all answers under 150 words. Plain English. Never invent specific listing addresses, prices, or sale results.`;
+
 export default async function handler(req, res) {
   // Only accept POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const MISTRAL_KEY = process.env.MISTRAL_API_KEY || 'P4XNhVDsCkCh93POycGBvVT71WnLkO8C';
-  const TAVILY_KEY  = process.env.TAVILY_API_KEY  || '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';
+  // Both keys must be set as Vercel environment variables. Never hardcode a
+  // real value here, this file is committed to a public repo.
+  const MISTRAL_KEY = process.env.MISTRAL_API_KEY || '';
+  const TAVILY_KEY  = process.env.TAVILY_API_KEY  || '';
 
-  const { message, history = [] } = req.body || {};
+  if (!MISTRAL_KEY) {
+    return res.status(503).json({ error: 'AI service not configured. Set MISTRAL_API_KEY in Vercel env vars.' });
+  }
+
+  const { message, history = [], region } = req.body || {};
 
   if (!message || typeof message !== 'string' || message.trim().length < 2) {
     return res.status(400).json({ error: 'message is required' });
   }
+
+  const isCairns = region === 'cairns';
+  const CHAT_SYSTEM = isCairns ? CHAT_SYSTEM_CAIRNS : CHAT_SYSTEM_GC;
+  const regionQuery = isCairns ? ' Cairns Port Douglas real estate 2026' : ' Gold Coast real estate 2026';
 
   // ── TAVILY, optional web grounding ──────────────────────
   let contextBlock = '';
@@ -35,7 +55,7 @@ export default async function handler(req, res) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           api_key: TAVILY_KEY,
-          query: message.slice(0, 200) + ' Gold Coast real estate 2026',
+          query: message.slice(0, 200) + regionQuery,
           search_depth: 'basic',
           max_results: 3,
           include_answer: true
