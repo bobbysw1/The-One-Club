@@ -166,21 +166,6 @@
   // ── SUBTLE DISCOVERY TACTICS ──────────────────────────────────
   // Elegant, non-intrusive ways to surface the chatbot
 
-  // Exit-intent: show soft nudge when leaving
-  function _initExitIntent(){
-    var shown = false;
-    document.addEventListener('mouseleave', function(e){
-      if (shown || e.clientY > 100) return;
-      shown = true;
-      var nudge = document.createElement('div');
-      nudge.style.cssText = 'position:fixed;top:0;left:0;right:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);padding:20px;text-align:center;font-size:14px;color:#fff;z-index:9998;opacity:0;transition:opacity.3s';
-      nudge.innerHTML = '<span style="display:inline-block;max-width:400px">Before you go—our AI agent can answer property questions 24/7 <a href="#" onclick="document.querySelector(\'[id=chat-widget]\')?.click(); this.parentElement.parentElement.remove(); return false" style="color:var(--gold);text-decoration:none;font-weight:600">Ask now</a> or <a href="#" onclick="this.parentElement.parentElement.remove(); return false" style="color:#aaa;text-decoration:none">dismiss</a></span>';
-      document.body.appendChild(nudge);
-      setTimeout(function(){ nudge.style.opacity = '1'; }, 10);
-      setTimeout(function(){ nudge.remove(); shown = false; }, 6000);
-    });
-  }
-
   // Scroll trigger: gentle hint after scrolling
   function _initScrollHint(){
     var hintShown = false;
@@ -228,7 +213,6 @@
   // Boot discovery features after page loads
   function _initDiscovery(){
     try {
-      _initExitIntent();
       _initScrollHint();
       if (document.querySelector('article, [role="article"]')) _initBlogInline();
       if (document.querySelector('[data-listing], .property-detail')) _initListingHint();
