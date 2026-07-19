@@ -59,9 +59,8 @@ async function sendEmail({ to, from, subject, html, replyTo }) {
       body: JSON.stringify(payload)
     });
     if (!res.ok) {
-      const errBody = await res.text();
-      console.error('[lead] resend error', res.status, errBody);
-      return { ok: false, status: res.status, _debug: errBody };
+      console.error('[lead] resend error', res.status, await res.text());
+      return { ok: false, status: res.status };
     }
     return { ok: true };
   } catch (e) {
@@ -177,7 +176,7 @@ export default async function handler(req, res) {
     tasks.push(sendEmail({ to: fields.email, subject: 'Thanks — we have your details', html: customerHtml }));
   }
 
-  const results = await Promise.all(tasks);
+  await Promise.all(tasks);
 
-  return res.status(200).json({ ok: true, id: lead.id, _debug: results });
+  return res.status(200).json({ ok: true, id: lead.id });
 }
