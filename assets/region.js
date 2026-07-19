@@ -113,3 +113,22 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply);
   else apply();
 })();
+
+/* Secret admin access: click the header logo 5+ times within a beat and
+   it opens /admin/ instead of navigating home. Every click is briefly
+   held (500ms) to see if another one lands before deciding where to go,
+   so a normal single click still just goes home without feeling laggy. */
+(function () {
+  var logo = document.getElementById('site-logo');
+  if (!logo) return;
+  var count = 0, timer = null;
+  logo.addEventListener('click', function (e) {
+    e.preventDefault();
+    count++;
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      window.location.href = count >= 5 ? '/admin/' : '/';
+      count = 0;
+    }, 500);
+  });
+})();
