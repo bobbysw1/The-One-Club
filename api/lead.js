@@ -113,27 +113,6 @@ async function appendLeadToGitHub(lead) {
 }
 
 export default async function handler(req, res) {
-  // TEMPORARY diagnostic: GET ?debug=domains asks Resend directly, using
-  // the exact key configured in this Vercel project, whether it sees
-  // theoneclub.com.au as verified. Returns only Resend's own domain
-  // metadata (name, status, region) — never the API key itself. Remove
-  // once the domain mismatch is resolved.
-  if (req.method === 'GET' && req.query?.debug === 'domains') {
-    if (!RESEND_KEY) return res.status(200).json({ error: 'RESEND_API_KEY not set in this deployment' });
-    try {
-      const r = await fetch('https://api.resend.com/domains', {
-        headers: { 'Authorization': `Bearer ${RESEND_KEY}` }
-      });
-      const j = await r.json();
-      return res.status(200).json({
-        status: r.status,
-        domains: (j.data || []).map(d => ({ name: d.name, status: d.status, region: d.region, created_at: d.created_at }))
-      });
-    } catch (e) {
-      return res.status(200).json({ error: e.message });
-    }
-  }
-
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const body = req.body || {};
