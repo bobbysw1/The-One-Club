@@ -5,8 +5,8 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
-<title>How much does it cost to sell a house on the Gold Coast in 2026? | The One Club</title>
-<meta name="description" content="A full breakdown of commission, marketing, conveyancing and the line items most sellers forget, and why the agent's fee is rarely the biggest number on the page."/>
+<title>Real Estate Agent in Burleigh Heads | 1% Commission | The One Club</title>
+<meta name="description" content="Sell your Burleigh Heads home with The One Club. 1% commission, premium photography, floor plans, and a full digital campaign, included. Free valuation in 24 hours."/>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9J3X74NBYJ"></script>
 <script>
@@ -18,21 +18,21 @@
 <!-- Sitemap -->
 <link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
 <!-- Canonical -->
-<link rel="canonical" href="https://www.theoneclub.com.au/blog/cost-to-sell-a-house-gold-coast-2026/"/>
+<link rel="canonical" href="https://www.theoneclub.com.au/burleigh-heads/"/>
 <!-- Open Graph -->
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="The One Club"/>
 <meta property="og:locale" content="en_AU"/>
-<meta property="og:url" content="https://www.theoneclub.com.au/blog/cost-to-sell-a-house-gold-coast-2026/"/>
-<meta property="og:title" content="How much does it cost to sell a house on the Gold Coast in 2026? | The One Club"/>
-<meta property="og:description" content="A full breakdown of commission, marketing, conveyancing and the line items most sellers forget, and why the agent's fee is rarely the biggest number on the page."/>
+<meta property="og:url" content="https://www.theoneclub.com.au/burleigh-heads/"/>
+<meta property="og:title" content="Real Estate Agent in Burleigh Heads | 1% Commission | The One Club"/>
+<meta property="og:description" content="Sell your Burleigh Heads home with The One Club. 1% commission, premium photography, floor plans, and a full digital campaign, included. Free valuation in 24 hours."/>
 <meta property="og:image" content="https://www.theoneclub.com.au/images/og-home.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="How much does it cost to sell a house on the Gold Coast in 2026? | The One Club"/>
-<meta name="twitter:description" content="A full breakdown of commission, marketing, conveyancing and the line items most sellers forget, and why the agent's fee is rarely the biggest number on the page."/>
+<meta name="twitter:title" content="Real Estate Agent in Burleigh Heads | 1% Commission | The One Club"/>
+<meta name="twitter:description" content="Sell your Burleigh Heads home with The One Club. 1% commission, premium photography, floor plans, and a full digital campaign, included. Free valuation in 24 hours."/>
 <meta name="twitter:image" content="https://www.theoneclub.com.au/images/og-home.jpg"/>
 <!-- Geo / Local -->
 <meta name="geo.region" content="AU-QLD"/>
@@ -232,7 +232,7 @@
 }
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"How much does it cost to sell a house on the Gold Coast in 2026?","description":"A full breakdown of commission, marketing, conveyancing and the line items most sellers forget, and why the agent's fee is rarely the biggest number on the page.","datePublished":"2026-02-14","dateModified":"2026-02-14","author":{"@type":"Organization","name":"The One Club","url":"https://www.theoneclub.com.au"},"publisher":{"@id":"https://www.theoneclub.com.au/#business"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.theoneclub.com.au/blog/cost-to-sell-a-house-gold-coast-2026/"}}
+{"@context":"https://schema.org","@type":"RealEstateAgent","name":"The One Club | Burleigh Heads","url":"https://www.theoneclub.com.au/burleigh-heads/","areaServed":{"@type":"Place","name":"Burleigh Heads, Gold Coast, QLD"},"provider":{"@id":"https://www.theoneclub.com.au/#business"},"priceRange":"1% commission"}
 </script>
 <link rel="preload" href="/style.css" as="style"/>
 <link rel="stylesheet" href="/style.css"/>
@@ -301,72 +301,165 @@
   <a href="/after-sale/" onclick="toggleMenu()">After the Sale</a>
   <a href="/cairns/" onclick="toggleMenu()">Cairns</a>
   <a href="/about/" onclick="toggleMenu()">About</a>
+  <a href="tel:+61404774272" onclick="toggleMenu()" style="opacity:.7">Call +61 404 774 272</a>
   <a href="mailto:bobby@theoneclub.com.au" onclick="toggleMenu()" style="opacity:.7">bobby@theoneclub.com.au</a>
   <a href="/#valuation" onclick="toggleMenu()" style="color:var(--gold);border-color:rgba(196,168,74,.2)">Free Valuation →</a>
 </div>
 
 <main id="main-content">
 <div class="page active">
-<section style="position:relative;width:100%;height:clamp(280px,46vh,520px);overflow:hidden;margin-top:0">
-  <div style="position:absolute;inset:0;background-image:url('/images/suburbs/surfers-paradise.webp');background-size:cover;background-position:center"></div>
-  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.45) 60%,rgba(0,0,0,.92) 100%)"></div>
-  <div style="position:absolute;inset:auto 0 0 0;padding:0 24px 48px;max-width:900px;margin:0 auto;color:#fff">
-    
-    <div class="page-label" style="color:var(--gold)">2026-02-14 · 8 min read</div>
-    <h1 class="serif" style="margin-top:12px;font-size:clamp(32px,5vw,58px);letter-spacing:-1.3px;line-height:1.08;font-weight:400;color:#fff">How much does it cost to sell a house on the Gold Coast in 2026?</h1>
+<section style="padding:140px 24px 32px;max-width:1100px;margin:0 auto">
+  <div class="page-label" style="color:var(--gold)" data-reveal>Burleigh Heads real estate</div>
+  <h1 class="serif" data-reveal style="font-size:clamp(44px,6.5vw,88px);letter-spacing:-2px;line-height:1;font-weight:300;margin-top:18px">Real estate agent in<br/><em>Burleigh Heads</em></h1>
+  <p class="body" data-reveal style="font-size:18px;max-width:760px;margin-top:28px;line-height:1.65">Burleigh Heads is where the Gold Coast properly grew up. A world-class point break, a national park headland, James Street's dining strip, and a property market that's been the coast's most consistent performer for a decade.</p>
+  <div data-reveal style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+    <a class="btn btn-gold btn-lg" href="/#valuation">Get Your Free Valuation</a>
+    <a class="btn btn-outline btn-lg" href="/for-sale/">See current listings</a>
   </div>
 </section>
 
-<article class="art">
-  <p style="font-size:19px;line-height:1.65;color:var(--fg);font-weight:400;margin-bottom:24px;font-family:'Fraunces',Georgia,serif;font-style:italic">A full breakdown of commission, marketing, conveyancing and the line items most sellers forget, and why the agent's fee is rarely the biggest number on the page.</p>
-  <div style="display:flex;align-items:center;gap:14px;padding:16px 0;border-top:1px solid var(--subtle);border-bottom:1px solid var(--subtle);margin-bottom:28px;font-size:13px;color:var(--muted)">
-    <span>By <strong style="color:var(--fg);font-weight:500">The One Club</strong></span>
-    <span style="opacity:.4">·</span>
-    <span>Published 2026-02-14</span>
-  </div>
-  <h2>Start with the numbers that actually leave your account</h2><p>Selling a home on the Gold Coast in 2026 is, at minimum, a five-figure exercise, and for homes above $1.5M it almost always sits in the low six figures once every bill is on the table. The reason it surprises people is that the individual costs arrive at different times, some before the campaign even starts, some only at settlement, so there isn't one moment where you see the total lined up in a single row.</p><p>This guide lines them up. Conservative range, realistic range, and the levers that actually move the number up or down.</p><h2>Agent commission</h2><p>Traditional Gold Coast agents sit between 2% and 3% commission. On a $1,000,000 sale that's $20,000 to $30,000; on a $2,000,000 sale it's $40,000 to $60,000. The higher rates are more common in boutique and luxury agencies; the lower rates are more common in franchise models that pay agents per-listing.</p><p>Commission is almost always paid at settlement, not up-front, and it's usually deducted from the sale proceeds by your conveyancer. That is useful for cashflow, but it also means the number doesn't feel real until after the deal is done, which is part of why sellers under-price it in their planning.</p><p>The One Club's fee is 1%. On the same $1,000,000 home, that's $10,000; on the $2,000,000 home, $20,000. Same campaign, half to a third of the commission.</p><h2>Marketing package</h2><p>With most traditional agencies, marketing is billed <em>separately</em> from commission. A typical Gold Coast mid-tier campaign runs $4,000 to $8,000. Premium campaigns with auction, drone, Matterport and stronger portal placement run $8,000 to $15,000. Luxury campaigns with dedicated landing pages, print, and out-of-home media run $15,000 to $35,000.</p><p>Most of that money is spent in the first two weeks of the campaign, so if the property sits, you're still paying for a second round of portal upgrades whether the first one worked or not.</p><p>With The One Club, photography, floor plans, an interactive 3D walkthrough captured in-house (the kind other agencies bill as a $1,000–$1,500 Matterport add-on), digital remarketing and the full campaign itself all sit inside the 1% commission. The only separate marketing line is your chosen realestate.com.au and Domain listing tier, which you decide based on price bracket and visibility.</p><h2>Conveyancing</h2><p>A Queensland conveyancer or solicitor typically charges between $1,000 and $2,500 for a standard residential sale, with complexity (off-the-plan, body corporate, split titles, duplex arrangements) pushing it higher. For a luxury or off-market deal, expect the upper end and potentially more if there are trust or company structures involved.</p><p>Conveyancing is worth paying for properly. Mistakes in contracts at settlement cost far more than the saving from using the cheapest option.</p><h2>Mortgage discharge, bank fees, adjustments</h2><p>Most lenders charge a mortgage discharge fee of around $350 to $600, plus any unregistered penalty interest or break costs if you're on a fixed loan. If you'd prepaid council rates, water, or strata, those are adjusted at settlement in your favour or against you.</p><p>Title registration fees and transfer fees for <em>the sale side</em> are usually minimal ($200 to $500 range), but confirm with your conveyancer.</p><h2>Preparation: styling, repairs, clean</h2><p>This is the line that varies most, and the line that pays back most reliably when you spend on the right things. Budget conservatively $2,000 to $5,000 for a good deep clean, minor repairs, a touch-up paint job in the highest-traffic rooms, and a few strategically placed styling pieces. Full virtual or physical staging for a premium property can add $3,000 to $12,000 and routinely returns multiples of that back.</p><p>What rarely pays back: full kitchen or bathroom renovations undertaken in the last six weeks before listing. Photography and staging will do more, faster, for a fraction of the money.</p><h2>A realistic worked example</h2><p>Consider a $1,500,000 Palm Beach home going to market in autumn 2026. Traditional path: 2.5% commission ($37,500) + $8,000 marketing + $1,800 conveyancing + $500 discharge + $3,500 prep = <strong>$51,300</strong>.</p><p>The One Club path: 1% commission ($15,000) including campaign and interactive 3D walkthrough + $2,200 portal tier + $1,800 conveyancing + $500 discharge + $3,500 prep = <strong>$23,000</strong>.</p><p>Same campaign quality, same negotiation at the finish. A saving of roughly $28,300, enough to cover one full year of the average Gold Coast private school, or to meaningfully accelerate the deposit on the next property.</p>
+<section style="padding:0 24px 56px;max-width:1100px;margin:0 auto">
+  <figure data-reveal style="margin:0;border-radius:18px;overflow:hidden;aspect-ratio:21/9;background:#0a0a0a">
+    <img src="/images/suburbs/burleigh-heads.webp" alt="Burleigh Heads, Gold Coast" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block"/>
+  </figure>
+</section>
 
-  <aside style="margin-top:64px;padding:32px;border:1px solid rgba(196,168,74,.25);border-radius:14px;background:rgba(196,168,74,.05)">
-    <div class="page-label">Ready to sell?</div>
-    <div class="serif" style="margin-top:12px;font-size:24px;line-height:1.3;letter-spacing:-.4px">Get a free appraisal for your Gold Coast home.</div>
-    <p style="margin-top:10px;font-size:15px;color:var(--muted);line-height:1.65">Realistic price range, recommended strategy, full 1% fee breakdown, within 24 hours.</p>
-    <div style="margin-top:20px"><a class="btn btn-gold btn-lg" href="/#valuation">Request a free valuation</a></div>
-  </aside>
-</article>
-
-<section class="sec" style="padding-top:80px;padding-bottom:120px;border-top:1px solid var(--subtle)">
+<section class="sec" style="padding-top:0;padding-bottom:40px">
   <div class="sec-head">
     <div class="sec-head-l">
-      <div class="page-label">More from the journal</div>
-      <h2 class="serif">Keep reading.</h2>
+      <div class="page-label">Find your way around</div>
+      <h2 class="serif" style="font-size:clamp(30px,3.8vw,46px)">Where is <em>Burleigh Heads?</em></h2>
+      <p class="body" style="font-size:15px">Pinned to the centre of the suburb. Drag, zoom, or open in Google Maps for full directions and street view.</p>
     </div>
-    <a class="more" href="/blog/">All guides →</a>
   </div>
-  <div class="carousel" data-reveal>
-    <a class="guide-card" href="/blog/cheap-doesnt-mean-bad-it-means-fair/">
-      <div class="guide-card-img" style="background-image:url('/images/suburbs/palm-beach.webp');background-size:cover;background-position:center"></div>
-      <div class="guide-card-body">
-        <div class="guide-card-kicker">2026-04-08 · 6 min read</div>
-        <div class="guide-card-title">Cheap doesn't mean bad. It means fair.</div>
-        <div class="guide-card-meta">Why a 1% commission is the right price for real work, not a discount on the service, but a correction to a fee that was set before technology did half the job.</div>
+  <div class="map-placeholder">
+    <iframe title="Burleigh Heads map" loading="lazy" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDyWnJ2ud9rWnBqUY96uankmuUnH-gxIRM&q=Burleigh+Heads%2C+QLD%2C+Australia&zoom=14&maptype=roadmap" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="map-placeholder-overlay">Burleigh Heads, Gold Coast · QLD</div>
+  </div>
+</section>
+
+<!-- SUBURB PROFILE, UNIQUE CHARACTER -->
+<section style="padding:40px 24px 0;max-width:1100px;margin:0 auto">
+  <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;align-items:start">
+    <div>
+      <div class="page-label" style="color:var(--gold)">What makes it unique</div>
+      <h2 class="serif" style="font-size:clamp(26px,3.2vw,40px);margin-top:14px;line-height:1.1">The character<br/>of <em>Burleigh Heads.</em></h2>
+    </div>
+    <div>
+      <p class="body" style="font-size:16px;line-height:1.75;color:rgba(var(--fg-rgb),.82)">Burleigh holds its village identity better than any other central Gold Coast suburb. James Street feels like a small Melbourne high street, independent cafés, wine bars, surf brands, and the headland walk from the Burleigh Hill down to Tallebudgera Creek is still the single best stretch of public coastline in South-East Queensland. That premium is fully baked into pricing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BUYER PROFILE -->
+<section style="padding:64px 24px 0;max-width:1100px;margin:0 auto">
+  <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;align-items:start">
+    <div>
+      <div class="page-label" style="color:var(--gold)">Who buys here</div>
+      <h2 class="serif" style="font-size:clamp(26px,3.2vw,40px);margin-top:14px;line-height:1.1">The Burleigh Heads<br/><em>buyer profile.</em></h2>
+    </div>
+    <div>
+      <p class="body" style="font-size:16px;line-height:1.75;color:rgba(var(--fg-rgb),.82)">Interstate executive families relocating from Sydney's Northern Beaches and Melbourne's bayside, surf-oriented professionals, downsizers from acreage further south wanting a low-maintenance beach lifestyle, and a small but active luxury market for North Burleigh and West Burleigh hilltop homes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROPERTY TYPES -->
+<section style="padding:64px 24px 0;max-width:1100px;margin:0 auto">
+  <div data-reveal>
+    <div class="page-label" style="color:var(--gold)">Property types</div>
+    <h2 class="serif" style="font-size:clamp(26px,3.2vw,40px);margin-top:14px;line-height:1.1">What sells in <em>Burleigh Heads.</em></h2>
+    <ul style="list-style:none;padding:0;margin:28px 0 0;max-width:760px">
+        <li style="padding:14px 0;border-bottom:1px solid rgba(var(--fg-rgb),.06);font-size:15px;color:rgba(var(--fg-rgb),.82);line-height:1.55">Original 70s beach houses being progressively rebuilt, these are the renovator sweet spot</li>
+        <li style="padding:14px 0;border-bottom:1px solid rgba(var(--fg-rgb),.06);font-size:15px;color:rgba(var(--fg-rgb),.82);line-height:1.55">Architectural new builds on 405–600m² blocks (the dominant new-build typology)</li>
+        <li style="padding:14px 0;border-bottom:1px solid rgba(var(--fg-rgb),.06);font-size:15px;color:rgba(var(--fg-rgb),.82);line-height:1.55">Sub-penthouse apartments on The Esplanade with northeast ocean aspects</li>
+        <li style="padding:14px 0;border-bottom:1px solid rgba(var(--fg-rgb),.06);font-size:15px;color:rgba(var(--fg-rgb),.82);line-height:1.55">West Burleigh acreage and hinterland-fringe family homes</li>
+    </ul>
+  </div>
+</section>
+
+<!-- WHERE TO LOOK -->
+<section style="padding:64px 24px 0;max-width:1100px;margin:0 auto">
+  <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;align-items:start">
+    <div>
+      <div class="page-label" style="color:var(--gold)">Where to look</div>
+      <h2 class="serif" style="font-size:clamp(26px,3.2vw,40px);margin-top:14px;line-height:1.1">Streets and<br/><em>pockets.</em></h2>
+    </div>
+    <div>
+      <p class="body" style="font-size:16px;line-height:1.75;color:rgba(var(--fg-rgb),.82)">The Esplanade north of the headland is trophy beachfront, anything with direct beach access is institutionally tightly held. James Street, Goodwin Terrace and the streets between James and the beach are the village-walkable sweet spot. West Burleigh and Tallebudgera Valley are the prestige acreage end.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET NOTES -->
+<section style="padding:64px 24px 0;max-width:1100px;margin:0 auto">
+  <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;align-items:start">
+    <div>
+      <div class="page-label" style="color:var(--gold)">Market notes</div>
+      <h2 class="serif" style="font-size:clamp(26px,3.2vw,40px);margin-top:14px;line-height:1.1">How Burleigh Heads<br/><em>actually trades.</em></h2>
+    </div>
+    <div>
+      <p class="body" style="font-size:16px;line-height:1.75;color:rgba(var(--fg-rgb),.82)">Burleigh routinely draws multiple-buyer competition on well-presented listings. The interstate market is large enough that you need photography, a 3D walkthrough and a floor plan from day one, half your inspections will happen on a phone in Bondi before anyone lands at Coolangatta. Listings without a walkthrough leave money on the table.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LIFESTYLE -->
+<section style="padding:64px 24px 80px;max-width:1100px;margin:0 auto">
+  <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;align-items:start">
+    <div>
+      <div class="page-label" style="color:var(--gold)">Lifestyle</div>
+      <h2 class="serif" style="font-size:clamp(26px,3.2vw,40px);margin-top:14px;line-height:1.1">A weekend<br/>in <em>Burleigh Heads.</em></h2>
+    </div>
+    <div>
+      <p class="body" style="font-size:16px;line-height:1.75;color:rgba(var(--fg-rgb),.82)">Burleigh Point on a clean southerly, breakfast at Borough Barista, the Burleigh Hill walk, James Street on a Friday night, the Burleigh Brewing Co, Tallebudgera Creek for the kids, Gold Coast Marathon course out the front door. Schools (Burleigh Heads State, Marymount) draw families specifically for the catchments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SELL WITH US + SAVINGS -->
+<section style="padding:60px 24px 100px;max-width:1100px;margin:0 auto;border-top:1px solid rgba(var(--fg-rgb),.06)">
+  <div data-reveal style="max-width:720px;margin:0 auto 48px;text-align:center;padding-top:40px">
+    <div class="page-label">Why sell with us in Burleigh Heads</div>
+    <div class="display" style="margin-top:18px;font-size:clamp(36px,4.5vw,58px)">1% commission.<br/><em>Keep the difference.</em></div>
+    <div class="gold-rule" style="margin:26px auto"></div>
+  </div>
+
+  <div data-reveal style="background:rgba(var(--fg-rgb),.025);border:1px solid rgba(var(--fg-rgb),.07);border-radius:18px;padding:40px 28px;max-width:720px;margin:0 auto">
+    <div style="text-align:center;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Savings on a typical Burleigh Heads home</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px;text-align:center">
+      <div>
+        <div style="font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase">Traditional (2–3%)</div>
+        <div style="font-size:clamp(28px,3.5vw,40px);font-weight:400;color:rgba(255,80,80,.75);letter-spacing:-1px;margin-top:8px">$55,000 – $88,000</div>
       </div>
-    </a>
-    <a class="guide-card" href="/blog/best-suburbs-to-buy-gold-coast-2026/">
-      <div class="guide-card-img" style="background-image:url('/images/suburbs/burleigh-heads.webp');background-size:cover;background-position:center"></div>
-      <div class="guide-card-body">
-        <div class="guide-card-kicker">2026-03-02 · 9 min read</div>
-        <div class="guide-card-title">Best suburbs to buy on the Gold Coast in 2026</div>
-        <div class="guide-card-meta">Where buyers are actually moving this year, broken down by lifestyle, value and growth potential, from the southern end up to the hinterland.</div>
+      <div>
+        <div style="font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase">The One Club (1%)</div>
+        <div style="font-size:clamp(28px,3.5vw,40px);font-weight:400;color:var(--gold);letter-spacing:-1px;margin-top:8px">$22,000</div>
       </div>
-    </a>
-    <a class="guide-card" href="/blog/how-to-prepare-your-home-for-sale/">
-      <div class="guide-card-img" style="background-image:url('/images/suburbs/mermaid-beach.webp');background-size:cover;background-position:center"></div>
-      <div class="guide-card-body">
-        <div class="guide-card-kicker">2026-03-18 · 7 min read</div>
-        <div class="guide-card-title">How to prepare your Gold Coast home for sale</div>
-        <div class="guide-card-meta">A pragmatic two-week checklist for Gold Coast sellers: where presentation money pays back, and where it almost never does.</div>
-      </div>
-    </a>
+    </div>
+    <div style="text-align:center;margin-top:24px;padding-top:24px;border-top:1px solid rgba(var(--fg-rgb),.06)">
+      <div style="font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase">You save</div>
+      <div style="font-size:clamp(34px,4vw,48px);font-weight:400;color:#4ade80;letter-spacing:-1px;margin-top:8px">$33,000 – $66,000</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:6px">Based on an approximate median sale of $2,200,000. Your result will vary with final sale price and chosen portal level.</div>
+    </div>
+    <div style="text-align:center;margin-top:28px">
+      <a class="btn btn-gold btn-lg" href="/#valuation">Get a free valuation for your Burleigh Heads home</a>
+    </div>
+  </div>
+</section>
+
+<section style="padding:40px 24px 120px;max-width:1100px;margin:0 auto;text-align:center">
+  <div data-reveal>
+    <div class="page-label">Included with every Burleigh Heads listing</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:28px;max-width:900px;margin-inline:auto;text-align:left">
+      <div style="padding:20px;border:1px solid rgba(var(--fg-rgb),.07);border-radius:12px"><div style="font-weight:600;margin-bottom:6px">Professional photography</div><div style="font-size:13px;color:var(--muted)">Shot at golden hour, AI-enhanced, virtually staged where helpful.</div></div>
+      <div style="padding:20px;border:1px solid rgba(var(--fg-rgb),.07);border-radius:12px"><div style="font-weight:600;margin-bottom:6px">Accurate floor plans</div><div style="font-size:13px;color:var(--muted)">Ground floor and level 1 drawn separately; formatted for every portal.</div></div>
+      <div style="padding:20px;border:1px solid rgba(var(--fg-rgb),.07);border-radius:12px"><div style="font-weight:600;margin-bottom:6px">Interactive 3D walkthrough</div><div style="font-size:13px;color:var(--muted)">Captured in-house, viewable on any phone. Built for interstate buyers.</div></div>
+      <div style="padding:20px;border:1px solid rgba(var(--fg-rgb),.07);border-radius:12px"><div style="font-weight:600;margin-bottom:6px">Digital marketing campaign</div><div style="font-size:13px;color:var(--muted)">realestate.com.au + Domain + targeted buyer remarketing.</div></div>
+    </div>
+    <div style="margin-top:40px">
+      <a class="btn btn-gold btn-lg" href="/#valuation">Request a free Burleigh Heads valuation</a>
+    </div>
   </div>
 </section>
 </div>
@@ -716,6 +809,101 @@ function addMessage(text, type){
      topics with a fixed deflection line for anything else.
    - API key is referrer-restricted in Google Cloud Console.
 ───────────────────────────────────────────────── */
+var GEMINI_KEY  = 'AIzaSyC6xH0fPBmD8ccciX5jdNeQIwFFRkPkxcA';
+var GEMINI_URL  = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + GEMINI_KEY;
+var MAX_GEMINI  = 6; // hard cap of API calls per browser session
+var DEFLECT_MSG = "That sits a bit outside what I can help with. If you have a property question I'm happy to dig in, otherwise the fastest way to a real answer is the Free Valuation form at the bottom of the page.";
+
+var GEMINI_SYS = "You are the chatbot for The One Club, a Gold Coast real estate agency that charges 1% commission and includes professional photography, floor plans, an interactive 3D walkthrough (captured in-house using PlayCanvas SuperSplat, not Matterport) and full digital marketing in the price. The lead agent is Bobby, with 10+ years of property sales experience across London and the Gold Coast. \n\nANSWER questions related to: Gold Coast real estate; buying or selling property; our 1% commission and what it includes; the photography/marketing/auction process; suburbs on the Gold Coast (Burleigh, Palm Beach, Mermaid, Surfers, Hope Island, Robina, Coolangatta, Mudgeeraba, Currumbin, Kirra etc.); state school catchments and primary/high school zoning for QLD addresses; general property concepts that apply in Queensland (transfer duty, conveyancing, mortgages at a high level). \n\nFor catchment questions: state the most likely primary and secondary state school catchments for the address, then ALWAYS append: 'Confirm on the QLD School Catchment Finder at edmap.eq.edu.au, boundaries change.' If you genuinely don't know the catchment, say so plainly and suggest the finder; do not guess. \n\nIf the user asks about ANYTHING else, jokes, the weather, sports, recipes, code, math, politics, casual chit-chat, respond with EXACTLY this sentence and nothing else: '" + DEFLECT_MSG + "'. Keep all answers under 150 words. Use plain English. Do NOT invent specific listings, prices, sale results, or made-up testimonials.";
+
+// Quick client-side noise filter. If the message clearly isn't about
+// property or our services, deflect without calling the API.
+var OFF_TOPIC_RE = /\b(weather|joke|funny|riddle|recipe|cook|sport|football|cricket|nba|nfl|election|trump|biden|crypto|bitcoin|stock|share market|capital of|who is|tell me about yourself|are you (a|an) ai|what.*your name|hi+|hello+|hey+|sup|yo+\b)\b/i;
+
+function _looksOnTopic(msg){
+  if (!msg || msg.length < 4) return false;
+  if (OFF_TOPIC_RE.test(msg)) return false;
+  // Require at least one alphanumeric token longer than 2 chars
+  var words = msg.split(/\s+/).filter(function(w){ return w.length > 2 && /[a-zA-Z]/.test(w); });
+  return words.length >= 1;
+}
+
+function _geminiBudgetRemaining(){
+  try {
+    var n = parseInt(sessionStorage.getItem('toc.gemini.calls') || '0', 10);
+    return MAX_GEMINI - n;
+  } catch(e) { return MAX_GEMINI; }
+}
+function _geminiBumpCount(){
+  try {
+    var n = parseInt(sessionStorage.getItem('toc.gemini.calls') || '0', 10);
+    sessionStorage.setItem('toc.gemini.calls', String(n + 1));
+  } catch(e) {}
+}
+
+function askGemini(userMsg){
+  return fetch(GEMINI_URL, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      system_instruction: { parts: [{ text: GEMINI_SYS }] },
+      contents: [{ parts: [{ text: userMsg.slice(0, 400) }] }],
+      generationConfig: { maxOutputTokens: 220, temperature: 0.35, topP: 0.9 }
+    })
+  })
+  .then(function(r){ if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+  .then(function(d){
+    var t = d && d.candidates && d.candidates[0] && d.candidates[0].content
+            && d.candidates[0].content.parts && d.candidates[0].content.parts[0]
+            && d.candidates[0].content.parts[0].text;
+    return (t || DEFLECT_MSG).trim();
+  })
+  .catch(function(){ return DEFLECT_MSG; });
+}
+
+// Wrap getBotReply so we know when local KB hit vs. fell through to the
+// generic "I want to make sure you get an accurate answer" fallback.
+var LOCAL_FALLBACK_PREFIX = "That's a good one";
+function _localOrNull(msg){
+  var reply = getBotReply(msg);
+  if (reply && reply.indexOf(LOCAL_FALLBACK_PREFIX) === 0) return null;
+  return reply;
+}
+
+function sendChat(){
+  var input = document.getElementById('chat-input');
+  var msg = input.value.trim(); if (!msg) return;
+  input.value = ''; addMessage(msg, 'user');
+  var q = document.getElementById('chat-quick'); if (q) q.style.display = 'none';
+  var t = document.createElement('div'); t.id = 'typing-indicator'; t.style.cssText = 'display:flex;gap:10px;align-items:flex-start';
+  t.innerHTML = '<div style="width:28px;height:28px;border-radius:8px;background:var(--gold);display:grid;place-items:center;font-size:9px;font-weight:700;color:#000;flex-shrink:0">1%</div><div style="background:rgba(var(--fg-rgb),.06);border-radius:4px 14px 14px 14px;padding:12px 14px;font-size:13px;color:var(--muted)">Typing...</div>';
+  document.getElementById('chat-messages').appendChild(t);
+  document.getElementById('chat-messages').scrollTop = 99999;
+
+  // 1. Try local knowledge base, instant, free.
+  var local = _localOrNull(msg);
+  if (local){
+    setTimeout(function(){ var ti = document.getElementById('typing-indicator'); if(ti) ti.remove(); addMessage(local, 'bot'); }, 700 + Math.random() * 600);
+    return;
+  }
+  // 2. Off-topic / nonsense → deflect immediately, no API call.
+  if (!_looksOnTopic(msg)){
+    setTimeout(function(){ var ti = document.getElementById('typing-indicator'); if(ti) ti.remove(); addMessage(DEFLECT_MSG, 'bot'); }, 600);
+    return;
+  }
+  // 3. Out of session budget → deflect.
+  if (_geminiBudgetRemaining() <= 0){
+    setTimeout(function(){ var ti = document.getElementById('typing-indicator'); if(ti) ti.remove(); addMessage("I've answered as much as I can in this session. The agent will follow up directly, please leave your details on the Free Valuation form at the bottom of the page.", 'bot'); }, 600);
+    return;
+  }
+  // 4. Gemini fallback.
+  _geminiBumpCount();
+  askGemini(msg).then(function(reply){
+    var ti = document.getElementById('typing-indicator'); if(ti) ti.remove();
+    addMessage(reply, 'bot');
+  });
+}
+function sendQuick(text){ document.getElementById('chat-input').value = text; sendChat(); }
 </script>
 
 <script>
@@ -966,6 +1154,5 @@ function initParticles(){
 </script>
 
 <script src="/assets/region.js" defer></script>
-<script src="/assets/chat.js"></script>
 </body>
 </html>

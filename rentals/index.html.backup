@@ -5,8 +5,8 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
-<title>How much does it cost to sell a house on the Gold Coast in 2026? | The One Club</title>
-<meta name="description" content="A full breakdown of commission, marketing, conveyancing and the line items most sellers forget, and why the agent's fee is rarely the biggest number on the page."/>
+<title>Rentals, Coming Soon | The One Club</title>
+<meta name="description" content="The One Club rental management launches soon: 8% management, 1-week letting fee, all-in-one app for landlords and tenants. Register your interest for priority access."/>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9J3X74NBYJ"></script>
 <script>
@@ -18,21 +18,21 @@
 <!-- Sitemap -->
 <link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
 <!-- Canonical -->
-<link rel="canonical" href="https://www.theoneclub.com.au/blog/cost-to-sell-a-house-gold-coast-2026/"/>
+<link rel="canonical" href="https://www.theoneclub.com.au/rentals/"/>
 <!-- Open Graph -->
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="The One Club"/>
 <meta property="og:locale" content="en_AU"/>
-<meta property="og:url" content="https://www.theoneclub.com.au/blog/cost-to-sell-a-house-gold-coast-2026/"/>
-<meta property="og:title" content="How much does it cost to sell a house on the Gold Coast in 2026? | The One Club"/>
-<meta property="og:description" content="A full breakdown of commission, marketing, conveyancing and the line items most sellers forget, and why the agent's fee is rarely the biggest number on the page."/>
+<meta property="og:url" content="https://www.theoneclub.com.au/rentals/"/>
+<meta property="og:title" content="Rentals, Coming Soon | The One Club"/>
+<meta property="og:description" content="Sell your Gold Coast property for just 1% commission. Premium photography, floor plans, 3D walkthroughs and experienced negotiation included. No hidden fees."/>
 <meta property="og:image" content="https://www.theoneclub.com.au/images/og-home.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="How much does it cost to sell a house on the Gold Coast in 2026? | The One Club"/>
-<meta name="twitter:description" content="A full breakdown of commission, marketing, conveyancing and the line items most sellers forget, and why the agent's fee is rarely the biggest number on the page."/>
+<meta name="twitter:title" content="Rentals, Coming Soon | The One Club"/>
+<meta name="twitter:description" content="Sell your Gold Coast property for just 1% commission. Premium photography, floor plans, 3D walkthroughs and experienced negotiation included."/>
 <meta name="twitter:image" content="https://www.theoneclub.com.au/images/og-home.jpg"/>
 <!-- Geo / Local -->
 <meta name="geo.region" content="AU-QLD"/>
@@ -231,9 +231,6 @@
   ]
 }
 </script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"How much does it cost to sell a house on the Gold Coast in 2026?","description":"A full breakdown of commission, marketing, conveyancing and the line items most sellers forget, and why the agent's fee is rarely the biggest number on the page.","datePublished":"2026-02-14","dateModified":"2026-02-14","author":{"@type":"Organization","name":"The One Club","url":"https://www.theoneclub.com.au"},"publisher":{"@id":"https://www.theoneclub.com.au/#business"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.theoneclub.com.au/blog/cost-to-sell-a-house-gold-coast-2026/"}}
-</script>
 <link rel="preload" href="/style.css" as="style"/>
 <link rel="stylesheet" href="/style.css"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
@@ -301,75 +298,128 @@
   <a href="/after-sale/" onclick="toggleMenu()">After the Sale</a>
   <a href="/cairns/" onclick="toggleMenu()">Cairns</a>
   <a href="/about/" onclick="toggleMenu()">About</a>
+  <a href="tel:+61404774272" onclick="toggleMenu()" style="opacity:.7">Call +61 404 774 272</a>
   <a href="mailto:bobby@theoneclub.com.au" onclick="toggleMenu()" style="opacity:.7">bobby@theoneclub.com.au</a>
   <a href="/#valuation" onclick="toggleMenu()" style="color:var(--gold);border-color:rgba(196,168,74,.2)">Free Valuation →</a>
 </div>
 
 <main id="main-content">
-<div class="page active">
-<section style="position:relative;width:100%;height:clamp(280px,46vh,520px);overflow:hidden;margin-top:0">
-  <div style="position:absolute;inset:0;background-image:url('/images/suburbs/surfers-paradise.webp');background-size:cover;background-position:center"></div>
-  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.45) 60%,rgba(0,0,0,.92) 100%)"></div>
-  <div style="position:absolute;inset:auto 0 0 0;padding:0 24px 48px;max-width:900px;margin:0 auto;color:#fff">
-    
-    <div class="page-label" style="color:var(--gold)">2026-02-14 · 8 min read</div>
-    <h1 class="serif" style="margin-top:12px;font-size:clamp(32px,5vw,58px);letter-spacing:-1.3px;line-height:1.08;font-weight:400;color:#fff">How much does it cost to sell a house on the Gold Coast in 2026?</h1>
-  </div>
-</section>
+<div id="page-to-rent" class="page active">
 
-<article class="art">
-  <p style="font-size:19px;line-height:1.65;color:var(--fg);font-weight:400;margin-bottom:24px;font-family:'Fraunces',Georgia,serif;font-style:italic">A full breakdown of commission, marketing, conveyancing and the line items most sellers forget, and why the agent's fee is rarely the biggest number on the page.</p>
-  <div style="display:flex;align-items:center;gap:14px;padding:16px 0;border-top:1px solid var(--subtle);border-bottom:1px solid var(--subtle);margin-bottom:28px;font-size:13px;color:var(--muted)">
-    <span>By <strong style="color:var(--fg);font-weight:500">The One Club</strong></span>
-    <span style="opacity:.4">·</span>
-    <span>Published 2026-02-14</span>
-  </div>
-  <h2>Start with the numbers that actually leave your account</h2><p>Selling a home on the Gold Coast in 2026 is, at minimum, a five-figure exercise, and for homes above $1.5M it almost always sits in the low six figures once every bill is on the table. The reason it surprises people is that the individual costs arrive at different times, some before the campaign even starts, some only at settlement, so there isn't one moment where you see the total lined up in a single row.</p><p>This guide lines them up. Conservative range, realistic range, and the levers that actually move the number up or down.</p><h2>Agent commission</h2><p>Traditional Gold Coast agents sit between 2% and 3% commission. On a $1,000,000 sale that's $20,000 to $30,000; on a $2,000,000 sale it's $40,000 to $60,000. The higher rates are more common in boutique and luxury agencies; the lower rates are more common in franchise models that pay agents per-listing.</p><p>Commission is almost always paid at settlement, not up-front, and it's usually deducted from the sale proceeds by your conveyancer. That is useful for cashflow, but it also means the number doesn't feel real until after the deal is done, which is part of why sellers under-price it in their planning.</p><p>The One Club's fee is 1%. On the same $1,000,000 home, that's $10,000; on the $2,000,000 home, $20,000. Same campaign, half to a third of the commission.</p><h2>Marketing package</h2><p>With most traditional agencies, marketing is billed <em>separately</em> from commission. A typical Gold Coast mid-tier campaign runs $4,000 to $8,000. Premium campaigns with auction, drone, Matterport and stronger portal placement run $8,000 to $15,000. Luxury campaigns with dedicated landing pages, print, and out-of-home media run $15,000 to $35,000.</p><p>Most of that money is spent in the first two weeks of the campaign, so if the property sits, you're still paying for a second round of portal upgrades whether the first one worked or not.</p><p>With The One Club, photography, floor plans, an interactive 3D walkthrough captured in-house (the kind other agencies bill as a $1,000–$1,500 Matterport add-on), digital remarketing and the full campaign itself all sit inside the 1% commission. The only separate marketing line is your chosen realestate.com.au and Domain listing tier, which you decide based on price bracket and visibility.</p><h2>Conveyancing</h2><p>A Queensland conveyancer or solicitor typically charges between $1,000 and $2,500 for a standard residential sale, with complexity (off-the-plan, body corporate, split titles, duplex arrangements) pushing it higher. For a luxury or off-market deal, expect the upper end and potentially more if there are trust or company structures involved.</p><p>Conveyancing is worth paying for properly. Mistakes in contracts at settlement cost far more than the saving from using the cheapest option.</p><h2>Mortgage discharge, bank fees, adjustments</h2><p>Most lenders charge a mortgage discharge fee of around $350 to $600, plus any unregistered penalty interest or break costs if you're on a fixed loan. If you'd prepaid council rates, water, or strata, those are adjusted at settlement in your favour or against you.</p><p>Title registration fees and transfer fees for <em>the sale side</em> are usually minimal ($200 to $500 range), but confirm with your conveyancer.</p><h2>Preparation: styling, repairs, clean</h2><p>This is the line that varies most, and the line that pays back most reliably when you spend on the right things. Budget conservatively $2,000 to $5,000 for a good deep clean, minor repairs, a touch-up paint job in the highest-traffic rooms, and a few strategically placed styling pieces. Full virtual or physical staging for a premium property can add $3,000 to $12,000 and routinely returns multiples of that back.</p><p>What rarely pays back: full kitchen or bathroom renovations undertaken in the last six weeks before listing. Photography and staging will do more, faster, for a fraction of the money.</p><h2>A realistic worked example</h2><p>Consider a $1,500,000 Palm Beach home going to market in autumn 2026. Traditional path: 2.5% commission ($37,500) + $8,000 marketing + $1,800 conveyancing + $500 discharge + $3,500 prep = <strong>$51,300</strong>.</p><p>The One Club path: 1% commission ($15,000) including campaign and interactive 3D walkthrough + $2,200 portal tier + $1,800 conveyancing + $500 discharge + $3,500 prep = <strong>$23,000</strong>.</p><p>Same campaign quality, same negotiation at the finish. A saving of roughly $28,300, enough to cover one full year of the average Gold Coast private school, or to meaningfully accelerate the deposit on the next property.</p>
-
-  <aside style="margin-top:64px;padding:32px;border:1px solid rgba(196,168,74,.25);border-radius:14px;background:rgba(196,168,74,.05)">
-    <div class="page-label">Ready to sell?</div>
-    <div class="serif" style="margin-top:12px;font-size:24px;line-height:1.3;letter-spacing:-.4px">Get a free appraisal for your Gold Coast home.</div>
-    <p style="margin-top:10px;font-size:15px;color:var(--muted);line-height:1.65">Realistic price range, recommended strategy, full 1% fee breakdown, within 24 hours.</p>
-    <div style="margin-top:20px"><a class="btn btn-gold btn-lg" href="/#valuation">Request a free valuation</a></div>
-  </aside>
-</article>
-
-<section class="sec" style="padding-top:80px;padding-bottom:120px;border-top:1px solid var(--subtle)">
-  <div class="sec-head">
-    <div class="sec-head-l">
-      <div class="page-label">More from the journal</div>
-      <h2 class="serif">Keep reading.</h2>
+<!-- HERO -->
+<div class="soon-hero">
+  <div>
+    <div class="page-label" data-reveal>Gold Coast · Queensland</div>
+    <h1 class="display" style="margin-top:16px;font-size:clamp(48px,6.5vw,86px);letter-spacing:-2px" data-reveal>
+      Rental management,<br/><em>the right way.</em><br/>Coming soon.
+    </h1>
+    <div class="gold-rule" data-reveal></div>
+    <p class="body" data-reveal style="font-size:16px;max-width:480px">We're bringing the same 1% model to rental property management. No inflated management fees. No unnecessary letting fees. Just straightforward, transparent property management that works for both landlords and tenants.</p>
+    <div data-reveal style="margin-top:32px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+      <div style="background:rgba(196,168,74,.08);border:1px solid rgba(196,168,74,.2);border-radius:10px;padding:14px 20px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Management Fee</div>
+        <div style="font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:36px;font-weight:400;letter-spacing:-1px;line-height:1">~8%</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px">vs industry standard 8–12%</div>
+      </div>
+      <div style="background:rgba(var(--fg-rgb),.025);border:1px solid rgba(var(--fg-rgb),.07);border-radius:10px;padding:14px 20px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px">Letting Fee</div>
+        <div style="font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:36px;font-weight:400;letter-spacing:-1px;line-height:1">1 week</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px">vs the industry 2–4 weeks</div>
+      </div>
     </div>
-    <a class="more" href="/blog/">All guides →</a>
   </div>
-  <div class="carousel" data-reveal>
-    <a class="guide-card" href="/blog/cheap-doesnt-mean-bad-it-means-fair/">
-      <div class="guide-card-img" style="background-image:url('/images/suburbs/palm-beach.webp');background-size:cover;background-position:center"></div>
-      <div class="guide-card-body">
-        <div class="guide-card-kicker">2026-04-08 · 6 min read</div>
-        <div class="guide-card-title">Cheap doesn't mean bad. It means fair.</div>
-        <div class="guide-card-meta">Why a 1% commission is the right price for real work, not a discount on the service, but a correction to a fee that was set before technology did half the job.</div>
+  <!-- REGISTER INTEREST -->
+  <div data-reveal="right">
+    <div style="font-size:13px;font-weight:600;color:rgba(var(--fg-rgb),.5);margin-bottom:20px;text-transform:uppercase;letter-spacing:1px">Register Interest</div>
+    <div class="reg-card">
+      <div class="tab-row">
+        <button class="tab-btn active" id="tab-landlord" onclick="switchTab('landlord')">I'm a Landlord</button>
+        <button class="tab-btn" id="tab-tenant" onclick="switchTab('tenant')">I'm a Tenant</button>
       </div>
-    </a>
-    <a class="guide-card" href="/blog/best-suburbs-to-buy-gold-coast-2026/">
-      <div class="guide-card-img" style="background-image:url('/images/suburbs/burleigh-heads.webp');background-size:cover;background-position:center"></div>
-      <div class="guide-card-body">
-        <div class="guide-card-kicker">2026-03-02 · 9 min read</div>
-        <div class="guide-card-title">Best suburbs to buy on the Gold Coast in 2026</div>
-        <div class="guide-card-meta">Where buyers are actually moving this year, broken down by lifestyle, value and growth potential, from the southern end up to the hinterland.</div>
-      </div>
-    </a>
-    <a class="guide-card" href="/blog/how-to-prepare-your-home-for-sale/">
-      <div class="guide-card-img" style="background-image:url('/images/suburbs/mermaid-beach.webp');background-size:cover;background-position:center"></div>
-      <div class="guide-card-body">
-        <div class="guide-card-kicker">2026-03-18 · 7 min read</div>
-        <div class="guide-card-title">How to prepare your Gold Coast home for sale</div>
-        <div class="guide-card-meta">A pragmatic two-week checklist for Gold Coast sellers: where presentation money pays back, and where it almost never does.</div>
-      </div>
-    </a>
+      <!-- Landlord form -->
+      <form id="form-landlord" data-lead-form="landlord" data-gtag-label="Landlord Register" data-success="Registered! We'll be in touch when rentals launch." novalidate>
+        <div class="frow">
+          <div class="field"><label for="ll-first">First Name</label><input id="ll-first" name="firstName" type="text" autocomplete="given-name" placeholder="Michael" required aria-required="true"/><span class="field-error">Enter your first name</span></div>
+          <div class="field"><label for="ll-last">Last Name</label><input id="ll-last" name="lastName" type="text" autocomplete="family-name" placeholder="Chen" required aria-required="true"/><span class="field-error">Enter your last name</span></div>
+        </div>
+        <div class="field"><label for="ll-email">Email</label><input id="ll-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required aria-required="true"/><span class="field-error">Enter a valid email</span></div>
+        <div class="field"><label for="ll-phone">Phone</label><input id="ll-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="04xx xxx xxx" required aria-required="true" pattern="[0-9+ ()\-]{6,}"/><span class="field-error">Enter a valid phone number</span></div>
+        <div class="field"><label for="ll-address">Property Address</label><input id="ll-address" name="address" type="text" autocomplete="street-address" placeholder="12 Beachfront Drive, Burleigh Heads" required aria-required="true"/><span class="field-error">Enter the property address</span></div>
+        <div class="frow">
+          <div class="field"><label for="ll-type">Property Type</label><select id="ll-type" name="propertyType"><option>House</option><option>Apartment</option><option>Townhouse</option><option>Unit</option></select></div>
+          <div class="field"><label for="ll-rented">Currently Rented?</label><select id="ll-rented" name="rentedStatus"><option>Yes, tenanted</option><option>Vacant</option><option>Owner occupied</option></select></div>
+        </div>
+        <input class="hp-field" name="hp_field" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+        <button class="fsub" id="landlordBtn" type="submit">Register as Landlord</button>
+        <p style="text-align:center;margin-top:12px;font-size:11px;color:rgba(var(--fg-rgb),.2)">We'll be in touch when rentals launch. No spam.</p>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+      <!-- Tenant form -->
+      <form id="form-tenant" data-lead-form="tenant" data-gtag-label="Tenant Register" data-success="Registered! We'll be in touch with matching rentals." style="display:none" novalidate>
+        <div class="frow">
+          <div class="field"><label for="tn-first">First Name</label><input id="tn-first" name="firstName" type="text" autocomplete="given-name" placeholder="Emily" required aria-required="true"/><span class="field-error">Enter your first name</span></div>
+          <div class="field"><label for="tn-last">Last Name</label><input id="tn-last" name="lastName" type="text" autocomplete="family-name" placeholder="Walsh" required aria-required="true"/><span class="field-error">Enter your last name</span></div>
+        </div>
+        <div class="field"><label for="tn-email">Email</label><input id="tn-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required aria-required="true"/><span class="field-error">Enter a valid email</span></div>
+        <div class="field"><label for="tn-phone">Phone</label><input id="tn-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="04xx xxx xxx" required aria-required="true" pattern="[0-9+ ()\-]{6,}"/><span class="field-error">Enter a valid phone number</span></div>
+        <div class="frow">
+          <div class="field"><label for="tn-type">Looking For</label><select id="tn-type" name="propertyType"><option>House</option><option>Apartment</option><option>Any</option></select></div>
+          <div class="field"><label for="tn-budget">Budget / week</label><select id="tn-budget" name="budget"><option>Under $500</option><option>$500–$750</option><option>$750–$1,000</option><option>$1,000+</option></select></div>
+        </div>
+        <div class="frow">
+          <div class="field"><label for="tn-beds">Bedrooms</label><select id="tn-beds" name="bedrooms"><option>1 bed</option><option>2 beds</option><option>3 beds</option><option>4+ beds</option></select></div>
+          <div class="field"><label for="tn-movein">Move-in</label><select id="tn-movein" name="moveIn"><option>ASAP</option><option>1–4 weeks</option><option>1–3 months</option></select></div>
+        </div>
+        <input class="hp-field" name="hp_field" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+        <button class="fsub" id="tenantBtn" type="submit">Register as Tenant</button>
+        <p style="text-align:center;margin-top:12px;font-size:11px;color:rgba(var(--fg-rgb),.2)">We'll contact you as soon as matching rentals are listed. No spam.</p>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- PREVIEW LISTINGS, indicative only until the rental pool launches -->
+<section style="padding:80px 24px 100px;border-top:1px solid var(--subtle)">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="margin-bottom:24px" data-reveal>
+      <div class="page-label">Upcoming listings, indicative</div>
+      <div class="display" style="margin-top:16px">The kind of properties<br/><em>we'll be matching.</em></div>
+    </div>
+    <div data-reveal style="background:rgba(196,168,74,.05);border:1px solid rgba(196,168,74,.18);border-radius:12px;padding:14px 18px;margin-bottom:32px;font-size:13px;color:var(--muted);line-height:1.6">
+      <strong style="color:var(--gold);letter-spacing:.2px">Indicative pricing.</strong> Our rental pool opens soon, these are illustrative examples of the property types and weekly rents we expect to manage. Register below for early access to real listings as they come on.
+    </div>
+    <div class="preview-grid" data-reveal>
+      <div class="preview-card"><div class="preview-img"><div class="pc-1"></div></div><div class="preview-body"><div class="preview-price">~$850 / wk indicative</div><div class="preview-addr">Family home</div><div class="preview-suburb">Broadbeach Waters</div><div class="preview-features"><span>🛏 3 bed</span><span>🚿 2 bath</span><span>🚗 2 car</span></div></div></div>
+      <div class="preview-card"><div class="preview-img"><div class="pc-2"></div></div><div class="preview-body"><div class="preview-price">~$550 / wk indicative</div><div class="preview-addr">High-rise apartment</div><div class="preview-suburb">Surfers Paradise</div><div class="preview-features"><span>🛏 2 bed</span><span>🚿 2 bath</span><span>🚗 1 car</span></div></div></div>
+      <div class="preview-card"><div class="preview-img"><div class="pc-3"></div></div><div class="preview-body"><div class="preview-price">~$1,100 / wk indicative</div><div class="preview-addr">Executive family home</div><div class="preview-suburb">Robina</div><div class="preview-features"><span>🛏 4 bed</span><span>🚿 2 bath</span><span>🚗 2 car</span></div></div></div>
+      <div class="preview-card"><div class="preview-img"><div class="pc-4"></div></div><div class="preview-body"><div class="preview-price">~$690 / wk indicative</div><div class="preview-addr">Beachside cottage</div><div class="preview-suburb">Burleigh Heads</div><div class="preview-features"><span>🛏 3 bed</span><span>🚿 1 bath</span><span>🚗 1 car</span></div></div></div>
+      <div class="preview-card"><div class="preview-img"><div class="pc-5"></div></div><div class="preview-body"><div class="preview-price">~$420 / wk indicative</div><div class="preview-addr">Studio / 1-bed unit</div><div class="preview-suburb">Southport</div><div class="preview-features"><span>🛏 1 bed</span><span>🚿 1 bath</span><span>🚗 1 car</span></div></div></div>
+      <div class="preview-card"><div class="preview-img"><div class="pc-6"></div></div><div class="preview-body"><div class="preview-price">~$950 / wk indicative</div><div class="preview-addr">Beachside family home</div><div class="preview-suburb">Palm Beach</div><div class="preview-features"><span>🛏 3 bed</span><span>🚿 2 bath</span><span>🚗 2 car</span></div></div></div>
+    </div>
   </div>
 </section>
-</div>
+
+<!-- FOR LANDLORDS -->
+<section style="padding:80px 24px 120px;border-top:1px solid var(--subtle)">
+  <div style="max-width:1200px;margin:0 auto">
+    <div data-reveal>
+      <div class="page-label">For landlords</div>
+      <div class="display" style="margin-top:16px">Property management<br/><em>that doesn't gouge you.</em></div>
+      <div class="gold-rule"></div>
+      <p class="body" style="max-width:560px;font-size:15px">The property management industry runs on complexity, and complexity means fees. We're stripping it back. Straightforward pricing, transparent reporting, and technology that handles the admin while we focus on what matters: keeping your property tenanted, maintained, and maximising your return.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--subtle);border:1px solid var(--subtle);border-radius:20px;overflow:hidden;margin-top:48px" data-reveal>
+      <div style="background:var(--bg);padding:32px 28px"><div style="font-size:22px;margin-bottom:14px">📸</div><div style="font-size:15px;font-weight:600;margin-bottom:8px">Professional listing photography</div><div style="font-size:13px;color:var(--muted);line-height:1.65">Every rental listing gets AI-enhanced photography. Better photos mean more applications, better tenant quality, and faster vacancy fill. Included, not charged separately.</div></div>
+      <div style="background:var(--bg);padding:32px 28px"><div style="font-size:22px;margin-bottom:14px">⚡</div><div style="font-size:15px;font-weight:600;margin-bottom:8px">Instant tenant enquiry responses</div><div style="font-size:13px;color:var(--muted);line-height:1.65">Prospective tenants get answers immediately, 24/7. Inspection bookings are handled automatically. No missed enquiries, no delayed replies.</div></div>
+      <div style="background:var(--bg);padding:32px 28px"><div style="font-size:22px;margin-bottom:14px">📋</div><div style="font-size:15px;font-weight:600;margin-bottom:8px">Thorough tenant screening</div><div style="font-size:13px;color:var(--muted);line-height:1.65">Background checks, rental history, income verification. We find the right tenant, not just the fastest tenant. Quality tenancies reduce maintenance headaches and vacancy risk.</div></div>
+      <div style="background:var(--bg);padding:32px 28px"><div style="font-size:22px;margin-bottom:14px">💰</div><div style="font-size:15px;font-weight:600;margin-bottom:8px">Transparent, simple pricing</div><div style="font-size:13px;color:var(--muted);line-height:1.65">Management fee, letting fee, published up front. No inspection fees, no lease renewal fees, no statement fees, no exit fees. We charge for what we do, not for everything we can.</div></div>
+      <div style="background:var(--bg);padding:32px 28px"><div style="font-size:22px;margin-bottom:14px">📊</div><div style="font-size:15px;font-weight:600;margin-bottom:8px">Real-time owner dashboard</div><div style="font-size:13px;color:var(--muted);line-height:1.65">Log in any time to see rent received, maintenance requests, inspection reports, and upcoming lease renewals. You're always in the picture, no need to chase updates.</div></div>
+      <div style="background:var(--bg);padding:32px 28px"><div style="font-size:22px;margin-bottom:14px">🔧</div><div style="font-size:15px;font-weight:600;margin-bottom:8px">Maintenance coordination</div><div style="font-size:13px;color:var(--muted);line-height:1.65">Tenant maintenance requests are triaged, quoted, and managed, with your approval before anything over a set threshold proceeds. You keep control, we handle the logistics.</div></div>
+    </div>
+  </div>
+</section>
+</div><!-- end page-to-rent -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand"><div class="logo" style="margin-bottom:16px" onclick="goTo('home')"><img src="/logo.png" alt="The One Club | Gold Coast Real Estate" width="268" height="72" loading="lazy" decoding="async" style="height:72px;width:auto;display:block"/></div><p>A smarter way to sell on the Gold Coast, professional marketing, experienced guidance, and 1% commission plus portal listing.</p><address itemscope itemtype="https://schema.org/RealEstateAgent" style="font-style:normal;margin-bottom:12px"><span itemprop="name" style="display:none">The One Club</span><span itemprop="addressLocality" style="font-size:12px;color:var(--muted)">Gold Coast, QLD, Australia</span><br/><a itemprop="telephone" href="tel:+61404774272" style="font-size:12px;color:var(--muted)">+61 404 774 272</a><br/><a itemprop="email" href="mailto:bobby@theoneclub.com.au" style="font-size:12px;color:var(--muted)">bobby@theoneclub.com.au</a></address><div style="display:flex;gap:14px;margin-bottom:16px"><a href="https://www.instagram.com/theoneclubau?igsh=MXNvanhrYjZxOG1jaA%3D%3D&amp;utm_source=qr" aria-label="Follow The One Club on Instagram (opens in new tab)" target="_blank" rel="noopener noreferrer me" style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;color:var(--muted);transition:all .2s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></div><div class="lic">Licensed Real Estate Agent, QLD</div></div>
@@ -574,27 +624,7 @@ function fpSwitch(level){
   document.getElementById('fp-level-btn-l1').classList.toggle('active', level === 'l1');
 }
 
-/* ═══════════════════════════════════════
-   VALUATION FORM
-═══════════════════════════════════════ */
-var formBtn = document.getElementById('formBtn');
-if (formBtn) {
-  formBtn.addEventListener('click', function(e){
-    e.preventDefault();
-    if (typeof gtag === 'function') {
-      gtag('event', 'form_submit', {
-        event_category: 'Lead',
-        event_label: 'Free Valuation Form'
-      });
-    }
-    this.textContent = "Request received, we'll be in touch within 24 hours";
-    this.style.background = 'transparent'; this.style.color = '#4ade80';
-    this.style.border = '1px solid rgba(74,222,128,.25)';
-  });
-}
-/* ═══════════════════════════════════════
-   TO RENT, TAB SWITCHING & FORM SUBMIT
-═══════════════════════════════════════ */
+/* Forms (landlord / tenant) are handled by /assets/lead-form.js, posts to /api/lead. */
 function switchTab(tab) {
   var landlordForm = document.getElementById('form-landlord');
   var tenantForm = document.getElementById('form-tenant');
@@ -606,17 +636,8 @@ function switchTab(tab) {
   if (landlordBtn) landlordBtn.classList.toggle('active', tab === 'landlord');
   if (tenantBtn) tenantBtn.classList.toggle('active', tab === 'tenant');
 }
-function submitForm(type) {
-  var btn = document.getElementById(type + 'Btn');
-  if (!btn) return;
-  btn.textContent = "Registered! We'll be in touch when rentals launch.";
-  btn.style.background = 'transparent';
-  btn.style.color = '#4ade80';
-  btn.style.border = '1px solid rgba(74,222,128,.25)';
-  btn.style.boxShadow = 'none';
-  btn.style.transform = 'none';
-  btn.disabled = true;
-}
+// Legacy stub, old markup used onclick="submitForm(...)"; new forms use submit handler in lead-form.js.
+function submitForm() { /* no-op */ }
 
 /* ═══════════════════════════════════════
    CHAT WIDGET
@@ -716,6 +737,101 @@ function addMessage(text, type){
      topics with a fixed deflection line for anything else.
    - API key is referrer-restricted in Google Cloud Console.
 ───────────────────────────────────────────────── */
+var GEMINI_KEY  = 'AIzaSyC6xH0fPBmD8ccciX5jdNeQIwFFRkPkxcA';
+var GEMINI_URL  = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + GEMINI_KEY;
+var MAX_GEMINI  = 6; // hard cap of API calls per browser session
+var DEFLECT_MSG = "That sits a bit outside what I can help with. If you have a property question I'm happy to dig in, otherwise the fastest way to a real answer is the Free Valuation form at the bottom of the page.";
+
+var GEMINI_SYS = "You are the chatbot for The One Club, a Gold Coast real estate agency that charges 1% commission and includes professional photography, floor plans, an interactive 3D walkthrough (captured in-house using PlayCanvas SuperSplat, not Matterport) and full digital marketing in the price. The lead agent is Bobby, with 10+ years of property sales experience across London and the Gold Coast. \n\nANSWER questions related to: Gold Coast real estate; buying or selling property; our 1% commission and what it includes; the photography/marketing/auction process; suburbs on the Gold Coast (Burleigh, Palm Beach, Mermaid, Surfers, Hope Island, Robina, Coolangatta, Mudgeeraba, Currumbin, Kirra etc.); state school catchments and primary/high school zoning for QLD addresses; general property concepts that apply in Queensland (transfer duty, conveyancing, mortgages at a high level). \n\nFor catchment questions: state the most likely primary and secondary state school catchments for the address, then ALWAYS append: 'Confirm on the QLD School Catchment Finder at edmap.eq.edu.au, boundaries change.' If you genuinely don't know the catchment, say so plainly and suggest the finder; do not guess. \n\nIf the user asks about ANYTHING else, jokes, the weather, sports, recipes, code, math, politics, casual chit-chat, respond with EXACTLY this sentence and nothing else: '" + DEFLECT_MSG + "'. Keep all answers under 150 words. Use plain English. Do NOT invent specific listings, prices, sale results, or made-up testimonials.";
+
+// Quick client-side noise filter. If the message clearly isn't about
+// property or our services, deflect without calling the API.
+var OFF_TOPIC_RE = /\b(weather|joke|funny|riddle|recipe|cook|sport|football|cricket|nba|nfl|election|trump|biden|crypto|bitcoin|stock|share market|capital of|who is|tell me about yourself|are you (a|an) ai|what.*your name|hi+|hello+|hey+|sup|yo+\b)\b/i;
+
+function _looksOnTopic(msg){
+  if (!msg || msg.length < 4) return false;
+  if (OFF_TOPIC_RE.test(msg)) return false;
+  // Require at least one alphanumeric token longer than 2 chars
+  var words = msg.split(/\s+/).filter(function(w){ return w.length > 2 && /[a-zA-Z]/.test(w); });
+  return words.length >= 1;
+}
+
+function _geminiBudgetRemaining(){
+  try {
+    var n = parseInt(sessionStorage.getItem('toc.gemini.calls') || '0', 10);
+    return MAX_GEMINI - n;
+  } catch(e) { return MAX_GEMINI; }
+}
+function _geminiBumpCount(){
+  try {
+    var n = parseInt(sessionStorage.getItem('toc.gemini.calls') || '0', 10);
+    sessionStorage.setItem('toc.gemini.calls', String(n + 1));
+  } catch(e) {}
+}
+
+function askGemini(userMsg){
+  return fetch(GEMINI_URL, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      system_instruction: { parts: [{ text: GEMINI_SYS }] },
+      contents: [{ parts: [{ text: userMsg.slice(0, 400) }] }],
+      generationConfig: { maxOutputTokens: 220, temperature: 0.35, topP: 0.9 }
+    })
+  })
+  .then(function(r){ if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+  .then(function(d){
+    var t = d && d.candidates && d.candidates[0] && d.candidates[0].content
+            && d.candidates[0].content.parts && d.candidates[0].content.parts[0]
+            && d.candidates[0].content.parts[0].text;
+    return (t || DEFLECT_MSG).trim();
+  })
+  .catch(function(){ return DEFLECT_MSG; });
+}
+
+// Wrap getBotReply so we know when local KB hit vs. fell through to the
+// generic "I want to make sure you get an accurate answer" fallback.
+var LOCAL_FALLBACK_PREFIX = "That's a good one";
+function _localOrNull(msg){
+  var reply = getBotReply(msg);
+  if (reply && reply.indexOf(LOCAL_FALLBACK_PREFIX) === 0) return null;
+  return reply;
+}
+
+function sendChat(){
+  var input = document.getElementById('chat-input');
+  var msg = input.value.trim(); if (!msg) return;
+  input.value = ''; addMessage(msg, 'user');
+  var q = document.getElementById('chat-quick'); if (q) q.style.display = 'none';
+  var t = document.createElement('div'); t.id = 'typing-indicator'; t.style.cssText = 'display:flex;gap:10px;align-items:flex-start';
+  t.innerHTML = '<div style="width:28px;height:28px;border-radius:8px;background:var(--gold);display:grid;place-items:center;font-size:9px;font-weight:700;color:#000;flex-shrink:0">1%</div><div style="background:rgba(var(--fg-rgb),.06);border-radius:4px 14px 14px 14px;padding:12px 14px;font-size:13px;color:var(--muted)">Typing...</div>';
+  document.getElementById('chat-messages').appendChild(t);
+  document.getElementById('chat-messages').scrollTop = 99999;
+
+  // 1. Try local knowledge base, instant, free.
+  var local = _localOrNull(msg);
+  if (local){
+    setTimeout(function(){ var ti = document.getElementById('typing-indicator'); if(ti) ti.remove(); addMessage(local, 'bot'); }, 700 + Math.random() * 600);
+    return;
+  }
+  // 2. Off-topic / nonsense → deflect immediately, no API call.
+  if (!_looksOnTopic(msg)){
+    setTimeout(function(){ var ti = document.getElementById('typing-indicator'); if(ti) ti.remove(); addMessage(DEFLECT_MSG, 'bot'); }, 600);
+    return;
+  }
+  // 3. Out of session budget → deflect.
+  if (_geminiBudgetRemaining() <= 0){
+    setTimeout(function(){ var ti = document.getElementById('typing-indicator'); if(ti) ti.remove(); addMessage("I've answered as much as I can in this session. The agent will follow up directly, please leave your details on the Free Valuation form at the bottom of the page.", 'bot'); }, 600);
+    return;
+  }
+  // 4. Gemini fallback.
+  _geminiBumpCount();
+  askGemini(msg).then(function(reply){
+    var ti = document.getElementById('typing-indicator'); if(ti) ti.remove();
+    addMessage(reply, 'bot');
+  });
+}
+function sendQuick(text){ document.getElementById('chat-input').value = text; sendChat(); }
 </script>
 
 <script>
@@ -965,7 +1081,7 @@ function initParticles(){
 })();
 </script>
 
+<script src="/assets/lead-form.js" defer></script>
 <script src="/assets/region.js" defer></script>
-<script src="/assets/chat.js"></script>
 </body>
 </html>
