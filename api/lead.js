@@ -176,7 +176,7 @@ export default async function handler(req, res) {
     tasks.push(sendEmail({ to: fields.email, subject: 'Thanks — we have your details', html: customerHtml, replyTo: LEAD_TO }));
   }
 
-  await Promise.all(tasks);
+  const _debugResults = await Promise.all(tasks);
 
-  return res.status(200).json({ ok: true, id: lead.id });
+  return res.status(200).json({ ok: true, id: lead.id, _debug: _debugResults });
 }
