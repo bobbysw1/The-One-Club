@@ -54,6 +54,14 @@
     root.querySelectorAll('[data-cairns-html]').forEach(function (el) {
       el.innerHTML = el.getAttribute('data-cairns-html');
     });
+    // Region-specific photography, e.g. the before/after comparison shots
+    // on shared pages like /how-it-works/, swap to real Cairns/FNQ images
+    // rather than showing Gold Coast properties to a Cairns visitor.
+    root.querySelectorAll('[data-cairns-src]').forEach(function (el) {
+      el.setAttribute('src', el.getAttribute('data-cairns-src'));
+      if (el.hasAttribute('data-cairns-srcset')) el.setAttribute('srcset', el.getAttribute('data-cairns-srcset'));
+      if (el.hasAttribute('data-cairns-alt')) el.setAttribute('alt', el.getAttribute('data-cairns-alt'));
+    });
   }
 
   function walk(root) {
