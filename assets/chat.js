@@ -41,18 +41,36 @@
   }
 
   window.askAI = function(userMsg){
+    var isMobile = window.innerWidth < 768;
     return fetch(window.CHAT_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         message: userMsg.slice(0, 500),
         history: window.CHAT_HISTORY.slice(-8),
-        region: /cairns/i.test(location.pathname) ? 'cairns' : 'gc'
+        region: /cairns/i.test(location.pathname) ? 'cairns' : 'gc',
+        isMobile: isMobile
       })
     })
     .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function(d){ return (d.reply || _deflectMsg()).trim(); })
-    .catch(function(){ return _deflectMsg(); });
+    .then(function(d){
+      return {
+        reply: (d.reply || _deflectMsg()).trim(),
+        quickReplies: d.quickReplies || [],
+        suggestLeadForm: d.suggestLeadForm || false,
+        leadType: d.leadType || null,
+        escalated: d.escalated || false,
+        phoneCta: d.phoneCta || null,
+        requiresAgent: d.requiresAgent || false
+      };
+    })
+    .catch(function(){
+      return {
+        reply: _deflectMsg(),
+        quickReplies: [],
+        suggestLeadForm: false
+      };
+    });
   };
 
   function _typingDots(){
@@ -101,10 +119,41 @@
       return;
     }
     // 3. Mistral AI via backend.
-    window.askAI(msg).then(function(reply){
-      window.CHAT_HISTORY.push({ role: 'assistant', content: reply });
+    window.askAI(msg).then(function(resp){
+      if (!resp || !resp.reply) {
+        var ti = document.getElementById('typing-indicator'); if(ti) ti.remove();
+        _addMessage('Something went wrong. Please try again.', 'bot');
+        return;
+      }
+      window.CHAT_HISTORY.push({ role: 'assistant', content: resp.reply });
       var ti = document.getElementById('typing-indicator'); if(ti) ti.remove();
-      _addMessage(reply, 'bot');
+      _addMessage(resp.reply, 'bot');
+
+      // Show quick replies if available
+      if (resp.quickReplies && resp.quickReplies.length > 0) {
+        setTimeout(function(){ _showQuickReplies(resp.quickReplies); }, 800);
+      }
+
+      // Show lead form prompt if buyer/seller intent detected
+      if (resp.suggestLeadForm && resp.leadType) {
+        setTimeout(function(){
+          var prompt = resp.leadType === 'seller'
+            ? 'Ready for a free valuation? Leave your details and I\'ll send you a realistic price range.'
+            : 'Want to know when matching properties come on the market? Register your buyer profile.';
+          _addMessage(prompt, 'bot');
+          _showLeadForm(resp.leadType);
+        }, 1200);
+      }
+
+      // Show phone CTA for mobile
+      if (resp.phoneCta) {
+        setTimeout(function(){
+          var phoneMsg = document.createElement('div');
+          phoneMsg.style.cssText = 'background:rgba(var(--gold-rgb),.1);border-radius:8px;padding:12px;margin:12px 0;text-align:center;font-size:13px';
+          phoneMsg.innerHTML = '<strong>' + resp.phoneCta + '</strong>';
+          document.getElementById('chat-messages').appendChild(phoneMsg);
+        }, 1600);
+      }
     });
   };
 
@@ -112,4 +161,46 @@
     var input = document.getElementById('chat-input');
     if (input) { input.value = text; window.sendChat(); }
   };
+
+  function _showQuickReplies(replies){
+    if (!replies || replies.length === 0) return;
+    var container = document.getElementById('chat-messages');
+    if (!container) return;
+    var quickDiv = document.createElement('div');
+    quickDiv.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;padding:0 12px';
+    replies.slice(0, 3).forEach(function(text){
+      var btn = document.createElement('button');
+      btn.style.cssText = 'background:rgba(var(--fg-rgb),.08);border:1px solid rgba(var(--fg-rgb),.2);border-radius:6px;padding:6px 12px;font-size:12px;cursor:pointer;transition:all.2s';
+      btn.textContent = text;
+      btn.onmouseover = function(){ this.style.background = 'rgba(var(--fg-rgb),.12)'; };
+      btn.onmouseout = function(){ this.style.background = 'rgba(var(--fg-rgb),.08)'; };
+      btn.onclick = function(){ window.sendQuick(text); };
+      quickDiv.appendChild(btn);
+    });
+    container.appendChild(quickDiv);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  function _showLeadForm(type){
+    var container = document.getElementById('chat-messages');
+    if (!container) return;
+    var form = document.createElement('form');
+    form.style.cssText = 'background:rgba(var(--gold-rgb),.05);border:1px solid rgba(var(--gold-rgb),.2);border-radius:8px;padding:12px;margin:8px 0 0;font-size:13px';
+    form.innerHTML = '<input type="text" placeholder="First name" style="width:100%;padding:6px;margin-bottom:6px;border:1px solid rgba(var(--fg-rgb),.2);border-radius:4px;font-size:12px" required>'
+      + '<input type="email" placeholder="Email" style="width:100%;padding:6px;margin-bottom:6px;border:1px solid rgba(var(--fg-rgb),.2);border-radius:4px;font-size:12px" required>'
+      + '<input type="text" placeholder="Property address" style="width:100%;padding:6px;margin-bottom:8px;border:1px solid rgba(var(--fg-rgb),.2);border-radius:4px;font-size:12px" required>'
+      + '<button type="submit" style="width:100%;background:var(--gold);color:#000;border:none;border-radius:4px;padding:8px;font-weight:600;cursor:pointer;font-size:12px">Register</button>';
+    form.onsubmit = function(e){
+      e.preventDefault();
+      var inputs = form.querySelectorAll('input');
+      var data = { firstName: inputs[0].value, email: inputs[1].value, address: inputs[2].value, source: type === 'seller' ? 'valuation' : 'buyer' };
+      fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ source: data.source, fields: data, page: location.pathname })
+      }).then(function(){ form.innerHTML = '<div style="text-align:center;color:var(--gold);font-weight:600">Thanks! We\'ll be in touch within 24 hours.</div>'; });
+    };
+    container.appendChild(form);
+    container.scrollTop = container.scrollHeight;
+  }
 })();

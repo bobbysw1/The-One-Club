@@ -1,0 +1,148 @@
+{
+  "faqs": {
+    "transfer-duty": {
+      "keywords": ["transfer duty", "duty", "tax on purchase", "stamp duty"],
+      "response": "In QLD, transfer duty is calculated based on the property's purchase price and your circumstances. As a first-home buyer, you may get exemptions or concessions. For an investment property or subsequent purchase, expect 3–6% of the purchase price. Use the QLD revenue office calculator at qro.qld.gov.au for exact figures based on your price."
+    },
+    "conveyancing": {
+      "keywords": ["conveyancing", "conveyancer", "settlement", "closing costs", "legal fees"],
+      "response": "Conveyancing is the legal transfer of ownership. Your conveyancer (solicitor) prepares contracts, conducts searches, and arranges settlement. Costs typically range $600–$1,500 depending on property value and complexity. Settlement happens 5–10 business days after contracts are signed. We coordinate this end-to-end."
+    },
+    "inspection": {
+      "keywords": ["inspection", "open home", "view", "inspecting"],
+      "response": "Inspections are open typically Sat–Sun, 10am–4pm. We manage online booking on the listing so you can choose your time. Bring a building inspector if you're serious about an offer. Most importantly: check the roof, plumbing, electrics, and whether the layout works for your life. We're happy to discuss what you find."
+    },
+    "body-corp": {
+      "keywords": ["body corp", "body corporate", "strata", "unit fees", "apartment fees", "condo fees"],
+      "response": "Body corporate (or strata) fees cover shared areas: pool, gardens, common areas, insurance, management. Expect $80–$300/month depending on the complex. These are mandatory for apartments and townhouses. Check the budget and minutes at the property to understand what's covered and if fees are rising."
+    },
+    "pre-approval": {
+      "keywords": ["pre-approval", "mortgage", "loan approval", "borrowing capacity", "finance"],
+      "response": "Pre-approval means a bank agrees in principle to lend you a certain amount based on your income, credit, and savings. It's free and usually takes 1–2 days. Get pre-approved before house-hunting so you know your budget and can make quick offers. Most banks do this online."
+    },
+    "first-home-buyer": {
+      "keywords": ["first home", "first-time buyer", "first home concession", "fhog"],
+      "response": "First-home buyer incentives in QLD include: transfer duty exemption on purchases under $500k, possible first-home owner grant (varies by state), and first-home loan deposit scheme (putting down 5% instead of 20%). Talk to your bank about which you qualify for—there are real savings to be had."
+    },
+    "days-on-market": {
+      "keywords": ["days on market", "how long to sell", "selling timeline", "average time"],
+      "response": "On the Gold Coast, well-presented homes typically sell in 30–60 days. In slow pockets, 90+ days. Cairns wet season can extend this. Timing, price, presentation, and market conditions all matter. We market aggressively from day one so you're not sitting."
+    },
+    "1-percent-commission": {
+      "keywords": ["1 percent", "commission", "how much", "fees", "cost"],
+      "response": "We charge a flat 1% commission on the sale price—included in that is professional photography, 3D walkthrough, floor plans, digital marketing, signboard, and settlement coordination. The only extra is the REA/Domain portal listing, which you choose. No hidden fees."
+    },
+    "rental-yield": {
+      "keywords": ["rental yield", "investment", "rent", "return", "investor"],
+      "response": "Rental yield is annual rent ÷ purchase price (gross yield). On the Gold Coast, expect 4–6% gross yield depending on suburb and property type. Net yield (after expenses) is typically 2–4% after rates, insurance, maintenance, vacancy. Investment properties are popular; we help investors find high-yield suburbs."
+    }
+  },
+  "suburbs": {
+    "burleigh-heads": {
+      "keywords": ["burleigh", "burleigh heads"],
+      "median_price": "$2.2M",
+      "schools": "Burleigh Heads State School (primary), Elanora State High School (secondary)",
+      "vibe": "Point break, beachfront dining, coastal-village feel.",
+      "buyers": "Young families, retirees, surfers",
+      "trend": "Stable demand, strong rental market"
+    },
+    "palm-beach": {
+      "keywords": ["palm beach"],
+      "median_price": "$1.9M",
+      "schools": "Palm Beach State School, Tallebudgera Valley State School nearby",
+      "vibe": "Boutique cafés, walk-everywhere, fastest appreciating strip.",
+      "buyers": "Professionals, small families, lifestyle buyers",
+      "trend": "High demand, limited stock, prices rising"
+    },
+    "surfers-paradise": {
+      "keywords": ["surfers", "surfers paradise"],
+      "median_price": "$1.3M",
+      "schools": "Surfers Paradise State School, Southport State High School",
+      "vibe": "High-rise living with hinterland views, fast-moving stock.",
+      "buyers": "Investors, first-home buyers, young professionals",
+      "trend": "Strong investor demand, high turnover"
+    },
+    "broadbeach": {
+      "keywords": ["broadbeach"],
+      "median_price": "$1.8M",
+      "schools": "Broadbeach State School, Southport State High School",
+      "vibe": "Pacific Fair, light rail, beachfront towers.",
+      "buyers": "Families, retirees, investor mix",
+      "trend": "Stable, good schools attracting families"
+    },
+    "hope-island": {
+      "keywords": ["hope island"],
+      "median_price": "$1.9M",
+      "schools": "Hope Island State School, Benowa State High School",
+      "vibe": "Golf-and-waterways precinct, lock-and-leave lifestyle.",
+      "buyers": "Retirees, golf-lovers, holiday home investors",
+      "trend": "Steady demand, lifestyle appeal"
+    },
+    "coolangatta": {
+      "keywords": ["coolangatta"],
+      "median_price": "$1.4M",
+      "schools": "Coolangatta State School, Tweed Heads High School (NSW)",
+      "vibe": "QLD-NSW border, airport-side, Rainbow Bay and beyond.",
+      "buyers": "Families, first-home buyers, border commuters",
+      "trend": "Affordable entry point, airport proximity popular"
+    },
+    "mudgeeraba": {
+      "keywords": ["mudgeeraba"],
+      "median_price": "$1.3M",
+      "schools": "Mudgeeraba State School (primary), Southport State High School (secondary)",
+      "vibe": "Acreage, hinterland schools, motorway to the strip.",
+      "buyers": "Family-focused, acreage seekers, school-district driven",
+      "trend": "Strong family demand, growing"
+    },
+    "palm-cove-cairns": {
+      "keywords": ["palm cove"],
+      "median_price": "$850k–$1.2M",
+      "schools": "Northern Beaches Catholic Primary, Trinity Anglican Marlin Coast",
+      "vibe": "Beachfront, reef access, tropical feel.",
+      "buyers": "Retirees, holiday investors, reef-lovers",
+      "trend": "Tourism-driven, steady appreciation"
+    },
+    "trinity-beach-cairns": {
+      "keywords": ["trinity beach"],
+      "median_price": "$900k–$1.3M",
+      "schools": "Trinity Beach State School, Cairns High School",
+      "vibe": "Calm waters, family-friendly beach.",
+      "buyers": "Families, investors, retirees",
+      "trend": "Strong family market, year-round demand"
+    }
+  },
+  "buying-tips": {
+    "inspection-checklist": {
+      "keywords": ["what to check", "inspection tips", "buying advice", "what to look for"],
+      "response": "Key things to inspect: roof condition (age, leaks), plumbing (water pressure, hot water system age), electrics (safety switches, outdated wiring), timber (termites, rot), layout (does it work for your life?), outdoor areas (drainage, retaining walls). Get a building inspector for anything serious. Trust your gut on the vibe."
+    },
+    "offer-strategy": {
+      "keywords": ["making an offer", "negotiate", "price", "offer strategy"],
+      "response": "Research comparable sales (we provide these). Make your first offer 5–10% below asking if market is soft, or at/above asking in a hot market. Be prepared to negotiate. Include conditions (inspection, finance) but keep them reasonable. Speed matters—in competitive markets, the fastest offer often wins even if it's not the highest."
+    },
+    "timing": {
+      "keywords": ["best time to buy", "market timing", "when to buy"],
+      "response": "Winter (May–Aug) has lighter competition and vendor motivation. Spring/summer (Sept–Feb) is busier but also when serious buyers appear. Avoid end-of-financial-year rushes. Honestly, the best time is when you find the right property at the right price—don't wait for a perfect market."
+    }
+  },
+  "selling-tips": {
+    "pricing-strategy": {
+      "keywords": ["pricing", "price my home", "valuation", "what is my home worth"],
+      "response": "Pricing is critical—too high and you sit on market, too low and you leave money on the table. We use comparable sales data, market trends, and property-specific factors (condition, location, view). Our valuation is free and binding—we stand behind our number."
+    },
+    "presentation": {
+      "keywords": ["staging", "presentation", "prepare for sale", "curb appeal"],
+      "response": "First impressions matter. De-clutter, deep clean, fix obvious issues (paint, garden), neutralise strong smells/colours. Professional photography and staging lift prices 5–15%. We handle all of this—you don't need to spend money on staging, we do the visual work."
+    },
+    "marketing": {
+      "keywords": ["how do you market", "advertising", "exposure"],
+      "response": "We list on REA, Domain, Facebook, Google Ads. We use professional AI-enhanced photography, 3D walkthrough, floor plan, and targeted ads to qualified local buyers. We also hold open inspections Sat–Sun so buyers can self-select. The combination works."
+    }
+  },
+  "market-insights": {
+    "current-market": {
+      "keywords": ["market conditions", "is it a good time to sell", "market update"],
+      "response": "2026 Gold Coast market: demand remains strong for well-presented homes in popular suburbs (Burleigh, Palm Beach, Broadbeach). Buyer activity is steady year-round. Interest rates are stabilising. Median time-on-market is 30–60 days for properties priced right. Now is still a good time to sell if your home is presentation-ready."
+    }
+  }
+}

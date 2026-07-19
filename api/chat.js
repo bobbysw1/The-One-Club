@@ -1,5 +1,10 @@
-// Vercel serverless function, proxy for Mistral + Tavily
+// Vercel serverless function, proxy for Mistral + Tavily + local KB
 // Browser calls /api/chat; this function runs server-side so API keys are never exposed.
+// Features: knowledge base, lead capture detection, quick reply suggestions, escalation routing
+
+const CHATBOT_KB = {
+  "faqs": {"transfer-duty":{"keywords":["transfer duty","duty","tax on purchase","stamp duty"],"response":"In QLD, transfer duty is calculated based on the property's purchase price and your circumstances. As a first-home buyer, you may get exemptions or concessions. For an investment property or subsequent purchase, expect 3–6% of the purchase price. Use the QLD revenue office calculator at qro.qld.gov.au for exact figures based on your price."},"conveyancing":{"keywords":["conveyancing","conveyancer","settlement","closing costs","legal fees"],"response":"Conveyancing is the legal transfer of ownership. Your conveyancer (solicitor) prepares contracts, conducts searches, and arranges settlement. Costs typically range $600–$1,500 depending on property value and complexity. Settlement happens 5–10 business days after contracts are signed. We coordinate this end-to-end."},"inspection":{"keywords":["inspection","open home","view","inspecting"],"response":"Inspections are open typically Sat–Sun, 10am–4pm. We manage online booking on the listing so you can choose your time. Bring a building inspector if you're serious about an offer. Most importantly: check the roof, plumbing, electrics, and whether the layout works for your life. We're happy to discuss what you find."},"body-corp":{"keywords":["body corp","body corporate","strata","unit fees","apartment fees","condo fees"],"response":"Body corporate (or strata) fees cover shared areas: pool, gardens, common areas, insurance, management. Expect $80–$300/month depending on the complex. These are mandatory for apartments and townhouses. Check the budget and minutes at the property to understand what's covered and if fees are rising."},"pre-approval":{"keywords":["pre-approval","mortgage","loan approval","borrowing capacity","finance"],"response":"Pre-approval means a bank agrees in principle to lend you a certain amount based on your income, credit, and savings. It's free and usually takes 1–2 days. Get pre-approved before house-hunting so you know your budget and can make quick offers. Most banks do this online."},"first-home-buyer":{"keywords":["first home","first-time buyer","first home concession","fhog"],"response":"First-home buyer incentives in QLD include: transfer duty exemption on purchases under $500k, possible first-home owner grant (varies by state), and first-home loan deposit scheme (putting down 5% instead of 20%). Talk to your bank about which you qualify for—there are real savings to be had."},"1-percent-commission":{"keywords":["1 percent","commission","how much","fees","cost"],"response":"We charge a flat 1% commission on the sale price—included in that is professional photography, 3D walkthrough, floor plans, digital marketing, signboard, and settlement coordination. The only extra is the REA/Domain portal listing, which you choose. No hidden fees."}}
+};
 
 const CHAT_SYSTEM_GC = `You are the AI assistant for The One Club, a Gold Coast real estate agency charging 1% commission. The lead agent is Bobby, 10+ years experience across London and the Gold Coast. Everything is included in the 1%: professional AI-enhanced photography, floor plans, interactive 3D walkthrough (captured in-house using PlayCanvas SuperSplat technology), digital marketing on Meta and Google, signboard, and settlement coordination. The only extra is the portal listing on REA and Domain (seller chooses Standard, Feature or Premiere level).
 
@@ -21,14 +26,67 @@ For anything unrelated to property: reply with exactly, That sits outside what I
 
 Keep all answers under 150 words. Plain English. Never invent specific listing addresses, prices, or sale results.`;
 
+function getQuickReplies(message, region) {
+  const msg = message.toLowerCase();
+  const isCairns = region === 'cairns';
+
+  // Suggest next steps based on conversation
+  if (msg.includes('sell') || msg.includes('listing') || msg.includes('market') || msg.includes('value')) {
+    return ['Get a free valuation', 'How does 1% work?', 'See current listings'];
+  }
+  if (msg.includes('buy') || msg.includes('purchase') || msg.includes('suburbs') || msg.includes('school')) {
+    return ['Browse listings', 'Compare suburbs', 'Schedule inspection'];
+  }
+  if (msg.includes('suburb') || msg.includes('palm') || msg.includes('burleigh') || msg.includes('surfers')) {
+    return ['Compare other suburbs', 'School zones?', 'Browse listings in this area'];
+  }
+  if (msg.includes('commission') || msg.includes('cost') || msg.includes('fee')) {
+    return ['What's included?', 'See listings', 'Get a valuation'];
+  }
+  // Default suggestions
+  return ['Get a free valuation', 'Browse listings', 'Ask another question'];
+}
+
+function detectLeadCapture(message, region) {
+  const msg = message.toLowerCase();
+
+  // Trigger lead form if they express buying/selling intent
+  const buyingIntent = /want to buy|looking to purchase|interested in|find.*home|price.*range/i.test(msg);
+  const sellingIntent = /want to sell|sell.*house|listing|value.*home|how much.*worth/i.test(msg);
+  const agentRequest = /talk to.*agent|speak.*bobby|contact.*agent|call.*agent/i.test(msg);
+
+  if (buyingIntent || sellingIntent || agentRequest) {
+    return {
+      shouldCapture: true,
+      type: sellingIntent ? 'seller' : buyingIntent ? 'buyer' : 'inquiry'
+    };
+  }
+  return { shouldCapture: false };
+}
+
+function detectEscalation(message) {
+  const msg = message.toLowerCase();
+
+  // Detect frustration or complexity requiring agent escalation
+  const frustrated = /this is ridiculous|waste.*time|frustrated|angry|help|urgent|emergency|asap/i.test(msg);
+  const complex = /legal|lawsuit|dispute|complicated|special circumstance|inheritance|divorce/i.test(msg);
+
+  if (frustrated || complex) {
+    return true;
+  }
+  return false;
+}
+
+function personalizForDevice(isMobile) {
+  // Mobile users get shorter responses, call-to-action buttons
+  return isMobile ? { maxTokens: 200, includePhone: true } : { maxTokens: 320, includePhone: false };
+}
+
 export default async function handler(req, res) {
-  // Only accept POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // Both keys must be set as Vercel environment variables. Never hardcode a
-  // real value here, this file is committed to a public repo.
   const MISTRAL_KEY = process.env.MISTRAL_API_KEY || '';
   const TAVILY_KEY  = process.env.TAVILY_API_KEY  || '';
 
@@ -36,7 +94,7 @@ export default async function handler(req, res) {
     return res.status(503).json({ error: 'AI service not configured. Set MISTRAL_API_KEY in Vercel env vars.' });
   }
 
-  const { message, history = [], region } = req.body || {};
+  const { message, history = [], region, isMobile = false } = req.body || {};
 
   if (!message || typeof message !== 'string' || message.trim().length < 2) {
     return res.status(400).json({ error: 'message is required' });
@@ -45,6 +103,21 @@ export default async function handler(req, res) {
   const isCairns = region === 'cairns';
   const CHAT_SYSTEM = isCairns ? CHAT_SYSTEM_CAIRNS : CHAT_SYSTEM_GC;
   const regionQuery = isCairns ? ' Cairns Port Douglas real estate 2026' : ' Gold Coast real estate 2026';
+
+  // ── ESCALATION DETECTION ──────────────────────────────────────
+  const shouldEscalate = detectEscalation(message);
+  if (shouldEscalate) {
+    return res.status(200).json({
+      reply: "That sounds complex or urgent. Let me connect you with Bobby directly. Reply with your phone number and best time to call, and he'll reach out within an hour.",
+      escalated: true,
+      requiresAgent: true,
+      quickReplies: ['Call me now', 'Email instead', 'Chat later']
+    });
+  }
+
+  // ── LEAD CAPTURE DETECTION ──────────────────────────────────────
+  const leadCapture = detectLeadCapture(message, region);
+  const deviceConfig = personalizForDevice(isMobile);
 
   // ── TAVILY, optional web grounding ──────────────────────
   let contextBlock = '';
@@ -87,7 +160,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         model: 'mistral-small-latest',
         messages,
-        max_tokens: 320,
+        max_tokens: deviceConfig.maxTokens,
         temperature: 0.5
       })
     });
@@ -99,10 +172,27 @@ export default async function handler(req, res) {
     }
 
     const data = await mistralRes.json();
-    const reply = data.choices?.[0]?.message?.content?.trim()
+    let reply = data.choices?.[0]?.message?.content?.trim()
       || 'Something went wrong, please try again.';
 
-    return res.status(200).json({ reply });
+    // ── BUILD RESPONSE ──────────────────────────────────────────────
+    const quickReplies = getQuickReplies(message, region);
+    const response = {
+      reply,
+      quickReplies,
+      suggestLeadForm: leadCapture.shouldCapture,
+      leadType: leadCapture.type || null
+    };
+
+    // Add phone CTA for mobile users
+    if (isMobile && deviceConfig.includePhone) {
+      response.phoneCta = 'Call Bobby: +61 404 774 272';
+    }
+
+    // Analytics event
+    console.log(`[chat] ${isCairns ? 'cairns' : 'gc'} | ${leadCapture.shouldCapture ? 'LEAD' : 'info'} | msg_len: ${message.length}`);
+
+    return res.status(200).json(response);
   } catch (e) {
     console.error('[chat] error', e);
     return res.status(500).json({ error: 'Server error' });
