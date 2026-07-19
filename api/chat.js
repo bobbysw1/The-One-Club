@@ -124,8 +124,9 @@ async function sendEscalationEmail({ history, message, region, page }) {
       })
     });
     if (!res.ok) {
-      console.error('[chat] escalation email failed', res.status, await res.text());
-      return { ok: false, status: res.status };
+      const errBody = await res.text();
+      console.error('[chat] escalation email failed', res.status, errBody);
+      return { ok: false, status: res.status, _debug: errBody };
     }
     return { ok: true };
   } catch (e) {
@@ -171,7 +172,8 @@ export default async function handler(req, res) {
         : "This sounds like something Bobby should look at directly. The fastest way to reach him is to call or text +61 404 774 272, or leave your details on the Free Valuation form and he'll follow up.",
       escalated: true,
       requiresAgent: true,
-      quickReplies: ['Keep browsing', 'Ask something else']
+      quickReplies: ['Keep browsing', 'Ask something else'],
+      _debug: emailResult
     });
   }
 
