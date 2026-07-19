@@ -9,11 +9,13 @@
 //   RESEND_API_KEY   — email sending (leads still get recorded without it)
 //   GITHUB_TOKEN      — same fine-grained PAT used by api/admin.js
 //   LEAD_TO_EMAIL     — optional, defaults to bobby@theoneclub.com.au
-//   LEAD_FROM_EMAIL   — optional, defaults to leads@theoneclub.com.au
+//   LEAD_FROM_EMAIL   — optional, defaults to bobby@theoneclub.com.au (a
+//                        real mailbox — leads@ doesn't exist, so replies
+//                        to it would bounce)
 
 const RESEND_KEY  = process.env.RESEND_API_KEY || '';
 const LEAD_TO     = process.env.LEAD_TO_EMAIL   || 'bobby@theoneclub.com.au';
-const LEAD_FROM    = process.env.LEAD_FROM_EMAIL || 'leads@theoneclub.com.au';
+const LEAD_FROM    = process.env.LEAD_FROM_EMAIL || 'bobby@theoneclub.com.au';
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN    || '';
 
 const GITHUB_OWNER  = 'bobbysw1';
@@ -43,6 +45,22 @@ function escapeHTML(s) {
   return String(s == null ? '' : s).replace(/[&<>"']/g, c => (
     { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
   ));
+}
+
+// "firstName" → "First Name" for human-readable table labels in emails.
+function formatLabel(k) {
+  return k.replace(/([A-Z])/g, ' $1').replace(/^./, s => s.toUpperCase()).trim();
+}
+
+function detailRows(fields) {
+  return Object.entries(fields)
+    .filter(([k]) => k !== 'hp_field')
+    .map(([k, v]) => `
+      <tr>
+        <td style="padding:11px 0;border-bottom:1px solid rgba(26,38,32,.08);font-family:${BRAND.sans};font-size:10.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:${BRAND.muted};width:120px;vertical-align:top">${escapeHTML(formatLabel(k))}</td>
+        <td style="padding:11px 0;border-bottom:1px solid rgba(26,38,32,.08);font-family:${BRAND.sans};font-size:15px;color:${BRAND.greenDark};font-weight:600;vertical-align:top">${escapeHTML(v)}</td>
+      </tr>`)
+    .join('');
 }
 
 // Brand shell for outbound emails — deep green + gold, table-based layout
@@ -202,14 +220,7 @@ export default async function handler(req, res) {
     dateStyle: 'medium', timeStyle: 'short', timeZone: 'Australia/Brisbane'
   });
 
-  const rows = Object.entries(fields)
-    .filter(([k]) => k !== 'hp_field')
-    .map(([k, v]) => `
-      <tr>
-        <td style="padding:11px 0;border-bottom:1px solid rgba(26,38,32,.08);font-family:${BRAND.sans};font-size:10.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:${BRAND.muted};width:120px;vertical-align:top">${escapeHTML(k)}</td>
-        <td style="padding:11px 0;border-bottom:1px solid rgba(26,38,32,.08);font-family:${BRAND.sans};font-size:15px;color:${BRAND.greenDark};font-weight:600;vertical-align:top">${escapeHTML(v)}</td>
-      </tr>`)
-    .join('');
+  const rows = detailRows(fields);
 
   const internalHtml = emailShell({
     badge: 'New Lead',
@@ -239,7 +250,9 @@ export default async function handler(req, res) {
       bodyHtml: `
         <p style="margin:0 0 16px;font-family:${BRAND.sans};font-size:15px;line-height:1.6;color:${BRAND.greenDark}">${greeting}</p>
         <p style="margin:0 0 16px;font-family:${BRAND.sans};font-size:15px;line-height:1.6;color:${BRAND.greenDark}">Thanks for reaching out to The One Club. We've received your ${escapeHTML(label.toLowerCase())} enquiry and Bobby will be in touch within 24 hours.</p>
-        <p style="margin:0;font-family:${BRAND.sans};font-size:15px;line-height:1.6;color:${BRAND.greenDark}">If anything is urgent, call or text any time.</p>`,
+        <p style="margin:0 0 24px;font-family:${BRAND.sans};font-size:15px;line-height:1.6;color:${BRAND.greenDark}">If anything is urgent, call or text any time.</p>
+        <div style="font-family:${BRAND.sans};font-size:10.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:${BRAND.muted};margin-bottom:6px">What you sent us</div>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse">${rows}</table>`,
       ctaHtml: `
         <a href="tel:+61404774272" style="display:inline-block;background-color:${BRAND.gold};color:${BRAND.greenDark};text-decoration:none;font-family:${BRAND.sans};font-size:14px;font-weight:700;padding:14px 26px;border-radius:8px">Call or text Bobby &rarr;</a>
         <div style="margin-top:14px;font-family:${BRAND.sans};font-size:12px;color:${BRAND.muted}">Or simply reply to this email.</div>`

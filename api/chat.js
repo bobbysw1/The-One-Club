@@ -152,7 +152,7 @@ async function sendEscalationEmail({ history, message, region, page }) {
     return { ok: false, simulated: true };
   }
   const LEAD_TO   = process.env.LEAD_TO_EMAIL   || 'bobby@theoneclub.com.au';
-  const LEAD_FROM = process.env.LEAD_FROM_EMAIL || 'leads@theoneclub.com.au';
+  const LEAD_FROM = process.env.LEAD_FROM_EMAIL || 'bobby@theoneclub.com.au';
   const isCairns  = region === 'cairns';
   const timestamp = new Date().toLocaleString('en-AU', {
     dateStyle: 'medium', timeStyle: 'short', timeZone: 'Australia/Brisbane'
