@@ -173,7 +173,7 @@ export default async function handler(req, res) {
         <p>If anything is urgent, call or text <a href="tel:+61404774272">+61 404 774 272</a> or reply to this email.</p>
         <p style="margin-top:24px;color:#666;font-size:13px">— The One Club<br/>1% commission · marketing included · ${isCairns ? 'Cairns &amp; Port Douglas' : 'Gold Coast'}</p>
       </div>`;
-    tasks.push(sendEmail({ to: fields.email, subject: 'Thanks — we have your details', html: customerHtml }));
+    tasks.push(sendEmail({ to: fields.email, subject: 'Thanks — we have your details', html: customerHtml, replyTo: LEAD_TO }));
   }
 
   await Promise.all(tasks);
