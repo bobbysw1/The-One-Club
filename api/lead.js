@@ -29,7 +29,8 @@ const LEAD_REQUIRED = {
   tenant:          ['firstName', 'lastName', 'email', 'phone'],
   buyer:           ['firstName', 'lastName', 'email', 'phone'],
   'auction-buyer': ['firstName', 'lastName', 'email', 'phone'],
-  'agent-bobby':   ['firstName', 'lastName', 'email']
+  'agent-bobby':   ['firstName', 'lastName', 'email'],
+  contact:         ['firstName', 'lastName', 'email', 'message']
 };
 
 const LEAD_LABEL = {
@@ -38,7 +39,8 @@ const LEAD_LABEL = {
   tenant:          'Tenant Register',
   buyer:           'Buyer Interest',
   'auction-buyer': 'Auction Buyer Interest',
-  'agent-bobby':   'Agent Enquiry'
+  'agent-bobby':   'Agent Enquiry',
+  contact:         'General Enquiry'
 };
 
 function escapeHTML(s) {
