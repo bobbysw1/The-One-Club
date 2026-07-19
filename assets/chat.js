@@ -162,6 +162,81 @@
     if (input) { input.value = text; window.sendChat(); }
   };
 
+  // ── SUBTLE DISCOVERY TACTICS ──────────────────────────────────
+  // Elegant, non-intrusive ways to surface the chatbot
+
+  // Exit-intent: show soft nudge when leaving
+  function _initExitIntent(){
+    var shown = false;
+    document.addEventListener('mouseleave', function(e){
+      if (shown || e.clientY > 100) return;
+      shown = true;
+      var nudge = document.createElement('div');
+      nudge.style.cssText = 'position:fixed;top:0;left:0;right:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);padding:20px;text-align:center;font-size:14px;color:#fff;z-index:9998;opacity:0;transition:opacity.3s';
+      nudge.innerHTML = '<span style="display:inline-block;max-width:400px">Before you go—our AI agent can answer property questions 24/7 <a href="#" onclick="document.querySelector(\'[id=chat-widget]\')?.click(); this.parentElement.parentElement.remove(); return false" style="color:var(--gold);text-decoration:none;font-weight:600">Ask now</a> or <a href="#" onclick="this.parentElement.parentElement.remove(); return false" style="color:#aaa;text-decoration:none">dismiss</a></span>';
+      document.body.appendChild(nudge);
+      setTimeout(function(){ nudge.style.opacity = '1'; }, 10);
+      setTimeout(function(){ nudge.remove(); shown = false; }, 6000);
+    });
+  }
+
+  // Scroll trigger: gentle hint after scrolling
+  function _initScrollHint(){
+    var hintShown = false;
+    var scrollPos = 0;
+    window.addEventListener('scroll', function(){
+      var newPos = window.scrollY;
+      if (newPos > scrollPos + 500 && !hintShown && newPos > 800){
+        hintShown = true;
+        var hint = document.createElement('div');
+        hint.style.cssText = 'position:fixed;bottom:80px;right:20px;background:rgba(var(--gold-rgb),.95);color:#000;padding:12px 16px;border-radius:6px;font-size:12px;z-index:9997;opacity:0;transform:translateY(20px);transition:all.3s;cursor:pointer;max-width:180px';
+        hint.innerHTML = '💬 <strong>Quick question?</strong> Ask our AI agent';
+        hint.onclick = function(){
+          document.getElementById('chat-widget')?.click?.();
+          this.remove();
+        };
+        document.body.appendChild(hint);
+        setTimeout(function(){ hint.style.opacity = '1'; hint.style.transform = 'translateY(0)'; }, 10);
+        setTimeout(function(){ hint.style.opacity = '0'; hint.style.transform = 'translateY(20px)'; }, 4000);
+        setTimeout(function(){ hint.remove(); }, 4300);
+      }
+      scrollPos = newPos;
+    });
+  }
+
+  // Blog/article inline: suggest chat after reading
+  function _initBlogInline(){
+    var article = document.querySelector('article, [role="article"], .blog-post, .post-content');
+    if (!article) return;
+    var footer = document.createElement('div');
+    footer.style.cssText = 'margin-top:40px;padding:24px;border-top:1px solid rgba(var(--fg-rgb),.1);text-align:center;font-size:13px;color:var(--muted)';
+    footer.innerHTML = '✨ Still have questions about real estate? <a href="#" onclick="document.getElementById(\'chat-widget\')?.click?.(); return false" style="color:var(--gold);text-decoration:none;font-weight:600">Ask our AI agent</a>';
+    article.parentNode.insertBefore(footer, article.nextSibling);
+  }
+
+  // Contextual in listings: suggest chat for property-specific Qs
+  function _initListingHint(){
+    var listing = document.querySelector('[data-listing], .property-detail, .listing-info');
+    if (!listing) return;
+    var hint = document.createElement('div');
+    hint.style.cssText = 'background:rgba(var(--gold-rgb),.05);border:1px solid rgba(var(--gold-rgb),.2);border-radius:8px;padding:12px 16px;margin:16px 0;font-size:12px';
+    hint.innerHTML = '💡 Questions about this area, schools, or market trends? <a href="#" onclick="document.getElementById(\'chat-widget\')?.click?.(); return false" style="color:var(--gold);text-decoration:none;font-weight:600">Ask the AI</a>';
+    listing.parentNode.insertBefore(hint, listing.nextSibling);
+  }
+
+  // Boot discovery features after page loads
+  function _initDiscovery(){
+    try {
+      _initExitIntent();
+      _initScrollHint();
+      if (document.querySelector('article, [role="article"]')) _initBlogInline();
+      if (document.querySelector('[data-listing], .property-detail')) _initListingHint();
+    } catch(e) {}
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', _initDiscovery);
+  else _initDiscovery();
+
   function _showQuickReplies(replies){
     if (!replies || replies.length === 0) return;
     var container = document.getElementById('chat-messages');
