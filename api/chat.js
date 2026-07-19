@@ -41,7 +41,7 @@ function getQuickReplies(message, region) {
     return ['Compare other suburbs', 'School zones?', 'Browse listings in this area'];
   }
   if (msg.includes('commission') || msg.includes('cost') || msg.includes('fee')) {
-    return ['What's included?', 'See listings', 'Get a valuation'];
+    return ["What's included?", 'See listings', 'Get a valuation'];
   }
   // Default suggestions
   return ['Get a free valuation', 'Browse listings', 'Ask another question'];
@@ -77,6 +77,63 @@ function detectEscalation(message) {
   return false;
 }
 
+function escapeHTML(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => (
+    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+  ));
+}
+
+// Emails the full chat transcript to Bobby when the bot escalates, so a
+// human sees the exact conversation instead of the visitor having to
+// re-explain themselves over the phone. Never blocks or throws — a failed
+// send just means no email, the chat reply still goes out either way.
+async function sendEscalationEmail({ history, message, region, page }) {
+  const RESEND_KEY = process.env.RESEND_API_KEY || '';
+  if (!RESEND_KEY) {
+    console.warn('[chat] RESEND_API_KEY not set, skipping escalation email');
+    return { ok: false, simulated: true };
+  }
+  const LEAD_TO   = process.env.LEAD_TO_EMAIL   || 'bobby@theoneclub.com.au';
+  const LEAD_FROM = process.env.LEAD_FROM_EMAIL || 'leads@theoneclub.com.au';
+  const isCairns  = region === 'cairns';
+
+  const rows = [...history.slice(-8), { role: 'user', content: message }]
+    .map(m => {
+      const who = m.role === 'user' ? 'Visitor' : 'AI';
+      return `<tr><td style="padding:6px 12px 6px 0;color:#666;font-size:12px;white-space:nowrap;vertical-align:top">${who}</td><td style="padding:6px 0;font-size:14px">${escapeHTML(m.content)}</td></tr>`;
+    })
+    .join('');
+
+  const html = `
+    <div style="font-family:-apple-system,BlinkMacSystemFont,sans-serif;max-width:600px">
+      <h2 style="margin:0 0 6px;font-size:18px">Chat escalation, needs a human</h2>
+      <p style="margin:0 0 16px;color:#666;font-size:13px">${new Date().toISOString()} · ${isCairns ? 'Cairns & Port Douglas' : 'Gold Coast'} site${page ? ' · ' + escapeHTML(page) : ''}</p>
+      <table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%">${rows}</table>
+      <p style="margin-top:20px;color:#666;font-size:12px">The visitor was told you'd be in touch, no phone number was collected, this is everything they typed.</p>
+    </div>`;
+
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${RESEND_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: LEAD_FROM,
+        to: [LEAD_TO],
+        subject: `Chat escalation — ${isCairns ? 'Cairns' : 'Gold Coast'} visitor needs you`,
+        html
+      })
+    });
+    if (!res.ok) {
+      console.error('[chat] escalation email failed', res.status, await res.text());
+      return { ok: false, status: res.status };
+    }
+    return { ok: true };
+  } catch (e) {
+    console.error('[chat] escalation email fetch failed', e.message);
+    return { ok: false, error: e.message };
+  }
+}
+
 function personalizForDevice(isMobile) {
   // Mobile users get shorter responses, call-to-action buttons
   return isMobile ? { maxTokens: 200, includePhone: true } : { maxTokens: 320, includePhone: false };
@@ -94,7 +151,7 @@ export default async function handler(req, res) {
     return res.status(503).json({ error: 'AI service not configured. Set MISTRAL_API_KEY in Vercel env vars.' });
   }
 
-  const { message, history = [], region, isMobile = false } = req.body || {};
+  const { message, history = [], region, isMobile = false, page } = req.body || {};
 
   if (!message || typeof message !== 'string' || message.trim().length < 2) {
     return res.status(400).json({ error: 'message is required' });
@@ -107,11 +164,14 @@ export default async function handler(req, res) {
   // ── ESCALATION DETECTION ──────────────────────────────────────
   const shouldEscalate = detectEscalation(message);
   if (shouldEscalate) {
+    const emailResult = await sendEscalationEmail({ history, message, region, page });
     return res.status(200).json({
-      reply: "That sounds complex or urgent. Let me connect you with Bobby directly. Reply with your phone number and best time to call, and he'll reach out within an hour.",
+      reply: emailResult.ok
+        ? "This sounds like something Bobby should look at directly. I've sent him the details of our chat, he'll be in touch shortly. If it's urgent, call or text +61 404 774 272."
+        : "This sounds like something Bobby should look at directly. The fastest way to reach him is to call or text +61 404 774 272, or leave your details on the Free Valuation form and he'll follow up.",
       escalated: true,
       requiresAgent: true,
-      quickReplies: ['Call me now', 'Email instead', 'Chat later']
+      quickReplies: ['Keep browsing', 'Ask something else']
     });
   }
 

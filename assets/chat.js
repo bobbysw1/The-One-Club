@@ -49,7 +49,8 @@
         message: userMsg.slice(0, 500),
         history: window.CHAT_HISTORY.slice(-8),
         region: /cairns/i.test(location.pathname) ? 'cairns' : 'gc',
-        isMobile: isMobile
+        isMobile: isMobile,
+        page: location.pathname
       })
     })
     .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
