@@ -127,7 +127,7 @@
     count++;
     clearTimeout(timer);
     timer = setTimeout(function () {
-      window.location.href = count >= 5 ? '/admin/' : '/';
+      window.location.href = count >= 5 ? '/admin/' : (logo.getAttribute('href') || '/');
       count = 0;
     }, 500);
   });
