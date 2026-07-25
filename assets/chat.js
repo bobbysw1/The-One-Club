@@ -208,13 +208,36 @@
   }
 
   // Contextual in listings: suggest chat for property-specific Qs
+  window.askAboutProperty = function(addrText) {
+    var bubble = document.getElementById('chat-bubble');
+    var panel = document.getElementById('chat-panel');
+    if (bubble && panel && !panel.classList.contains('active')) {
+      bubble.click();
+    }
+    var prompt = addrText ? 'Tell me about ' + addrText + ', school catchments, flight paths, and commute times' : 'Tell me about this address, school catchments and flight paths';
+    var input = document.getElementById('chat-input');
+    if (input) {
+      input.value = prompt;
+      window.sendChat();
+    }
+  };
+
   function _initListingHint(){
-    var listing = document.querySelector('[data-listing], .property-detail, .listing-info');
-    if (!listing) return;
-    var hint = document.createElement('div');
-    hint.style.cssText = 'background:rgba(var(--gold-rgb),.05);border:1px solid rgba(var(--gold-rgb),.2);border-radius:8px;padding:12px 16px;margin:16px 0;font-size:12px';
-    hint.innerHTML = '💡 Questions about this area, schools, or market trends? <a href="#" onclick="document.getElementById(\'chat-widget\')?.click?.(); return false" style="color:var(--gold);text-decoration:none;font-weight:600">Ask the AI</a>';
-    listing.parentNode.insertBefore(hint, listing.nextSibling);
+    var listings = document.querySelectorAll('.listing-card, [data-listing], .property-detail, .listing-info');
+    if (!listings || listings.length === 0) return;
+
+    listings.forEach(function(card){
+      if (card.querySelector('.ai-listing-prompt')) return;
+      var addrEl = card.querySelector('.listing-address, .listing-suburb, h3, h2');
+      var addrText = addrEl ? addrEl.textContent.trim() : '';
+
+      var hint = document.createElement('div');
+      hint.className = 'ai-listing-prompt';
+      hint.style.cssText = 'background:rgba(var(--gold-rgb),.06);border:1px solid rgba(var(--gold-rgb),.2);border-radius:10px;padding:10px 14px;margin:12px 14px;font-size:12px;display:flex;align-items:center;justify-content:space-between;gap:8px';
+      hint.innerHTML = '<span>💡 <strong>Ask AI about this home:</strong> school zones, flight paths &amp; commutes</span> '
+        + '<button style="background:var(--gold);color:#000;border:none;border-radius:6px;padding:5px 10px;font-weight:600;cursor:pointer;font-size:11px;white-space:nowrap" onclick="event.stopPropagation(); window.askAboutProperty(\'' + addrText.replace(/'/g, "\\'") + '\')">Ask AI →</button>';
+      card.appendChild(hint);
+    });
   }
 
   // Boot discovery features after page loads
@@ -222,7 +245,7 @@
     try {
       _initScrollHint();
       if (document.querySelector('article, [role="article"]')) _initBlogInline();
-      if (document.querySelector('[data-listing], .property-detail')) _initListingHint();
+      _initListingHint();
     } catch(e) {}
   }
 
