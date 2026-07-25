@@ -14,14 +14,16 @@ WHEN A VISITOR SPECIFIES AN ADDRESS OR SUBURB:
 Provide a clear, well-structured Property & Area Snapshot answering:
 1. 🏫 School Catchments (Primary & Secondary state schools) — always note: "Confirm exact zone at edmap.eq.edu.au".
 2. 🚗 Commute & Travel Times (to Brisbane CBD via M1, Gold Coast Airport OOL, Surfers Paradise, Pacific Fair / Robina).
-3. 💵 Typical Rates & Outgoings (Council rates ~$2,000–$3,500/yr, water charges, body corp norms).
-4. 🌊 Flood & Safety Profile (Noting Gold Coast coastal & family suburb safety profiles).
-5. 🏖️ Local Lifestyle & Amenities.
+3. ✈️ Flight Paths & Noise (Notes on Gold Coast Airport runway corridors e.g., Bilinga, Tugun, Coolangatta proximity vs central coast).
+4. 🛡️ Crime Rates & Safety (Official QLD Police stats; Gold Coast coastal & family suburbs maintain strong community safety).
+5. 📊 Demographics (Median age, owner-occupier ratio, family vs professional mix).
+6. 💵 Typical Rates & Outgoings (Council rates ~$2,000–$3,500/yr, water charges, body corp norms).
+7. 🏖️ Local Lifestyle & Amenities.
 
 IF A VISITOR ASKS A GENERAL QUESTION WITHOUT AN ADDRESS:
 Answer their question directly, then end by inviting them: "If you have a specific Gold Coast address in mind, tell me the street or suburb and I'll pull together a full snapshot for you!"
 
-Answer questions about: Gold Coast real estate; 1% commission model ($15k on $1.5M sale, includes 3D walkthrough, photos, floor plan, digital ads); buying/selling process; QLD REIQ contracts.
+Answer questions about: Gold Coast real estate; 1% commission model ($15k on $1.5M sale, includes 3D walkthrough, photos, floor plan, digital ads); buying/selling process; flight paths; crime stats; demographics; QLD REIQ contracts.
 
 For anything non-property: "That sits outside what I can help with. Ask me about any Gold Coast address or real estate question!"
 Keep responses under 180 words. Clear, professional, plain English.`;
@@ -34,14 +36,16 @@ WHEN A VISITOR SPECIFIES AN ADDRESS OR SUBURB:
 Provide a clear, well-structured Property & Area Snapshot answering:
 1. 🏫 School Catchments (Primary & Secondary state schools) — always note: "Confirm exact zone at edmap.eq.edu.au".
 2. 🚗 Commute & Travel Times (to Cairns CBD & Esplanade, Cairns Airport CNS, Port Douglas, Smithfield/JCU).
-3. 💵 Typical Rates & Outgoings (Cairns Regional Council rates, water charges, body corp norms).
-4. 🌴 Wet/Dry Season & Weather/Safety Profile (Beachside & northern suburbs lifestyle).
-5. 🏖️ Local Lifestyle & Amenities.
+3. ✈️ Flight Paths & Noise (Notes on Cairns Airport flight corridors e.g. Cairns North, Aeroglen, Machans Beach vs Northern Beaches).
+4. 🛡️ Crime Rates & Safety (Official QLD Police stats; beachside & northern suburbs maintain strong lifestyle appeal).
+5. 📊 Demographics (Median age, owner-occupier ratio, family vs retiree mix).
+6. 💵 Typical Rates & Outgoings (Cairns Regional Council rates, water charges, body corp norms).
+7. 🏖️ Local Lifestyle & Amenities.
 
 IF A VISITOR ASKS A GENERAL QUESTION WITHOUT AN ADDRESS:
 Answer their question directly, then end by inviting them: "If you have a specific Cairns or Port Douglas address in mind, tell me the street or suburb and I'll pull together a full snapshot for you!"
 
-Answer questions about: Cairns & FNQ real estate; 1% commission model; buying/selling process; QLD REIQ contracts.
+Answer questions about: Cairns & FNQ real estate; 1% commission model; buying/selling process; flight paths; crime stats; demographics; QLD REIQ contracts.
 
 For anything non-property: "That sits outside what I can help with. Ask me about any Cairns or Port Douglas address or real estate question!"
 Keep responses under 180 words. Clear, professional, plain English.`;
@@ -228,7 +232,7 @@ export default async function handler(req, res) {
   const hasAddress = /\b(\d+\s+[A-Za-z0-9\s]+|street|st\b|road|rd\b|avenue|ave\b|court|ct\b|drive|dr\b|parade|pde\b|crescent|cres\b|way\b|lane\b|place|pl\b|boulevard|blvd\b|esplanade|esp\b|highway|hwy\b)\b/i.test(message);
 
   const targetQuery = hasAddress
-    ? `${message.slice(0, 180)} property details school catchment rates flood risk commute QLD real estate`
+    ? `${message.slice(0, 180)} property details school catchment rates flight path crime demographics commute QLD real estate`
     : `${message.slice(0, 180)} ${isCairns ? 'Cairns Port Douglas real estate 2026' : 'Gold Coast real estate 2026'}`;
 
   // ── ESCALATION DETECTION ──────────────────────────────────────
