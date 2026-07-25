@@ -416,6 +416,36 @@ def build_content(s: dict) -> str:
   </div>
 </section>
 
+<!-- COMMUTE & ACCESSIBILITY -->
+<section style="padding:20px 24px 0;max-width:1100px;margin:0 auto">
+  <div data-reveal style="background:rgba(var(--fg-rgb),.025);border:1px solid rgba(var(--fg-rgb),.08);border-radius:18px;padding:28px 32px">
+    <div class="page-label" style="color:var(--gold);margin-bottom:8px">Travel &amp; Connections</div>
+    <h3 class="serif" style="font-size:clamp(22px,2.8vw,32px);margin-bottom:20px;font-weight:400">Typical commute times from <em>{name}</em></h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+      <div style="background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Gold Coast Airport (OOL)</div>
+        <div style="font-size:22px;font-weight:500;font-family:'Fraunces',Georgia,serif;color:var(--fg)">~15–20 mins</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">via M1 / Highway</div>
+      </div>
+      <div style="background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Surfers Paradise CBD</div>
+        <div style="font-size:22px;font-weight:500;font-family:'Fraunces',Georgia,serif;color:var(--fg)">~12–18 mins</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">via Coastal Strip / G:link</div>
+      </div>
+      <div style="background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Brisbane CBD</div>
+        <div style="font-size:22px;font-weight:500;font-family:'Fraunces',Georgia,serif;color:var(--fg)">~55–65 mins</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">via M1 / Express Train</div>
+      </div>
+      <div style="background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Pacific Fair / Robina</div>
+        <div style="font-size:22px;font-weight:500;font-family:'Fraunces',Georgia,serif;color:var(--fg)">~8–12 mins</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">Shopping &amp; Dining Hub</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SUBURB PROFILE — UNIQUE CHARACTER -->
 <section style="padding:40px 24px 0;max-width:1100px;margin:0 auto">
   <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;align-items:start">
@@ -541,7 +571,7 @@ def build_content(s: dict) -> str:
 
 # Pattern to find existing suburb content block (from opening hero section to closing </section> before </div><footer>)
 START_RE = re.compile(
-    r'<section style="position:relative;width:100%;height:clamp\(460px,65vh,720px\).*',
+    r'<section style="padding:140px 24px 32px;max-width:1100px;margin:0 auto">.*',
     re.DOTALL,
 )
 END_RE = re.compile(r'</section>\s*</div>\s*<footer>', re.DOTALL)
