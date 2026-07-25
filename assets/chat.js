@@ -196,7 +196,7 @@
     if (!article) return;
     var footer = document.createElement('div');
     footer.style.cssText = 'margin-top:40px;padding:24px;border-top:1px solid rgba(var(--fg-rgb),.1);text-align:center;font-size:13px;color:var(--muted)';
-    footer.innerHTML = '✨ Still have questions about real estate? <a href="#" onclick="document.getElementById(\'chat-widget\')?.click?.(); return false" style="color:var(--gold);text-decoration:none;font-weight:600">Ask our AI agent</a>';
+    footer.innerHTML = 'Still have questions about real estate? <a href="#" onclick="document.getElementById(\'chat-widget\')?.click?.(); return false" style="color:var(--gold);text-decoration:none;font-weight:600">Ask our AI agent</a>';
     article.parentNode.insertBefore(footer, article.nextSibling);
   }
 

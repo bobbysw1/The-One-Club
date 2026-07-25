@@ -835,7 +835,7 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 .agent-card-foot .lic{font-size:10px;letter-spacing:.6px;margin-top:2px}
 
 /* UK sold-record cards on the Bobby detail page. */
-.sold-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:48px}
+.sold-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px}
 .sold-card{background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;transition:transform .35s var(--ease),border-color .35s var(--ease)}
 .sold-card:hover{transform:translateY(-3px);border-color:rgba(196,168,74,.32);box-shadow:0 16px 40px rgba(0,0,0,.35)}
 .sold-card-hero{aspect-ratio:3/2;background:#0a0e14;overflow:hidden}
