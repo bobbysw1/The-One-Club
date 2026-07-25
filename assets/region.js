@@ -62,6 +62,9 @@
       if (el.hasAttribute('data-cairns-srcset')) el.setAttribute('srcset', el.getAttribute('data-cairns-srcset'));
       if (el.hasAttribute('data-cairns-alt')) el.setAttribute('alt', el.getAttribute('data-cairns-alt'));
     });
+    if (typeof window.hydrateChips === 'function') {
+      root.querySelectorAll('fieldset[data-chip-multi]').forEach(window.hydrateChips);
+    }
   }
 
   function walk(root) {
