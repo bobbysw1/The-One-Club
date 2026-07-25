@@ -235,7 +235,7 @@
       <li><a href="/calculators/" data-page="calculators">Calculators</a></li>
       <li><a href="/agents/" data-page="agents">Agents</a></li>
       <li><a href="/after-sale/" data-page="after-sale">After the Sale</a></li>
-      <li><a href="/cairns/" data-page="cairns">Cairns</a></li>
+      
       <li><a href="/about/" data-page="about">About</a></li>
     </ul>
     <div class="nav-cta">
@@ -256,7 +256,7 @@
   <a href="/calculators/" onclick="toggleMenu()">Calculators</a>
   <a href="/agents/" onclick="toggleMenu()">Agents</a>
   <a href="/after-sale/" onclick="toggleMenu()">After the Sale</a>
-  <a href="/cairns/" onclick="toggleMenu()">Cairns</a>
+  
   <a href="/about/" onclick="toggleMenu()">About</a>
   <a href="mailto:bobby@theoneclub.com.au" onclick="toggleMenu()" style="opacity:.7">bobby@theoneclub.com.au</a>
   <a href="/#valuation" onclick="toggleMenu()" style="color:var(--gold);border-color:rgba(196,168,74,.2)">Free Valuation →</a>
@@ -267,7 +267,7 @@
 
 <!-- HERO, editorial, with video background -->
 <section class="ed-hero">
-  <video class="hero-video" autoplay muted loop playsinline preload="none" poster="/video/hero-gc-poster.jpg" aria-hidden="true">
+  <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/video/hero-gc-poster.jpg" aria-hidden="true">
     <source media="(max-width:720px)" src="/video/hero-gc-mobile.mp4" type="video/mp4"/>
     <source src="/video/hero-gc.hevc.mp4" type='video/mp4; codecs="hvc1"'/>
     <source src="/video/hero-gc.mp4" type="video/mp4"/>
@@ -513,12 +513,13 @@
     <!-- INCLUDED, SINGLE MODERN BLOCK -->
     <div data-reveal class="incl-block" style="max-width:960px;margin:0 auto;background:var(--surface-1);border:1px solid var(--surface-border);border-radius:24px;overflow:hidden">
       <div class="incl-block-head" style="padding:40px 48px 28px;border-bottom:1px solid rgba(var(--fg-rgb),.06)">
-        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap"
+>
           <div>
             <div style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px">What your 1% covers</div>
             <div style="font-size:clamp(24px,2.6vw,32px);font-weight:300;letter-spacing:-.5px;line-height:1.15">Every campaign asset.<br/><em style="color:var(--gold);font-style:italic;font-weight:400">One flat fee.</em></div>
           </div>
-          <div style="text-align:right">
+          <div style="text-align:left">
             <div style="font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:clamp(56px,7vw,84px);font-weight:300;color:var(--gold);letter-spacing:-3px;line-height:.9">1%</div>
             <div style="font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px">of final sale price</div>
           </div>
