@@ -207,9 +207,45 @@ function personalizForDevice(isMobile) {
   return isMobile ? { maxTokens: 250, includePhone: true } : { maxTokens: 400, includePhone: false };
 }
 
+// In-memory IP rate limiter map (resets when Vercel lambda re-boots)
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
+const MAX_REQUESTS_PER_WINDOW = 25; // 25 messages per 15 mins per IP
+const ipTracker = new Map();
+
+function isRateLimited(ip) {
+  const now = Date.now();
+  const record = ipTracker.get(ip);
+
+  if (!record) {
+    ipTracker.set(ip, { count: 1, startTime: now });
+    return false;
+  }
+
+  if (now - record.startTime > RATE_LIMIT_WINDOW_MS) {
+    ipTracker.set(ip, { count: 1, startTime: now });
+    return false;
+  }
+
+  record.count += 1;
+  if (record.count > MAX_REQUESTS_PER_WINDOW) {
+    return true;
+  }
+  return false;
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  // IP Rate Limiting Check
+  const clientIp = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || req.socket?.remoteAddress || 'unknown';
+  if (isRateLimited(clientIp)) {
+    return res.status(429).json({
+      reply: "You've sent quite a few messages! To keep our service fast for everyone, please wait a few minutes, or click 'Get a free valuation' below to talk to Bobby directly.",
+      quickReplies: ['Get a free valuation', 'Call Bobby directly'],
+      suggestLeadForm: true
+    });
   }
 
   const MISTRAL_KEY = process.env.MISTRAL_API_KEY || '';

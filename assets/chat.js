@@ -41,13 +41,25 @@
   }
 
   window.askAI = function(userMsg){
+    var sessionCount = parseInt(sessionStorage.getItem('toc_chat_count') || '0', 10) + 1;
+    sessionStorage.setItem('toc_chat_count', sessionCount.toString());
+
+    if (sessionCount > 15) {
+      return Promise.resolve({
+        reply: "You've asked some great questions! To get personalized advice or tailored property info, leave your details below and Bobby will reach out to you directly.",
+        quickReplies: ['Get a free valuation', 'Call Bobby'],
+        suggestLeadForm: true,
+        leadType: 'inquiry'
+      });
+    }
+
     var isMobile = window.innerWidth < 768;
     return fetch(window.CHAT_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        message: userMsg.slice(0, 500),
-        history: window.CHAT_HISTORY.slice(-8),
+        message: userMsg.slice(0, 350),
+        history: window.CHAT_HISTORY.slice(-6),
         region: /cairns/i.test(location.pathname) ? 'cairns' : 'gc',
         isMobile: isMobile,
         page: location.pathname
