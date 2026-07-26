@@ -17,7 +17,7 @@ SUBURBS: list[dict] = [
     {
         "slug": "bilinga",
         "name": "Bilinga",
-        "img": "/images/suburbs/bilinga.jpg",
+        "img": "/images/suburbs/bilinga.webp",
         "intro": "Bilinga is the quiet stretch between Tugun and Kirra — five surf-walk blocks, a working airport behind it, and one of the last genuinely affordable beach pockets in the southern Gold Coast.",
         "character": "Bilinga is unapologetically low-key. There's no shopping strip, no high-rise frontage, and most streets still hold a mix of original three-bedroom beach cottages, brick walk-ups and the occasional new architectural build. The pace is set by the surf at Bilinga Beach and the runway noise pattern of Gold Coast Airport — which keeps prices honest and locals loyal.",
         "buyers": "Owner-occupiers who want walk-to-sand without paying Palm Beach money. Surf-focused families, downsizers from Sydney and Melbourne chasing a permanent-resident lifestyle, and a steady flow of FIFO buyers who like being 90 seconds from the terminal.",
@@ -41,7 +41,7 @@ SUBURBS: list[dict] = [
     {
         "slug": "broadbeach",
         "name": "Broadbeach",
-        "img": "/images/suburbs/broadbeach.jpg",
+        "img": "/images/suburbs/broadbeach.webp",
         "intro": "Broadbeach is the high-energy heart of the central Gold Coast — beachfront towers, the light rail, Pacific Fair, The Star casino, and a dining scene that competes with the best of Brisbane.",
         "character": "Broadbeach trades in walkability. Towers face the surf, the dining strip on Victoria Avenue is genuinely good, the G:link light rail runs you north to Surfers or south to Pacific Fair without needing a car, and the precinct is busy seven nights a week. It feels urban in a way most of the Gold Coast deliberately isn't.",
         "buyers": "High-rise downsizers chasing single-level living with a view, investors targeting short-stay or executive rentals, professional couples who want walk-to-everything without owning a car, and a steady stream of cashed-up southerners buying their first Gold Coast pad.",
@@ -65,7 +65,7 @@ SUBURBS: list[dict] = [
     {
         "slug": "burleigh-heads",
         "name": "Burleigh Heads",
-        "img": "/images/suburbs/burleigh-heads.jpg",
+        "img": "/images/suburbs/burleigh-heads.webp",
         "intro": "Burleigh Heads is where the Gold Coast properly grew up. A world-class point break, a national park headland, James Street's dining strip, and a property market that's been the coast's most consistent performer for a decade.",
         "character": "Burleigh holds its village identity better than any other central Gold Coast suburb. James Street feels like a small Melbourne high street — independent cafés, wine bars, surf brands — and the headland walk from the Burleigh Hill down to Tallebudgera Creek is still the single best stretch of public coastline in South-East Queensland. That premium is fully baked into pricing.",
         "buyers": "Interstate executive families relocating from Sydney's Northern Beaches and Melbourne's bayside, surf-oriented professionals, downsizers from acreage further south wanting a low-maintenance beach lifestyle, and a small but active luxury market for North Burleigh and West Burleigh hilltop homes.",
@@ -89,7 +89,7 @@ SUBURBS: list[dict] = [
     {
         "slug": "coolangatta",
         "name": "Coolangatta",
-        "img": "/images/suburbs/coolangatta.jpg",
+        "img": "/images/suburbs/coolangatta.webp",
         "intro": "Coolangatta sits at the southern tip of the Gold Coast — the airport, the border with Tweed Heads, a beach at the end of every street, and a price point that still surprises people the first time they look.",
         "character": "Coolangatta is the Gold Coast's twin-town hub with Tweed Heads. Two states meet on Boundary Street, the airport hums in the background, and the lifestyle is unapologetically beach-oriented. The Strand and Marine Parade hold the trophy frontage; the back streets remain genuinely working-coast Australia.",
         "buyers": "Downsizers buying their last permanent home, retirees relocating from Sydney and Melbourne, FIFO workers using the airport, surf-focused families, and an active short-stay investment market driven by Gold Coast Airport arrivals.",
@@ -113,7 +113,7 @@ SUBURBS: list[dict] = [
     {
         "slug": "currumbin",
         "name": "Currumbin",
-        "img": "/images/suburbs/currumbin.jpg",
+        "img": "/images/suburbs/currumbin.webp",
         "intro": "Currumbin runs from the beach inland along Currumbin Creek and up into the hinterland-fringe valley. It's the family-beach answer to Burleigh — slightly more space, slightly less density, and an estuary that turns it into a permanent holiday in school holidays.",
         "character": "Currumbin has three distinct identities. Currumbin Beach (the eastern strip) is surf, sand and walkable cafés. Currumbin Waters is the canal and family pocket. Currumbin Valley climbs into the hinterland — acreage, rainforest, and one of the best swimming holes on the coast at Currumbin Rock Pools. They sell to very different buyers.",
         "buyers": "Young families looking for school catchments (Palm Beach-Currumbin SHS is a draw), surf-oriented professionals, downsizers from Sydney's North Shore, and an acreage market in the Valley pulling in lifestyle buyers from Brisbane and northern NSW.",
@@ -137,7 +137,7 @@ SUBURBS: list[dict] = [
     {
         "slug": "hope-island",
         "name": "Hope Island",
-        "img": "/images/suburbs/hope-island.jpg",
+        "img": "/images/suburbs/hope-island.webp",
         "intro": "Hope Island is the northern Gold Coast's resort-and-marina playground — golf, gated estates, deepwater canals, and a buyer demographic that skews older, wealthier, and overwhelmingly from southern states.",
         "character": "Hope Island is master-planned in a way most of the Gold Coast isn't. Three championship golf courses (Hope Island, Sanctuary Cove and The Glades are within a short drive), the marina precinct at Hope Harbour, gated communities with security, and the M1 north for a 50-minute Brisbane commute. The lifestyle is golf, boating, restaurants and grandkid visits.",
         "buyers": "Retirees and pre-retirees from Sydney and Melbourne, golf-oriented downsizers, executives commuting to Brisbane, boating families wanting deepwater access to the Broadwater, and a small but active luxury market in the gated estates (Cova, Sanctuary Cove fringe, Hope Island Resort).",
@@ -161,7 +161,7 @@ SUBURBS: list[dict] = [
     {
         "slug": "kirra",
         "name": "Kirra",
-        "img": "/images/suburbs/kirra.jpg",
+        "img": "/images/suburbs/kirra.webp",
         "intro": "Kirra is small, sharp and surf-defined — one of the most famous right-hand point breaks on the planet, a tight grid of beachfront streets, and a holiday-let market that has reshaped pricing over the past five years.",
         "character": "Kirra is essentially three streets wide. Marine Parade fronts the beach, Musgrave Street runs the parallel back-block, and the streets between hold a mix of 60s walk-up apartments, original cottages, and progressively newer rebuilds. The Kirra Surf Club anchors the social end; Coolangatta's airport behind keeps the price honest.",
         "buyers": "Surf-focused buyers (many of them returning from years of holiday visits), short-stay investors targeting the Bondi-of-the-north positioning, downsizers chasing apartment living with a view, and a quiet but active high-net-worth market for Marine Parade beachfront houses.",
@@ -185,7 +185,7 @@ SUBURBS: list[dict] = [
     {
         "slug": "mermaid-beach",
         "name": "Mermaid Beach",
-        "img": "/images/suburbs/mermaid-beach.jpg",
+        "img": "/images/suburbs/mermaid-beach.webp",
         "intro": "Mermaid Beach is home to Hedges Avenue — Millionaires' Row — and one of the most concentrated luxury beachfront markets in Australia. It's also one of the Gold Coast's most genuinely walkable family suburbs.",
         "character": "Mermaid Beach has two parallel lives. Hedges Avenue is institutional-grade Australian luxury real estate — the prestige beachfront strip from Nobby Beach to Broadbeach is one of the most expensive sqm in the country. One street back, the suburb returns to being a beach-village with surf clubs, original homes, walkable cafés and a strong primary school. Same postcode, very different markets.",
         "buyers": "Hedges Avenue trades to a tight buyer pool of high-net-worth families and developers. The non-beachfront market is owner-occupier driven — established Gold Coast families, professional couples upgrading from apartments, and downsizers from canal-front pockets nearby. Strong interstate interest at every price point.",
@@ -209,7 +209,7 @@ SUBURBS: list[dict] = [
     {
         "slug": "miami",
         "name": "Miami",
-        "img": "/images/suburbs/miami.jpg",
+        "img": "/images/suburbs/miami.webp",
         "intro": "Miami is the Gold Coast's quiet success story — original beach houses being progressively rebuilt, a growing dining and café scene (Marketta, Burleigh Pavilion-adjacent), and pricing that's caught up fast.",
         "character": "Miami sits between Nobby Beach and Burleigh Heads and has absorbed pricing pressure from both. It's still got the original Gold Coast beach-suburb DNA — small blocks, beach-walk streets, low-rise apartment stock — but the rebuild rate is accelerating. The Marketta night-market scene and the Pizzey Park sports precinct give it a real community anchor.",
         "buyers": "Families priced out of Burleigh Heads but unwilling to move further from the beach, young professional couples buying their first house, builders and architects targeting the renovator and rebuild market, and a steady short-stay investor segment around the beachfront strip.",
@@ -233,7 +233,7 @@ SUBURBS: list[dict] = [
     {
         "slug": "mudgeeraba",
         "name": "Mudgeeraba",
-        "img": "/images/suburbs/mudgeeraba.jpg",
+        "img": "/images/suburbs/mudgeeraba.webp",
         "intro": "Mudgeeraba is hinterland-fringe Gold Coast — rural blocks, larger family homes, established schools, and a 20-minute drive to either the beach or the M1. It's where Gold Coast families move when they want space.",
         "character": "Mudgeeraba is the Gold Coast's family-acreage answer. It's not the beach. It's not the city. It's a village centre (proper old-pub Mudgeeraba), surrounded by acreage homes, mid-density family estates, and the rural-residential roads that climb up into the Hinterland behind. Equestrian properties, big sheds, and three-car garages are baseline.",
         "buyers": "Established Gold Coast families upgrading from coastal townhouses, equestrian and hobby-farm buyers, families chasing the King's Christian / Somerset / Hillcrest school catchments, and Brisbane-relocators wanting hinterland lifestyle without losing the M1 commute.",
@@ -257,7 +257,7 @@ SUBURBS: list[dict] = [
     {
         "slug": "palm-beach",
         "name": "Palm Beach",
-        "img": "/images/suburbs/palm-beach.jpg",
+        "img": "/images/suburbs/palm-beach.webp",
         "intro": "Palm Beach has had the most dramatic five years of any Gold Coast suburb. Original beach cottages are being rebuilt at scale, the Tallebudgera Creek end is now one of the most desirable family addresses on the coast, and the café scene rivals Burleigh.",
         "character": "Palm Beach is long — it runs from Currumbin Creek in the south to Tallebudgera Creek in the north, with four to five distinct micro-pockets along the way. The northern end (Palm Beach North) feels like an extension of Burleigh. The southern end (toward Currumbin Estuary) is quieter and more family-driven. The middle holds the genuinely original beach-village heart of the suburb.",
         "buyers": "Sydney and Melbourne family relocators (this is genuinely the loudest interstate-buyer segment on the coast right now), builders and architects buying renovators, downsizers from Burleigh and Mermaid wanting more space, and an active luxury market at the Tallebudgera Creek mouth.",
@@ -281,7 +281,7 @@ SUBURBS: list[dict] = [
     {
         "slug": "robina",
         "name": "Robina",
-        "img": "/images/suburbs/robina.jpg",
+        "img": "/images/suburbs/robina.webp",
         "intro": "Robina is the Gold Coast's master-planned family centre — Robina Town Centre, Bond University, Cbus Super Stadium, Robina Hospital, and a settled grid of family homes on quiet streets. It's the suburb people choose with their kids' schools in mind.",
         "character": "Robina is purpose-built — laid out in the 1980s and 90s around the town centre, the train station and the universities. Quiet residential streets, well-established parks and lake systems, a hospital, a train line to Brisbane, and the M1 immediately accessible. It's not flashy. It's reliably family.",
         "buyers": "Owner-occupier families chasing schools (Robina State High, All Saints, Somerset), Bond University academic and medical professional families, healthcare workers from Robina Hospital, and a steady commuter market into Brisbane on the train line.",
@@ -305,7 +305,7 @@ SUBURBS: list[dict] = [
     {
         "slug": "surfers-paradise",
         "name": "Surfers Paradise",
-        "img": "/images/suburbs/surfers-paradise.jpg",
+        "img": "/images/suburbs/surfers-paradise.webp",
         "intro": "Surfers Paradise is the high-rise heart of the Gold Coast — the beach, the towers, the tourism, and an apartment market that operates on different rules to the rest of the coast.",
         "character": "Surfers is a high-density tourism and lifestyle market. Cavill Avenue, the beachfront towers (Q1, Soul, Circle on Cavill, Hilton), the SkyPoint observation deck, the Schoolies week culture, and a permanent-resident population that mostly lives in apartments. It's the only Gold Coast suburb that functions like a small CBD.",
         "buyers": "Investor-heavy market — short-stay (Airbnb-style), executive rental and student rental — alongside a growing permanent owner-occupier base in sub-penthouse stock. Strong interstate and offshore interest, particularly Asian-buyer activity in the towers, and a quiet but real market for the 'best-of-Surfers' high-floor apartments.",
@@ -329,7 +329,7 @@ SUBURBS: list[dict] = [
     {
         "slug": "tugun",
         "name": "Tugun",
-        "img": "/images/suburbs/tugun.jpg",
+        "img": "/images/suburbs/tugun.webp",
         "intro": "Tugun is the southern Gold Coast's quiet, salt-air pocket between Currumbin and Bilinga — small village centre, surf-walk beaches, and one of the last suburbs where a renovator under $1.5M still appears.",
         "character": "Tugun is small. The village strip on Golden Four Drive has a handful of cafés (the Tugun Bakery is the institution), the surf club anchors the south end of the beach, and the streets behind hold a mix of original beach cottages, low-rise walk-ups and progressively newer rebuilds. The airport behind keeps prices honest — but the surf and the lifestyle are first-class.",
         "buyers": "Owner-occupier families and downsizers chasing southern Gold Coast lifestyle without Palm Beach or Burleigh pricing, surf-focused buyers, FIFO workers using the airport, and a growing rebuild and renovator market driven by Sydney and Melbourne relocators.",
@@ -353,7 +353,7 @@ SUBURBS: list[dict] = [
     {
         "slug": "varsity-lakes",
         "name": "Varsity Lakes",
-        "img": "/images/suburbs/varsity-lakes.jpg",
+        "img": "/images/suburbs/varsity-lakes.webp",
         "intro": "Varsity Lakes is master-planned around the lake system at the southern end of Robina — Bond University, family streets, lake-front estates, and a growing dining strip on Varsity Parade.",
         "character": "Varsity Lakes was planned from scratch in the late 90s. The lake is the centrepiece, Bond University and Varsity College anchor the eastern edge, and the residential grid runs in tidy curves around it. Family-oriented, walkable, and increasingly attractive to professional couples who don't want apartment living but want lifestyle close at hand.",
         "buyers": "Owner-occupier families chasing Varsity College and Bond University catchments, academic and medical professional families, healthcare workers from Robina Hospital, and a growing premium market for lake-front and lake-adjacent homes.",
@@ -421,12 +421,23 @@ def build_content(s: dict) -> str:
   <div data-reveal style="background:rgba(var(--fg-rgb),.025);border:1px solid rgba(var(--fg-rgb),.08);border-radius:18px;padding:28px 32px">
     <div class="page-label" style="color:var(--gold);margin-bottom:8px">Travel &amp; Connections</div>
     <h3 class="serif" style="font-size:clamp(22px,2.8vw,32px);margin-bottom:20px;font-weight:400">Typical commute times from <em>{name}</em></h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+    
+    <div class="commute-tabs" style="display:flex;gap:8px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px">
+      <button class="btn btn-outline active-tab" onclick="switchCommuteTab(this, 'airport')" style="border-color:var(--gold);color:var(--gold)">Airport</button>
+      <button class="btn btn-outline" onclick="switchCommuteTab(this, 'cbd')">CBD</button>
+      <button class="btn btn-outline" onclick="switchCommuteTab(this, 'schools')">Schools</button>
+      <button class="btn btn-outline" onclick="switchCommuteTab(this, 'beaches')">Beaches</button>
+    </div>
+
+    <div id="commute-airport" class="commute-panel" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
       <div style="background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:12px;padding:16px">
         <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Gold Coast Airport (OOL)</div>
         <div style="font-size:22px;font-weight:500;font-family:'Fraunces',Georgia,serif;color:var(--fg)">~15–20 mins</div>
         <div style="font-size:12px;color:var(--muted);margin-top:2px">via M1 / Highway</div>
       </div>
+    </div>
+    
+    <div id="commute-cbd" class="commute-panel" style="display:none;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
       <div style="background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:12px;padding:16px">
         <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Surfers Paradise CBD</div>
         <div style="font-size:22px;font-weight:500;font-family:'Fraunces',Georgia,serif;color:var(--fg)">~12–18 mins</div>
@@ -437,12 +448,49 @@ def build_content(s: dict) -> str:
         <div style="font-size:22px;font-weight:500;font-family:'Fraunces',Georgia,serif;color:var(--fg)">~55–65 mins</div>
         <div style="font-size:12px;color:var(--muted);margin-top:2px">via M1 / Express Train</div>
       </div>
+    </div>
+    
+    <div id="commute-schools" class="commute-panel" style="display:none;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
       <div style="background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:12px;padding:16px">
-        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Pacific Fair / Robina</div>
-        <div style="font-size:22px;font-weight:500;font-family:'Fraunces',Georgia,serif;color:var(--fg)">~8–12 mins</div>
-        <div style="font-size:12px;color:var(--muted);margin-top:2px">Shopping &amp; Dining Hub</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Local Primary</div>
+        <div style="font-size:22px;font-weight:500;font-family:'Fraunces',Georgia,serif;color:var(--fg)">~5–10 mins</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">Walking / Drive</div>
+      </div>
+      <div style="background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Local High School</div>
+        <div style="font-size:22px;font-weight:500;font-family:'Fraunces',Georgia,serif;color:var(--fg)">~10–15 mins</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">Public Transport / Drive</div>
       </div>
     </div>
+    
+    <div id="commute-beaches" class="commute-panel" style="display:none;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+      <div style="background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Nearest Patrolled Beach</div>
+        <div style="font-size:22px;font-weight:500;font-family:'Fraunces',Georgia,serif;color:var(--fg)">~5–15 mins</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">Walk / Drive</div>
+      </div>
+    </div>
+
+    <script>
+      function switchCommuteTab(btn, tabId) {{
+        var container = btn.closest('.commute-tabs').parentElement;
+        var tabs = container.querySelectorAll('.commute-tabs button');
+        tabs.forEach(function(t) {{
+          t.style.borderColor = 'rgba(var(--fg-rgb),.14)';
+          t.style.color = 'var(--muted)';
+        }});
+        btn.style.borderColor = 'var(--gold)';
+        btn.style.color = 'var(--gold)';
+        var panels = container.querySelectorAll('.commute-panel');
+        panels.forEach(function(p) {{
+          p.style.display = 'none';
+        }});
+        var activePanel = container.querySelector('#commute-' + tabId);
+        if (activePanel) {{
+          activePanel.style.display = 'grid';
+        }}
+      }}
+    </script>
   </div>
 </section>
 

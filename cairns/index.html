@@ -480,8 +480,7 @@
   <div class="calc" data-reveal>
     <div class="calc-price-label">Property sale price</div>
     <div class="calc-price-val" id="priceVal">$500,000</div>
-    <label for="priceInput" class="calc-price-label" style="display:block;margin-top:-6px">Or type an exact figure</label>
-    <div class="calc-price-input-wrap"><span class="prefix">$</span><input id="priceInput" type="number" inputmode="numeric" min="200000" max="4000000" step="10000" value="500000" aria-label="Property sale price in Australian dollars"/></div>
+
     <div class="range-wrap"><label for="priceRange" class="sr-only">Property price estimate slider</label><input type="range" id="priceRange" aria-label="Property price estimate" min="200000" max="4000000" step="10000" value="500000" style="--pct:7.9%" oninput="calcUpdate(this)" onchange="calcUpdate(this)"/></div>
     <div class="range-labels" style="width:100%;max-width:600px"><span>$200K</span><span>$4M</span></div>
     <div class="calc-split">

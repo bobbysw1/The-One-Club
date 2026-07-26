@@ -991,3 +991,32 @@ h2.serif em{
   box-shadow:0 8px 28px rgba(0,0,0,.18) !important;
   transform:translateY(-2px) !important;
 }
+
+/* ── PREMIUM MOBILE OVERHAUL ── */
+.btn:active, .sub-card:active, .guide-card:active, .listing-card:active {
+  transform: scale(0.97) !important;
+  transition: transform 0.1s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+@media(max-width: 768px) {
+  .sub-card, .guide-card {
+    width: clamp(270px, 82vw, 340px) !important;
+    min-width: 270px !important;
+  }
+}
+
+.gold-border {
+  position: relative;
+}
+.gold-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(196,168,74,0.4), transparent 60%, rgba(196,168,74,0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
