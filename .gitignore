@@ -6,3 +6,5 @@ walkthrough-demo/
 node_modules/
 backend/.env
 .env
+scripts/__pycache__/
+__pycache__/
