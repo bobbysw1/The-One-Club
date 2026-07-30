@@ -27,7 +27,9 @@ PRICING (fixed, non-negotiable, overrides any web search context): The 1% commis
 
 Answer questions about: Gold Coast real estate; the 1% commission model and what it includes; the Matterport 3D Showcase and drone flyover; buying/selling process; flight paths; crime stats; demographics; QLD REIQ contracts.
 
-For anything non-property: "That sits outside what I can help with. Ask me about any Gold Coast address or real estate question!"
+CROSS-REGION: If a visitor asks about a suburb or address in Cairns, Port Douglas, or Far North Queensland, still answer properly using the same Property & Area Snapshot approach, then mention "We also cover Cairns and Port Douglas at theoneclub.com.au/cairns/ if that's useful." Never refuse a real Queensland property question just because it's in the other region, only the non-property deflection below applies to genuinely unrelated topics.
+
+For anything non-property (weather, general chit-chat, unrelated topics): "That sits outside what I can help with. Ask me about any Gold Coast address or real estate question!"
 Keep responses under 180 words. Clear, professional, plain English.`;
 
 const CHAT_SYSTEM_CAIRNS = `You are the AI assistant for The One Club, a Cairns & Port Douglas real estate agency charging 1% commission. Lead agent: Bobby (10+ years experience).
@@ -51,7 +53,9 @@ PRICING (fixed, non-negotiable, overrides any web search context): The 1% commis
 
 Answer questions about: Cairns & FNQ real estate; the 1% commission model and what it includes; the Matterport 3D Showcase and drone flyover; buying/selling process; flight paths; crime stats; demographics; QLD REIQ contracts.
 
-For anything non-property: "That sits outside what I can help with. Ask me about any Cairns or Port Douglas address or real estate question!"
+CROSS-REGION: If a visitor asks about a suburb or address on the Gold Coast, still answer properly using the same Property & Area Snapshot approach, then mention "We also cover the Gold Coast at theoneclub.com.au if that's useful." Never refuse a real Queensland property question just because it's in the other region, only the non-property deflection below applies to genuinely unrelated topics.
+
+For anything non-property (weather, general chit-chat, unrelated topics): "That sits outside what I can help with. Ask me about any Cairns or Port Douglas address or real estate question!"
 Keep responses under 180 words. Clear, professional, plain English.`;
 
 function getQuickReplies(message, region) {
@@ -268,8 +272,12 @@ export default async function handler(req, res) {
   const isCairns = region === 'cairns';
   const CHAT_SYSTEM = isCairns ? CHAT_SYSTEM_CAIRNS : CHAT_SYSTEM_GC;
 
-  // Detect if message asks about a specific address or suburb
-  const hasAddress = /\b(\d+\s+[A-Za-z0-9\s]+|street|st\b|road|rd\b|avenue|ave\b|court|ct\b|drive|dr\b|parade|pde\b|crescent|cres\b|way\b|lane\b|place|pl\b|boulevard|blvd\b|esplanade|esp\b|highway|hwy\b)\b/i.test(message);
+  // Detect if message asks about a specific address or suburb. Matches either
+  // a street-type keyword/number (a real address) or a bare named suburb
+  // (e.g. "what's the crime rate of Burleigh Waters") so both get the same
+  // properly-targeted research search, not just full street addresses.
+  const KNOWN_SUBURBS = /\b(burleigh heads|burleigh waters|palm beach|surfers paradise|broadbeach|hope island|robina|mermaid beach|coolangatta|mudgeeraba|currumbin|kirra|southport|coomera|varsity lakes|bilinga|tugun|miami|nerang|ashmore|molendinar|labrador|biggera waters|runaway bay|paradise point|helensvale|oxenford|elanora|reedy creek|nobby beach|palm cove|trinity beach|kewarra beach|clifton beach|yorkeys knob|smithfield|redlynch|edge hill|whitfield|cairns city|cairns north|parramatta park|manunda|manoora|mooroobool|earlville|woree|bayview heights|mount sheridan|bentley park|edmonton|gordonvale|kuranda|atherton tablelands|port douglas|trinity park|brinsmead|freshwater)\b/i;
+  const hasAddress = /\b(\d+\s+[A-Za-z0-9\s]+|street|st\b|road|rd\b|avenue|ave\b|court|ct\b|drive|dr\b|parade|pde\b|crescent|cres\b|way\b|lane\b|place|pl\b|boulevard|blvd\b|esplanade|esp\b|highway|hwy\b)\b/i.test(message) || KNOWN_SUBURBS.test(message);
 
   // Our own pricing (commission, Matterport, portal listing) is a fixed fact
   // we set ourselves, never a market rate to look up. Skip web search for
