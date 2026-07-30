@@ -4,8 +4,8 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="robots" content="noindex, nofollow"/>
-<title>3D Walkthrough Guide for Agents | The One Club</title>
-<meta name="description" content="How to capture, process and publish a 3D walkthrough of a property using your phone, for The One Club agents."/>
+<title>Matterport 3D Showcase Guide for Agents | The One Club</title>
+<meta name="description" content="Why every listing gets a Matterport 3D Showcase and drone flyover, how it's captured, and what to tell sellers, for The One Club agents."/>
 <link rel="canonical" href="https://www.theoneclub.com.au/agents/3d-walkthrough-guide/"/>
 <link rel="preload" href="/style.css" as="style"/>
 <link rel="stylesheet" href="/style.css"/>
@@ -34,6 +34,11 @@
   .page-label{font-size:11px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--gold);opacity:.9}
   .back-link{font-size:13px;color:var(--muted);display:inline-flex;align-items:center;gap:6px;margin-top:48px;border:0!important}
   .back-link:hover{color:var(--gold)}
+  .showcase-viewer{margin:32px 0 8px}
+  .showcase-main iframe{width:100%;aspect-ratio:16/9;border:2px solid var(--gold,#C4A84A);border-radius:16px;box-shadow:0 24px 60px -20px rgba(0,0,0,.5);display:block}
+  .showcase-tabs{display:flex;gap:12px;margin-top:16px;justify-content:center;flex-wrap:wrap}
+  .showcase-tab{padding:9px 20px;border:2px solid var(--gold,#C4A84A);border-radius:8px;background:transparent;color:var(--fg);cursor:pointer;font-size:13px;font-weight:600;font-family:inherit;transition:background .2s ease,color .2s ease}
+  .showcase-tab:hover,.showcase-tab.active{background:var(--gold,#C4A84A);color:#000}
 </style>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
@@ -78,140 +83,70 @@
 
 <main id="main-content">
 <div class="guide-wrap">
-  <div class="page-label">Agent tools</div>
-  <h1>Capture a <em>3D walkthrough</em><br/>with your phone.</h1>
-  <p style="font-size:18px;color:rgba(var(--fg-rgb),.7);max-width:640px">An interactive 3D tour lets buyers walk through a property from anywhere. Better than video, cheaper than Matterport, and you can shoot it yourself in about thirty minutes.</p>
+  <div class="page-label">Agent reference</div>
+  <h1>The Matterport&reg; 3D Showcase<br/><em>and why it matters.</em></h1>
+  <p style="font-size:18px;color:rgba(var(--fg-rgb),.7);max-width:640px">Every listing gets a Matterport 3D Showcase paired with a drone flyover, captured by our own trained team, not outsourced, not DIY. Here's what it is, why sellers should say yes to it, and how to talk about it.</p>
 
   <h2>Why we bother</h2>
-  <p>Listings with a real 3D walkthrough get more enquiries and stronger qualified offers, buyers self-filter, interstate buyers can inspect from their couch, and the property feels open even when an open home isn't scheduled.</p>
-  <p>The tech we use, PlayCanvas SuperSplat, runs in any phone browser. There's nothing to download for the buyer. We get the same result as a Matterport tour, for free, captured from a phone you already own.</p>
+  <p>A virtual walkthrough stopped being a nice-to-have a while ago. Buyers now expect to explore a property properly online before they decide an inspection is worth their time, and a listing without one is easy to scroll past. Sellers who've done any research on their own know this too, most will ask about it before we even bring it up.</p>
+  <p>The effect is real and well established in the industry: buyers self-filter before booking a time, so the people who do walk through the door are further along and more serious. Interstate and overseas buyers can do a genuine first inspection from anywhere, which matters enormously on the Gold Coast and in Cairns, where a large share of buyers aren't local. Well-presented listings with a proper walkthrough consistently attract more enquiries and move faster than ones without.</p>
+  <p>Matterport is the platform buyers already recognise as the standard, it's not a generic 360&deg; photo ball, it's the same walkthrough experience used across the top end of the market. Pairing it with a drone flyover adds the context a room-by-room walkthrough can't, the block, the street, the water, the position, in one continuous piece of media.</p>
 
-  <div style="margin:32px 0 8px;display:grid;grid-template-columns:minmax(0,480px) 1fr;gap:28px;align-items:center" class="guide-proof-row">
-    <div style="position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000;border:1px solid rgba(var(--fg-rgb),.08);box-shadow:0 24px 60px -20px rgba(0,0,0,.5)">
-      <video controls playsinline webkit-playsinline preload="metadata" poster="/video/walkthrough-demo-1-poster.jpg" style="width:100%;height:100%;object-fit:cover;display:block;background:#000">
-        <source media="(max-width:720px)" src="/video/walkthrough-demo-1-mobile.mp4" type="video/mp4"/>
-        <source src="/video/walkthrough-demo-1.hevc.mp4" type='video/mp4; codecs="hvc1"'/>
-        <source src="/video/walkthrough-demo-1.mp4" type="video/mp4"/>
-        Your browser does not support embedded video.
-      </video>
+  <div class="showcase-viewer">
+    <div class="showcase-main">
+      <iframe
+        id="showcase-frame"
+        src="https://discover.matterport.com/space/LwknTcA3yEW"
+        allowfullscreen
+        allow="xr-spatial-tracking; gyroscope; accelerometer; autoplay; encrypted-media; picture-in-picture"
+        loading="lazy">
+      </iframe>
     </div>
-    <div>
-      <div class="callout-title" style="margin-bottom:8px">What it looks like</div>
-      <p style="font-size:14px;line-height:1.65;margin:0">A real example of the workflow, phone capture in, photorealistic interactive walkthrough out. Watch the clip before you head out to your first capture so you know what "good" looks like on the way back.</p>
+    <div class="showcase-tabs">
+      <button class="showcase-tab active" data-src="https://discover.matterport.com/space/LwknTcA3yEW">3D Showcase</button>
+      <button class="showcase-tab" data-src="https://discover.matterport.com/space/Ps4Jtt2xdSB">3D Showcase</button>
+      <button class="showcase-tab" data-src="https://www.youtube.com/embed/JgbF8mMr9Y8?start=6&end=100&autoplay=1">Drone Flyover</button>
     </div>
   </div>
-  <style>
-    @media(max-width:680px){.guide-proof-row{grid-template-columns:1fr!important}}
-  </style>
+  <script>
+    document.querySelectorAll('.showcase-tab').forEach(function(tab){
+      tab.addEventListener('click', function(){
+        document.getElementById('showcase-frame').src = tab.dataset.src;
+        document.querySelectorAll('.showcase-tab').forEach(function(t){ t.classList.remove('active'); });
+        tab.classList.add('active');
+      });
+    });
+  </script>
 
-  <h2>What you'll need</h2>
-  <ul>
-    <li><strong>Your phone</strong>, iPhone or Android, any model from the last three or four years.</li>
-    <li><strong>Polycam</strong> (recommended), free app, available on iOS and Android. <a href="https://poly.cam" target="_blank" rel="noopener">poly.cam</a>. Use "Gaussian Splat" capture mode. Luma AI also works if you prefer it.</li>
-    <li><strong>About 30–45 minutes on site</strong> plus 15–30 minutes cloud processing time after you finish.</li>
-    <li><strong>Good lighting</strong>, open every blind, turn on every light. Dim rooms produce wobbly tours.</li>
-  </ul>
+  <h2>What it actually is</h2>
+  <p>A full Matterport 3D Showcase of the home, walk through every room, look in any direction, understand the flow of the property before ever setting foot inside, paired with a drone flyover of the property and its surrounds.</p>
+  <p>It's captured on a LiDAR-equipped iPhone, not the $6,000+ Matterport Pro3 camera rig you'll see other agencies wheel in on a tripod. The LiDAR sensor in a modern iPhone is accurate enough to produce a genuine Matterport Showcase without the hardware, the cost, or the scheduling lag of a dedicated camera operator. Combined with the drone footage, it's processed and published to the listing within a day of the shoot.</p>
 
-  <h2>The capture</h2>
-  <p>Think of the room as a balloon you're trying to inflate with overlapping photographs. The app captures continuously while you move, you don't tap the shutter, you just walk.</p>
-
-  <div class="step">
-    <div class="step-n">1</div>
-    <div class="step-body">
-      <h4>Open Polycam and choose Gaussian Splat mode</h4>
-      <p>Tap the capture button. Hold the phone vertically at chest height, slightly tilted down so you capture floors as well as walls.</p>
-    </div>
-  </div>
-  <div class="step">
-    <div class="step-n">2</div>
-    <div class="step-body">
-      <h4>Walk the perimeter of each room</h4>
-      <p>Slowly. Glide, don't jerk. About one step per second. Hug the walls, start in a corner and move along the wall, keeping the opposite corner of the room in frame.</p>
-    </div>
-  </div>
-  <div class="step">
-    <div class="step-n">3</div>
-    <div class="step-body">
-      <h4>Then a second pass through the centre</h4>
-      <p>Slow 360° turn standing in the middle. This fills in the gaps the wall pass missed, especially the ceiling and floor.</p>
-    </div>
-  </div>
-  <div class="step">
-    <div class="step-n">4</div>
-    <div class="step-body">
-      <h4>Overlap between rooms</h4>
-      <p>Don't lift the phone to walk through a doorway, keep capturing through it. The processor uses doorways to stitch rooms together. If you stop and start, you'll get a disconnected scene.</p>
-    </div>
-  </div>
-  <div class="step">
-    <div class="step-n">5</div>
-    <div class="step-body">
-      <h4>Cover the outside features</h4>
-      <p>Pool, entertaining area, frontage. Don't bother with the whole yard, capture the parts the buyer will actually care about. Avoid pointing directly at the sun or windows reflecting harsh light.</p>
-    </div>
-  </div>
-  <div class="step">
-    <div class="step-n">6</div>
-    <div class="step-body">
-      <h4>Stop the capture and let Polycam upload</h4>
-      <p>Processing takes 15–30 minutes in the cloud. You can leave the property, the result lands in your Polycam library when ready. Email yourself a notification if you want.</p>
-    </div>
+  <div class="pill-row">
+    <span class="pill">Matterport platform</span>
+    <span class="pill">LiDAR iPhone capture</span>
+    <span class="pill">Drone flyover included</span>
+    <span class="pill">Delivered within a day</span>
+    <span class="pill">Flat $199</span>
   </div>
 
   <div class="callout">
-    <div class="callout-title">Capture rules of thumb</div>
-    <p>Slow movement, no jerks · Constant height (chest level) · Every blind open, every light on · Capture continuously between rooms · No mirrors directly in frame (they confuse the splat) · Avoid clutter, fewer floating objects = cleaner tour.</p>
+    <div class="callout-title">Who does the capture</div>
+    <p>This is handled by our trained in-house team on every listing, it is not something agents shoot themselves. If you're briefing a seller, you can tell them with confidence exactly who is coming, what's involved (a walk-through with a phone, plus a short drone flight outside), and that it adds no real time to the shoot day.</p>
   </div>
 
-  <h2>Process and publish</h2>
-  <div class="step">
-    <div class="step-n">1</div>
-    <div class="step-body">
-      <h4>Export from Polycam</h4>
-      <p>Open the finished scene → Share → Export → choose <strong>.ply (Gaussian Splat)</strong>. Save it to Files or Drive. The file is usually 100–300MB.</p>
-    </div>
-  </div>
-  <div class="step">
-    <div class="step-n">2</div>
-    <div class="step-body">
-      <h4>Open SuperSplat in your browser</h4>
-      <p>Go to <a href="https://superspl.at/editor" target="_blank" rel="noopener">superspl.at/editor</a>. Drag the .ply file straight into the browser window. It loads in about 30 seconds.</p>
-    </div>
-  </div>
-  <div class="step">
-    <div class="step-n">3</div>
-    <div class="step-body">
-      <h4>Clean it up (optional but worth it)</h4>
-      <p>Use the box-select tool to delete obvious junk, floating bits, the sky, anything visibly broken. Two or three minutes here makes a noticeable difference. Then File → Save to keep your edits.</p>
-    </div>
-  </div>
-  <div class="step">
-    <div class="step-n">4</div>
-    <div class="step-body">
-      <h4>Publish</h4>
-      <p>File → Publish. SuperSplat gives you a URL like <code>https://superspl.at/view?id=XXXX</code>. Copy it.</p>
-    </div>
-  </div>
+  <h2>How to talk about it with sellers</h2>
+  <ul>
+    <li><strong>It's not an upsell trick.</strong> It's a flat $199 for both the Matterport Showcase and the drone flyover, on top of the 1%, alongside the portal listing. Say the number plainly, the same way you'd quote the portal tier.</li>
+    <li><strong>Frame it against the alternative, not against free.</strong> A standalone Matterport booking through a third party typically runs $1,000&ndash;$1,500. $199 for both the Showcase and the flyover is the actual comparison worth making.</li>
+    <li><strong>Lead with buyer behaviour, not the tech.</strong> Sellers care that qualified buyers show up ready to make an offer, not about LiDAR sensors. Keep the pitch on outcomes: fewer time-wasting inspections, stronger interstate reach, faster sales.</li>
+    <li><strong>It's genuinely fast.</strong> One shoot, one day turnaround, no separate booking with a third-party contractor to coordinate around.</li>
+  </ul>
 
-  <h2>Add it to the listing</h2>
-  <ol>
-    <li>Log into the admin panel from the <a href="/for-sale/">For Sale</a> page.</li>
-    <li>Open the property and click <strong>Edit</strong>.</li>
-    <li>Paste your SuperSplat URL into the <strong>3D Walkthrough URL</strong> field.</li>
-    <li>Save. The "3D Tour" badge will appear on the listing card immediately. Buyers tap it to open the tour in a full-screen viewer.</li>
-  </ol>
+  <h2>On the listing</h2>
+  <p>The Matterport Showcase and drone flyover both appear on the property page once captured, buyers open the Showcase directly in their browser and can switch to the flyover from the same viewer, no app to download on their end.</p>
 
-  <h2>Troubleshooting</h2>
-  <h3>The tour is wobbly or warped</h3>
-  <p>Usually means you moved too fast or there wasn't enough overlap between angles. Re-shoot the affected room and walk slower. Lighting helps, bright rooms track much better than dim ones.</p>
-  <h3>Whole sections are missing</h3>
-  <p>You stopped capturing between rooms. Re-shoot with continuous capture through doorways.</p>
-  <h3>File is too big to upload</h3>
-  <p>In SuperSplat, use File → Export with the compressed <strong>.sog</strong> format. It's typically a quarter of the size with no visible quality loss. Then publish.</p>
-  <h3>It looks fine in SuperSplat but won't load on my phone</h3>
-  <p>Older phones can struggle with very large splats. Open the scene in SuperSplat, select a chunk of background you don't need, delete it, re-publish. Smaller scenes are friendlier to mobile devices.</p>
-
-  <a class="back-link" href="/for-sale/">← Back to listings</a>
+  <a class="back-link" href="/for-sale/">&larr; Back to listings</a>
 </div>
 </main>
 
