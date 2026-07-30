@@ -85,7 +85,7 @@
 <div class="guide-wrap">
   <div class="page-label">Agent reference</div>
   <h1>The Matterport&reg; 3D Showcase<br/><em>and why it matters.</em></h1>
-  <p style="font-size:18px;color:rgba(var(--fg-rgb),.7);max-width:640px">Every listing gets a Matterport 3D Showcase paired with a drone flyover, captured by our own trained team, not outsourced, not DIY. Here's what it is, why sellers should say yes to it, and how to talk about it.</p>
+  <p style="font-size:18px;color:rgba(var(--fg-rgb),.7);max-width:640px">Every listing gets a Matterport 3D Showcase paired with a drone flyover, captured by our own agents, not outsourced, not DIY. Here's what it is, why sellers should say yes to it, and how to talk about it.</p>
 
   <h2>Why we bother</h2>
   <p>A virtual walkthrough stopped being a nice-to-have a while ago. Buyers now expect to explore a property properly online before they decide an inspection is worth their time, and a listing without one is easy to scroll past. Sellers who've done any research on their own know this too, most will ask about it before we even bring it up.</p>
@@ -105,7 +105,7 @@
     <div class="showcase-tabs">
       <button class="showcase-tab active" data-src="https://discover.matterport.com/space/LwknTcA3yEW">3D Showcase</button>
       <button class="showcase-tab" data-src="https://discover.matterport.com/space/Ps4Jtt2xdSB">3D Showcase</button>
-      <button class="showcase-tab" data-src="https://www.youtube.com/embed/JgbF8mMr9Y8?start=6&end=100&autoplay=1">Drone Flyover</button>
+      <button class="showcase-tab" data-src="https://www.youtube.com/embed/JgbF8mMr9Y8?start=6&amp;end=100&amp;autoplay=1&amp;mute=1">Drone Flyover</button>
     </div>
   </div>
   <script>
@@ -132,7 +132,7 @@
 
   <div class="callout">
     <div class="callout-title">Who does the capture</div>
-    <p>This is handled by our trained in-house team on every listing, it is not something agents shoot themselves. If you're briefing a seller, you can tell them with confidence exactly who is coming, what's involved (a walk-through with a phone, plus a short drone flight outside), and that it adds no real time to the shoot day.</p>
+    <p>You do, using Matterport's own capture app on a LiDAR iPhone, not a third party, not a separate booking. Every agent is trained to produce a consistent, professional Matterport Showcase on every listing. If you're briefing a seller, you can tell them with confidence that you'll capture it personally as part of the shoot, a walk-through with a phone plus a short drone flight outside, and that it adds no real time or extra coordination to the day.</p>
   </div>
 
   <h2>How to talk about it with sellers</h2>
@@ -163,6 +163,28 @@
   </div>
   <div class="footer-bottom"><span>© 2026 The One Club Pty Ltd · Gold Coast, QLD, Australia</span><span><a href="/cairns/" style="color:inherit">Cairns</a> · <a href="/privacy/" style="color:inherit">Privacy</a> · <a href="/terms/" style="color:inherit">Terms</a></span></div>
 </footer>
+
+<!-- ════ THEME TOGGLE ════ -->
+<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle light/dark theme" title="Toggle theme">
+  <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+</button>
+<script>
+(function(){
+  var root=document.documentElement;
+  try{var saved=localStorage.getItem('toc.theme');if(saved==='light'||saved==='dark')root.dataset.theme=saved;}catch(e){}
+  var btn=document.getElementById('theme-toggle');
+  if(!btn)return;
+  btn.addEventListener('click',function(){
+    var cur=root.dataset.theme;
+    if(!cur){cur=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}
+    var next=cur==='light'?'dark':'light';
+    root.dataset.theme=next;
+    try{localStorage.setItem('toc.theme',next);}catch(e){}
+  });
+})();
+</script>
+
 <script src="/assets/region.js" defer></script>
 </body>
 </html>
