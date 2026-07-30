@@ -271,6 +271,13 @@ export default async function handler(req, res) {
   // Detect if message asks about a specific address or suburb
   const hasAddress = /\b(\d+\s+[A-Za-z0-9\s]+|street|st\b|road|rd\b|avenue|ave\b|court|ct\b|drive|dr\b|parade|pde\b|crescent|cres\b|way\b|lane\b|place|pl\b|boulevard|blvd\b|esplanade|esp\b|highway|hwy\b)\b/i.test(message);
 
+  // Our own pricing (commission, Matterport, portal listing) is a fixed fact
+  // we set ourselves, never a market rate to look up. Skip web search for
+  // these so a generic third-party price (e.g. "$350-$1,500 for a Matterport
+  // scan") never has the chance to override the $199 figure in the system
+  // prompt above.
+  const isPricingQuestion = /matterport|3d showcase|3d walkthrough|drone flyover|\b1%|commission|how much.*(cost|fee|charge)|price.*(listing|walkthrough|matterport)/i.test(message);
+
   const targetQuery = hasAddress
     ? `${message.slice(0, 180)} property details school catchment rates flight path crime demographics commute QLD real estate`
     : `${message.slice(0, 180)} ${isCairns ? 'Cairns Port Douglas real estate 2026' : 'Gold Coast real estate 2026'}`;
@@ -293,7 +300,7 @@ export default async function handler(req, res) {
 
   // ── TAVILY GROUNDED RESEARCH ──────────────────────────────
   let contextBlock = '';
-  if (TAVILY_KEY) {
+  if (TAVILY_KEY && !isPricingQuestion) {
     try {
       const tavilyRes = await fetch('https://api.tavily.com/search', {
         method: 'POST',
