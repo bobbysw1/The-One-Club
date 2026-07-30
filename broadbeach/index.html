@@ -277,7 +277,7 @@
       <li><a href="/calculators/" data-page="calculators">Calculators</a></li>
       <li><a href="/agents/" data-page="agents">Agents</a></li>
       <li><a href="/after-sale/" data-page="after-sale">After the Sale</a></li>
-      <li><a href="/cairns/" data-page="cairns">Cairns</a></li>
+      
       <li><a href="/about/" data-page="about">About</a></li>
     </ul>
     <div class="nav-cta">
@@ -298,7 +298,7 @@
   <a href="/calculators/" onclick="toggleMenu()">Calculators</a>
   <a href="/agents/" onclick="toggleMenu()">Agents</a>
   <a href="/after-sale/" onclick="toggleMenu()">After the Sale</a>
-  <a href="/cairns/" onclick="toggleMenu()">Cairns</a>
+  
   <a href="/about/" onclick="toggleMenu()">About</a>
   <a href="mailto:bobby@theoneclub.com.au" onclick="toggleMenu()" style="opacity:.7">bobby@theoneclub.com.au</a>
   <a href="/#valuation" onclick="toggleMenu()" style="color:var(--gold);border-color:rgba(196,168,74,.2)">Free Valuation →</a>
@@ -309,34 +309,103 @@
 <section style="padding:140px 24px 32px;max-width:1100px;margin:0 auto">
   <div class="page-label" style="color:var(--gold)" data-reveal>Broadbeach real estate</div>
   <h1 class="serif" data-reveal style="font-size:clamp(44px,6.5vw,88px);letter-spacing:-2px;line-height:1;font-weight:300;margin-top:18px">Real estate agent in<br/><em>Broadbeach</em></h1>
-  <p class="body" data-reveal style="font-size:18px;max-width:760px;margin-top:28px;line-height:1.65">Broadbeach is the high-energy heart of the central Gold Coast, beachfront towers, the light rail, Pacific Fair, The Star casino, and a dining scene that competes with the best of Brisbane.</p>
+  <p class="body" data-reveal style="font-size:18px;max-width:760px;margin-top:28px;line-height:1.65">Broadbeach is the high-energy heart of the central Gold Coast — beachfront towers, the light rail, Pacific Fair, The Star casino, and a dining scene that competes with the best of Brisbane.</p>
   <div data-reveal style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
     <a class="btn btn-gold btn-lg" href="/#valuation">Get Your Free Valuation</a>
     <a class="btn btn-outline btn-lg" href="/for-sale/">See current listings</a>
   </div>
 </section>
-
-<section style="padding:0 24px 56px;max-width:1100px;margin:0 auto">
-  <figure data-reveal style="margin:0;border-radius:18px;overflow:hidden;aspect-ratio:21/9;background:#0a0a0a">
-    <img src="/images/suburbs/broadbeach.webp" alt="Broadbeach, Gold Coast" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block"/>
-  </figure>
+<section style="padding:0 24px 40px;max-width:1100px;margin:0 auto">
+  <div data-reveal style="background:rgba(var(--fg-rgb),.025);border:1px solid rgba(var(--fg-rgb),.08);border-radius:18px;padding:32px;display:flex;flex-direction:column;align-items:center;text-align:center">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+    <h3 class="serif" style="font-size:clamp(22px,2.8vw,32px);margin-bottom:12px;font-weight:400">Where is <em>Broadbeach?</em></h3>
+    <p class="body" style="font-size:16px;max-width:500px;margin-bottom:24px">Explore the neighbourhood, nearby amenities, and street view on Google Maps.</p>
+    <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=Broadbeach%2C+QLD%2C+Australia" target="_blank" rel="noopener noreferrer" style="border-color:rgba(var(--fg-rgb),.2)">
+      Open in Google Maps 
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:6px;vertical-align:-2px"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+    </a>
+  </div>
 </section>
 
-<section class="sec" style="padding-top:0;padding-bottom:40px">
-  <div class="sec-head">
-    <div class="sec-head-l">
-      <div class="page-label">Find your way around</div>
-      <h2 class="serif" style="font-size:clamp(30px,3.8vw,46px)">Where is <em>Broadbeach?</em></h2>
-      <p class="body" style="font-size:15px">Pinned to the centre of the suburb. Drag, zoom, or open in Google Maps for full directions and street view.</p>
+<!-- COMMUTE & ACCESSIBILITY -->
+<section style="padding:20px 24px 0;max-width:1100px;margin:0 auto">
+  <div data-reveal style="background:rgba(var(--fg-rgb),.025);border:1px solid rgba(var(--fg-rgb),.08);border-radius:18px;padding:28px 32px">
+    <div class="page-label" style="color:var(--gold);margin-bottom:8px">Travel &amp; Connections</div>
+    <h3 class="serif" style="font-size:clamp(22px,2.8vw,32px);margin-bottom:20px;font-weight:400">Typical commute times from <em>Broadbeach</em></h3>
+    
+    <div class="commute-tabs" style="display:flex;gap:8px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px">
+      <button class="btn btn-outline active-tab" onclick="switchCommuteTab(this, 'airport')" style="border-color:var(--gold);color:var(--gold)">Airport</button>
+      <button class="btn btn-outline" onclick="switchCommuteTab(this, 'cbd')">CBD</button>
+      <button class="btn btn-outline" onclick="switchCommuteTab(this, 'schools')">Schools</button>
+      <button class="btn btn-outline" onclick="switchCommuteTab(this, 'beaches')">Beaches</button>
     </div>
-  </div>
-  <div class="map-placeholder">
-    <iframe title="Broadbeach map" loading="lazy" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDyWnJ2ud9rWnBqUY96uankmuUnH-gxIRM&q=Broadbeach%2C+QLD%2C+Australia&zoom=14&maptype=roadmap" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    <div class="map-placeholder-overlay">Broadbeach, Gold Coast · QLD</div>
+
+    <div id="commute-airport" class="commute-panel" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+      <div style="background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Gold Coast Airport (OOL)</div>
+        <div style="font-size:22px;font-weight:500;font-family:'Fraunces',Georgia,serif;color:var(--fg)">~15–20 mins</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">via M1 / Highway</div>
+      </div>
+    </div>
+    
+    <div id="commute-cbd" class="commute-panel" style="display:none;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+      <div style="background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Surfers Paradise CBD</div>
+        <div style="font-size:22px;font-weight:500;font-family:'Fraunces',Georgia,serif;color:var(--fg)">~12–18 mins</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">via Coastal Strip / G:link</div>
+      </div>
+      <div style="background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Brisbane CBD</div>
+        <div style="font-size:22px;font-weight:500;font-family:'Fraunces',Georgia,serif;color:var(--fg)">~55–65 mins</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">via M1 / Express Train</div>
+      </div>
+    </div>
+    
+    <div id="commute-schools" class="commute-panel" style="display:none;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+      <div style="background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Local Primary</div>
+        <div style="font-size:22px;font-weight:500;font-family:'Fraunces',Georgia,serif;color:var(--fg)">~5–10 mins</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">Walking / Drive</div>
+      </div>
+      <div style="background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Local High School</div>
+        <div style="font-size:22px;font-weight:500;font-family:'Fraunces',Georgia,serif;color:var(--fg)">~10–15 mins</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">Public Transport / Drive</div>
+      </div>
+    </div>
+    
+    <div id="commute-beaches" class="commute-panel" style="display:none;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+      <div style="background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Nearest Patrolled Beach</div>
+        <div style="font-size:22px;font-weight:500;font-family:'Fraunces',Georgia,serif;color:var(--fg)">~5–15 mins</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">Walk / Drive</div>
+      </div>
+    </div>
+
+    <script>
+      function switchCommuteTab(btn, tabId) {
+        var container = btn.closest('.commute-tabs').parentElement;
+        var tabs = container.querySelectorAll('.commute-tabs button');
+        tabs.forEach(function(t) {
+          t.style.borderColor = 'rgba(var(--fg-rgb),.14)';
+          t.style.color = 'var(--muted)';
+        });
+        btn.style.borderColor = 'var(--gold)';
+        btn.style.color = 'var(--gold)';
+        var panels = container.querySelectorAll('.commute-panel');
+        panels.forEach(function(p) {
+          p.style.display = 'none';
+        });
+        var activePanel = container.querySelector('#commute-' + tabId);
+        if (activePanel) {
+          activePanel.style.display = 'grid';
+        }
+      }
+    </script>
   </div>
 </section>
 
-<!-- SUBURB PROFILE, UNIQUE CHARACTER -->
+<!-- SUBURB PROFILE — UNIQUE CHARACTER -->
 <section style="padding:40px 24px 0;max-width:1100px;margin:0 auto">
   <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;align-items:start">
     <div>
@@ -368,7 +437,7 @@
     <div class="page-label" style="color:var(--gold)">Property types</div>
     <h2 class="serif" style="font-size:clamp(26px,3.2vw,40px);margin-top:14px;line-height:1.1">What sells in <em>Broadbeach.</em></h2>
     <ul style="list-style:none;padding:0;margin:28px 0 0;max-width:760px">
-        <li style="padding:14px 0;border-bottom:1px solid rgba(var(--fg-rgb),.06);font-size:15px;color:rgba(var(--fg-rgb),.82);line-height:1.55">Beachfront apartments, 2 and 3-bed sub-penthouse stock is the hottest segment</li>
+        <li style="padding:14px 0;border-bottom:1px solid rgba(var(--fg-rgb),.06);font-size:15px;color:rgba(var(--fg-rgb),.82);line-height:1.55">Beachfront apartments — 2 and 3-bed sub-penthouse stock is the hottest segment</li>
         <li style="padding:14px 0;border-bottom:1px solid rgba(var(--fg-rgb),.06);font-size:15px;color:rgba(var(--fg-rgb),.82);line-height:1.55">Sub-penthouses and full-floor penthouses in established towers (Air, Oracle, Soul)</li>
         <li style="padding:14px 0;border-bottom:1px solid rgba(var(--fg-rgb),.06);font-size:15px;color:rgba(var(--fg-rgb),.82);line-height:1.55">Lifestyle apartments on Victoria Avenue and Surf Parade</li>
         <li style="padding:14px 0;border-bottom:1px solid rgba(var(--fg-rgb),.06);font-size:15px;color:rgba(var(--fg-rgb),.82);line-height:1.55">A small pocket of Broadbeach Waters family homes on the canals</li>
@@ -397,7 +466,7 @@
       <h2 class="serif" style="font-size:clamp(26px,3.2vw,40px);margin-top:14px;line-height:1.1">How Broadbeach<br/><em>actually trades.</em></h2>
     </div>
     <div>
-      <p class="body" style="font-size:16px;line-height:1.75;color:rgba(var(--fg-rgb),.82)">The premium beachfront apartment market has been the strongest performer on the Gold Coast over the past 24 months. Stock turns quickly when marketed properly, but presentation matters more than ever. A flat photo set on a $2M apartment will cost you weeks on market and 3–5% off the final number.</p>
+      <p class="body" style="font-size:16px;line-height:1.75;color:rgba(var(--fg-rgb),.82)">The premium beachfront apartment market has been the strongest performer on the Gold Coast over the past 24 months. Stock turns quickly when marketed properly — but presentation matters more than ever. A flat photo set on a $2M apartment will cost you weeks on market and 3–5% off the final number.</p>
     </div>
   </div>
 </section>
@@ -486,7 +555,7 @@
   <div id="chat-messages" style="flex:1;overflow-y:auto;padding:18px 22px;display:flex;flex-direction:column;gap:14px;min-height:280px;max-height:340px">
     <div style="display:flex;gap:10px;align-items:flex-start">
       <div style="width:28px;height:28px;border-radius:8px;background:var(--gold);display:grid;place-items:center;font-size:9px;font-weight:700;color:#000;flex-shrink:0">1%</div>
-      <div style="background:rgba(var(--fg-rgb),.06);border-radius:4px 14px 14px 14px;padding:12px 14px;font-size:13px;line-height:1.55;color:rgba(var(--fg-rgb),.82);max-width:280px">Hey! Ask me anything about our listings, school zones, body corp fees, inspection times, or how our 1% model works.</div>
+      <div style="background:rgba(var(--fg-rgb),.06);border-radius:4px 14px 14px 14px;padding:12px 14px;font-size:13px;line-height:1.55;color:rgba(var(--fg-rgb),.82);max-width:280px">Hey! I'm your AI property researcher. Ask me about any address, school catchments, flight paths, crime stats, commute times, or how our 1% fee works!</div>
     </div>
   </div>
   <div id="chat-quick" style="padding:0 22px 12px;display:flex;flex-wrap:wrap;gap:6px;flex-shrink:0">
@@ -1058,5 +1127,17 @@ function initParticles(){
 
 <script src="/assets/region.js" defer></script>
 <script src="/assets/chat.js"></script>
+
+  <!-- MOBILE CTA BAR -->
+  <div class="mobile-cta-bar">
+    <div class="row">
+      <a href="tel:+61404774272" class="tel" aria-label="Call Bobby" onclick="if(window.trackAction) trackAction('mobile_dock_call')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      </a>
+      <a href="/#valuation" class="btn btn-outline" style="background:var(--surface-1);border-color:rgba(var(--fg-rgb),.12)" onclick="if(window.trackAction) trackAction('mobile_dock_val')">1% Valuation</a>
+      <button class="btn btn-gold" onclick="if(window.chatApp && chatApp.toggle) chatApp.toggle(); else document.getElementById('chat-bubble').click(); if(window.trackAction) trackAction('mobile_dock_chat')" style="border:none">Ask AI</button>
+    </div>
+  </div>
+
 </body>
 </html>

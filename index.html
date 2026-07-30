@@ -196,7 +196,7 @@
     <div class="pre-region-kicker">Where are you selling?</div>
   </div>
   <a class="pre-half gc" href="/" onclick="chooseRegion('gc');return false;" aria-label="Enter the Gold Coast site">
-    <video class="pre-half-video" muted loop playsinline preload="none" aria-hidden="true"><source src="/video/selector-gc.mp4" type="video/mp4"/></video>
+    <video class="pre-half-video" autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="/video/selector-gc.mp4" type="video/mp4"/></video>
     <span class="pre-half-kicker">South East Queensland</span>
     <span class="pre-half-name">Gold<br/><em>Coast.</em></span>
     <span class="pre-half-tag">Surfers Paradise to Coolangatta</span>
@@ -204,7 +204,7 @@
   </a>
   <div class="pre-region-divider" aria-hidden="true"></div>
   <a class="pre-half cn" href="/cairns/" onclick="chooseRegion('cairns');return false;" aria-label="Enter the Cairns and Port Douglas site">
-    <video class="pre-half-video" muted loop playsinline preload="none" aria-hidden="true"><source src="/video/selector-cairns.mp4" type="video/mp4"/></video>
+    <video class="pre-half-video" autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="/video/selector-cairns.mp4" type="video/mp4"/></video>
     <span class="pre-half-kicker">Far North Queensland</span>
     <span class="pre-half-name">Cairns &amp;<br/><em>Port Douglas.</em></span>
     <span class="pre-half-tag">Palm Cove to the Tablelands</span>
@@ -235,7 +235,7 @@
       <li><a href="/calculators/" data-page="calculators">Calculators</a></li>
       <li><a href="/agents/" data-page="agents">Agents</a></li>
       <li><a href="/after-sale/" data-page="after-sale">After the Sale</a></li>
-      <li><a href="/cairns/" data-page="cairns">Cairns</a></li>
+      
       <li><a href="/about/" data-page="about">About</a></li>
     </ul>
     <div class="nav-cta">
@@ -256,7 +256,7 @@
   <a href="/calculators/" onclick="toggleMenu()">Calculators</a>
   <a href="/agents/" onclick="toggleMenu()">Agents</a>
   <a href="/after-sale/" onclick="toggleMenu()">After the Sale</a>
-  <a href="/cairns/" onclick="toggleMenu()">Cairns</a>
+  
   <a href="/about/" onclick="toggleMenu()">About</a>
   <a href="mailto:bobby@theoneclub.com.au" onclick="toggleMenu()" style="opacity:.7">bobby@theoneclub.com.au</a>
   <a href="/#valuation" onclick="toggleMenu()" style="color:var(--gold);border-color:rgba(196,168,74,.2)">Free Valuation →</a>
@@ -267,7 +267,7 @@
 
 <!-- HERO, editorial, with video background -->
 <section class="ed-hero">
-  <video class="hero-video" autoplay muted loop playsinline preload="none" poster="/video/hero-gc-poster.jpg" aria-hidden="true">
+  <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/video/hero-gc-poster.jpg" aria-hidden="true">
     <source media="(max-width:720px)" src="/video/hero-gc-mobile.mp4" type="video/mp4"/>
     <source src="/video/hero-gc.hevc.mp4" type='video/mp4; codecs="hvc1"'/>
     <source src="/video/hero-gc.mp4" type="video/mp4"/>
@@ -276,7 +276,7 @@
   <h1 data-reveal>One percent.<br/><em>The way it should have been.</em></h1>
   <p class="ed-hero-sub" data-reveal>Full premium campaign, photography, Matterport 3D Showcase, signboard, REA + Domain, and expert negotiation, for a flat 1% across the Gold Coast.</p>
   <div class="hero-actions" data-reveal style="margin-top:8px">
-    <a class="btn btn-gold btn-lg" href="#valuation">List With Us</a>
+    <a class="btn btn-gold btn-lg" href="#valuation">Free Valuation</a>
     <a class="btn btn-outline btn-lg" href="/for-sale/">Browse Properties</a>
   </div>
   <div style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px">
@@ -484,8 +484,7 @@
   <div class="calc" data-reveal>
     <div class="calc-price-label">Property sale price</div>
     <div class="calc-price-val" id="priceVal">$1,500,000</div>
-    <label for="priceInput" class="calc-price-label" style="display:block;margin-top:-6px">Or type an exact figure</label>
-    <div class="calc-price-input-wrap"><span class="prefix">$</span><input id="priceInput" type="number" inputmode="numeric" min="300000" max="10000000" step="10000" value="1500000" aria-label="Property sale price in Australian dollars"/></div>
+
     <div class="range-wrap"><label for="priceRange" class="sr-only">Property price estimate slider</label><input type="range" id="priceRange" aria-label="Property price estimate" min="300000" max="10000000" step="10000" value="1500000" style="--pct:13.3%" oninput="calcUpdate(this)" onchange="calcUpdate(this)"/></div>
     <div class="range-labels" style="width:100%;max-width:600px"><span>$300K</span><span>$10M</span></div>
     <div class="calc-split">
@@ -513,12 +512,13 @@
     <!-- INCLUDED, SINGLE MODERN BLOCK -->
     <div data-reveal class="incl-block" style="max-width:960px;margin:0 auto;background:var(--surface-1);border:1px solid var(--surface-border);border-radius:24px;overflow:hidden">
       <div class="incl-block-head" style="padding:40px 48px 28px;border-bottom:1px solid rgba(var(--fg-rgb),.06)">
-        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap"
+>
           <div>
             <div style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px">What your 1% covers</div>
             <div style="font-size:clamp(24px,2.6vw,32px);font-weight:300;letter-spacing:-.5px;line-height:1.15">Every campaign asset.<br/><em style="color:var(--gold);font-style:italic;font-weight:400">One flat fee.</em></div>
           </div>
-          <div style="text-align:right">
+          <div style="text-align:left">
             <div style="font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:clamp(56px,7vw,84px);font-weight:300;color:var(--gold);letter-spacing:-3px;line-height:.9">1%</div>
             <div style="font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px">of final sale price</div>
           </div>
@@ -801,7 +801,7 @@
     <a class="tel" href="tel:+61404774272" aria-label="Call +61 404 774 272">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     </a>
-    <a class="btn btn-gold" href="#valuation">List With Us</a>
+    <a class="btn btn-gold" href="#valuation">Get Started</a>
   </div>
 </div>
 
@@ -819,7 +819,7 @@
   <div id="chat-messages" style="flex:1;overflow-y:auto;padding:18px 22px;display:flex;flex-direction:column;gap:14px;min-height:280px;max-height:340px">
     <div style="display:flex;gap:10px;align-items:flex-start">
       <div style="width:28px;height:28px;border-radius:8px;background:var(--gold);display:grid;place-items:center;font-size:9px;font-weight:700;color:#000;flex-shrink:0">1%</div>
-      <div style="background:rgba(var(--fg-rgb),.06);border-radius:4px 14px 14px 14px;padding:12px 14px;font-size:13px;line-height:1.55;color:rgba(var(--fg-rgb),.82);max-width:280px">Hey! Ask me anything about our listings, school zones, body corp fees, inspection times, or how our 1% model works.</div>
+      <div style="background:rgba(var(--fg-rgb),.06);border-radius:4px 14px 14px 14px;padding:12px 14px;font-size:13px;line-height:1.55;color:rgba(var(--fg-rgb),.82);max-width:280px">Hey! I'm your AI property researcher. Ask me about any address, school catchments, flight paths, crime stats, commute times, or how our 1% fee works!</div>
     </div>
   </div>
   <div id="chat-quick" style="padding:0 22px 12px;display:flex;flex-wrap:wrap;gap:6px;flex-shrink:0">
@@ -994,6 +994,28 @@ initCompare('cmp4','cmp4-line','cmp4-handle');
    SAVINGS CALCULATOR
 ═══════════════════════════════════════ */
 function fmtCurrency(n){ return '$' + Math.round(n).toLocaleString('en-AU'); }
+
+// Smooth number animation
+var _animReqs = {};
+function animateNum(el, target, duration) {
+  if (!el) return;
+  var id = el.id;
+  if (_animReqs[id]) cancelAnimationFrame(_animReqs[id]);
+  var startStr = el.textContent.replace(/[^0-9.-]+/g,"");
+  var start = parseFloat(startStr) || 0;
+  var startTime = null;
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    var progress = Math.min((timestamp - startTime) / duration, 1);
+    var current = start + (target - start) * (1 - Math.pow(1 - progress, 3)); // ease-out cubic
+    el.textContent = '$' + Math.round(current).toLocaleString('en-AU');
+    if (progress < 1) {
+      _animReqs[id] = requestAnimationFrame(step);
+    }
+  }
+  _animReqs[id] = requestAnimationFrame(step);
+}
+
 function calcUpdate(input){
   if (!input) return;
   var range = document.getElementById('priceRange');
@@ -1009,10 +1031,10 @@ function calcUpdate(input){
   if (num   && +num.value   !== v) num.value   = v;
   range.style.setProperty('--pct', ((v - min) / (max - min) * 100).toFixed(2) + '%');
   var trad = v * 0.025, ours = v * 0.01, save = trad - ours;
-  var pEl = document.getElementById('priceVal'); if (pEl) pEl.textContent = fmtCurrency(v);
-  var tEl = document.getElementById('tradVal'); if (tEl) tEl.textContent = fmtCurrency(trad);
-  var oEl = document.getElementById('ourVal');  if (oEl) oEl.textContent = fmtCurrency(ours);
-  var sEl = document.getElementById('saveVal'); if (sEl) sEl.textContent = fmtCurrency(save);
+  var pEl = document.getElementById('priceVal'); if (pEl) animateNum(pEl, v, 250);
+  var tEl = document.getElementById('tradVal'); if (tEl) animateNum(tEl, trad, 250);
+  var oEl = document.getElementById('ourVal'); if (oEl) animateNum(oEl, ours, 250);
+  var sEl = document.getElementById('saveVal'); if (sEl) animateNum(sEl, save, 250);
 }
 (function(){
   var range = document.getElementById('priceRange');
@@ -1783,5 +1805,17 @@ function initParticles(){
 </script>
 <script src="/assets/lead-form.js" defer></script>
 <script src="/assets/region.js" defer></script>
+
+  <!-- MOBILE CTA BAR -->
+  <div class="mobile-cta-bar">
+    <div class="row">
+      <a href="tel:+61404774272" class="tel" aria-label="Call Bobby" onclick="if(window.trackAction) trackAction('mobile_dock_call')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      </a>
+      <a href="/#valuation" class="btn btn-outline" style="background:var(--surface-1);border-color:rgba(var(--fg-rgb),.12)" onclick="if(window.trackAction) trackAction('mobile_dock_val')">1% Valuation</a>
+      <button class="btn btn-gold" onclick="if(window.chatApp && chatApp.toggle) chatApp.toggle(); else document.getElementById('chat-bubble').click(); if(window.trackAction) trackAction('mobile_dock_chat')" style="border:none">Ask AI</button>
+    </div>
+  </div>
+
 </body>
 </html>

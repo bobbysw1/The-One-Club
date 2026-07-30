@@ -151,9 +151,7 @@
  * in sync with the chip selection so the existing lead-form gather picks
  * it up unchanged. */
 (function () {
-  function hydrate(fs) {
-    if (fs.__chipBound) return;
-    fs.__chipBound = true;
+  window.hydrateChips = function(fs) {
     var chips  = fs.querySelectorAll('.chip');
     var hidden = fs.querySelector('input[type="hidden"]');
     var count  = fs.querySelector('.chip-count');
@@ -168,15 +166,18 @@
       }
     }
     chips.forEach(function (c) {
-      c.addEventListener('click', function () {
+      if (c.__chipClick) c.removeEventListener('click', c.__chipClick);
+      c.__chipClick = function () {
         c.setAttribute('aria-pressed', c.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
         sync();
-      });
+      };
+      c.addEventListener('click', c.__chipClick);
     });
     sync();
-  }
+  };
+
   function init() {
-    document.querySelectorAll('fieldset[data-chip-multi]').forEach(hydrate);
+    document.querySelectorAll('fieldset[data-chip-multi]').forEach(window.hydrateChips);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();

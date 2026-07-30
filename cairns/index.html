@@ -208,7 +208,7 @@
 <!-- ════════ NAV ════════ -->
 <nav>
   <div class="nav-row">
-    <a href="/" class="logo" id="site-logo" aria-label="The One Club | home">
+    <a href="/cairns/" class="logo" id="site-logo" aria-label="The One Club | home">
       <img src="/logo.png" alt="The One Club | Cairns Real Estate" width="193" height="52" loading="eager" fetchpriority="high" decoding="async" style="height:52px;width:auto;display:block"/>
     </a>
     <ul class="nav-links">
@@ -219,7 +219,7 @@
       <li><a href="/calculators/" data-page="calculators">Calculators</a></li>
       <li><a href="/agents/" data-page="agents">Agents</a></li>
       <li><a href="/after-sale/" data-page="after-sale">After the Sale</a></li>
-      <li><a href="/" data-page="gold-coast">Gold Coast</a></li>
+      
       <li><a href="/about/" data-page="about">About</a></li>
     </ul>
     <div class="nav-cta">
@@ -232,7 +232,7 @@
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="/" onclick="toggleMenu()">Home</a>
+  <a href="/cairns/" onclick="toggleMenu()">Home</a>
   <a href="/for-sale/" onclick="toggleMenu()">For Sale</a>
   <a href="#suburbs" onclick="toggleMenu()">Suburbs</a>
   <a href="/auctions/" onclick="toggleMenu()">Auctions</a>
@@ -240,7 +240,7 @@
   <a href="/calculators/" onclick="toggleMenu()">Calculators</a>
   <a href="/agents/" onclick="toggleMenu()">Agents</a>
   <a href="/after-sale/" onclick="toggleMenu()">After the Sale</a>
-  <a href="/" onclick="toggleMenu()">Gold Coast</a>
+  
   <a href="/about/" onclick="toggleMenu()">About</a>
   <a href="mailto:bobby@theoneclub.com.au" onclick="toggleMenu()" style="opacity:.7">bobby@theoneclub.com.au</a>
   <a href="#valuation" onclick="toggleMenu()" style="color:var(--gold);border-color:rgba(196,168,74,.2)">Free Valuation →</a>
@@ -480,8 +480,7 @@
   <div class="calc" data-reveal>
     <div class="calc-price-label">Property sale price</div>
     <div class="calc-price-val" id="priceVal">$500,000</div>
-    <label for="priceInput" class="calc-price-label" style="display:block;margin-top:-6px">Or type an exact figure</label>
-    <div class="calc-price-input-wrap"><span class="prefix">$</span><input id="priceInput" type="number" inputmode="numeric" min="200000" max="4000000" step="10000" value="500000" aria-label="Property sale price in Australian dollars"/></div>
+
     <div class="range-wrap"><label for="priceRange" class="sr-only">Property price estimate slider</label><input type="range" id="priceRange" aria-label="Property price estimate" min="200000" max="4000000" step="10000" value="500000" style="--pct:7.9%" oninput="calcUpdate(this)" onchange="calcUpdate(this)"/></div>
     <div class="range-labels" style="width:100%;max-width:600px"><span>$200K</span><span>$4M</span></div>
     <div class="calc-split">
@@ -783,7 +782,7 @@
     <div><div class="fh">Company</div><ul class="flinks"><li><a href="/about/">About Us</a></li><li><a href="/how-it-works/">How It Works</a></li><li><a href="/about/#sellers" onclick="goTo('about','sellers');return false;">For Sellers</a></li><li><a href="/contact/">Contact</a></li></ul></div>
     <div><div class="fh">Locations</div><p style="font-size:12px;color:var(--muted);line-height:1.6;margin:0 0 12px;max-width:240px">Servicing Cairns &amp; Port Douglas, Northern Beaches to the Tablelands.</p><p style="font-size:12px;color:var(--muted);line-height:1.6;margin:0 0 12px;max-width:240px"><a href="/" style="color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(196,168,74,.3);padding-bottom:1px">Also on the Gold Coast →</a></p><a href="mailto:bobby@theoneclub.com.au?subject=Expansion%20request&amp;body=Hi%20Bobby%2C%20I%27d%20love%20to%20see%20The%20One%20Club%20expand%20to%3A%20%5Byour%20city%5D" style="font-size:12px;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(196,168,74,.3);padding-bottom:1px">Tell us where you&rsquo;d like us next →</a></div>
   </div>
-  <div class="footer-bottom"><span>© 2026 The One Club Pty Ltd · <a href="https://www.theoneclub.com.au" style="color:inherit">theoneclub.com.au</a> · Cairns, QLD, Australia</span><span><a href="/" style="color:inherit">Gold Coast</a> · <a href="/privacy/" style="color:inherit">Privacy</a> · <a href="/terms/" style="color:inherit">Terms</a> · <a href="/complaints/" style="color:inherit">Complaints</a></span></div>
+  <div class="footer-bottom"><span>© 2026 The One Club Pty Ltd · <a href="https://www.theoneclub.com.au/cairns/" style="color:inherit">theoneclub.com.au</a> · Cairns, QLD, Australia</span><span><a href="/" style="color:inherit">Gold Coast</a> · <a href="/privacy/" style="color:inherit">Privacy</a> · <a href="/terms/" style="color:inherit">Terms</a> · <a href="/complaints/" style="color:inherit">Complaints</a></span></div>
 </footer>
 </main>
 
@@ -812,7 +811,7 @@
   <div id="chat-messages" style="flex:1;overflow-y:auto;padding:18px 22px;display:flex;flex-direction:column;gap:14px;min-height:280px;max-height:340px">
     <div style="display:flex;gap:10px;align-items:flex-start">
       <div style="width:28px;height:28px;border-radius:8px;background:var(--gold);display:grid;place-items:center;font-size:9px;font-weight:700;color:#000;flex-shrink:0">1%</div>
-      <div style="background:rgba(var(--fg-rgb),.06);border-radius:4px 14px 14px 14px;padding:12px 14px;font-size:13px;line-height:1.55;color:rgba(var(--fg-rgb),.82);max-width:280px">Hey! Ask me anything about our listings, school zones, body corp fees, inspection times, or how our 1% model works.</div>
+      <div style="background:rgba(var(--fg-rgb),.06);border-radius:4px 14px 14px 14px;padding:12px 14px;font-size:13px;line-height:1.55;color:rgba(var(--fg-rgb),.82);max-width:280px">Hey! I'm your AI property researcher. Ask me about any address, school catchments, flight paths, crime stats, commute times, or how our 1% fee works!</div>
     </div>
   </div>
   <div id="chat-quick" style="padding:0 22px 12px;display:flex;flex-wrap:wrap;gap:6px;flex-shrink:0">
@@ -839,7 +838,7 @@
    SPA NAVIGATION
 ═══════════════════════════════════════ */
 var currentPage = 'home';
-var pageUrls = {'home':'/','for-sale':'/for-sale/','how-it-works':'/how-it-works/','about':'/about/','to-rent':'/rentals/'};
+var pageUrls = {'home':'/cairns/','for-sale':'/for-sale/','how-it-works':'/how-it-works/','about':'/about/','to-rent':'/rentals/'};
 function goTo(page, anchor) {
   if (page === currentPage) {
     if (anchor) {

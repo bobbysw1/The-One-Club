@@ -835,7 +835,7 @@ nav{background:rgba(var(--bg-rgb),.68) !important;backdrop-filter:blur(40px) sat
 .agent-card-foot .lic{font-size:10px;letter-spacing:.6px;margin-top:2px}
 
 /* UK sold-record cards on the Bobby detail page. */
-.sold-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:48px}
+.sold-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px}
 .sold-card{background:rgba(var(--fg-rgb),.04);border:1px solid rgba(var(--fg-rgb),.08);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;transition:transform .35s var(--ease),border-color .35s var(--ease)}
 .sold-card:hover{transform:translateY(-3px);border-color:rgba(196,168,74,.32);box-shadow:0 16px 40px rgba(0,0,0,.35)}
 .sold-card-hero{aspect-ratio:3/2;background:#0a0e14;overflow:hidden}
@@ -990,4 +990,33 @@ h2.serif em{
   border-color:rgba(196,168,74,.28);
   box-shadow:0 8px 28px rgba(0,0,0,.18) !important;
   transform:translateY(-2px) !important;
+}
+
+/* ── PREMIUM MOBILE OVERHAUL ── */
+.btn:active, .sub-card:active, .guide-card:active, .listing-card:active {
+  transform: scale(0.97) !important;
+  transition: transform 0.1s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+@media(max-width: 768px) {
+  .sub-card, .guide-card {
+    width: clamp(270px, 82vw, 340px) !important;
+    min-width: 270px !important;
+  }
+}
+
+.gold-border {
+  position: relative;
+}
+.gold-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(196,168,74,0.4), transparent 60%, rgba(196,168,74,0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }

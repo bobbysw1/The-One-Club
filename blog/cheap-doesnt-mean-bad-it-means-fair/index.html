@@ -277,7 +277,7 @@
       <li><a href="/calculators/" data-page="calculators">Calculators</a></li>
       <li><a href="/agents/" data-page="agents">Agents</a></li>
       <li><a href="/after-sale/" data-page="after-sale">After the Sale</a></li>
-      <li><a href="/cairns/" data-page="cairns">Cairns</a></li>
+      
       <li><a href="/about/" data-page="about">About</a></li>
     </ul>
     <div class="nav-cta">
@@ -298,7 +298,7 @@
   <a href="/calculators/" onclick="toggleMenu()">Calculators</a>
   <a href="/agents/" onclick="toggleMenu()">Agents</a>
   <a href="/after-sale/" onclick="toggleMenu()">After the Sale</a>
-  <a href="/cairns/" onclick="toggleMenu()">Cairns</a>
+  
   <a href="/about/" onclick="toggleMenu()">About</a>
   <a href="mailto:bobby@theoneclub.com.au" onclick="toggleMenu()" style="opacity:.7">bobby@theoneclub.com.au</a>
   <a href="/#valuation" onclick="toggleMenu()" style="color:var(--gold);border-color:rgba(196,168,74,.2)">Free Valuation →</a>
@@ -394,7 +394,7 @@
   <div id="chat-messages" style="flex:1;overflow-y:auto;padding:18px 22px;display:flex;flex-direction:column;gap:14px;min-height:280px;max-height:340px">
     <div style="display:flex;gap:10px;align-items:flex-start">
       <div style="width:28px;height:28px;border-radius:8px;background:var(--gold);display:grid;place-items:center;font-size:9px;font-weight:700;color:#000;flex-shrink:0">1%</div>
-      <div style="background:rgba(var(--fg-rgb),.06);border-radius:4px 14px 14px 14px;padding:12px 14px;font-size:13px;line-height:1.55;color:rgba(var(--fg-rgb),.82);max-width:280px">Hey! Ask me anything about our listings, school zones, body corp fees, inspection times, or how our 1% model works.</div>
+      <div style="background:rgba(var(--fg-rgb),.06);border-radius:4px 14px 14px 14px;padding:12px 14px;font-size:13px;line-height:1.55;color:rgba(var(--fg-rgb),.82);max-width:280px">Hey! I'm your AI property researcher. Ask me about any address, school catchments, flight paths, crime stats, commute times, or how our 1% fee works!</div>
     </div>
   </div>
   <div id="chat-quick" style="padding:0 22px 12px;display:flex;flex-wrap:wrap;gap:6px;flex-shrink:0">
@@ -966,5 +966,17 @@ function initParticles(){
 
 <script src="/assets/region.js" defer></script>
 <script src="/assets/chat.js"></script>
+
+  <!-- MOBILE CTA BAR -->
+  <div class="mobile-cta-bar">
+    <div class="row">
+      <a href="tel:+61404774272" class="tel" aria-label="Call Bobby" onclick="if(window.trackAction) trackAction('mobile_dock_call')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      </a>
+      <a href="/#valuation" class="btn btn-outline" style="background:var(--surface-1);border-color:rgba(var(--fg-rgb),.12)" onclick="if(window.trackAction) trackAction('mobile_dock_val')">1% Valuation</a>
+      <button class="btn btn-gold" onclick="if(window.chatApp && chatApp.toggle) chatApp.toggle(); else document.getElementById('chat-bubble').click(); if(window.trackAction) trackAction('mobile_dock_chat')" style="border:none">Ask AI</button>
+    </div>
+  </div>
+
 </body>
 </html>
