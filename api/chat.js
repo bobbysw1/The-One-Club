@@ -270,14 +270,29 @@ export default async function handler(req, res) {
   }
 
   const isCairns = region === 'cairns';
-  const CHAT_SYSTEM = isCairns ? CHAT_SYSTEM_CAIRNS : CHAT_SYSTEM_GC;
 
   // Detect if message asks about a specific address or suburb. Matches either
   // a street-type keyword/number (a real address) or a bare named suburb
   // (e.g. "what's the crime rate of Burleigh Waters") so both get the same
   // properly-targeted research search, not just full street addresses.
-  const KNOWN_SUBURBS = /\b(burleigh heads|burleigh waters|palm beach|surfers paradise|broadbeach|hope island|robina|mermaid beach|coolangatta|mudgeeraba|currumbin|kirra|southport|coomera|varsity lakes|bilinga|tugun|miami|nerang|ashmore|molendinar|labrador|biggera waters|runaway bay|paradise point|helensvale|oxenford|elanora|reedy creek|nobby beach|palm cove|trinity beach|kewarra beach|clifton beach|yorkeys knob|smithfield|redlynch|edge hill|whitfield|cairns city|cairns north|parramatta park|manunda|manoora|mooroobool|earlville|woree|bayview heights|mount sheridan|bentley park|edmonton|gordonvale|kuranda|atherton tablelands|port douglas|trinity park|brinsmead|freshwater)\b/i;
+  const GC_SUBURBS = /\b(burleigh heads|burleigh waters|palm beach|surfers paradise|broadbeach|hope island|robina|mermaid beach|coolangatta|mudgeeraba|currumbin|kirra|southport|coomera|varsity lakes|bilinga|tugun|miami|nerang|ashmore|molendinar|labrador|biggera waters|runaway bay|paradise point|helensvale|oxenford|elanora|reedy creek|nobby beach)\b/i;
+  const CAIRNS_SUBURBS = /\b(palm cove|trinity beach|kewarra beach|clifton beach|yorkeys knob|smithfield|redlynch|edge hill|whitfield|cairns city|cairns north|parramatta park|manunda|manoora|mooroobool|earlville|woree|bayview heights|mount sheridan|bentley park|edmonton|gordonvale|kuranda|atherton tablelands|port douglas|trinity park|brinsmead|freshwater)\b/i;
+  const KNOWN_SUBURBS = new RegExp(GC_SUBURBS.source + '|' + CAIRNS_SUBURBS.source, 'i');
   const hasAddress = /\b(\d+\s+[A-Za-z0-9\s]+|street|st\b|road|rd\b|avenue|ave\b|court|ct\b|drive|dr\b|parade|pde\b|crescent|cres\b|way\b|lane\b|place|pl\b|boulevard|blvd\b|esplanade|esp\b|highway|hwy\b)\b/i.test(message) || KNOWN_SUBURBS.test(message);
+
+  // If the message names a suburb from the OTHER region, don't rely on the
+  // system prompt alone to decide whether to help, switch to that region's
+  // own assistant for this one request. Instruction-following for "still
+  // help across regions" proved unreliable in testing (the model kept
+  // hard-refusing with the non-property deflection); routing to the correct
+  // region's prompt outright sidesteps that instead of hoping it complies.
+  let effectiveIsCairns = isCairns;
+  if (isCairns && GC_SUBURBS.test(message) && !CAIRNS_SUBURBS.test(message)) {
+    effectiveIsCairns = false;
+  } else if (!isCairns && CAIRNS_SUBURBS.test(message) && !GC_SUBURBS.test(message)) {
+    effectiveIsCairns = true;
+  }
+  const CHAT_SYSTEM = effectiveIsCairns ? CHAT_SYSTEM_CAIRNS : CHAT_SYSTEM_GC;
 
   // Our own pricing (commission, Matterport, portal listing) is a fixed fact
   // we set ourselves, never a market rate to look up. Skip web search for
