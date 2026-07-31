@@ -1347,47 +1347,6 @@ function sendChat(){
 function sendQuick(text){ document.getElementById('chat-input').value = text; sendChat(); }
 </script>
 
-<script>
-/* ==============================================
-   BACKEND API - DYNAMIC LISTINGS + CHATBOT
-   Backend: http://localhost:3001  (node backend/server.js)
-============================================== */
-var GH_RAW = 'https://raw.githubusercontent.com/bobbysw1/The-One-Club/main/backend/data/';
-
-function loadChatbotFromAPI() {
-  fetch(GH_RAW + 'chatbot.json?t=' + Date.now())
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      window._chatbotData = data;
-      Object.keys(data).forEach(function(k) { propertyKB[k] = data[k].response; });
-    })
-    .catch(function() {});
-}
-
-// Extend getBotReply to use API keyword data when available.
-// School / catchment / suburb-specific questions ALWAYS go to the AI,
-// the local KB can't reason about an address, so we skip the override.
-var _origGetBotReply = getBotReply;
-var _SKIP_KB_RE = /school|catchment|zone|educa|primary|high school|port douglas|palm cove|trinity beach|trinity park|kewarra|clifton beach|yorkeys|smithfield|redlynch|freshwater|edge hill|whitfield|brinsmead|manunda|manoora|mooroobool|earlville|woree|bayview|sheridan|bentley|edmonton|gordonvale|kuranda|atherton|mareeba|tablelands|parramatta park|ave|avenue|street|st\b|rd\b|road/i;
-getBotReply = function(msg) {
-  if (window._chatbotData && !_SKIP_KB_RE.test(msg)) {
-    var l = msg.toLowerCase();
-    var entries = Object.values(window._chatbotData);
-    for (var i = 0; i < entries.length; i++) {
-      var kws = entries[i].keywords || [];
-      for (var j = 0; j < kws.length; j++) {
-        if (l.indexOf(kws[j].toLowerCase()) !== -1) return entries[i].response;
-      }
-    }
-  }
-  return _origGetBotReply(msg);
-};
-
-// Boot
-// loadChatbotFromAPI() intentionally not called on the Cairns page,
-// the remote chatbot.json answers are Gold Coast-specific; the local
-// Cairns KB above stays authoritative.
-</script>
 
 
 <script>
