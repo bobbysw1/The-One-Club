@@ -40,6 +40,32 @@
     return reply;
   }
 
+  // ── CONVERSION TRACKING ───────────────────────────────────────
+  // Fires gtag events for the interactions that actually indicate a
+  // lead, rather than tracking every click. Silently no-ops if gtag
+  // isn't loaded (e.g. ad blockers) so it never breaks the chat itself.
+  var PRICING_RE = /\b(1%|commission|fee|cost|price|save|saving|matterport|\$)\b/i;
+  var BOOKING_RE = /\b(inspect|inspection|book|appraisal|valuation|call|speak|contact|agent)\b/i;
+
+  function _trackEvent(name, params){
+    try {
+      if (typeof gtag === 'function') gtag('event', name, params || {});
+    } catch (e) {}
+  }
+
+  function _classifyIntent(msg){
+    if (BOOKING_RE.test(msg)) return 'booking';
+    if (PRICING_RE.test(msg)) return 'pricing';
+    return 'general';
+  }
+
+  var _chatOpenTracked = false;
+  function _trackChatOpen(){
+    if (_chatOpenTracked) return;
+    _chatOpenTracked = true;
+    _trackEvent('chat_opened', { event_category: 'Chatbot', page_path: location.pathname });
+  }
+
   window.askAI = function(userMsg){
     var sessionCount = parseInt(sessionStorage.getItem('toc_chat_count') || '0', 10) + 1;
     sessionStorage.setItem('toc_chat_count', sessionCount.toString());
@@ -110,6 +136,7 @@
     input.value = '';
     _addMessage(msg, 'user');
     window.CHAT_HISTORY.push({ role: 'user', content: msg });
+    _trackEvent('chat_message_sent', { event_category: 'Chatbot', event_label: _classifyIntent(msg), page_path: location.pathname });
     var q = document.getElementById('chat-quick'); if (q) q.style.display = 'none';
     var t = _typingDots();
     var container = document.getElementById('chat-messages');
@@ -155,6 +182,7 @@
             : 'Want to know when matching properties come on the market? Register your buyer profile.';
           _addMessage(prompt, 'bot');
           _showLeadForm(resp.leadType);
+          _trackEvent('chat_lead_form_shown', { event_category: 'Chatbot', event_label: resp.leadType, page_path: location.pathname });
         }, 1200);
       }
 
@@ -166,6 +194,12 @@
           phoneMsg.innerHTML = '<strong>' + resp.phoneCta + '</strong>';
           document.getElementById('chat-messages').appendChild(phoneMsg);
         }, 1600);
+        _trackEvent('chat_phone_cta_shown', { event_category: 'Chatbot', page_path: location.pathname });
+      }
+
+      // High-intent signal: the backend decided a human agent is needed
+      if (resp.requiresAgent || resp.escalated) {
+        _trackEvent('chat_escalated_to_agent', { event_category: 'Chatbot', page_path: location.pathname });
       }
     });
   };
@@ -246,6 +280,10 @@
       _initScrollHint();
       if (document.querySelector('article, [role="article"]')) _initBlogInline();
       _initListingHint();
+      var bubble = document.getElementById('chat-bubble');
+      if (bubble) bubble.addEventListener('click', _trackChatOpen);
+      var mobileAsk = document.querySelector('.mobile-cta-bar .btn-gold');
+      if (mobileAsk) mobileAsk.addEventListener('click', _trackChatOpen);
     } catch(e) {}
   }
 
@@ -264,7 +302,7 @@
       btn.textContent = text;
       btn.onmouseover = function(){ this.style.background = 'rgba(var(--fg-rgb),.12)'; };
       btn.onmouseout = function(){ this.style.background = 'rgba(var(--fg-rgb),.08)'; };
-      btn.onclick = function(){ window.sendQuick(text); };
+      btn.onclick = function(){ _trackEvent('chat_quick_reply_click', { event_category: 'Chatbot', event_label: text }); window.sendQuick(text); };
       quickDiv.appendChild(btn);
     });
     container.appendChild(quickDiv);
@@ -288,7 +326,10 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ source: data.source, fields: data, page: location.pathname })
-      }).then(function(){ form.innerHTML = '<div style="text-align:center;color:var(--gold);font-weight:600">Thanks! We\'ll be in touch within 24 hours.</div>'; });
+      }).then(function(){
+        form.innerHTML = '<div style="text-align:center;color:var(--gold);font-weight:600">Thanks! We\'ll be in touch within 24 hours.</div>';
+        _trackEvent('chat_lead_form_submit', { event_category: 'Lead', event_label: data.source, page_path: location.pathname });
+      });
     };
     container.appendChild(form);
     container.scrollTop = container.scrollHeight;
