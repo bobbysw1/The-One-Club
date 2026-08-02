@@ -2,6 +2,60 @@
 // Browser calls /api/chat; this function runs server-side so API keys are never exposed.
 // Features: knowledge base, lead capture detection, quick reply suggestions, escalation routing
 
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// ── VERIFIED LOCAL AREA DATA (crime + demographics) ──────────────
+// Loaded once per cold start from data/suburb-area-data.json, built by
+// scripts/refresh_area_data.py from official QLD Police and ABS Census
+// sources. Generic web search (Tavily) is not a reliable source for crime
+// or demographic claims about a specific suburb; this gives the assistant
+// real, sourced, dated numbers to use instead for those two topics
+// specifically, the same way the fixed $199 Matterport price already
+// overrides whatever a web search happens to turn up.
+let AREA_DATA = null;
+try {
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
+  const raw = fs.readFileSync(path.join(__dirname, '..', 'data', 'suburb-area-data.json'), 'utf-8');
+  AREA_DATA = JSON.parse(raw);
+} catch (e) {
+  console.warn('[chat] could not load suburb-area-data.json, falling back to web search for crime/demographics', e.message);
+}
+
+// A couple of suburb names people type that don't exactly match the
+// dataset's display name.
+const AREA_DATA_ALIASES = { 'atherton': 'atherton-tablelands' };
+
+function findAreaData(message) {
+  if (!AREA_DATA) return null;
+  const msg = message.toLowerCase();
+  for (const [slug, entry] of Object.entries(AREA_DATA.suburbs)) {
+    const name = entry.display_name.toLowerCase();
+    if (msg.includes(name)) return { slug, ...entry };
+  }
+  for (const [alias, slug] of Object.entries(AREA_DATA_ALIASES)) {
+    if (msg.includes(alias) && AREA_DATA.suburbs[slug]) return { slug, ...AREA_DATA.suburbs[slug] };
+  }
+  return null;
+}
+
+function formatAreaDataBlock(area) {
+  if (!area) return '';
+  const crime = area.crime;
+  const demo = area.demographics;
+  const sources = AREA_DATA.sources;
+  let block = '\n\nVerified Local Data for ' + area.display_name + ' (use ONLY this for crime rate and demographic claims about this suburb, ignore anything about crime/demographics in Live Search Context below, it is less reliable than this):\n';
+  block += '- Crime: ' + crime.total_offences + ' reported offences, ' + crime.period + ' (' + sources.crime.name + ').';
+  if (crime.boundary_note) block += ' Note: ' + crime.boundary_note;
+  block += ' Top categories: ' + crime.top_offence_types.map(t => t.type + ' (' + t.count + ')').join(', ') + '.\n';
+  if (demo) {
+    block += '- Demographics: population ' + demo.population.toLocaleString() + ', ' + demo.owner_occupied_pct + '% owner-occupied / ' + demo.renting_pct + '% renting, age mix ' + demo.age_mix_pct.children_0_14 + '% children (0-14), ' + demo.age_mix_pct.working_age_25_64 + '% working-age (25-64), ' + demo.age_mix_pct.seniors_65_plus + '% seniors (65+). Source: ' + sources.demographics.name + ' (' + demo.census_year + ').\n';
+  }
+  block += 'Always state these are sourced from ' + sources.crime.name + ' and ' + sources.demographics.name + ' with the period/year given above, never present them as your own estimate.';
+  return block;
+}
+
 const CHATBOT_KB = {
   "faqs": {"transfer-duty":{"keywords":["transfer duty","duty","tax on purchase","stamp duty"],"response":"In QLD, transfer duty is calculated based on the property's purchase price and your circumstances. As a first-home buyer, you may get exemptions or concessions. For an investment property or subsequent purchase, expect 3–6% of the purchase price. Use the QLD revenue office calculator at qro.qld.gov.au for exact figures based on your price."},"conveyancing":{"keywords":["conveyancing","conveyancer","settlement","closing costs","legal fees"],"response":"Conveyancing is the legal transfer of ownership. Your conveyancer (solicitor) prepares contracts, conducts searches, and arranges settlement. Costs typically range $600–$1,500 depending on property value and complexity. Settlement happens 5–10 business days after contracts are signed. We coordinate this end-to-end."},"inspection":{"keywords":["inspection","open home","view","inspecting"],"response":"Inspections are open typically Sat–Sun, 10am–4pm. We manage online booking on the listing so you can choose your time. Bring a building inspector if you're serious about an offer. Most importantly: check the roof, plumbing, electrics, and whether the layout works for your life. We're happy to discuss what you find."},"body-corp":{"keywords":["body corp","body corporate","strata","unit fees","apartment fees","condo fees"],"response":"Body corporate (or strata) fees cover shared areas: pool, gardens, common areas, insurance, management. Expect $80–$300/month depending on the complex. These are mandatory for apartments and townhouses. Check the budget and minutes at the property to understand what's covered and if fees are rising."},"pre-approval":{"keywords":["pre-approval","mortgage","loan approval","borrowing capacity","finance"],"response":"Pre-approval means a bank agrees in principle to lend you a certain amount based on your income, credit, and savings. It's free and usually takes 1–2 days. Get pre-approved before house-hunting so you know your budget and can make quick offers. Most banks do this online."},"first-home-buyer":{"keywords":["first home","first-time buyer","first home concession","fhog"],"response":"First-home buyer incentives in QLD include: transfer duty exemption on purchases under $500k, possible first-home owner grant (varies by state), and first-home loan deposit scheme (putting down 5% instead of 20%). Talk to your bank about which you qualify for—there are real savings to be had."},"1-percent-commission":{"keywords":["1 percent","commission","how much","fees","cost"],"response":"We charge a flat 1% commission on the sale price—included in that is professional photography, floor plans, digital marketing, signboard, and settlement coordination. The only extras are the REA/Domain portal listing, which you choose, and a Matterport® 3D Showcase + drone flyover at a flat $199. No hidden fees."}}
 };
@@ -19,6 +73,8 @@ Provide a clear, well-structured Property & Area Snapshot answering:
 5. 📊 Demographics (Median age, owner-occupier ratio, family vs professional mix).
 6. 💵 Typical Rates & Outgoings (Council rates ~$2,000–$3,500/yr, water charges, body corp norms).
 7. 🏖️ Local Lifestyle & Amenities.
+
+CRIME & DEMOGRAPHICS SOURCING: If a "Verified Local Data" block appears below, it is real QLD Police and ABS Census data for that suburb, use it and cite the source and period/year given in it. If no such block is present for the suburb asked about, say plainly that you don't have verified figures for that specific locality and suggest they check QLD Police's Online Crime Map or the ABS Census QuickStats directly, rather than presenting a general impression as if it were a real statistic.
 
 IF A VISITOR ASKS A GENERAL QUESTION WITHOUT AN ADDRESS:
 Answer their question directly, then end by inviting them: "If you have a specific Gold Coast address in mind, tell me the street or suburb and I'll pull together a full snapshot for you!"
@@ -45,6 +101,8 @@ Provide a clear, well-structured Property & Area Snapshot answering:
 5. 📊 Demographics (Median age, owner-occupier ratio, family vs retiree mix).
 6. 💵 Typical Rates & Outgoings (Cairns Regional Council rates, water charges, body corp norms).
 7. 🏖️ Local Lifestyle & Amenities.
+
+CRIME & DEMOGRAPHICS SOURCING: If a "Verified Local Data" block appears below, it is real QLD Police and ABS Census data for that suburb, use it and cite the source and period/year given in it. If no such block is present for the suburb asked about, say plainly that you don't have verified figures for that specific locality and suggest they check QLD Police's Online Crime Map or the ABS Census QuickStats directly, rather than presenting a general impression as if it were a real statistic.
 
 IF A VISITOR ASKS A GENERAL QUESTION WITHOUT AN ADDRESS:
 Answer their question directly, then end by inviting them: "If you have a specific Cairns or Port Douglas address in mind, tell me the street or suburb and I'll pull together a full snapshot for you!"
@@ -321,8 +379,13 @@ export default async function handler(req, res) {
   const leadCapture = detectLeadCapture(message, region);
   const deviceConfig = personalizForDevice(isMobile);
 
+  // ── VERIFIED LOCAL DATA (crime + demographics) ──────────────
+  // Checked before Tavily so the override note in the block can tell the
+  // model to prefer this over whatever the web search below turns up.
+  const areaData = findAreaData(message);
+  let contextBlock = areaData ? formatAreaDataBlock(areaData) : '';
+
   // ── TAVILY GROUNDED RESEARCH ──────────────────────────────
-  let contextBlock = '';
   if (TAVILY_KEY && !isPricingQuestion) {
     try {
       const tavilyRes = await fetch('https://api.tavily.com/search', {
@@ -339,7 +402,7 @@ export default async function handler(req, res) {
       const tv = await tavilyRes.json();
       const snippet = tv.answer
         || (tv.results || []).slice(0, 3).map(r => r.content).join(' ').slice(0, 900);
-      if (snippet) contextBlock = '\n\nLive Search Context:\n' + snippet;
+      if (snippet) contextBlock += '\n\nLive Search Context:\n' + snippet;
     } catch (_) {
       // Tavily is optional
     }

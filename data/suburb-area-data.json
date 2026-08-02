@@ -1,0 +1,1997 @@
+{
+  "generated_at": "2026-08-02",
+  "sources": {
+    "crime": {
+      "name": "Queensland Police Service Open Data Portal \u2014 Crime locations (suburb boundary API)",
+      "url": "https://www.police.qld.gov.au/maps-and-statistics",
+      "note": "Reported offences, 12-month rolling period. Suburb boundaries are QPS crime-reporting boundaries, which occasionally group small localities under a neighbouring suburb name (see boundary_note per suburb)."
+    },
+    "demographics": {
+      "name": "Australian Bureau of Statistics, 2021 Census of Population and Housing",
+      "url": "https://www.abs.gov.au/census",
+      "note": "Most recent published Census. Next Census is 2026; this data will be stale until those results are released."
+    }
+  },
+  "suburbs": {
+    "bilinga": {
+      "display_name": "Bilinga",
+      "region": "gc",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 392,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 167
+          },
+          {
+            "type": "Drug Offences",
+            "count": 50
+          },
+          {
+            "type": "Unlawful Use of Motor Vehicle",
+            "count": 44
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 35
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 27
+          }
+        ],
+        "qps_boundary_name": "Bilinga",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 1883,
+        "age_mix_pct": {
+          "children_0_14": 9.5,
+          "young_adult_15_24": 8.7,
+          "working_age_25_64": 58.2,
+          "seniors_65_plus": 23.7
+        },
+        "owner_occupied_pct": 51.3,
+        "renting_pct": 47.3,
+        "abs_sal_code": "SAL30250"
+      }
+    },
+    "broadbeach": {
+      "display_name": "Broadbeach",
+      "region": "gc",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 2489,
+        "top_offence_types": [
+          {
+            "type": "Drug Offences",
+            "count": 908
+          },
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 489
+          },
+          {
+            "type": "Good Order Offences",
+            "count": 201
+          },
+          {
+            "type": "Miscellaneous Offences",
+            "count": 170
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 128
+          }
+        ],
+        "qps_boundary_name": "Broadbeach",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 6786,
+        "age_mix_pct": {
+          "children_0_14": 7.0,
+          "young_adult_15_24": 9.2,
+          "working_age_25_64": 59.4,
+          "seniors_65_plus": 24.4
+        },
+        "owner_occupied_pct": 46.8,
+        "renting_pct": 49.5,
+        "abs_sal_code": "SAL30380"
+      }
+    },
+    "burleigh-heads": {
+      "display_name": "Burleigh Heads",
+      "region": "gc",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 1484,
+        "top_offence_types": [
+          {
+            "type": "Drug Offences",
+            "count": 356
+          },
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 314
+          },
+          {
+            "type": "Good Order Offences",
+            "count": 172
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 125
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 109
+          }
+        ],
+        "qps_boundary_name": "Burleigh Heads",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 10572,
+        "age_mix_pct": {
+          "children_0_14": 13.1,
+          "young_adult_15_24": 9.8,
+          "working_age_25_64": 55.4,
+          "seniors_65_plus": 21.8
+        },
+        "owner_occupied_pct": 63.2,
+        "renting_pct": 33.5,
+        "abs_sal_code": "SAL30445"
+      }
+    },
+    "coolangatta": {
+      "display_name": "Coolangatta",
+      "region": "gc",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 1147,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 320
+          },
+          {
+            "type": "Drug Offences",
+            "count": 210
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 117
+          },
+          {
+            "type": "Good Order Offences",
+            "count": 102
+          },
+          {
+            "type": "Assault",
+            "count": 80
+          }
+        ],
+        "qps_boundary_name": "Coolangatta",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 6491,
+        "age_mix_pct": {
+          "children_0_14": 8.3,
+          "young_adult_15_24": 8.8,
+          "working_age_25_64": 55.2,
+          "seniors_65_plus": 27.9
+        },
+        "owner_occupied_pct": 55.7,
+        "renting_pct": 41.2,
+        "abs_sal_code": "SAL30680"
+      }
+    },
+    "currumbin": {
+      "display_name": "Currumbin",
+      "region": "gc",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 196,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 55
+          },
+          {
+            "type": "Drug Offences",
+            "count": 40
+          },
+          {
+            "type": "Assault",
+            "count": 23
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 16
+          },
+          {
+            "type": "Unlawful Use of Motor Vehicle",
+            "count": 13
+          }
+        ],
+        "qps_boundary_name": "Currumbin",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 3278,
+        "age_mix_pct": {
+          "children_0_14": 16.5,
+          "young_adult_15_24": 8.8,
+          "working_age_25_64": 55.5,
+          "seniors_65_plus": 19.4
+        },
+        "owner_occupied_pct": 67.2,
+        "renting_pct": 29.9,
+        "abs_sal_code": "SAL30774"
+      }
+    },
+    "hope-island": {
+      "display_name": "Hope Island",
+      "region": "gc",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 758,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 224
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 92
+          },
+          {
+            "type": "Drug Offences",
+            "count": 86
+          },
+          {
+            "type": "Assault",
+            "count": 72
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 59
+          }
+        ],
+        "qps_boundary_name": "Hope Island",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 14522,
+        "age_mix_pct": {
+          "children_0_14": 12.9,
+          "young_adult_15_24": 9.7,
+          "working_age_25_64": 49.4,
+          "seniors_65_plus": 27.9
+        },
+        "owner_occupied_pct": 70.2,
+        "renting_pct": 27.4,
+        "abs_sal_code": "SAL31356"
+      }
+    },
+    "kirra": {
+      "display_name": "Kirra",
+      "region": "gc",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 1147,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 320
+          },
+          {
+            "type": "Drug Offences",
+            "count": 210
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 117
+          },
+          {
+            "type": "Good Order Offences",
+            "count": 102
+          },
+          {
+            "type": "Assault",
+            "count": 80
+          }
+        ],
+        "qps_boundary_name": "Coolangatta",
+        "boundary_note": "Reported under the Coolangatta QPS suburb boundary, Kirra does not have its own separate crime-reporting boundary."
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 6491,
+        "age_mix_pct": {
+          "children_0_14": 8.3,
+          "young_adult_15_24": 8.8,
+          "working_age_25_64": 55.2,
+          "seniors_65_plus": 27.9
+        },
+        "owner_occupied_pct": 55.7,
+        "renting_pct": 41.2,
+        "abs_sal_code": "SAL30680"
+      }
+    },
+    "mermaid-beach": {
+      "display_name": "Mermaid Beach",
+      "region": "gc",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 518,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 127
+          },
+          {
+            "type": "Drug Offences",
+            "count": 95
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 76
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 40
+          },
+          {
+            "type": "Assault",
+            "count": 37
+          }
+        ],
+        "qps_boundary_name": "Mermaid Beach",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 7329,
+        "age_mix_pct": {
+          "children_0_14": 10.4,
+          "young_adult_15_24": 12.5,
+          "working_age_25_64": 63.4,
+          "seniors_65_plus": 13.8
+        },
+        "owner_occupied_pct": 50.9,
+        "renting_pct": 46.6,
+        "abs_sal_code": "SAL31811"
+      }
+    },
+    "miami": {
+      "display_name": "Miami",
+      "region": "gc",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 987,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 323
+          },
+          {
+            "type": "Drug Offences",
+            "count": 269
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 80
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 53
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 49
+          }
+        ],
+        "qps_boundary_name": "Miami",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 7445,
+        "age_mix_pct": {
+          "children_0_14": 14.4,
+          "young_adult_15_24": 10.8,
+          "working_age_25_64": 59.6,
+          "seniors_65_plus": 15.0
+        },
+        "owner_occupied_pct": 57.8,
+        "renting_pct": 39.3,
+        "abs_sal_code": "SAL31819"
+      }
+    },
+    "mudgeeraba": {
+      "display_name": "Mudgeeraba",
+      "region": "gc",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 511,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 140
+          },
+          {
+            "type": "Drug Offences",
+            "count": 78
+          },
+          {
+            "type": "Assault",
+            "count": 67
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 60
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 43
+          }
+        ],
+        "qps_boundary_name": "Mudgeeraba",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 14578,
+        "age_mix_pct": {
+          "children_0_14": 22.4,
+          "young_adult_15_24": 11.5,
+          "working_age_25_64": 50.7,
+          "seniors_65_plus": 15.5
+        },
+        "owner_occupied_pct": 74.6,
+        "renting_pct": 23.3,
+        "abs_sal_code": "SAL32050"
+      }
+    },
+    "palm-beach": {
+      "display_name": "Palm Beach",
+      "region": "gc",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 1017,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 297
+          },
+          {
+            "type": "Drug Offences",
+            "count": 133
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 114
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 106
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 89
+          }
+        ],
+        "qps_boundary_name": "Palm Beach",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 16349,
+        "age_mix_pct": {
+          "children_0_14": 16.0,
+          "young_adult_15_24": 10.4,
+          "working_age_25_64": 55.9,
+          "seniors_65_plus": 17.7
+        },
+        "owner_occupied_pct": 60.6,
+        "renting_pct": 37.0,
+        "abs_sal_code": "SAL32257"
+      }
+    },
+    "robina": {
+      "display_name": "Robina",
+      "region": "gc",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 1769,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 833
+          },
+          {
+            "type": "Drug Offences",
+            "count": 170
+          },
+          {
+            "type": "Assault",
+            "count": 104
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 103
+          },
+          {
+            "type": "Good Order Offences",
+            "count": 98
+          }
+        ],
+        "qps_boundary_name": "Robina",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 25659,
+        "age_mix_pct": {
+          "children_0_14": 16.4,
+          "young_adult_15_24": 13.8,
+          "working_age_25_64": 50.3,
+          "seniors_65_plus": 19.5
+        },
+        "owner_occupied_pct": 64.4,
+        "renting_pct": 33.0,
+        "abs_sal_code": "SAL32445"
+      }
+    },
+    "southport": {
+      "display_name": "Southport",
+      "region": "gc",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 6384,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 1862
+          },
+          {
+            "type": "Drug Offences",
+            "count": 1550
+          },
+          {
+            "type": "Good Order Offences",
+            "count": 470
+          },
+          {
+            "type": "Assault",
+            "count": 430
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 396
+          }
+        ],
+        "qps_boundary_name": "Southport",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 36786,
+        "age_mix_pct": {
+          "children_0_14": 11.4,
+          "young_adult_15_24": 16.3,
+          "working_age_25_64": 53.0,
+          "seniors_65_plus": 19.3
+        },
+        "owner_occupied_pct": 38.3,
+        "renting_pct": 57.9,
+        "abs_sal_code": "SAL32611"
+      }
+    },
+    "surfers-paradise": {
+      "display_name": "Surfers Paradise",
+      "region": "gc",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 6882,
+        "top_offence_types": [
+          {
+            "type": "Drug Offences",
+            "count": 1541
+          },
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 1362
+          },
+          {
+            "type": "Good Order Offences",
+            "count": 1339
+          },
+          {
+            "type": "Assault",
+            "count": 535
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 343
+          }
+        ],
+        "qps_boundary_name": "Surfers Paradise",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 26412,
+        "age_mix_pct": {
+          "children_0_14": 7.8,
+          "young_adult_15_24": 10.8,
+          "working_age_25_64": 59.8,
+          "seniors_65_plus": 21.6
+        },
+        "owner_occupied_pct": 45.0,
+        "renting_pct": 51.2,
+        "abs_sal_code": "SAL32702"
+      }
+    },
+    "tugun": {
+      "display_name": "Tugun",
+      "region": "gc",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 379,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 148
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 42
+          },
+          {
+            "type": "Drug Offences",
+            "count": 37
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 32
+          },
+          {
+            "type": "Assault",
+            "count": 23
+          }
+        ],
+        "qps_boundary_name": "Tugun",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 7175,
+        "age_mix_pct": {
+          "children_0_14": 17.6,
+          "young_adult_15_24": 9.8,
+          "working_age_25_64": 54.9,
+          "seniors_65_plus": 17.9
+        },
+        "owner_occupied_pct": 67.6,
+        "renting_pct": 30.2,
+        "abs_sal_code": "SAL32881"
+      }
+    },
+    "varsity-lakes": {
+      "display_name": "Varsity Lakes",
+      "region": "gc",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 797,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 264
+          },
+          {
+            "type": "Drug Offences",
+            "count": 115
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 86
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 76
+          },
+          {
+            "type": "Assault",
+            "count": 48
+          }
+        ],
+        "qps_boundary_name": "Varsity Lakes",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 16493,
+        "age_mix_pct": {
+          "children_0_14": 18.4,
+          "young_adult_15_24": 13.9,
+          "working_age_25_64": 53.7,
+          "seniors_65_plus": 13.9
+        },
+        "owner_occupied_pct": 54.4,
+        "renting_pct": 43.3,
+        "abs_sal_code": "SAL32931"
+      }
+    },
+    "atherton-tablelands": {
+      "display_name": "Atherton Tablelands",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 1485,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 291
+          },
+          {
+            "type": "Drug Offences",
+            "count": 268
+          },
+          {
+            "type": "Good Order Offences",
+            "count": 188
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 154
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 132
+          }
+        ],
+        "qps_boundary_name": "Atherton",
+        "boundary_note": "Reported under the Atherton QPS suburb boundary, Atherton Tablelands does not have its own separate crime-reporting boundary."
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 7724,
+        "age_mix_pct": {
+          "children_0_14": 16.9,
+          "young_adult_15_24": 10.7,
+          "working_age_25_64": 45.3,
+          "seniors_65_plus": 27.1
+        },
+        "owner_occupied_pct": 59.0,
+        "renting_pct": 36.9,
+        "abs_sal_code": "SAL30096"
+      }
+    },
+    "bayview-heights": {
+      "display_name": "Bayview Heights",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 198,
+        "top_offence_types": [
+          {
+            "type": "Unlawful Entry",
+            "count": 72
+          },
+          {
+            "type": "Unlawful Use of Motor Vehicle",
+            "count": 22
+          },
+          {
+            "type": "Assault",
+            "count": 20
+          },
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 20
+          },
+          {
+            "type": "Drug Offences",
+            "count": 13
+          }
+        ],
+        "qps_boundary_name": "Bayview Heights",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 4175,
+        "age_mix_pct": {
+          "children_0_14": 18.9,
+          "young_adult_15_24": 10.2,
+          "working_age_25_64": 50.5,
+          "seniors_65_plus": 20.5
+        },
+        "owner_occupied_pct": 81.4,
+        "renting_pct": 16.1,
+        "abs_sal_code": "SAL30188"
+      }
+    },
+    "bentley-park": {
+      "display_name": "Bentley Park",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 844,
+        "top_offence_types": [
+          {
+            "type": "Unlawful Entry",
+            "count": 162
+          },
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 127
+          },
+          {
+            "type": "Assault",
+            "count": 123
+          },
+          {
+            "type": "Drug Offences",
+            "count": 115
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 88
+          }
+        ],
+        "qps_boundary_name": "Bentley Park",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 8360,
+        "age_mix_pct": {
+          "children_0_14": 25.8,
+          "young_adult_15_24": 13.6,
+          "working_age_25_64": 51.5,
+          "seniors_65_plus": 8.9
+        },
+        "owner_occupied_pct": 64.0,
+        "renting_pct": 34.0,
+        "abs_sal_code": "SAL30236"
+      }
+    },
+    "brinsmead": {
+      "display_name": "Brinsmead",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 264,
+        "top_offence_types": [
+          {
+            "type": "Unlawful Entry",
+            "count": 67
+          },
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 48
+          },
+          {
+            "type": "Drug Offences",
+            "count": 38
+          },
+          {
+            "type": "Assault",
+            "count": 20
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 20
+          }
+        ],
+        "qps_boundary_name": "Brinsmead",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 5537,
+        "age_mix_pct": {
+          "children_0_14": 22.1,
+          "young_adult_15_24": 11.5,
+          "working_age_25_64": 54.3,
+          "seniors_65_plus": 11.8
+        },
+        "owner_occupied_pct": 77.8,
+        "renting_pct": 20.1,
+        "abs_sal_code": "SAL30377"
+      }
+    },
+    "cairns-city": {
+      "display_name": "Cairns City",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 6121,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 1630
+          },
+          {
+            "type": "Good Order Offences",
+            "count": 1484
+          },
+          {
+            "type": "Drug Offences",
+            "count": 1003
+          },
+          {
+            "type": "Assault",
+            "count": 649
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 258
+          }
+        ],
+        "qps_boundary_name": "Cairns City",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 3616,
+        "age_mix_pct": {
+          "children_0_14": 5.2,
+          "young_adult_15_24": 9.7,
+          "working_age_25_64": 64.3,
+          "seniors_65_plus": 20.4
+        },
+        "owner_occupied_pct": 47.3,
+        "renting_pct": 48.6,
+        "abs_sal_code": "SAL30478"
+      }
+    },
+    "cairns-north": {
+      "display_name": "Cairns North",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 2845,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 721
+          },
+          {
+            "type": "Drug Offences",
+            "count": 548
+          },
+          {
+            "type": "Assault",
+            "count": 322
+          },
+          {
+            "type": "Good Order Offences",
+            "count": 300
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 231
+          }
+        ],
+        "qps_boundary_name": "Cairns North",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 5334,
+        "age_mix_pct": {
+          "children_0_14": 11.5,
+          "young_adult_15_24": 12.5,
+          "working_age_25_64": 63.4,
+          "seniors_65_plus": 12.6
+        },
+        "owner_occupied_pct": 33.8,
+        "renting_pct": 63.6,
+        "abs_sal_code": "SAL30479"
+      }
+    },
+    "clifton-beach": {
+      "display_name": "Clifton Beach",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 125,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 46
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 20
+          },
+          {
+            "type": "Unlawful Use of Motor Vehicle",
+            "count": 13
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 11
+          },
+          {
+            "type": "Drug Offences",
+            "count": 9
+          }
+        ],
+        "qps_boundary_name": "Clifton Beach",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 3192,
+        "age_mix_pct": {
+          "children_0_14": 15.2,
+          "young_adult_15_24": 9.7,
+          "working_age_25_64": 53.6,
+          "seniors_65_plus": 21.7
+        },
+        "owner_occupied_pct": 63.3,
+        "renting_pct": 34.9,
+        "abs_sal_code": "SAL30625"
+      }
+    },
+    "earlville": {
+      "display_name": "Earlville",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 1357,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 433
+          },
+          {
+            "type": "Drug Offences",
+            "count": 185
+          },
+          {
+            "type": "Assault",
+            "count": 151
+          },
+          {
+            "type": "Good Order Offences",
+            "count": 108
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 103
+          }
+        ],
+        "qps_boundary_name": "Earlville",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 4200,
+        "age_mix_pct": {
+          "children_0_14": 16.3,
+          "young_adult_15_24": 10.3,
+          "working_age_25_64": 49.5,
+          "seniors_65_plus": 23.9
+        },
+        "owner_occupied_pct": 56.3,
+        "renting_pct": 34.3,
+        "abs_sal_code": "SAL30917"
+      }
+    },
+    "edge-hill": {
+      "display_name": "Edge Hill",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 327,
+        "top_offence_types": [
+          {
+            "type": "Unlawful Entry",
+            "count": 96
+          },
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 55
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 49
+          },
+          {
+            "type": "Assault",
+            "count": 26
+          },
+          {
+            "type": "Drug Offences",
+            "count": 25
+          }
+        ],
+        "qps_boundary_name": "Edge Hill",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 4088,
+        "age_mix_pct": {
+          "children_0_14": 18.7,
+          "young_adult_15_24": 9.8,
+          "working_age_25_64": 54.5,
+          "seniors_65_plus": 17.1
+        },
+        "owner_occupied_pct": 61.8,
+        "renting_pct": 36.0,
+        "abs_sal_code": "SAL30941"
+      }
+    },
+    "edmonton": {
+      "display_name": "Edmonton",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 1676,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 339
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 295
+          },
+          {
+            "type": "Drug Offences",
+            "count": 235
+          },
+          {
+            "type": "Assault",
+            "count": 180
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 161
+          }
+        ],
+        "qps_boundary_name": "Edmonton",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 11409,
+        "age_mix_pct": {
+          "children_0_14": 24.1,
+          "young_adult_15_24": 13.1,
+          "working_age_25_64": 51.1,
+          "seniors_65_plus": 11.7
+        },
+        "owner_occupied_pct": 65.0,
+        "renting_pct": 32.0,
+        "abs_sal_code": "SAL30942"
+      }
+    },
+    "freshwater": {
+      "display_name": "Freshwater",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 64,
+        "top_offence_types": [
+          {
+            "type": "Assault",
+            "count": 14
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 13
+          },
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 11
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 7
+          },
+          {
+            "type": "Trespassing and Vagrancy",
+            "count": 6
+          }
+        ],
+        "qps_boundary_name": "Freshwater",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 2142,
+        "age_mix_pct": {
+          "children_0_14": 20.2,
+          "young_adult_15_24": 9.8,
+          "working_age_25_64": 55.8,
+          "seniors_65_plus": 14.4
+        },
+        "owner_occupied_pct": 69.7,
+        "renting_pct": 28.8,
+        "abs_sal_code": "SAL31087"
+      }
+    },
+    "gordonvale": {
+      "display_name": "Gordonvale",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 694,
+        "top_offence_types": [
+          {
+            "type": "Unlawful Entry",
+            "count": 155
+          },
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 112
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 88
+          },
+          {
+            "type": "Assault",
+            "count": 76
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 63
+          }
+        ],
+        "qps_boundary_name": "Gordonvale",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 6944,
+        "age_mix_pct": {
+          "children_0_14": 21.6,
+          "young_adult_15_24": 12.2,
+          "working_age_25_64": 50.4,
+          "seniors_65_plus": 15.8
+        },
+        "owner_occupied_pct": 73.0,
+        "renting_pct": 24.3,
+        "abs_sal_code": "SAL31213"
+      }
+    },
+    "kewarra-beach": {
+      "display_name": "Kewarra Beach",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 159,
+        "top_offence_types": [
+          {
+            "type": "Unlawful Entry",
+            "count": 43
+          },
+          {
+            "type": "Unlawful Use of Motor Vehicle",
+            "count": 20
+          },
+          {
+            "type": "Assault",
+            "count": 18
+          },
+          {
+            "type": "Drug Offences",
+            "count": 17
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 16
+          }
+        ],
+        "qps_boundary_name": "Kewarra Beach",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 6133,
+        "age_mix_pct": {
+          "children_0_14": 18.2,
+          "young_adult_15_24": 8.9,
+          "working_age_25_64": 54.9,
+          "seniors_65_plus": 18.1
+        },
+        "owner_occupied_pct": 74.8,
+        "renting_pct": 23.7,
+        "abs_sal_code": "SAL31517"
+      }
+    },
+    "kuranda": {
+      "display_name": "Kuranda",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 435,
+        "top_offence_types": [
+          {
+            "type": "Assault",
+            "count": 84
+          },
+          {
+            "type": "Good Order Offences",
+            "count": 70
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 61
+          },
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 49
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 47
+          }
+        ],
+        "qps_boundary_name": "Kuranda",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 3273,
+        "age_mix_pct": {
+          "children_0_14": 18.4,
+          "young_adult_15_24": 8.6,
+          "working_age_25_64": 52.6,
+          "seniors_65_plus": 20.2
+        },
+        "owner_occupied_pct": 71.3,
+        "renting_pct": 25.4,
+        "abs_sal_code": "SAL31589"
+      }
+    },
+    "manoora": {
+      "display_name": "Manoora",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 1367,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 268
+          },
+          {
+            "type": "Assault",
+            "count": 248
+          },
+          {
+            "type": "Drug Offences",
+            "count": 162
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 159
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 152
+          }
+        ],
+        "qps_boundary_name": "Manoora",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 6175,
+        "age_mix_pct": {
+          "children_0_14": 20.3,
+          "young_adult_15_24": 13.0,
+          "working_age_25_64": 52.0,
+          "seniors_65_plus": 14.8
+        },
+        "owner_occupied_pct": 37.4,
+        "renting_pct": 59.3,
+        "abs_sal_code": "SAL31751"
+      }
+    },
+    "manunda": {
+      "display_name": "Manunda",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 1884,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 368
+          },
+          {
+            "type": "Drug Offences",
+            "count": 342
+          },
+          {
+            "type": "Assault",
+            "count": 263
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 211
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 169
+          }
+        ],
+        "qps_boundary_name": "Manunda",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 5191,
+        "age_mix_pct": {
+          "children_0_14": 16.0,
+          "young_adult_15_24": 13.6,
+          "working_age_25_64": 53.7,
+          "seniors_65_plus": 16.8
+        },
+        "owner_occupied_pct": 41.2,
+        "renting_pct": 55.1,
+        "abs_sal_code": "SAL31755"
+      }
+    },
+    "mooroobool": {
+      "display_name": "Mooroobool",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 919,
+        "top_offence_types": [
+          {
+            "type": "Unlawful Entry",
+            "count": 178
+          },
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 118
+          },
+          {
+            "type": "Assault",
+            "count": 118
+          },
+          {
+            "type": "Drug Offences",
+            "count": 97
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 94
+          }
+        ],
+        "qps_boundary_name": "Mooroobool",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 7136,
+        "age_mix_pct": {
+          "children_0_14": 18.8,
+          "young_adult_15_24": 12.1,
+          "working_age_25_64": 51.7,
+          "seniors_65_plus": 17.5
+        },
+        "owner_occupied_pct": 65.0,
+        "renting_pct": 32.3,
+        "abs_sal_code": "SAL31909"
+      }
+    },
+    "mount-sheridan": {
+      "display_name": "Mount Sheridan",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 842,
+        "top_offence_types": [
+          {
+            "type": "Unlawful Entry",
+            "count": 218
+          },
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 172
+          },
+          {
+            "type": "Assault",
+            "count": 92
+          },
+          {
+            "type": "Drug Offences",
+            "count": 81
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 71
+          }
+        ],
+        "qps_boundary_name": "Mount Sheridan",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 8678,
+        "age_mix_pct": {
+          "children_0_14": 21.7,
+          "young_adult_15_24": 12.2,
+          "working_age_25_64": 53.5,
+          "seniors_65_plus": 12.7
+        },
+        "owner_occupied_pct": 71.5,
+        "renting_pct": 26.3,
+        "abs_sal_code": "SAL32020"
+      }
+    },
+    "palm-cove": {
+      "display_name": "Palm Cove",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 170,
+        "top_offence_types": [
+          {
+            "type": "Unlawful Entry",
+            "count": 33
+          },
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 32
+          },
+          {
+            "type": "Drug Offences",
+            "count": 31
+          },
+          {
+            "type": "Assault",
+            "count": 17
+          },
+          {
+            "type": "Good Order Offences",
+            "count": 14
+          }
+        ],
+        "qps_boundary_name": "Palm Cove",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 2450,
+        "age_mix_pct": {
+          "children_0_14": 11.1,
+          "young_adult_15_24": 6.7,
+          "working_age_25_64": 55.1,
+          "seniors_65_plus": 27.8
+        },
+        "owner_occupied_pct": 66.7,
+        "renting_pct": 30.1,
+        "abs_sal_code": "SAL32258"
+      }
+    },
+    "parramatta-park": {
+      "display_name": "Parramatta Park",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 805,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 195
+          },
+          {
+            "type": "Assault",
+            "count": 114
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 107
+          },
+          {
+            "type": "Drug Offences",
+            "count": 96
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 87
+          }
+        ],
+        "qps_boundary_name": "Parramatta Park",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 3621,
+        "age_mix_pct": {
+          "children_0_14": 12.0,
+          "young_adult_15_24": 14.3,
+          "working_age_25_64": 63.8,
+          "seniors_65_plus": 9.7
+        },
+        "owner_occupied_pct": 33.0,
+        "renting_pct": 61.8,
+        "abs_sal_code": "SAL32279"
+      }
+    },
+    "port-douglas": {
+      "display_name": "Port Douglas",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 249,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 42
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 40
+          },
+          {
+            "type": "Good Order Offences",
+            "count": 34
+          },
+          {
+            "type": "Assault",
+            "count": 34
+          },
+          {
+            "type": "Drug Offences",
+            "count": 33
+          }
+        ],
+        "qps_boundary_name": "Port Douglas",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 3650,
+        "age_mix_pct": {
+          "children_0_14": 8.5,
+          "young_adult_15_24": 7.7,
+          "working_age_25_64": 63.0,
+          "seniors_65_plus": 20.6
+        },
+        "owner_occupied_pct": 55.0,
+        "renting_pct": 42.8,
+        "abs_sal_code": "SAL32352"
+      }
+    },
+    "redlynch": {
+      "display_name": "Redlynch",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 377,
+        "top_offence_types": [
+          {
+            "type": "Unlawful Entry",
+            "count": 86
+          },
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 67
+          },
+          {
+            "type": "Assault",
+            "count": 52
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 41
+          },
+          {
+            "type": "Drug Offences",
+            "count": 30
+          }
+        ],
+        "qps_boundary_name": "Redlynch",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 10571,
+        "age_mix_pct": {
+          "children_0_14": 24.6,
+          "young_adult_15_24": 12.7,
+          "working_age_25_64": 52.6,
+          "seniors_65_plus": 10.1
+        },
+        "owner_occupied_pct": 76.6,
+        "renting_pct": 22.3,
+        "abs_sal_code": "SAL32411"
+      }
+    },
+    "smithfield": {
+      "display_name": "Smithfield",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 699,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 224
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 82
+          },
+          {
+            "type": "Drug Offences",
+            "count": 79
+          },
+          {
+            "type": "Assault",
+            "count": 56
+          },
+          {
+            "type": "Good Order Offences",
+            "count": 52
+          }
+        ],
+        "qps_boundary_name": "Smithfield",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 6664,
+        "age_mix_pct": {
+          "children_0_14": 19.6,
+          "young_adult_15_24": 15.9,
+          "working_age_25_64": 52.7,
+          "seniors_65_plus": 11.8
+        },
+        "owner_occupied_pct": 65.3,
+        "renting_pct": 32.2,
+        "abs_sal_code": "SAL32579"
+      }
+    },
+    "trinity-beach": {
+      "display_name": "Trinity Beach",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 359,
+        "top_offence_types": [
+          {
+            "type": "Unlawful Entry",
+            "count": 110
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 38
+          },
+          {
+            "type": "Unlawful Use of Motor Vehicle",
+            "count": 38
+          },
+          {
+            "type": "Assault",
+            "count": 38
+          },
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 37
+          }
+        ],
+        "qps_boundary_name": "Trinity Beach",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 6594,
+        "age_mix_pct": {
+          "children_0_14": 18.3,
+          "young_adult_15_24": 9.5,
+          "working_age_25_64": 55.5,
+          "seniors_65_plus": 16.8
+        },
+        "owner_occupied_pct": 67.4,
+        "renting_pct": 31.1,
+        "abs_sal_code": "SAL32872"
+      }
+    },
+    "trinity-park": {
+      "display_name": "Trinity Park",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 176,
+        "top_offence_types": [
+          {
+            "type": "Unlawful Entry",
+            "count": 61
+          },
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 28
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 18
+          },
+          {
+            "type": "Assault",
+            "count": 15
+          },
+          {
+            "type": "Drug Offences",
+            "count": 13
+          }
+        ],
+        "qps_boundary_name": "Trinity Park",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 3536,
+        "age_mix_pct": {
+          "children_0_14": 22.8,
+          "young_adult_15_24": 11.7,
+          "working_age_25_64": 54.8,
+          "seniors_65_plus": 10.8
+        },
+        "owner_occupied_pct": 64.5,
+        "renting_pct": 33.2,
+        "abs_sal_code": "SAL32873"
+      }
+    },
+    "whitfield": {
+      "display_name": "Whitfield",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 303,
+        "top_offence_types": [
+          {
+            "type": "Unlawful Entry",
+            "count": 131
+          },
+          {
+            "type": "Unlawful Use of Motor Vehicle",
+            "count": 44
+          },
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 29
+          },
+          {
+            "type": "Assault",
+            "count": 22
+          },
+          {
+            "type": "Other Property Damage",
+            "count": 21
+          }
+        ],
+        "qps_boundary_name": "Whitfield",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 4262,
+        "age_mix_pct": {
+          "children_0_14": 16.6,
+          "young_adult_15_24": 9.0,
+          "working_age_25_64": 53.0,
+          "seniors_65_plus": 21.2
+        },
+        "owner_occupied_pct": 66.8,
+        "renting_pct": 30.0,
+        "abs_sal_code": "SAL33065"
+      }
+    },
+    "woree": {
+      "display_name": "Woree",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 1086,
+        "top_offence_types": [
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 207
+          },
+          {
+            "type": "Assault",
+            "count": 153
+          },
+          {
+            "type": "Unlawful Entry",
+            "count": 150
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 149
+          },
+          {
+            "type": "Drug Offences",
+            "count": 110
+          }
+        ],
+        "qps_boundary_name": "Woree",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 5127,
+        "age_mix_pct": {
+          "children_0_14": 18.4,
+          "young_adult_15_24": 12.9,
+          "working_age_25_64": 52.3,
+          "seniors_65_plus": 16.6
+        },
+        "owner_occupied_pct": 45.1,
+        "renting_pct": 51.7,
+        "abs_sal_code": "SAL33165"
+      }
+    },
+    "yorkeys-knob": {
+      "display_name": "Yorkeys Knob",
+      "region": "cairns",
+      "crime": {
+        "period": "08-01-2025 to 07-31-2026",
+        "total_offences": 246,
+        "top_offence_types": [
+          {
+            "type": "Unlawful Entry",
+            "count": 61
+          },
+          {
+            "type": "Traffic and Related Offences",
+            "count": 30
+          },
+          {
+            "type": "Other Theft (excl. Unlawful Entry)",
+            "count": 30
+          },
+          {
+            "type": "Unlawful Use of Motor Vehicle",
+            "count": 26
+          },
+          {
+            "type": "Drug Offences",
+            "count": 21
+          }
+        ],
+        "qps_boundary_name": "Yorkeys Knob",
+        "boundary_note": null
+      },
+      "demographics": {
+        "census_year": 2021,
+        "population": 2794,
+        "age_mix_pct": {
+          "children_0_14": 13.7,
+          "young_adult_15_24": 8.6,
+          "working_age_25_64": 56.3,
+          "seniors_65_plus": 21.3
+        },
+        "owner_occupied_pct": 51.2,
+        "renting_pct": 45.9,
+        "abs_sal_code": "SAL33223"
+      }
+    }
+  }
+}
