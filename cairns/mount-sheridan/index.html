@@ -200,7 +200,7 @@
           "name": "How does 1% commission compare to traditional Cairns agent fees?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Traditional Cairns real estate agents typically charge between 2% and 3% commission, plus a separate $5,000–$15,000 marketing invoice. On an $800K Cairns home, a 2.5% traditional agent takes $20,000 in commission. The One Club charges 1%, $8,000, plus your chosen REA + Domain portal listing. That is a typical saving of around $12,000 on an $800K sale, before marketing fees on top."
+            "text": "Traditional Cairns real estate agents typically charge between 2% and 3% commission, plus a separate $5,000–$15,000 marketing invoice. On an $800K Cairns home, a 2.5% traditional agent takes $20,000 in commission. The One Club charges 1% on sales at or above $600,000 ($8,000 on an $800K sale), or 1.5% on sales below $600,000 to cover the fixed cost of a full marketing campaign on a smaller sale. Many sellers put part of what they save toward a higher realestate.com.au or Domain listing tier, more prominent placement, more enquiries, and a stronger position from day one."
           }
         },
         {
@@ -483,7 +483,7 @@
     <div style="text-align:center;margin-top:24px;padding-top:24px;border-top:1px solid rgba(var(--fg-rgb),.06)">
       <div style="font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase">You save</div>
       <div style="font-size:clamp(34px,4vw,48px);font-weight:400;color:#4ade80;letter-spacing:-1px;margin-top:8px">$7,200 – $14,400</div>
-      <div style="font-size:12px;color:var(--muted);margin-top:6px">Based on an approximate median sale of $720,000. Your result will vary with final sale price and chosen portal level.</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:6px">Based on an approximate median sale of $720,000. Your result will vary with final sale price and chosen portal level. Many Cairns sellers put part of the saving toward a higher-tier REA/Domain listing, more prominent placement, more enquiries.</div>
     </div>
     <div style="text-align:center;margin-top:28px">
       <a class="btn btn-gold btn-lg" href="/cairns/#valuation">Get a free valuation for your Mount Sheridan home</a>
@@ -644,7 +644,7 @@ function animateTo(el, from, to, duration){
 function calcUpdate(input){
   var v = parseInt(input.value), min = parseInt(input.min), max = parseInt(input.max);
   input.style.setProperty('--pct', ((v - min) / (max - min) * 100).toFixed(2) + '%');
-  var trad = v * 0.025, ours = v * 0.01, save = trad - ours;
+  var trad = v * 0.025, ours = v < 600000 ? v * 0.015 : v * 0.01, save = trad - ours;
   document.getElementById('priceVal').textContent = fmtCurrency(v);
   document.getElementById('tradVal').textContent = fmtCurrency(trad);
   document.getElementById('ourVal').textContent = fmtCurrency(ours);

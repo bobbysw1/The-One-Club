@@ -144,7 +144,7 @@
           "name": "How does 1% commission compare to traditional Cairns agent fees?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Traditional Cairns real estate agents typically charge between 2% and 3% commission, plus a separate $5,000–$15,000 marketing invoice. On an $800K Cairns home, a 2.5% traditional agent takes $20,000 in commission. The One Club charges 1%, $8,000, plus your chosen REA + Domain portal listing. That is a typical saving of around $12,000 on an $800K sale, before marketing fees on top."
+            "text": "Traditional Cairns real estate agents typically charge between 2% and 3% commission, plus a separate $5,000–$15,000 marketing invoice. On an $800K Cairns home, a 2.5% traditional agent takes $20,000 in commission. The One Club charges 1% on sales at or above $600,000 ($8,000 on an $800K sale), or 1.5% on sales below $600,000 to cover the fixed cost of a full marketing campaign on a smaller sale. Many sellers put part of what they save toward a higher realestate.com.au or Domain listing tier, more prominent placement, more enquiries, and a stronger position from day one."
           }
         },
         {
@@ -484,13 +484,13 @@
     <div class="range-labels" style="width:100%;max-width:600px"><span>$200K</span><span>$4M</span></div>
     <div class="calc-split">
       <div class="calc-col"><div class="calc-col-label">Traditional (2.5%)</div><div class="calc-col-val struck" id="tradVal">$12,500</div></div>
-      <div class="calc-col"><div class="calc-col-label">The One Club (1%)</div><div class="calc-col-val gold" id="ourVal">$5,000</div></div>
+      <div class="calc-col"><div class="calc-col-label" id="ourColLabel">The One Club (1%)</div><div class="calc-col-val gold" id="ourVal">$5,000</div></div>
     </div>
     <div class="saving-display">
       <div class="saving-label">Estimated saving</div>
       <div class="saving-amount" id="saveVal" aria-live="polite">$7,500</div>
-      <div class="saving-note">More of your sale price kept where it belongs, with you</div>
-      <div class="calc-breakdown"><b>2.5%</b> traditional commission − <b>1%</b> The One Club = <b>1.5%</b> of your sale price back to you.</div>
+      <div class="saving-note">More of your sale price kept where it belongs, with you. Many sellers put part of it toward a higher-tier REA/Domain listing, more prominent placement, more enquiries.</div>
+      <div class="calc-breakdown"><b>2.5%</b> traditional commission − <b>1%</b> The One Club (<b>1.5%</b> on sales under $600K) = more of your sale price back to you.</div>
     </div>
   </div>
 </section>
@@ -999,11 +999,14 @@ function calcUpdate(input){
   if (range && +range.value !== v) range.value = v;
   if (num   && +num.value   !== v) num.value   = v;
   range.style.setProperty('--pct', ((v - min) / (max - min) * 100).toFixed(2) + '%');
-  var trad = v * 0.025, ours = v * 0.01, save = trad - ours;
+  var underTier = v < 600000;
+  var trad = v * 0.025, ours = underTier ? v * 0.015 : v * 0.01, save = trad - ours;
   var pEl = document.getElementById('priceVal'); if (pEl) pEl.textContent = fmtCurrency(v);
   var tEl = document.getElementById('tradVal'); if (tEl) tEl.textContent = fmtCurrency(trad);
   var oEl = document.getElementById('ourVal');  if (oEl) oEl.textContent = fmtCurrency(ours);
   var sEl = document.getElementById('saveVal'); if (sEl) sEl.textContent = fmtCurrency(save);
+  var oLabel = document.getElementById('ourColLabel');
+  if (oLabel) oLabel.textContent = 'The One Club (' + (underTier ? '1.5%' : '1%') + ')';
 }
 (function(){
   var range = document.getElementById('priceRange');
