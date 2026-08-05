@@ -996,7 +996,7 @@ function renderTemplateEditor() {
   if (!template) return;
   const msg = template.message;
   const editor = document.getElementById('template-editor');
-  editor.innerHTML = msg.replace(/\[([A-Z_]+)\]/g, '<span style="background:rgba(196,168,74,.3);padding:2px 6px;border-radius:4px;font-weight:600;cursor:text" onclick="selectEditableSection(this)" title="Click to edit">[<span contenteditable="true">$1</span>]</span>');
+  editor.textContent = msg;
 }
 
 function selectEditableSection(el) {
