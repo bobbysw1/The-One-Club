@@ -3,6 +3,12 @@
 
 const RESEND_KEY = process.env.RESEND_API_KEY || '';
 const LEAD_FROM  = process.env.LEAD_FROM_EMAIL || 'bobby@theoneclub.com.au';
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN || '';
+
+const GITHUB_OWNER  = 'bobbysw1';
+const GITHUB_REPO   = 'The-One-Club';
+const GITHUB_BRANCH = 'main';
+const SENT_PATH     = 'backend/data/sent.json';
 
 const BRAND = {
   green: '#1F3D24',
@@ -77,6 +83,49 @@ async function sendEmail({ to, subject, html }) {
   }
 }
 
+async function saveSentEmail(record) {
+  if (!GITHUB_TOKEN) {
+    console.warn('[admin-response] GITHUB_TOKEN not set, skipping sent email record');
+    return { ok: false, simulated: true };
+  }
+  const headers = {
+    'Authorization': `Bearer ${GITHUB_TOKEN}`,
+    'Accept': 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28',
+    'User-Agent': 'theoneclub-admin'
+  };
+  const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${SENT_PATH}?ref=${GITHUB_BRANCH}`;
+  try {
+    let sentEmails = [];
+    let sha = null;
+    const getRes = await fetch(url, { headers });
+    if (getRes.ok) {
+      const j = await getRes.json();
+      sha = j.sha;
+      sentEmails = JSON.parse(Buffer.from(j.content, 'base64').toString('utf8'));
+      if (!Array.isArray(sentEmails)) sentEmails = [];
+    } else if (getRes.status !== 404) {
+      throw new Error(`GitHub GET ${SENT_PATH} → ${getRes.status}`);
+    }
+    sentEmails.push(record);
+    const putRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${SENT_PATH}`, {
+      method: 'PUT',
+      headers: { ...headers, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: `sent: email to ${record.to}`,
+        content: Buffer.from(JSON.stringify(sentEmails, null, 2), 'utf8').toString('base64'),
+        branch: GITHUB_BRANCH,
+        ...(sha ? { sha } : {})
+      })
+    });
+    if (!putRes.ok) throw new Error(`GitHub PUT ${SENT_PATH} → ${putRes.status}: ${await putRes.text()}`);
+    return { ok: true };
+  } catch (e) {
+    console.error('[admin-response] GitHub persist failed', e.message);
+    return { ok: false, error: e.message };
+  }
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
@@ -104,6 +153,15 @@ export default async function handler(req, res) {
   if (!result.ok) {
     return res.status(500).json({ error: result.error || 'Failed to send email' });
   }
+
+  const sentRecord = {
+    id: crypto.randomUUID(),
+    to,
+    subject,
+    message,
+    timestamp: new Date().toISOString()
+  };
+  await saveSentEmail(sentRecord);
 
   return res.status(200).json({ ok: true });
 }

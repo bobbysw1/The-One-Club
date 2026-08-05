@@ -24,7 +24,8 @@ const FILES = {
   properties: 'backend/data/properties.json',
   chatbot:    'backend/data/chatbot.json',
   agents:     'backend/data/agents.json',
-  leads:      'backend/data/leads.json'
+  leads:      'backend/data/leads.json',
+  sent:       'backend/data/sent.json'
 };
 
 function ghHeaders() {

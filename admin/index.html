@@ -182,8 +182,12 @@ button{cursor:pointer;font-family:inherit}
         <span class="nav-count" id="agent-count">-</span>
       </button>
       <button class="nav-item" onclick="showSection('leads')" id="nav-leads">
-        <span class="icon">✉️</span> Email
+        <span class="icon">✉️</span> Inbox
         <span class="nav-count" id="lead-count">-</span>
+      </button>
+      <button class="nav-item" onclick="showSection('sent')" id="nav-sent">
+        <span class="icon">✓</span> Sent
+        <span class="nav-count" id="sent-count">-</span>
       </button>
     </nav>
     <div class="sidebar-footer">
@@ -269,18 +273,34 @@ button{cursor:pointer;font-family:inherit}
       </div>
     </div>
 
-    <!-- ══ LEADS / EMAIL SECTION ══ -->
+    <!-- ══ LEADS / INBOX SECTION ══ -->
     <div id="section-leads" style="display:none">
       <div class="page-header">
         <div>
-          <div class="page-title">Email Manager</div>
-          <div class="page-sub">View valuations and respond to customer enquiries</div>
+          <div class="page-title">Inbox</div>
+          <div class="page-sub">Valuations waiting for response</div>
         </div>
       </div>
 
       <div class="card">
         <div class="prop-list" id="lead-list">
           <div class="card-empty"><div class="empty-icon">✉️</div><p>Loading valuations…</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SENT SECTION ══ -->
+    <div id="section-sent" style="display:none">
+      <div class="page-header">
+        <div>
+          <div class="page-title">Sent</div>
+          <div class="page-sub">Emails you've sent to customers</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="prop-list" id="sent-list">
+          <div class="card-empty"><div class="empty-icon">✓</div><p>Loading sent emails…</p></div>
         </div>
       </div>
     </div>
@@ -535,6 +555,7 @@ function showApp() {
   loadChatbot();
   loadAgents();
   loadLeads();
+  loadSent();
 }
 
 // ══ NAVIGATION ══════════════════════════════════════════
@@ -911,8 +932,9 @@ function addKw(val) {
 }
 function removeKw(kw) { keywords = keywords.filter(k => k !== kw); renderKeywords(); }
 
-// ── LEADS ──
+// ── LEADS & SENT ──
 let leads = [];
+let sent = [];
 let selectedLead = null;
 let currentTemplate = 'valuation';
 
@@ -1056,6 +1078,30 @@ function renderLeads() {
   }).join('');
 }
 
+async function loadSent() {
+  try {
+    const res = await fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Admin-Password': adminPassword },
+      body: JSON.stringify({ action: 'get', file: 'sent' })
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const j = await res.json();
+    sent = (j.data || []).sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp));
+    document.getElementById('sent-count').textContent = sent.length;
+    renderSent();
+  } catch(e) { console.log('Load sent failed: ' + e.message); renderSent(); }
+}
+
+function renderSent() {
+  const list = document.getElementById('sent-list');
+  if (!sent.length) { list.innerHTML = '<div class="card-empty"><div class="empty-icon">✓</div><p>No sent emails yet</p></div>'; return; }
+  list.innerHTML = sent.map(s => {
+    const date = new Date(s.timestamp).toLocaleString('en-AU', {dateStyle:'short', timeStyle:'short'});
+    return '<div class="prop-row"><div><div class="prop-name">' + s.to + '</div><div class="prop-meta"><span>' + s.subject + '</span><span>' + date + '</span></div></div></div>';
+  }).join('');
+}
+
 function openLeadModal(leadId) {
   selectedLead = leads.find(l => l.id === leadId);
   if (!selectedLead) return;
@@ -1071,6 +1117,7 @@ function openLeadModal(leadId) {
 
 function closeLeadModal() { document.getElementById('lead-modal').style.display = 'none'; }
 
+let sendTimeout = null;
 async function sendLeadResponse() {
   if (!selectedLead) return;
   const f = selectedLead.fields || {};
@@ -1080,18 +1127,37 @@ async function sendLeadResponse() {
   let message = document.getElementById('template-editor').value || '';
   if (!message) { toast('Message required', 'error'); return; }
   message = message.replace(/\[FIRST_NAME\]/g, f.firstName || 'there').replace(/\[PROPERTY_ADDRESS\]/g, f.address || 'your property');
-  if (!confirm('Send email to ' + email + '?')) return;
-  try {
-    const res = await fetch('/api/admin-response', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ to: email, subject, message, firstName: f.firstName || 'there' })
-    });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    toast('Email sent to ' + email, 'success');
-    closeLeadModal();
-    loadLeads();
-  } catch(e) { toast('Send failed: ' + e.message, 'error'); }
+
+  const btn = event.target;
+  btn.disabled = true;
+  let countdown = 30;
+  const originalText = btn.textContent;
+  btn.textContent = 'Sending in ' + countdown + 's (click to cancel)';
+  btn.onclick = () => { clearTimeout(sendTimeout); btn.disabled = false; btn.textContent = originalText; btn.onclick = sendLeadResponse; countdown = 0; };
+
+  const timer = setInterval(() => {
+    countdown--;
+    btn.textContent = 'Sending in ' + countdown + 's (click to cancel)';
+    if (countdown <= 0) clearInterval(timer);
+  }, 1000);
+
+  sendTimeout = setTimeout(async () => {
+    clearInterval(timer);
+    btn.disabled = false;
+    btn.onclick = sendLeadResponse;
+    try {
+      const res = await fetch('/api/admin-response', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ to: email, subject, message, firstName: f.firstName || 'there', leadId: selectedLead.id })
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      toast('Email sent to ' + email, 'success');
+      closeLeadModal();
+      loadLeads();
+      loadSent();
+    } catch(e) { toast('Send failed: ' + e.message, 'error'); btn.textContent = originalText; }
+  }, 30000);
 }
 
 // ── Utils ──
