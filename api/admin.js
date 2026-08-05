@@ -23,7 +23,8 @@ const GITHUB_BRANCH = 'main';
 const FILES = {
   properties: 'backend/data/properties.json',
   chatbot:    'backend/data/chatbot.json',
-  agents:     'backend/data/agents.json'
+  agents:     'backend/data/agents.json',
+  leads:      'backend/data/leads.json'
 };
 
 function ghHeaders() {
