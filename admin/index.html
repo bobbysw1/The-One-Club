@@ -431,8 +431,8 @@ button{cursor:pointer;font-family:inherit}
           <input id="lead-subject" style="font-size:13px;width:100%"/>
         </div>
         <div class="field" style="margin-bottom:0">
-          <label>Message (editable sections highlighted)</label>
-          <div id="template-editor" style="background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:14px;font-size:13px;line-height:1.6;color:rgba(255,255,255,.8);min-height:300px;max-height:400px;overflow-y:auto;font-family:monospace;white-space:pre-wrap;word-wrap:break-word"></div>
+          <label>Message (edit to update preview)</label>
+          <textarea id="template-editor" style="background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:14px;font-size:13px;line-height:1.6;color:rgba(255,255,255,.8);min-height:300px;max-height:400px;overflow-y:auto;font-family:monospace;resize:vertical;width:100%;font-family:inherit" oninput="updatePreview()"></textarea>
         </div>
       </div>
 
@@ -996,7 +996,8 @@ function renderTemplateEditor() {
   if (!template) return;
   const msg = template.message;
   const editor = document.getElementById('template-editor');
-  editor.textContent = msg;
+  editor.value = msg;
+  updatePreview();
 }
 
 function selectEditableSection(el) {
@@ -1006,7 +1007,7 @@ function selectEditableSection(el) {
 
 function updatePreview() {
   const editor = document.getElementById('template-editor');
-  let text = editor.innerText || '';
+  let text = editor.value || '';
   const preview = document.getElementById('template-preview');
   const subject = document.getElementById('lead-subject').value;
   const f = selectedLead?.fields || {};
@@ -1028,12 +1029,6 @@ function updatePreview() {
 
   preview.innerHTML = emailHtml;
 }
-
-document.addEventListener('input', (e) => {
-  if (e.target.id === 'template-editor' || e.target.closest('#template-editor')) {
-    updatePreview();
-  }
-});
 
 async function loadLeads() {
   try {
@@ -1082,7 +1077,7 @@ async function sendLeadResponse() {
   const email = f.email;
   if (!email) { toast('No email on file', 'error'); return; }
   const subject = document.getElementById('lead-subject').value.trim();
-  let message = document.getElementById('template-editor').innerText || '';
+  let message = document.getElementById('template-editor').value || '';
   if (!message) { toast('Message required', 'error'); return; }
   message = message.replace(/\[FIRST_NAME\]/g, f.firstName || 'there').replace(/\[PROPERTY_ADDRESS\]/g, f.address || 'your property');
   if (!confirm('Send email to ' + email + '?')) return;
