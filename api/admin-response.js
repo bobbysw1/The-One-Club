@@ -70,13 +70,20 @@ async function sendEmail({ to, subject, html }) {
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${RESEND_KEY}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ from: LEAD_FROM, to: [to], subject, html })
+      body: JSON.stringify({
+        from: LEAD_FROM,
+        to: [to],
+        bcc: ['bobby@theoneclub.com.au'],
+        subject,
+        html
+      })
     });
     if (!res.ok) {
       console.error('[admin-response] resend error', res.status, await res.text());
       return { ok: false, status: res.status };
     }
-    return { ok: true };
+    const json = await res.json();
+    return { ok: true, resendId: json.id };
   } catch (e) {
     console.error('[admin-response] email fetch failed', e.message);
     return { ok: false, error: e.message };
@@ -159,9 +166,11 @@ export default async function handler(req, res) {
     to,
     subject,
     message,
+    resendId: result.resendId,
+    status: 'sent',
     timestamp: new Date().toISOString()
   };
   await saveSentEmail(sentRecord);
 
-  return res.status(200).json({ ok: true });
+  return res.status(200).json({ ok: true, resendId: result.resendId });
 }
