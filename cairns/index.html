@@ -441,59 +441,6 @@
   </div>
 </section>
 
-<!-- ONE AGENT / VERSUS -->
-<div class="one-agent">
-  <div data-reveal="left">
-    <div class="display" style="margin-bottom:32px">How we actually<br/><em>sell your home.</em></div>
-    <div class="cap-list">
-      <div class="cap-item"><span class="cap-num">01</span><div><div class="cap-title">Clear pricing strategy</div><div class="cap-body">We price your home using current comparable sales, local market movement and property-specific factors, so you launch with a strategy, not a guess.</div></div></div>
-      <div class="cap-item"><span class="cap-num">02</span><div><div class="cap-title">Stronger first impressions</div><div class="cap-body">Professional photography, floor plans and polished presentation are included in your 1%, plus a Matterport&reg; 3D Showcase and drone flyover on every listing for a flat $199. Buyers explore the property in full before they ever step inside.</div></div></div>
-      <div class="cap-item"><span class="cap-num">03</span><div><div class="cap-title">Better buyer handling</div><div class="cap-body">Enquiries are responded to quickly, inspections are managed properly, and buyers get the information they need to move forward with confidence.</div></div></div>
-      <div class="cap-item"><span class="cap-num">04</span><div><div class="cap-title">Expert negotiation</div><div class="cap-body">When offers come in, I help you assess them clearly, negotiate with confidence and move toward the strongest possible outcome.</div></div></div>
-    </div>
-    <div style="margin-top:32px"><a onclick="goTo('how-it-works')" style="font-size:14px;font-weight:600;color:var(--gold);border-bottom:1px solid rgba(196,168,74,.3);padding-bottom:2px;cursor:pointer">See exactly how we do it →</a></div>
-  </div>
-  <div data-reveal="right">
-    <table class="versus">
-      <caption class="sr-only">Capability comparison: traditional agency vs The One Club</caption>
-      <thead>
-        <tr class="versus-head"><th scope="col">Capability</th><th scope="col">Traditional</th><th scope="col">The One Club</th></tr>
-      </thead>
-      <tbody>
-        <tr class="versus-row"><th scope="row" class="label">Response to enquiry</th><td class="old">Varies by agent</td><td class="new">Fast, systemised follow-up</td></tr>
-        <tr class="versus-row"><th scope="row" class="label">Availability</th><td class="old">Business hours focused</td><td class="new">Extended support</td></tr>
-        <tr class="versus-row"><th scope="row" class="label">Valuation approach</th><td class="old">Agent's estimate</td><td class="new">Data-informed strategy</td></tr>
-        <tr class="versus-row"><th scope="row" class="label">Photography</th><td class="old">Standard photos</td><td class="new">Enhanced, staged</td></tr>
-        <tr class="versus-row"><th scope="row" class="label">Floor plan</th><td class="old">Often extra cost</td><td class="new">Included</td></tr>
-        <tr class="versus-row"><th scope="row" class="label">Commission</th><td class="old">2–3% + marketing costs</td><td class="new"><strong style="color:var(--gold)">1%</strong> <span style="color:var(--muted);font-weight:400">+ portal listing</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- SAVINGS CALC -->
-<section class="savings-section" id="savings">
-  <h2 class="display" data-reveal>See how much<br/>commission you could <em>save.</em></h2>
-  <div class="gold-rule" data-reveal style="margin:24px auto 24px;"></div>
-  <p class="body" data-reveal style="margin:0 auto 60px;text-align:center;font-size:clamp(16px,1.4vw,19px);max-width:760px;line-height:1.6">Move the slider to see what a traditional 2.5% commission costs, before marketing fees of $5,000–$15,000 on top. With The One Club, photography, floor plans, and the full digital campaign are all included in the 1%. The only extras are your portal listing and a Matterport 3D Showcase + drone flyover, a flat $199 for both.</p>
-  <div class="calc" data-reveal>
-    <div class="calc-price-label">Property sale price</div>
-    <div class="calc-price-val" id="priceVal">$500,000</div>
-
-    <div class="range-wrap"><label for="priceRange" class="sr-only">Property price estimate slider</label><input type="range" id="priceRange" aria-label="Property price estimate" min="200000" max="4000000" step="10000" value="600000" style="--pct:10%" oninput="calcUpdate(this)" onchange="calcUpdate(this)"/></div>
-    <div class="range-labels" style="width:100%;max-width:600px"><span>$200K</span><span>$4M</span></div>
-    <div class="calc-split">
-      <div class="calc-col"><div class="calc-col-label">Traditional (2.5%)</div><div class="calc-col-val struck" id="tradVal">$12,500</div></div>
-      <div class="calc-col"><div class="calc-col-label" id="ourColLabel">The One Club (1%)</div><div class="calc-col-val gold" id="ourVal">$5,000</div></div>
-    </div>
-    <div class="saving-display">
-      <div class="saving-label">Estimated saving</div>
-      <div class="saving-amount" id="saveVal" aria-live="polite">$7,500</div>
-      <div class="saving-note">More of your sale price kept where it belongs, with you. Many sellers put part of it toward a higher-tier REA/Domain listing, more prominent placement, more enquiries.</div>
-    </div>
-  </div>
-</section>
-
 <!-- WHAT'S INCLUDED -->
 <section style="padding:48px 24px 56px;border-top:1px solid var(--subtle)" id="included">
   <div style="max-width:1200px;margin:0 auto">
@@ -555,6 +502,59 @@
     <div data-reveal style="text-align:center;margin-top:40px"><a onclick="goTo('how-it-works')" style="font-size:14px;font-weight:600;color:var(--gold);border-bottom:1px solid rgba(196,168,74,.3);padding-bottom:2px;cursor:pointer">See the full process in detail →</a></div>
   </div>
 </section>
+
+<!-- SAVINGS CALC -->
+<section class="savings-section" id="savings">
+  <h2 class="display" data-reveal>See how much<br/>commission you could <em>save.</em></h2>
+  <div class="gold-rule" data-reveal style="margin:24px auto 24px;"></div>
+  <p class="body" data-reveal style="margin:0 auto 60px;text-align:center;font-size:clamp(16px,1.4vw,19px);max-width:760px;line-height:1.6">Move the slider to see what a traditional 2.5% commission costs, before marketing fees of $5,000–$15,000 on top. With The One Club, photography, floor plans, and the full digital campaign are all included in the 1%. The only extras are your portal listing and a Matterport 3D Showcase + drone flyover, a flat $199 for both.</p>
+  <div class="calc" data-reveal>
+    <div class="calc-price-label">Property sale price</div>
+    <div class="calc-price-val" id="priceVal">$500,000</div>
+
+    <div class="range-wrap"><label for="priceRange" class="sr-only">Property price estimate slider</label><input type="range" id="priceRange" aria-label="Property price estimate" min="200000" max="4000000" step="10000" value="600000" style="--pct:10%" oninput="calcUpdate(this)" onchange="calcUpdate(this)"/></div>
+    <div class="range-labels" style="width:100%;max-width:600px"><span>$200K</span><span>$4M</span></div>
+    <div class="calc-split">
+      <div class="calc-col"><div class="calc-col-label">Traditional (2.5%)</div><div class="calc-col-val struck" id="tradVal">$12,500</div></div>
+      <div class="calc-col"><div class="calc-col-label" id="ourColLabel">The One Club (1%)</div><div class="calc-col-val gold" id="ourVal">$5,000</div></div>
+    </div>
+    <div class="saving-display">
+      <div class="saving-label">Estimated saving</div>
+      <div class="saving-amount" id="saveVal" aria-live="polite">$7,500</div>
+      <div class="saving-note">More of your sale price kept where it belongs, with you. Many sellers put part of it toward a higher-tier REA/Domain listing, more prominent placement, more enquiries.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ONE AGENT / VERSUS -->
+<div class="one-agent">
+  <div data-reveal="left">
+    <div class="display" style="margin-bottom:32px">How we actually<br/><em>sell your home.</em></div>
+    <div class="cap-list">
+      <div class="cap-item"><span class="cap-num">01</span><div><div class="cap-title">Clear pricing strategy</div><div class="cap-body">We price your home using current comparable sales, local market movement and property-specific factors, so you launch with a strategy, not a guess.</div></div></div>
+      <div class="cap-item"><span class="cap-num">02</span><div><div class="cap-title">Stronger first impressions</div><div class="cap-body">Professional photography, floor plans and polished presentation are included in your 1%, plus a Matterport&reg; 3D Showcase and drone flyover on every listing for a flat $199. Buyers explore the property in full before they ever step inside.</div></div></div>
+      <div class="cap-item"><span class="cap-num">03</span><div><div class="cap-title">Better buyer handling</div><div class="cap-body">Enquiries are responded to quickly, inspections are managed properly, and buyers get the information they need to move forward with confidence.</div></div></div>
+      <div class="cap-item"><span class="cap-num">04</span><div><div class="cap-title">Expert negotiation</div><div class="cap-body">When offers come in, I help you assess them clearly, negotiate with confidence and move toward the strongest possible outcome.</div></div></div>
+    </div>
+    <div style="margin-top:32px"><a onclick="goTo('how-it-works')" style="font-size:14px;font-weight:600;color:var(--gold);border-bottom:1px solid rgba(196,168,74,.3);padding-bottom:2px;cursor:pointer">See exactly how we do it →</a></div>
+  </div>
+  <div data-reveal="right">
+    <table class="versus">
+      <caption class="sr-only">Capability comparison: traditional agency vs The One Club</caption>
+      <thead>
+        <tr class="versus-head"><th scope="col">Capability</th><th scope="col">Traditional</th><th scope="col">The One Club</th></tr>
+      </thead>
+      <tbody>
+        <tr class="versus-row"><th scope="row" class="label">Response to enquiry</th><td class="old">Varies by agent</td><td class="new">Fast, systemised follow-up</td></tr>
+        <tr class="versus-row"><th scope="row" class="label">Availability</th><td class="old">Business hours focused</td><td class="new">Extended support</td></tr>
+        <tr class="versus-row"><th scope="row" class="label">Valuation approach</th><td class="old">Agent's estimate</td><td class="new">Data-informed strategy</td></tr>
+        <tr class="versus-row"><th scope="row" class="label">Photography</th><td class="old">Standard photos</td><td class="new">Enhanced, staged</td></tr>
+        <tr class="versus-row"><th scope="row" class="label">Floor plan</th><td class="old">Often extra cost</td><td class="new">Included</td></tr>
+        <tr class="versus-row"><th scope="row" class="label">Commission</th><td class="old">2–3% + marketing costs</td><td class="new"><strong style="color:var(--gold)">1%</strong> <span style="color:var(--muted);font-weight:400">+ portal listing</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <!-- PHOTO COMPARE -->
 <section class="photos-section" style="border-top:1px solid var(--subtle)" id="photos">
