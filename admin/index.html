@@ -181,13 +181,9 @@ button{cursor:pointer;font-family:inherit}
         <span class="icon">👤</span> Agents
         <span class="nav-count" id="agent-count">-</span>
       </button>
-      <button class="nav-item" onclick="showSection('leads')" id="nav-leads">
-        <span class="icon">✉️</span> Inbox
-        <span class="nav-count" id="lead-count">-</span>
-      </button>
-      <button class="nav-item" onclick="showSection('sent')" id="nav-sent">
-        <span class="icon">✓</span> Sent
-        <span class="nav-count" id="sent-count">-</span>
+      <button class="nav-item active" onclick="showSection('email-manager')" id="nav-email-manager">
+        <span class="icon">✉️</span> Email Manager
+        <span class="nav-count" id="email-count">-</span>
       </button>
     </nav>
     <div class="sidebar-footer">
@@ -273,34 +269,69 @@ button{cursor:pointer;font-family:inherit}
       </div>
     </div>
 
-    <!-- ══ LEADS / INBOX SECTION ══ -->
-    <div id="section-leads" style="display:none">
+    <!-- ══ EMAIL MANAGER SECTION ══ -->
+    <div id="section-email-manager">
       <div class="page-header">
         <div>
-          <div class="page-title">Inbox</div>
-          <div class="page-sub">Valuations waiting for response</div>
+          <div class="page-title">Email Manager</div>
+          <div class="page-sub">Manage customer communications</div>
         </div>
       </div>
 
-      <div class="card">
-        <div class="prop-list" id="lead-list">
-          <div class="card-empty"><div class="empty-icon">✉️</div><p>Loading valuations…</p></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ══ SENT SECTION ══ -->
-    <div id="section-sent" style="display:none">
-      <div class="page-header">
-        <div>
-          <div class="page-title">Sent</div>
-          <div class="page-sub">Emails you've sent to customers</div>
-        </div>
+      <!-- TABS -->
+      <div style="display:flex;gap:8px;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:0">
+        <button class="nav-item active" onclick="switchEmailTab('inbox')" id="tab-inbox" style="border-bottom:2px solid var(--gold);border-radius:0;margin:0;padding:12px 16px;font-size:13px">📨 Inbox</button>
+        <button class="nav-item" onclick="switchEmailTab('drafts')" id="tab-drafts" style="border-bottom:2px solid transparent;border-radius:0;margin:0;padding:12px 16px;font-size:13px">📝 Drafts</button>
+        <button class="nav-item" onclick="switchEmailTab('templates')" id="tab-templates" style="border-bottom:2px solid transparent;border-radius:0;margin:0;padding:12px 16px;font-size:13px">📋 Templates</button>
+        <button class="nav-item" onclick="switchEmailTab('sent')" id="tab-sent" style="border-bottom:2px solid transparent;border-radius:0;margin:0;padding:12px 16px;font-size:13px">✓ Sent</button>
       </div>
 
-      <div class="card">
-        <div class="prop-list" id="sent-list">
-          <div class="card-empty"><div class="empty-icon">✓</div><p>Loading sent emails…</p></div>
+      <!-- INBOX TAB -->
+      <div id="tab-content-inbox">
+        <div class="card">
+          <div class="prop-list" id="lead-list">
+            <div class="card-empty"><div class="empty-icon">📨</div><p>Loading valuations…</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DRAFTS TAB -->
+      <div id="tab-content-drafts" style="display:none">
+        <div class="card">
+          <div class="card-empty"><div class="empty-icon">📝</div><p>No draft emails yet</p></div>
+        </div>
+      </div>
+
+      <!-- TEMPLATES TAB -->
+      <div id="tab-content-templates" style="display:none">
+        <div class="card">
+          <div style="padding:20px">
+            <div style="margin-bottom:16px">
+              <div style="font-size:13px;font-weight:600;margin-bottom:8px">Valuation Response</div>
+              <div style="font-size:12px;color:rgba(255,255,255,.5)">Initial valuation response template</div>
+            </div>
+            <div style="margin-bottom:16px">
+              <div style="font-size:13px;font-weight:600;margin-bottom:8px">Appraisal Scheduled</div>
+              <div style="font-size:12px;color:rgba(255,255,255,.5)">Confirm appraisal date and time</div>
+            </div>
+            <div style="margin-bottom:16px">
+              <div style="font-size:13px;font-weight:600;margin-bottom:8px">Listing Ready</div>
+              <div style="font-size:12px;color:rgba(255,255,255,.5)">Property is live on market</div>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:600;margin-bottom:8px">Follow-up</div>
+              <div style="font-size:12px;color:rgba(255,255,255,.5)">Quick check-in message</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SENT TAB -->
+      <div id="tab-content-sent" style="display:none">
+        <div class="card">
+          <div class="prop-list" id="sent-list">
+            <div class="card-empty"><div class="empty-icon">✓</div><p>No sent emails yet</p></div>
+          </div>
         </div>
       </div>
     </div>
@@ -564,7 +595,17 @@ function showSection(name) {
   document.getElementById('section-' + name).style.display = 'block';
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById('nav-' + name).classList.add('active');
-  if (name === 'leads') loadLeads();
+  if (name === 'email-manager') { loadLeads(); loadSent(); }
+}
+
+function switchEmailTab(tab) {
+  document.querySelectorAll('[id^="tab-content-"]').forEach(el => el.style.display = 'none');
+  document.getElementById('tab-content-' + tab).style.display = 'block';
+  document.querySelectorAll('[id^="tab-"]').forEach(el => {
+    if (el.id.startsWith('tab-content-')) return;
+    el.style.borderBottom = el.id === 'tab-' + tab ? '2px solid var(--gold)' : '2px solid transparent';
+  });
+  if (tab === 'sent') loadSent();
 }
 
 // ══ PROPERTIES ══════════════════════════════════════════
@@ -1069,13 +1110,14 @@ async function loadLeads() {
 
 function renderLeads() {
   const list = document.getElementById('lead-list');
-  if (!leads.length) { list.innerHTML = '<div class="card-empty"><div class="empty-icon">✉️</div><p>No valuations yet</p></div>'; return; }
+  if (!leads.length) { list.innerHTML = '<div class="card-empty"><div class="empty-icon">📨</div><p>No valuations yet</p></div>'; return; }
   list.innerHTML = leads.map(l => {
     const f = l.fields || {};
     const name = (f.firstName || '') + ' ' + (f.lastName || '');
     const date = new Date(l.timestamp).toLocaleString('en-AU', {dateStyle:'short', timeStyle:'short'});
     return '<div class="prop-row" onclick="openLeadModal(\'' + l.id + '\')" style="cursor:pointer"><div><div class="prop-name">' + name.trim() + '</div><div class="prop-meta"><span>' + l.source + '</span><span>' + date + '</span><span>' + (f.email || 'no email') + '</span></div></div><button class="btn btn-sm btn-gold">Reply →</button></div>';
   }).join('');
+  updateEmailCount();
 }
 
 async function loadSent() {
@@ -1100,6 +1142,12 @@ function renderSent() {
     const date = new Date(s.timestamp).toLocaleString('en-AU', {dateStyle:'short', timeStyle:'short'});
     return '<div class="prop-row"><div><div class="prop-name">' + s.to + '</div><div class="prop-meta"><span>' + s.subject + '</span><span>' + date + '</span></div></div></div>';
   }).join('');
+  updateEmailCount();
+}
+
+function updateEmailCount() {
+  const total = (leads.length || 0) + (sent.length || 0);
+  document.getElementById('email-count').textContent = total;
 }
 
 function openLeadModal(leadId) {
