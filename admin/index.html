@@ -399,39 +399,53 @@ button{cursor:pointer;font-family:inherit}
 </div>
 
 <!-- ══ LEAD RESPONSE MODAL ══ -->
-<div class="modal-overlay" id="lead-modal" style="display:none;max-height:90vh;overflow-y:auto" onclick="if(event.target===this)closeLeadModal()">
-  <div class="modal" style="max-width:720px">
+<div class="modal-overlay" id="lead-modal" style="display:none" onclick="if(event.target===this)closeLeadModal()">
+  <div class="modal" style="max-width:820px;max-height:90vh;overflow-y:auto">
     <div class="modal-title">
       <span id="lead-modal-title">Respond to Enquiry</span>
       <button class="modal-close" onclick="closeLeadModal()">×</button>
     </div>
-    <div style="background:rgba(255,255,255,.02);padding:16px;border-radius:10px;margin-bottom:20px">
-      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px">Customer Details</div>
-      <div id="lead-details-display" style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.7)"></div>
+
+    <div style="background:rgba(255,255,255,.02);padding:14px;border-radius:10px;margin-bottom:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4)">Customer:</div>
+      <div id="lead-details-display" style="font-size:13px;color:rgba(255,255,255,.7)"></div>
     </div>
+
     <div class="field">
-      <label>Email Subject</label>
-      <input id="lead-subject" value="Thanks for your valuation request" style="font-size:14px"/>
+      <label>Email Template</label>
+      <select id="lead-template" onchange="switchTemplate()" style="font-size:14px">
+        <option value="valuation">📋 Valuation Response</option>
+        <option value="appraisal">✓ Appraisal Scheduled</option>
+        <option value="listing">🏠 Listing Ready</option>
+        <option value="follow-up">→ Follow-up</option>
+        <option value="custom">✏️ Custom Message</option>
+      </select>
     </div>
-    <div class="field">
-      <label>Response (will be formatted in beautiful email)</label>
-      <textarea id="lead-response" style="min-height:200px;font-family:monospace;font-size:13px" placeholder="Write your response here. It will be sent in a professionally formatted email.
 
-Common template:
-Hi {firstName},
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <!-- Editor -->
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px">✏️ Edit Template</div>
+        <div class="field">
+          <label>Subject</label>
+          <input id="lead-subject" style="font-size:13px;width:100%"/>
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <label>Message (editable sections highlighted)</label>
+          <div id="template-editor" style="background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:14px;font-size:13px;line-height:1.6;color:rgba(255,255,255,.8);min-height:300px;max-height:400px;overflow-y:auto;font-family:monospace;white-space:pre-wrap;word-wrap:break-word"></div>
+        </div>
+      </div>
 
-Thanks for reaching out. I've reviewed your property details and would love to discuss a free valuation.
-
-[Your custom message here]
-
-I'll follow up shortly with a valuation estimate tailored to your property.
-
-Talk soon,
-Bobby"></textarea>
+      <!-- Preview -->
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px">👁️ Email Preview</div>
+        <div id="template-preview" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:16px;font-size:13px;line-height:1.6;color:rgba(255,255,255,.8);min-height:300px;max-height:400px;overflow-y:auto;font-family:georgia,serif"></div>
+      </div>
     </div>
-    <div class="modal-actions">
+
+    <div class="modal-actions" style="margin-top:16px">
       <button class="btn btn-outline" onclick="closeLeadModal()">Cancel</button>
-      <button class="btn btn-gold" id="lead-send-btn" onclick="sendLeadResponse()">Send Email Response</button>
+      <button class="btn btn-gold" onclick="sendLeadResponse()">Send Email</button>
     </div>
   </div>
 </div>
@@ -891,6 +905,116 @@ function removeKw(kw) { keywords = keywords.filter(k => k !== kw); renderKeyword
 // ── LEADS ──
 let leads = [];
 let selectedLead = null;
+let currentTemplate = 'valuation';
+
+const EMAIL_TEMPLATES = {
+  valuation: {
+    subject: 'Your property valuation from Bobby',
+    message: `Hi [FIRST_NAME],
+
+Thanks for reaching out. I've reviewed the details for [PROPERTY_ADDRESS] and I'm confident about the market position.
+
+Based on recent comparable sales and current market momentum, I'd value the property at [VALUATION_RANGE]. That said, there's a 5-10% variance depending on presentation and timing.
+
+[CUSTOM_NOTES]
+
+I'd love to discuss your timeline and goals. Free valuation calls are always the best way to get a clear picture.
+
+Talk soon,
+Bobby`
+  },
+  appraisal: {
+    subject: 'Your appraisal is scheduled - [DATE]',
+    message: `Hi [FIRST_NAME],
+
+Great news—your appraisal is locked in for [DATE] at [TIME].
+
+I'll do a full walk-through of the property, take updated photos, and assess any recent improvements or changes. This gives us accurate data for pricing and presentation.
+
+[CUSTOM_NOTES]
+
+See you then. Call or text if you need to reschedule.
+
+Bobby`
+  },
+  listing: {
+    subject: 'Your listing is now live!',
+    message: `Hi [FIRST_NAME],
+
+Exciting—[PROPERTY_ADDRESS] is now on the market!
+
+Your campaign is live across REA, Domain, and our targeted digital ads. Premium photography and floor plans are getting noticed, and we're tracking enquiry quality closely.
+
+[CUSTOM_NOTES]
+
+First open homes are crucial. Let's chat about timing and strategy.
+
+Bobby`
+  },
+  'follow-up': {
+    subject: 'Quick follow-up on [PROPERTY_ADDRESS]',
+    message: `Hi [FIRST_NAME],
+
+Following up on our conversation about [PROPERTY_ADDRESS].
+
+[CUSTOM_NOTES]
+
+Happy to jump on a call to discuss next steps or answer any questions.
+
+Bobby`
+  },
+  custom: {
+    subject: 'Message from Bobby',
+    message: `Hi [FIRST_NAME],
+
+[YOUR_MESSAGE]
+
+Bobby`
+  }
+};
+
+function switchTemplate() {
+  currentTemplate = document.getElementById('lead-template').value;
+  const template = EMAIL_TEMPLATES[currentTemplate];
+  if (!template) return;
+  document.getElementById('lead-subject').value = template.subject;
+  renderTemplateEditor();
+  updatePreview();
+}
+
+function renderTemplateEditor() {
+  const template = EMAIL_TEMPLATES[currentTemplate];
+  if (!template) return;
+  const msg = template.message;
+  const editor = document.getElementById('template-editor');
+  editor.innerHTML = msg.replace(/\[([A-Z_]+)\]/g, '<span style="background:rgba(196,168,74,.3);padding:2px 6px;border-radius:4px;font-weight:600;cursor:text" onclick="selectEditableSection(this)" title="Click to edit">[<span contenteditable="true">$1</span>]</span>');
+}
+
+function selectEditableSection(el) {
+  const span = el.querySelector('[contenteditable]');
+  if (span) { span.focus(); span.select?.(); }
+}
+
+function updatePreview() {
+  const editor = document.getElementById('template-editor');
+  let text = editor.innerText || '';
+  const preview = document.getElementById('template-preview');
+  const f = selectedLead?.fields || {};
+  text = text.replace(/\[FIRST_NAME\]/g, f.firstName || 'there')
+    .replace(/\[PROPERTY_ADDRESS\]/g, f.address || 'your property')
+    .replace(/\[DATE\]/g, 'TBD')
+    .replace(/\[TIME\]/g, 'TBD')
+    .replace(/\[VALUATION_RANGE\]/g, '$XXX,XXX - $XXX,XXX')
+    .replace(/\[YOUR_MESSAGE\]/g, '')
+    .replace(/\[CUSTOM_NOTES\]/g, '');
+  preview.textContent = text;
+}
+
+document.addEventListener('input', (e) => {
+  if (e.target.id === 'template-editor' || e.target.closest('#template-editor')) {
+    updatePreview();
+  }
+});
 
 async function loadLeads() {
   try {
@@ -924,8 +1048,10 @@ function openLeadModal(leadId) {
   const f = selectedLead.fields || {};
   const name = (f.firstName || '') + ' ' + (f.lastName || '');
   document.getElementById('lead-modal-title').textContent = 'Reply to ' + name.trim();
-  document.getElementById('lead-details-display').innerHTML = '<strong>' + name.trim() + '</strong><br/>📧 ' + (f.email || 'no email') + '<br/>📞 ' + (f.phone || 'no phone') + (f.address ? '<br/>📍 ' + f.address : '') + (f.page ? '<br/><small>Submitted from: ' + f.page + '</small>' : '');
-  document.getElementById('lead-response').value = 'Hi ' + (f.firstName || 'there') + ',\n\nThanks for your valuation request. I\'ve noted your property details and would love to chat about your sale.\n\nI\'ll be in touch shortly with a tailored valuation.\n\nTalk soon,\nBobby';
+  document.getElementById('lead-details-display').innerHTML = '<strong>' + name.trim() + '</strong> • ' + (f.email || 'no email') + ' • ' + (f.phone || 'no phone');
+  currentTemplate = 'valuation';
+  document.getElementById('lead-template').value = 'valuation';
+  switchTemplate();
   document.getElementById('lead-modal').style.display = 'flex';
 }
 
@@ -937,18 +1063,20 @@ async function sendLeadResponse() {
   const email = f.email;
   if (!email) { toast('No email on file', 'error'); return; }
   const subject = document.getElementById('lead-subject').value.trim();
-  const responseText = document.getElementById('lead-response').value.trim();
-  if (!responseText) { toast('Response text required', 'error'); return; }
+  let message = document.getElementById('template-editor').innerText || '';
+  if (!message) { toast('Message required', 'error'); return; }
+  message = message.replace(/\[FIRST_NAME\]/g, f.firstName || 'there').replace(/\[PROPERTY_ADDRESS\]/g, f.address || 'your property');
   if (!confirm('Send email to ' + email + '?')) return;
   try {
     const res = await fetch('/api/admin-response', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ to: email, subject, message: responseText, firstName: f.firstName || 'there' })
+      body: JSON.stringify({ to: email, subject, message, firstName: f.firstName || 'there' })
     });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     toast('Email sent to ' + email, 'success');
     closeLeadModal();
+    loadLeads();
   } catch(e) { toast('Send failed: ' + e.message, 'error'); }
 }
 
