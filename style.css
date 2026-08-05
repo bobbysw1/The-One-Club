@@ -505,6 +505,7 @@ footer{border-top:1px solid var(--subtle);padding:60px 48px 40px}
   .pre-half{padding:24px}
   .pre-half.gc{padding-top:120px}
   .pre-half-name{font-size:clamp(30px,9vw,40px)}
+  .pre-half::after{background:linear-gradient(180deg,rgba(14,24,16,.25),rgba(14,24,16,.45))}
   .pre-region-divider{flex-basis:1px;width:100%;background:linear-gradient(90deg,transparent,rgba(196,168,74,.55),transparent)}
 }
 @media (prefers-reduced-motion: reduce){.pre-region-brand,.pre-half{animation:none;opacity:1;transform:none}}
