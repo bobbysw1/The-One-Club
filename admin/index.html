@@ -455,6 +455,7 @@ button{cursor:pointer;font-family:inherit}
 
 <script>
 const API = '/api/admin';
+let adminPassword = '';
 
 // ══ STATE ════════════════════════════════════════════════
 var properties = [];
@@ -466,9 +467,16 @@ var editingAgentId = null;
 var keywords = [];
 var propFilter = 'all';
 
+// ── INIT ──
+(function() {
+  try { adminPassword = sessionStorage.getItem('toc.admin.pw') || ''; } catch(_){}
+  if (adminPassword) { showApp(); }
+  else { document.getElementById('app').style.display = 'none'; }
+})();
+
 function getPw() { try { return sessionStorage.getItem('toc.admin.pw') || ''; } catch(_){ return ''; } }
-function setPw(v) { try { sessionStorage.setItem('toc.admin.pw', v); } catch(_){} }
-function clearPw() { try { sessionStorage.removeItem('toc.admin.pw'); } catch(_){} }
+function setPw(v) { adminPassword = v; try { sessionStorage.setItem('toc.admin.pw', v); } catch(_){} }
+function clearPw() { adminPassword = ''; try { sessionStorage.removeItem('toc.admin.pw'); } catch(_){} }
 
 async function apiCall(action, file, data) {
   const body = { action, file, data };
@@ -526,6 +534,7 @@ function showApp() {
   loadProperties();
   loadChatbot();
   loadAgents();
+  loadLeads();
 }
 
 // ══ NAVIGATION ══════════════════════════════════════════
