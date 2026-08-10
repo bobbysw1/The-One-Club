@@ -49,7 +49,10 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["LocalBusiness", "RealEstateAgent"],
+      "@type": [
+        "LocalBusiness",
+        "RealEstateAgent"
+      ],
       "@id": "https://www.theoneclub.com.au/#business",
       "name": "The One Club",
       "description": "Gold Coast real estate agency charging just 1% commission. Premium photography, floor plans, Matterport 3D Showcases, digital marketing campaign and experienced negotiation, all included.",
@@ -65,25 +68,64 @@
       "geo": {
         "@type": "GeoCoordinates",
         "latitude": -28.0167,
-        "longitude": 153.4000
+        "longitude": 153.4
       },
       "areaServed": [
-        {"@type": "City", "name": "Gold Coast", "addressRegion": "QLD", "addressCountry": "AU"},
-        {"@type": "Place", "name": "Broadbeach Waters"},
-        {"@type": "Place", "name": "Hope Island"},
-        {"@type": "Place", "name": "Burleigh Heads"},
-        {"@type": "Place", "name": "Robina"},
-        {"@type": "Place", "name": "Varsity Lakes"},
-        {"@type": "Place", "name": "Surfers Paradise"},
-        {"@type": "Place", "name": "Southport"},
-        {"@type": "Place", "name": "Nerang"},
-        {"@type": "Place", "name": "Coomera"},
-        {"@type": "Place", "name": "Palm Beach"}
+        {
+          "@type": "City",
+          "name": "Gold Coast",
+          "addressRegion": "QLD",
+          "addressCountry": "AU"
+        },
+        {
+          "@type": "Place",
+          "name": "Broadbeach Waters"
+        },
+        {
+          "@type": "Place",
+          "name": "Hope Island"
+        },
+        {
+          "@type": "Place",
+          "name": "Burleigh Heads"
+        },
+        {
+          "@type": "Place",
+          "name": "Robina"
+        },
+        {
+          "@type": "Place",
+          "name": "Varsity Lakes"
+        },
+        {
+          "@type": "Place",
+          "name": "Surfers Paradise"
+        },
+        {
+          "@type": "Place",
+          "name": "Southport"
+        },
+        {
+          "@type": "Place",
+          "name": "Nerang"
+        },
+        {
+          "@type": "Place",
+          "name": "Coomera"
+        },
+        {
+          "@type": "Place",
+          "name": "Palm Beach"
+        }
       ],
       "priceRange": "1% commission",
       "knowsAbout": [
-        "Property sales", "Real estate photography", "Property valuation",
-        "3D property walkthroughs", "Digital marketing", "Gold Coast real estate"
+        "Property sales",
+        "Real estate photography",
+        "Property valuation",
+        "3D property walkthroughs",
+        "Digital marketing",
+        "Gold Coast real estate"
       ],
       "sameAs": [
         "https://www.instagram.com/theoneclubau"
@@ -92,71 +134,50 @@
         "@type": "OfferCatalog",
         "name": "1% Commission Real Estate Services",
         "itemListElement": [
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Professional Photography"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Floor Plans"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "3D Virtual Walkthrough"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Digital Marketing Campaign"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Property Styling Advice"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Negotiation & Contract Management"}}
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Professional Photography"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Floor Plans"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "3D Virtual Walkthrough"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Digital Marketing Campaign"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Property Styling Advice"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Negotiation & Contract Management"
+            }
+          }
         ]
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "reviewCount": "6",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "author": {"@type": "Person", "name": "Sarah M."},
-          "reviewBody": "We'd been quoted 2.5% by every other agent on the Gold Coast. The One Club listed us within the week, and we had contracts by day 14. I genuinely didn't expect results that fast.",
-          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-          "datePublished": "2025-06-01",
-          "itemReviewed": {"@id": "https://www.theoneclub.com.au/#business"}
-        },
-        {
-          "@type": "Review",
-          "author": {"@type": "Person", "name": "James & Priya T."},
-          "reviewBody": "Fourteen groups through the first open home. Three offers by Sunday afternoon. The photography was the reason, buyers already felt like they'd been inside before they arrived.",
-          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-          "datePublished": "2025-07-01",
-          "itemReviewed": {"@id": "https://www.theoneclub.com.au/#business"}
-        },
-        {
-          "@type": "Review",
-          "author": {"@type": "Person", "name": "Michael C."},
-          "reviewBody": "The Matterport 3D Showcase meant buyers had already walked every room before the inspection. Two of our four offers came from interstate buyers who never visited in person. Remarkable.",
-          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-          "datePublished": "2025-08-01",
-          "itemReviewed": {"@id": "https://www.theoneclub.com.au/#business"}
-        },
-        {
-          "@type": "Review",
-          "author": {"@type": "Person", "name": "Karen W."},
-          "reviewBody": "I was genuinely sceptical. One percent sounded too good. After four competing offers in three weeks, I'm embarrassed I ever doubted it. The process was completely transparent start to finish.",
-          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-          "datePublished": "2025-09-01",
-          "itemReviewed": {"@id": "https://www.theoneclub.com.au/#business"}
-        },
-        {
-          "@type": "Review",
-          "author": {"@type": "Person", "name": "Tom H."},
-          "reviewBody": "Three traditional agents wanted between 2.2% and 2.8%. The One Club charged 1% and gave us better marketing, faster response times, and a higher final sale price. Doesn't make sense not to.",
-          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-          "datePublished": "2025-10-01",
-          "itemReviewed": {"@id": "https://www.theoneclub.com.au/#business"}
-        },
-        {
-          "@type": "Review",
-          "author": {"@type": "Person", "name": "Emma & David L."},
-          "reviewBody": "The AI-enhanced photos made our property look better than I'd ever seen it in person. My partner cried a little when she saw them. We had interest within hours of going live.",
-          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-          "datePublished": "2025-11-01",
-          "itemReviewed": {"@id": "https://www.theoneclub.com.au/#business"}
-        }
-      ]
+      }
     },
     {
       "@type": "WebSite",
@@ -164,7 +185,9 @@
       "url": "https://www.theoneclub.com.au",
       "name": "The One Club",
       "description": "Gold Coast real estate. 1% commission.",
-      "publisher": {"@id": "https://www.theoneclub.com.au/#business"},
+      "publisher": {
+        "@id": "https://www.theoneclub.com.au/#business"
+      },
       "inLanguage": "en-AU"
     },
     {
@@ -234,6 +257,8 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"RealEstateAgent","name":"The One Club | Kirra","url":"https://www.theoneclub.com.au/kirra/","areaServed":{"@type":"Place","name":"Kirra, Gold Coast, QLD"},"provider":{"@id":"https://www.theoneclub.com.au/#business"},"priceRange":"1% commission"}
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="preload" href="/style.css" as="style"/>
 <link rel="stylesheet" href="/style.css"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
