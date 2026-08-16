@@ -630,15 +630,19 @@
         allow="xr-spatial-tracking; gyroscope; accelerometer; autoplay; encrypted-media; picture-in-picture"
         loading="lazy">
       </iframe>
+      <img id="showcase-image" src="/images/sample-floorplan.jpg" alt="Example floor plan showing an open-plan living, dining and kitchen area, master suite with walk-in wardrobe and ensuite, three additional bedrooms, bathroom, laundry, foyer and double garage" loading="lazy" decoding="async" style="display:none"/>
     </div>
     <div class="showcase-tabs">
-      <button class="showcase-tab active" data-src="https://my.matterport.com/show?play=1&amp;lang=en-US&amp;m=LwknTcA3yEW">3D Showcase</button>
-      <button class="showcase-tab" data-src="https://my.matterport.com/show?play=1&amp;lang=en-US&amp;m=Ps4Jtt2xdSB">3D Showcase</button>
-      <button class="showcase-tab" data-src="https://www.youtube.com/embed/JgbF8mMr9Y8?start=6&amp;end=100&amp;autoplay=1&amp;mute=1">Drone Flyover</button>
+      <button class="showcase-tab active" data-type="frame" data-src="https://my.matterport.com/show?play=1&amp;lang=en-US&amp;m=LwknTcA3yEW">3D Showcase</button>
+      <button class="showcase-tab" data-type="frame" data-src="https://my.matterport.com/show?play=1&amp;lang=en-US&amp;m=Ps4Jtt2xdSB">3D Showcase</button>
+      <button class="showcase-tab" data-type="frame" data-src="https://www.youtube.com/embed/JgbF8mMr9Y8?start=6&amp;end=100&amp;autoplay=1&amp;mute=1">Drone Flyover</button>
+      <button class="showcase-tab" data-type="image">Floor Plan</button>
     </div>
+    <div id="showcase-caption" style="display:none;margin-top:14px;text-align:center;font-size:12px;color:var(--muted)">Illustrative example floor plan style, not this property. Every real listing gets its own plan generated from the property's true dimensions.</div>
   </section>
   <style>
-    .showcase-main iframe{width:100%;aspect-ratio:16/9;border:2px solid var(--gold,#C4A84A);border-radius:16px;box-shadow:0 32px 80px -24px rgba(0,0,0,.55);display:block}
+    .showcase-main{position:relative}
+    .showcase-main iframe,.showcase-main img{width:100%;aspect-ratio:16/9;border:2px solid var(--gold,#C4A84A);border-radius:16px;box-shadow:0 32px 80px -24px rgba(0,0,0,.55);display:block;object-fit:cover;background:var(--bg)}
     .showcase-tabs{display:flex;gap:16px;margin-top:20px;justify-content:center;flex-wrap:wrap}
     .showcase-tab{padding:10px 24px;border:2px solid var(--gold,#C4A84A);border-radius:8px;background:transparent;color:var(--fg);cursor:pointer;font-size:13px;font-weight:600;font-family:inherit;transition:background .2s ease,color .2s ease}
     .showcase-tab:hover,.showcase-tab.active{background:var(--gold,#C4A84A);color:#000}
@@ -646,7 +650,19 @@
   <script>
     document.querySelectorAll('.showcase-tab').forEach(function(tab){
       tab.addEventListener('click', function(){
-        document.getElementById('showcase-frame').src = tab.dataset.src;
+        var frame = document.getElementById('showcase-frame');
+        var img = document.getElementById('showcase-image');
+        var caption = document.getElementById('showcase-caption');
+        if (tab.dataset.type === 'image') {
+          frame.style.display = 'none';
+          img.style.display = 'block';
+          caption.style.display = 'block';
+        } else {
+          img.style.display = 'none';
+          frame.style.display = 'block';
+          frame.src = tab.dataset.src;
+          caption.style.display = 'none';
+        }
         document.querySelectorAll('.showcase-tab').forEach(function(t){ t.classList.remove('active'); });
         tab.classList.add('active');
       });
