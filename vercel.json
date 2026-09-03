@@ -1,4 +1,7 @@
 {
+  "redirects": [
+    { "source": "/", "destination": "/cairns/", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/api/chat", "destination": "/api/chat.js" }
   ]

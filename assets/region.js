@@ -1,6 +1,6 @@
 /* Region-aware copy for shared pages.
    Visiting any /cairns/ page remembers the visitor as a Cairns customer;
-   visiting the Gold Coast homepage remembers Gold Coast. Shared pages
+   Cairns is the primary market. Shared pages
    (About, Guides, Calculators, etc.) then read as the visitor's region:
    visible "Gold Coast" copy becomes "Cairns" and valuation/suburb links
    route to the Cairns page. Region-specific pages are never rewritten,
@@ -15,7 +15,7 @@
       return;
     }
     if (path === '/' || path === '/index.html') {
-      localStorage.setItem(KEY, 'gc');
+      localStorage.setItem(KEY, 'cairns');
       return;
     }
     region = localStorage.getItem(KEY);
