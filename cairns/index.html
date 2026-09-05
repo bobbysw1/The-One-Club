@@ -244,13 +244,17 @@
     <div class="nav-cta">
       <a href="#valuation" class="btn btn-gold">Free Valuation</a>
     </div>
-    <div class="ham" id="ham" onclick="toggleMenu()">
+    <button class="ham" id="ham" type="button" onclick="toggleMenu()" aria-label="Open navigation" aria-controls="mobileMenu" aria-expanded="false">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </div>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-region-switcher" aria-label="Choose region">
+    <a href="/">Gold Coast<span>Switch region</span></a>
+    <a href="/cairns/" aria-current="page">Cairns<span>Current region</span></a>
+  </div>
   <a href="/cairns/" onclick="toggleMenu()">Home</a>
   <a href="/for-sale/" onclick="toggleMenu()">For Sale</a>
   <a href="#suburbs" onclick="toggleMenu()">Suburbs</a>
@@ -270,7 +274,7 @@
 
 <!-- HERO, editorial, with video background -->
 <section class="ed-hero">
-  <video class="hero-video" autoplay muted loop playsinline preload="none" poster="/video/hero-cairns-poster.jpg" aria-hidden="true">
+  <video class="hero-video" muted loop playsinline preload="none" poster="/video/hero-cairns-poster.jpg" aria-hidden="true">
     <source media="(max-width:720px)" src="/video/hero-cairns-mobile.mp4" type="video/mp4"/>
     <source src="/video/hero-cairns.hevc.mp4" type='video/mp4; codecs="hvc1"'/>
     <source src="/video/hero-cairns.mp4" type="video/mp4"/>
@@ -900,7 +904,25 @@ function goTo(page, anchor) {
   if (anchor) url += "#" + anchor;
   window.location.href = url;
 }
-function toggleMenu() { document.getElementById("mobileMenu").classList.toggle("open"); }
+var menuScrollY = 0;
+function toggleMenu(forceClose) {
+  var menu = document.getElementById('mobileMenu');
+  var button = document.getElementById('ham');
+  var opening = forceClose === true ? false : !menu.classList.contains('open');
+  if (opening) {
+    menuScrollY = window.scrollY || 0;
+    menu.classList.add('open');
+    document.body.style.top = '-' + menuScrollY + 'px';
+    document.body.classList.add('menu-open');
+  } else {
+    menu.classList.remove('open');
+    document.body.classList.remove('menu-open');
+    document.body.style.top = '';
+    window.scrollTo(0, menuScrollY);
+  }
+  button.setAttribute('aria-expanded', opening ? 'true' : 'false');
+  button.setAttribute('aria-label', opening ? 'Close navigation' : 'Open navigation');
+}
 
 /* ═══════════════════════════════════════
    SCROLL PROGRESS
@@ -1406,6 +1428,14 @@ function sendQuick(text){ document.getElementById('chat-input').value = text; se
 /* ═══════════════════════════════════════
    PRELOADER
 ═══════════════════════════════════════ */
+function startHeroVideo(){
+  var saveData = navigator.connection && navigator.connection.saveData;
+  if (saveData || matchMedia('(max-width:720px)').matches) return;
+  var video = document.querySelector('.hero-video');
+  if (!video) return;
+  var play = video.play();
+  if (play && play.catch) play.catch(function(){});
+}
 (function(){
   var pre = document.getElementById('preloader');
   if (!pre) return;
@@ -1419,6 +1449,7 @@ function sendQuick(text){ document.getElementById('chat-input').value = text; se
       setTimeout(function(){
         if (typeof revealAll === 'function') revealAll();
         if (typeof initParticles === 'function') initParticles();
+        startHeroVideo();
       }, 30);
       return;
     }
@@ -1430,6 +1461,7 @@ function sendQuick(text){ document.getElementById('chat-input').value = text; se
     setTimeout(function(){ pre.style.display = 'none'; }, 700);
     if (typeof revealAll === 'function') revealAll();
     if (typeof initParticles === 'function') initParticles();
+    startHeroVideo();
   }, 3200);
 })();
 

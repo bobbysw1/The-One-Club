@@ -201,13 +201,13 @@
 <a class="skip-link" href="#main-content">Skip to main content</a>
 
 <!-- ════ PRELOADER ════ -->
-<div id="preloader" class="pre-region">
+<div id="preloader" class="pre-region" role="dialog" aria-modal="true" aria-label="Choose your property market">
   <div class="pre-region-brand">
     <img class="pre-logo-sm" src="/logo.png" alt="" width="223" height="60" decoding="async"/>
     <div class="pre-region-kicker">Where are you selling?</div>
   </div>
   <a class="pre-half gc" href="/" onclick="chooseRegion('gc');return false;" aria-label="Enter the Gold Coast site">
-    <video class="pre-half-video" autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="/video/selector-gc.mp4" type="video/mp4"/></video>
+    <video class="pre-half-video" muted loop playsinline preload="none" aria-hidden="true"><source src="/video/selector-gc.mp4" type="video/mp4"/></video>
     <span class="pre-half-kicker">South East Queensland</span>
     <span class="pre-half-name">Gold<br/><em>Coast.</em></span>
     <span class="pre-half-tag">Surfers Paradise to Coolangatta</span>
@@ -215,7 +215,7 @@
   </a>
   <div class="pre-region-divider" aria-hidden="true"></div>
   <a class="pre-half cn" href="/cairns/" onclick="chooseRegion('cairns');return false;" aria-label="Enter the Cairns and Port Douglas site">
-    <video class="pre-half-video" autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="/video/selector-cairns.mp4" type="video/mp4"/></video>
+    <video class="pre-half-video" muted loop playsinline preload="none" aria-hidden="true"><source src="/video/selector-cairns.mp4" type="video/mp4"/></video>
     <span class="pre-half-kicker">Far North Queensland</span>
     <span class="pre-half-name">Cairns &amp;<br/><em>Port Douglas.</em></span>
     <span class="pre-half-tag">Palm Cove to the Tablelands</span>
@@ -252,13 +252,17 @@
     <div class="nav-cta">
       <a href="/#valuation" class="btn btn-gold">Free Valuation</a>
     </div>
-    <div class="ham" id="ham" onclick="toggleMenu()">
+    <button class="ham" id="ham" type="button" onclick="toggleMenu()" aria-label="Open navigation" aria-controls="mobileMenu" aria-expanded="false">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </div>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-region-switcher" aria-label="Choose region">
+    <a href="/" aria-current="page">Gold Coast<span>Current region</span></a>
+    <a href="/cairns/">Cairns<span>Switch region</span></a>
+  </div>
   <a href="/" onclick="toggleMenu()">Home</a>
   <a href="/for-sale/" onclick="toggleMenu()">For Sale</a>
   <a href="/#suburbs" onclick="toggleMenu()">Suburbs</a>
@@ -278,7 +282,7 @@
 
 <!-- HERO, editorial, with video background -->
 <section class="ed-hero">
-  <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/video/hero-gc-poster.jpg" aria-hidden="true">
+  <video class="hero-video" muted loop playsinline webkit-playsinline preload="none" poster="/video/hero-gc-poster.jpg" aria-hidden="true">
     <source media="(max-width:720px)" src="/video/hero-gc-mobile.mp4" type="video/mp4"/>
     <source src="/video/hero-gc.hevc.mp4" type='video/mp4; codecs="hvc1"'/>
     <source src="/video/hero-gc.mp4" type="video/mp4"/>
@@ -886,7 +890,25 @@ function goTo(page, anchor) {
   if (anchor) url += "#" + anchor;
   window.location.href = url;
 }
-function toggleMenu() { document.getElementById("mobileMenu").classList.toggle("open"); }
+var menuScrollY = 0;
+function toggleMenu(forceClose) {
+  var menu = document.getElementById('mobileMenu');
+  var button = document.getElementById('ham');
+  var opening = forceClose === true ? false : !menu.classList.contains('open');
+  if (opening) {
+    menuScrollY = window.scrollY || 0;
+    menu.classList.add('open');
+    document.body.style.top = '-' + menuScrollY + 'px';
+    document.body.classList.add('menu-open');
+  } else {
+    menu.classList.remove('open');
+    document.body.classList.remove('menu-open');
+    document.body.style.top = '';
+    window.scrollTo(0, menuScrollY);
+  }
+  button.setAttribute('aria-expanded', opening ? 'true' : 'false');
+  button.setAttribute('aria-label', opening ? 'Close navigation' : 'Open navigation');
+}
 
 /* ═══════════════════════════════════════
    SCROLL PROGRESS
@@ -1416,6 +1438,14 @@ function chooseRegion(region){
   if (region === 'cairns') { window.location.href = '/cairns/'; return; }
   if (window.__preDismiss) window.__preDismiss();
 }
+function startHeroVideo(){
+  var saveData = navigator.connection && navigator.connection.saveData;
+  if (saveData || matchMedia('(max-width:720px)').matches) return;
+  var video = document.querySelector('.hero-video');
+  if (!video) return;
+  var play = video.play();
+  if (play && play.catch) play.catch(function(){});
+}
 (function(){
   var pre = document.getElementById('preloader');
   if (!pre) return;
@@ -1429,6 +1459,7 @@ function chooseRegion(region){
       setTimeout(function(){
         if (typeof revealAll === 'function') revealAll();
         if (typeof initParticles === 'function') initParticles();
+        startHeroVideo();
       }, 30);
       return;
     }
@@ -1442,6 +1473,7 @@ function chooseRegion(region){
     setTimeout(function(){ pre.style.display = 'none'; }, 700);
     if (typeof revealAll === 'function') revealAll();
     if (typeof initParticles === 'function') initParticles();
+    startHeroVideo();
   };
   // Hover brings each half's hero loop to life (pointer devices only).
   // The clips are warmed in the background once the chooser is on screen,

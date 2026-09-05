@@ -15,7 +15,7 @@
       return;
     }
     if (path === '/' || path === '/index.html') {
-      localStorage.setItem(KEY, 'cairns');
+      localStorage.setItem(KEY, 'gc');
       return;
     }
     region = localStorage.getItem(KEY);
